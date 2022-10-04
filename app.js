@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+//need to load the routes , the routes are bound to the file , so , user/123 will be a specific route
 const users = require("./routes/api/users");
 const pins = require("./routes/api/pins");
 const comments = require("./routes/api/comments");
