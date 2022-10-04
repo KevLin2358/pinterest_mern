@@ -14,9 +14,14 @@ MVP
   - description
   - follow
   - comments
-    - total comments on pin
+    <!-- - total comments on pin
     - reply
     - like
     - helpful
-  - save
-  - testing
+  - save -->
+
+Database
+- User
+- pin
+- comments
+- follow
