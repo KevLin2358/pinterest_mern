@@ -1,0 +1,11 @@
+q1{ 
+  app.use(bodyParser.urlencoded({ extended: false }));
+
+  extended
+  The extended option allows to choose between parsing 
+  the URL-encoded data with the querystring library (when false) 
+  or the qs library (when true).
+
+  source: https://www.npmjs.com/package/body-parser
+}
+
