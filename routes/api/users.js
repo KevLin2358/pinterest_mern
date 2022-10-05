@@ -6,7 +6,11 @@ const jwt = require('jsonwebtoken');
 const keys = require('../../config/keys');
 const passport = require('passport');
 
-router.get("/test", (req, res) => res.json({ msg: "This is the users route" }));
+// router.get("/test", (req, res) => res.json({ msg: "This is the users route" }));
+
+router.get("/test", function(req, res){
+    res.json({msg: "This is the users route"});
+})
 // router.get("/123", (req, res) => res.json({ msg: "This is the users 123" }));
 
 router.post("/register", (req, res) => {
@@ -87,7 +91,11 @@ router.post("/login", (req, res) => {
 // users.js
 // You may want to start commenting in information about your routes so that you can find the appropriate ones quickly.
 router.get('/current', passport.authenticate('jwt', {session: false}), (req, res) => {
-  res.json({msg: 'Success'});
+  res.json({
+    id: req.user.id,
+    handle: req.user.handle,
+    email: req.user.email
+  });
 })
 
 module.exports = router;
