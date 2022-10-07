@@ -3,14 +3,16 @@
 MVP
 - splash page
 - nav
-- user auth 
-  - login/logout 
+- user auth <!-- done -->
+- login/logout   <!-- done -->
      - demo user
 - user page
-- feed
-- pin
+- feed <!-- get all pins, sort it by people you follow comes first -->
+- pin 
   - click again -> actual website
-  - images
+  - title
+  - user id
+  - image
   - description
   - follow
   - comments
