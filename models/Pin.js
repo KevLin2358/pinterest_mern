@@ -24,6 +24,10 @@ const PinSchema = new Schema({
     type: Date,
     default: Date.now
   }
+  ,
+  // comment:{
+  //   type:Array
+  // }
 }, {
   timestamps: true
 })
