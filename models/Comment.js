@@ -14,10 +14,14 @@ const CommentSchema = new Schema({
     type: String,
     required: true
   },
-//   HeartCount: {
-//     type: Parse,
-//     default: Date.now
-//   }
+  HeartCount: {
+    type: Number,
+    default: 0
+  },
+  HelpfulCount: {
+    type: Number,
+    default: 0
+  }
 }, {
   timestamps: true
 })
