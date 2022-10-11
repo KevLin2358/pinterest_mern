@@ -11,8 +11,8 @@ const CommentSchema = new Schema({
     required: true
   },
   Pin: {
-    type: String,
-    required: true
+    type: Schema.Types.ObjectId,
+    ref: "Pin",
   },
   HeartCount: {
     type: Number,
