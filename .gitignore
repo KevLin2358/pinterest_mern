@@ -1,4 +1,2 @@
-/node_modules
-/config/keys.js
-package-lock.json
 demo.txt
+question.txt
