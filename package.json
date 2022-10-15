@@ -2,7 +2,7 @@
   "dependencies": {
     "concurrently": "^7.4.0"
   },
-  "scripts":{
+  "scripts": {
     "frontend-install": "npm install --prefix frontend",
     "frontend": "npm start --prefix frontend",
     "server": "nodemon ./backend/app.js",
