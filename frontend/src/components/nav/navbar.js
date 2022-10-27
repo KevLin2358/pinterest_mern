@@ -51,9 +51,9 @@ const Navbar = () => {
               </form>
             </React.Fragment>
             <React.Fragment className='navBarRightSide'>
-              <div id='navIcon'><FontAwesomeIcon icon="fa-solid fa-bell" /></div>
-              <div id='navIcon'><FontAwesomeIcon icon="fa-solid fa-bell" /></div>
-              <div id='navIcon'><FontAwesomeIcon icon="fa-solid fa-bell" /></div>
+              <div id='navIcon'><Icons/></div>
+              <div id='navIcon'><Icons/></div>
+              <div id='navIcon'><Icons/></div>
 
             </React.Fragment>
         </div>
