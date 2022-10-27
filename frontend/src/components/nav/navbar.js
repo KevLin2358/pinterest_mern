@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { useRef } from 'react';
 import { useEffect } from 'react';
 import Icons from '../../images/icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 const Navbar = () => {
   const [searchTerm,setSearchTerm] = useState("")
   const dispatch = useDispatch()
@@ -33,21 +34,28 @@ const Navbar = () => {
   return (
     <React.Fragment>
         <div className='navBarContainer'>
-            <div id='navButton'>Home</div>
-            <div id='navButton'>Today</div>
-            <div id='navButton'>Create</div>
-            <form  className='searchBarContainer' onSubmit={handleOnClick}>
-                  {/* <img  className='searchIcon' alt onClick={() => console.log("Asd")}  src={searchIcon}></img> */}
-                  <input className='searchBar'
-                    onChange={(e) => setSearchAndConsole(e)}
-                    value={searchTerm}
-                    placeholder={"Search"}
-                    // ref={searchInput}
-                  />
-            </form>
-            <div id='navIcon'><Icons/></div>
-            <div id='navIcon'><Icons/></div>
-            <div id='navIcon'><Icons/></div>
+            <React.Fragment className='navBarLeftSide'>
+              <div id='navButton'>Home</div>
+              <div id='navButton'>Today</div>
+              <div id='navButton'>Create</div>
+            </React.Fragment>
+            <React.Fragment className='navBarSearchBar'>
+              <form  className='searchBarContainer' onSubmit={handleOnClick}>
+                    {/* <img  className='searchIcon' alt onClick={() => console.log("Asd")}  src={searchIcon}></img> */}
+                    <input className='searchBar'
+                      onChange={(e) => setSearchAndConsole(e)}
+                      value={searchTerm}
+                      placeholder={"Search"}
+                      // ref={searchInput}
+                    />
+              </form>
+            </React.Fragment>
+            <React.Fragment className='navBarRightSide'>
+              <div id='navIcon'><FontAwesomeIcon icon="fa-solid fa-bell" /></div>
+              <div id='navIcon'><FontAwesomeIcon icon="fa-solid fa-bell" /></div>
+              <div id='navIcon'><FontAwesomeIcon icon="fa-solid fa-bell" /></div>
+
+            </React.Fragment>
         </div>
     </React.Fragment>
   )

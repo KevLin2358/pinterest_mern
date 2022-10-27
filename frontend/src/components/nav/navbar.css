@@ -1,3 +1,16 @@
 .navBarContainer{
     display: flex;
+    justify-content: space-between;
 }
+
+.searchBarContainer{
+    min-width:70%;
+}
+
+.searchBar{
+    min-width:100%;
+}
+
+/* .navBarRightSide{
+    min-width: 15%;
+} */
