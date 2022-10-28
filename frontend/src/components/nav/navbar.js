@@ -5,8 +5,9 @@ import { useSelector,useDispatch} from 'react-redux'
 import { useState } from 'react';
 import { useRef } from 'react';
 import { useEffect } from 'react';
-import Icons from '../../images/icons';
+import Icons from '../../imageComponent/Bell';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Icon from '../../imageComponent/Bell';
 const Navbar = () => {
   const [searchTerm,setSearchTerm] = useState("")
   const dispatch = useDispatch()
@@ -51,9 +52,9 @@ const Navbar = () => {
               </form>
             </React.Fragment>
             <React.Fragment className='navBarRightSide'>
-              <div id='navIcon'><Icons/></div>
-              <div id='navIcon'><Icons/></div>
-              <div id='navIcon'><Icons/></div>
+              <div id='navIcon'><Icon pictureName={"bell"}/></div>
+              <div id='navIcon'><Icon pictureName={"push"}/></div>
+              <div id='navIcon'><Icon pictureName={"user"}/></div>
 
             </React.Fragment>
         </div>
