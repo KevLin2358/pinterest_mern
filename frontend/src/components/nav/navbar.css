@@ -1,16 +1,27 @@
 .navBarContainer{
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .searchBarContainer{
     min-width:70%;
+    align-self: auto;
+    
 }
 
 .searchBar{
     min-width:100%;
+    top: 50%;
+}
+
+.navButton{
+    font-size: 16px;
+    font-weight: 600;
+    /* font-style: */
 }
 
 /* .navBarRightSide{
     min-width: 15%;
 } */
+

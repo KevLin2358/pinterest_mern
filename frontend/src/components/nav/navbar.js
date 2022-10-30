@@ -7,7 +7,11 @@ import { useRef } from 'react';
 import { useEffect } from 'react';
 import Icons from '../../imageComponent/Bell';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import Icon from '../../imageComponent/Bell';
+// import Icon from '../../imageComponent/Bell';
+import PintrestIcon from '../../imageComponent/PintrestIcon';
+import Bell from '../../imageComponent/BellSVG';
+import Message from '../../imageComponent/MessageSVG';
+import Profile from '../../imageComponent/ProfileSVG';
 const Navbar = () => {
   const [searchTerm,setSearchTerm] = useState("")
   const dispatch = useDispatch()
@@ -36,9 +40,10 @@ const Navbar = () => {
     <React.Fragment>
         <div className='navBarContainer'>
             <React.Fragment className='navBarLeftSide'>
-              <div id='navButton'>Home</div>
-              <div id='navButton'>Today</div>
-              <div id='navButton'>Create</div>
+              <PintrestIcon/>
+              <div className='navButton'>Home</div>
+              <div className='navButton'>Today</div>
+              <div className='navButton'>Create</div>
             </React.Fragment>
             <React.Fragment className='navBarSearchBar'>
               <form  className='searchBarContainer' onSubmit={handleOnClick}>
@@ -52,10 +57,14 @@ const Navbar = () => {
               </form>
             </React.Fragment>
             <React.Fragment className='navBarRightSide'>
-              <div id='navIcon'><Icon pictureName={"bell"}/></div>
-              <div id='navIcon'><Icon pictureName={"push"}/></div>
-              <div id='navIcon'><Icon pictureName={"user"}/></div>
+              <Bell/>
+              {/* <div id='navIcon'><Icon pictureName={"bell"}/></div> */}
+              <Message/>
+              <Message/>
 
+              {/* <Profile/> */}
+              {/* <div id='navIcon'><Icon pictureName={"push"}/></div> */}
+              {/* <div id='navIcon'><Icon pictureName={"user"}/></div> */}
             </React.Fragment>
         </div>
     </React.Fragment>
