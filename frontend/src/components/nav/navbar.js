@@ -11,6 +11,7 @@ import PintrestIcon from '../../imageComponent/PintrestIcon';
 import Bell from '../../imageComponent/BellSVG';
 import Message from '../../imageComponent/MessageSVG';
 import Profile from '../../imageComponent/ProfileSVG';
+import SearchSVG from '../../imageComponent/SearchSVG';
 const Navbar = () => {
   const [searchTerm,setSearchTerm] = useState("")
   const dispatch = useDispatch()
@@ -39,13 +40,16 @@ const Navbar = () => {
     <React.Fragment>
         <div className='navBarContainer'>
             <div className='navBarInnerContainer'>
-              <React.Fragment className='navBarLeftSide'>
+              <div className='navBarLeftSide'>
                 <PintrestIcon/>
                 <div className='navButton'>Home</div>
                 <div className='navButton'>Today</div>
                 <div className='navButton'>Create</div>
-              </React.Fragment>
-              <React.Fragment className='navBarSearchBar'>
+              </div>
+              <div className='navBarSearchBar'>
+                <div className='searchSvg'>
+                  <SearchSVG />
+                </div>
                 <form  className='searchBarContainer' onSubmit={handleOnClick}>
                       {/* <img  className='searchIcon' alt onClick={() => console.log("Asd")}  src={searchIcon}></img> */}
                       <input className='searchBar'
@@ -55,17 +59,12 @@ const Navbar = () => {
                         // ref={searchInput}
                       />
                 </form>
-              </React.Fragment>
-              <React.Fragment className='navBarRightSide'>
+              </div>
+              <div className='navBarRightSide'>
                 <Bell/>
-                {/* <div id='navIcon'><Icon pictureName={"bell"}/></div> */}
                 <Message/>
                 <Message/>
-
-                {/* <Profile/> */}
-                {/* <div id='navIcon'><Icon pictureName={"push"}/></div> */}
-                {/* <div id='navIcon'><Icon pictureName={"user"}/></div> */}
-              </React.Fragment>
+              </div>
             </div>
         </div>
     </React.Fragment>

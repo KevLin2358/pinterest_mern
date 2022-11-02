@@ -9,6 +9,24 @@
     padding-top: 4px;
 }
 
+.navBarLeftSide{
+    display: flex;
+    align-items: center;
+
+}
+
+.navBarRightSide{
+    display: flex;
+    align-items: center;
+}
+
+.navBarRightSide> * {
+    padding-left: 14px;
+    padding-right: 14px;
+
+}
+
+
 .navBarInnerContainer{
     height: 56px;
     display: flex;
@@ -18,27 +36,46 @@
 }
 
 .searchBarContainer{
-    min-width:70%;
+    min-width:100%;
     /* align-self: auto; */
     /* min-height: 120%; */
-    min-height: 100%;
-    border-radius: 24px;
+    /* min-height: 100%; */
+    /* border-radius: 24px; */
     /* box-shadow: rgba(0, 132, 255, 0.5) 0px 0px 0px 4px */
 }
 
-.searchBar{
-    min-width:100%;
-    height: 47px;
-    background-color: rgb(211, 211, 211);
+.navBarSearchBar{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background-color: rgb(211, 211, 211); 
     border-radius: 25px;
-    border-color: transparent;
+    border-color: blue;
+}
+
+.searchSvg{
+    padding-left: 10px;
+    padding-right: 10px;
+
+}
+
+
+.searchBar{
+    min-width:95%;
+    height: 47px;
+    border: transparent;
+    border: 0px;
+    background-color: rgb(211, 211, 211); 
+    /* background-color: rgb(211, 211, 211); 
+    border-radius: 25px;
+    border-color: transparent; */
 }
 
 .navButton{
     font-size: 16px;
     font-weight: 600;
     color: rgb(17, 17,17);
-
+    padding:14px
 }
 
 
