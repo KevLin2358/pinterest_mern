@@ -5,9 +5,9 @@
 
 .pintrestIcon{
     /* background-color: red; */
-    fill: red;
+    fill: #c00;
 }
 
 .bell{
-    fill: gray;
+    fill: rgb(118, 118, 118);
 }

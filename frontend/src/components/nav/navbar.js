@@ -39,33 +39,35 @@ const Navbar = () => {
   return (
     <React.Fragment>
         <div className='navBarContainer'>
-            <React.Fragment className='navBarLeftSide'>
-              <PintrestIcon/>
-              <div className='navButton'>Home</div>
-              <div className='navButton'>Today</div>
-              <div className='navButton'>Create</div>
-            </React.Fragment>
-            <React.Fragment className='navBarSearchBar'>
-              <form  className='searchBarContainer' onSubmit={handleOnClick}>
-                    {/* <img  className='searchIcon' alt onClick={() => console.log("Asd")}  src={searchIcon}></img> */}
-                    <input className='searchBar'
-                      onChange={(e) => setSearchAndConsole(e)}
-                      value={searchTerm}
-                      placeholder={"Search"}
-                      // ref={searchInput}
-                    />
-              </form>
-            </React.Fragment>
-            <React.Fragment className='navBarRightSide'>
-              <Bell/>
-              {/* <div id='navIcon'><Icon pictureName={"bell"}/></div> */}
-              <Message/>
-              <Message/>
+            <div className='navBarInnerContainer'>
+              <React.Fragment className='navBarLeftSide'>
+                <PintrestIcon/>
+                <div className='navButton'>Home</div>
+                <div className='navButton'>Today</div>
+                <div className='navButton'>Create</div>
+              </React.Fragment>
+              <React.Fragment className='navBarSearchBar'>
+                <form  className='searchBarContainer' onSubmit={handleOnClick}>
+                      {/* <img  className='searchIcon' alt onClick={() => console.log("Asd")}  src={searchIcon}></img> */}
+                      <input className='searchBar'
+                        onChange={(e) => setSearchAndConsole(e)}
+                        value={searchTerm}
+                        placeholder={"Search"}
+                        // ref={searchInput}
+                      />
+                </form>
+              </React.Fragment>
+              <React.Fragment className='navBarRightSide'>
+                <Bell/>
+                {/* <div id='navIcon'><Icon pictureName={"bell"}/></div> */}
+                <Message/>
+                <Message/>
 
-              {/* <Profile/> */}
-              {/* <div id='navIcon'><Icon pictureName={"push"}/></div> */}
-              {/* <div id='navIcon'><Icon pictureName={"user"}/></div> */}
-            </React.Fragment>
+                {/* <Profile/> */}
+                {/* <div id='navIcon'><Icon pictureName={"push"}/></div> */}
+                {/* <div id='navIcon'><Icon pictureName={"user"}/></div> */}
+              </React.Fragment>
+            </div>
         </div>
     </React.Fragment>
   )
