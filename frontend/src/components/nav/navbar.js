@@ -6,7 +6,6 @@ import { useState } from 'react';
 import { useRef } from 'react';
 import { useEffect } from 'react';
 import Icons from '../../imageComponent/Bell';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import Icon from '../../imageComponent/Bell';
 import PintrestIcon from '../../imageComponent/PintrestIcon';
 import Bell from '../../imageComponent/BellSVG';
