@@ -1,5 +1,6 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -42,6 +43,21 @@ class LoginForm extends React.Component {
     };
 
     this.props.login(user); 
+    if(this.props.auth){
+      this.navigateToSplashPage();
+    } 
+  }
+
+  navigateToSplashPage() {
+    // debugger
+    const url = `/`
+    this.props.history.push(url);
+  }
+
+  demoLogin(e){
+    e.preventDefault();
+    const demo = {email: "asd@asd.com", password: "asdasd"}
+    this.props.processDemo(demo);
   }
 
   // Render the session errors if there are any
@@ -59,25 +75,42 @@ class LoginForm extends React.Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <div>
-              <input type="text"
-                value={this.state.email}
-                onChange={this.update('email')}
-                placeholder="Email"
-              />
-            <br/>
-              <input type="password"
-                value={this.state.password}
-                onChange={this.update('password')}
-                placeholder="Password"
-              />
-            <br/>
-            <input type="submit" value="Submit" />
-            {this.renderErrors()}
+      <div className='form-container'>
+          <div className="login">
+              <form className='form-box' onSubmit={this.handleSubmit}>
+                  <p className="form-header">Log in to Pinterest</p>
+                  <div className = "session-form-errors">
+                      {this.state.errors.email}
+                  </div>
+                  <input 
+                      className="login-input"
+                      type="text"
+                      value={this.state.email}
+                      onChange={this.update('email')}
+                      placeholder="Email"
+                  />
+                  <div className = "session-form-errors">
+                      {this.state.errors.password}
+                  </div>
+                  <input
+                      className="login-input"
+                      type="password"
+                      value={this.state.password}
+                      onChange={this.update('password')}
+                      placeholder="Password"
+                  />
+                  <div className="button-input">
+                      <input className="session-submit" type="submit" value="Submit" />
+                      <input className="session-demo" type="submit" value="Demo Login" onClick={this.demoLogin}/>
+                  </div>
+
+                  <div>
+                      <p className="session-redirect">
+                          Not a member? <Link to="/signup">Sign up here.</Link>
+                      </p>
+                  </div>
+              </form>
           </div>
-        </form>
       </div>
     );
   }

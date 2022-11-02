@@ -16,7 +16,7 @@ export const receiveCurrentUser = currentUser => ({
 export const receiveUserSignIn = () => ({
     type: RECEIVE_USER_SIGN_IN
 });
-  
+
 // We dispatch this one to show authentication errors on the frontend
 export const receiveErrors = errors => ({
     type: RECEIVE_SESSION_ERRORS,
@@ -46,9 +46,9 @@ export const login = user => dispatch => (
         const decoded = jwt_decode(token);
         dispatch(receiveCurrentUser(decoded))
     })
-    .catch(err => {
-        dispatch(receiveErrors(err.response.data));
-    })
+        .catch(err => {
+            dispatch(receiveErrors(err.response.data));
+        })
 )
 
 // We wrote this one earlier
