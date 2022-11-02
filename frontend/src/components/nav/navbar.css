@@ -2,23 +2,32 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: 1%;
 }
 
 .searchBarContainer{
     min-width:70%;
     align-self: auto;
-    
+    min-height: 120%;
 }
 
 .searchBar{
     min-width:100%;
-    top: 50%;
+    min-height: 120%;
+    background-color: rgb(211, 211, 211);
+    overflow: hidden;
 }
 
 .navButton{
     font-size: 16px;
     font-weight: 600;
     /* font-style: */
+}
+
+.searchBar{
+    border-radius: 25px;
+    /* fill: gray; */
+    /* height: 140%; */
 }
 
 /* .navBarRightSide{

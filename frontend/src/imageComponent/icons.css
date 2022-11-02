@@ -1,11 +1,13 @@
 .message{
-    background-color: green;
+    fill: gray;
+
 }
 
 .pintrestIcon{
-    background-color: red;
+    /* background-color: red; */
+    fill: red;
 }
 
 .bell{
-    background-color: blue;
+    fill: gray;
 }
