@@ -51,12 +51,10 @@ const Navbar = () => {
                   <SearchSVG />
                 </div>
                 <form  className='searchBarContainer' onSubmit={handleOnClick}>
-                      {/* <img  className='searchIcon' alt onClick={() => console.log("Asd")}  src={searchIcon}></img> */}
                       <input className='searchBar'
                         onChange={(e) => setSearchAndConsole(e)}
                         value={searchTerm}
                         placeholder={"Search"}
-                        // ref={searchInput}
                       />
                 </form>
               </div>
