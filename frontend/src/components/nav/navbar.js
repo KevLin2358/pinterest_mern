@@ -18,6 +18,7 @@ const Navbar = () => {
   const [searchIsOpen,setSearchIsOpen] = useState(false)
   const searchInput = useRef(null);
   const [searchBarAltClassname,setSearchBarAltClassname] = useState("navBarSearchBar")
+  const searchFormContainer = useRef(null);
   // const searchInput = useRef(null);
   // const searchFormContainer = useRef(null);
 
@@ -47,7 +48,7 @@ const Navbar = () => {
     if(searchIsOpen){
     searchInput.current.focus();
     changeCSSName()
-    console.log("This is open")
+    console.log(searchBarAltClassname)
     }
  },[searchIsOpen])
 
@@ -55,10 +56,35 @@ const Navbar = () => {
     if(searchIsOpen === true){
       setSearchBarAltClassname("navBarContainerInFocus")
     }
+    else{
+      setSearchIsOpen(false)
+      setSearchBarAltClassname("navBarSearchBar")
+    }
+  }
+
+  const useOutsideAlerter = (ref) => {
+    useEffect(() => {
+      /**
+       * Alert if clicked on outside of element
+       */
+       console.log("asd")
+      const handleClickOutside = (event) => {
+        if (ref.current && !ref.current.contains(event.target)) {
+          setSearchIsOpen(false)
+        }
+      }
+      console.log("asd")
+      // Bind the event listener
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+        // Unbind the event listener on clean up
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, []);
   }
 
 
-
+  useOutsideAlerter(searchFormContainer)
 
   return (
     <React.Fragment>
@@ -66,7 +92,7 @@ const Navbar = () => {
             <div className='navBarInnerContainer'>
               <div className='navBarLeftSide'>
                 <PintrestIcon/>
-                <div className='navButton'>Home</div>
+                <div className='navButton' onClick={() => setSearchBarAltClassname("navBarSearchBar")}>Home</div>
                 <div className='navButton'>Today</div>
                 <div className='navButton'>Create</div>
               </div>
@@ -74,7 +100,7 @@ const Navbar = () => {
                 <div className='searchSvg'>
                   <SearchSVG />
                 </div>
-                <form  className='searchBarContainer'onClick={handleOnClick} onSubmit={handleOnClick}>
+                <form ref={searchFormContainer} className='searchBarContainer'onClick={handleOnClick} onSubmit={handleOnClick}>
                       <input className='searchBar'
                         onChange={(e) => setSearchAndConsole(e)}
                         value={searchTerm}
