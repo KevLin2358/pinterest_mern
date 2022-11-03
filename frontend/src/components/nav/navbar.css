@@ -54,6 +54,17 @@
     border-color: blue;
 }
 
+.navBarContainerInFocus{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background-color: rgb(211, 211, 211); 
+    border-radius: 25px;
+    border-width: 2px;
+    border-color: blue;
+    box-shadow: rgba(0, 132, 255, 0.5) 0px 0px 0px 4px;
+}
+
 .searchSvg{
     padding-left: 10px;
     padding-right: 10px;

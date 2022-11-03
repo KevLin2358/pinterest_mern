@@ -15,6 +15,9 @@ import SearchSVG from '../../imageComponent/SearchSVG';
 const Navbar = () => {
   const [searchTerm,setSearchTerm] = useState("")
   const dispatch = useDispatch()
+  const [searchIsOpen,setSearchIsOpen] = useState(false)
+  const searchInput = useRef(null);
+  const [searchBarAltClassname,setSearchBarAltClassname] = useState("navBarSearchBar")
   // const searchInput = useRef(null);
   // const searchFormContainer = useRef(null);
 
@@ -24,17 +27,38 @@ const Navbar = () => {
   //   dispatch(NEWSUBMIT(searchTerm))
   // }
 
-  const handleOnClick = () => {
-      console.log("asd")
+  const setSearchAndConsole = (e) => {
+    setSearchTerm(e.target.value)
   }
 
-  const setSearchAndConsole = (e) => {
-    setSearchTerm(e.target.value) 
+  const handleOnClick = () => {
+    // console.log(window)
+    setSearchIsOpen(searchIsOpen => !searchIsOpen)
+    // console.log(searchIsOpen)
   }
 
   useEffect(() => {
     console.log(searchTerm)
   }, [searchTerm]);
+
+
+  useEffect(()=>{
+    // current property is refered to input element
+    if(searchIsOpen){
+    searchInput.current.focus();
+    changeCSSName()
+    console.log("This is open")
+    }
+ },[searchIsOpen])
+
+  const changeCSSName = () => {
+    if(searchIsOpen === true){
+      setSearchBarAltClassname("navBarContainerInFocus")
+    }
+  }
+
+
+
 
   return (
     <React.Fragment>
@@ -46,15 +70,16 @@ const Navbar = () => {
                 <div className='navButton'>Today</div>
                 <div className='navButton'>Create</div>
               </div>
-              <div className='navBarSearchBar'>
+              <div className={searchBarAltClassname}>
                 <div className='searchSvg'>
                   <SearchSVG />
                 </div>
-                <form  className='searchBarContainer' onSubmit={handleOnClick}>
+                <form  className='searchBarContainer'onClick={handleOnClick} onSubmit={handleOnClick}>
                       <input className='searchBar'
                         onChange={(e) => setSearchAndConsole(e)}
                         value={searchTerm}
                         placeholder={"Search"}
+                        ref={searchInput}
                       />
                 </form>
               </div>
