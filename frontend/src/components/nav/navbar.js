@@ -19,23 +19,13 @@ const Navbar = () => {
   const searchInput = useRef(null);
   const [searchBarAltClassname,setSearchBarAltClassname] = useState("navBarSearchBar")
   const searchFormContainer = useRef(null);
-  // const searchInput = useRef(null);
-  // const searchFormContainer = useRef(null);
 
-
-  // const handleSubmitTerm = (e) => {
-  //   e.preventDefault()
-  //   dispatch(NEWSUBMIT(searchTerm))
-  // }
 
   const setSearchAndConsole = (e) => {
     setSearchTerm(e.target.value)
   }
-
   const handleOnClick = () => {
-    // console.log(window)
     setSearchIsOpen(searchIsOpen => !searchIsOpen)
-    // console.log(searchIsOpen)
   }
 
   useEffect(() => {
@@ -44,11 +34,11 @@ const Navbar = () => {
 
 
   useEffect(()=>{
-    // current property is refered to input element
     if(searchIsOpen){
     searchInput.current.focus();
     changeCSSName()
     console.log(searchBarAltClassname)
+    
     }
  },[searchIsOpen])
 
@@ -67,9 +57,9 @@ const Navbar = () => {
       /**
        * Alert if clicked on outside of element
        */
-       console.log("asd")
       const handleClickOutside = (event) => {
-        if (ref.current && !ref.current.contains(event.target)) {
+        console.log(ref.current.focus())
+        if (ref.current.focus() | ref.current.focus() === undefined) {
           setSearchIsOpen(false)
         }
       }
@@ -84,7 +74,7 @@ const Navbar = () => {
   }
 
 
-  useOutsideAlerter(searchFormContainer)
+  useOutsideAlerter(searchInput)
 
   return (
     <React.Fragment>
