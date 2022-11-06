@@ -15,26 +15,64 @@ import SearchSVG from '../../imageComponent/SearchSVG';
 const Navbar = () => {
   const [searchTerm,setSearchTerm] = useState("")
   const dispatch = useDispatch()
-  // const searchInput = useRef(null);
-  // const searchFormContainer = useRef(null);
+  const [searchIsOpen,setSearchIsOpen] = useState(false)
+  const searchInput = useRef(null);
+  const [searchBarAltClassname,setSearchBarAltClassname] = useState("navBarSearchBar")
+  const searchFormContainer = useRef(null);
 
-
-  // const handleSubmitTerm = (e) => {
-  //   e.preventDefault()
-  //   dispatch(NEWSUBMIT(searchTerm))
-  // }
-
-  const handleOnClick = () => {
-      console.log("asd")
-  }
 
   const setSearchAndConsole = (e) => {
-    setSearchTerm(e.target.value) 
+    setSearchTerm(e.target.value)
+  }
+  const handleOnClick = () => {
+    setSearchIsOpen(searchIsOpen => !searchIsOpen)
   }
 
   useEffect(() => {
     console.log(searchTerm)
   }, [searchTerm]);
+
+
+  useEffect(()=>{
+    if(searchIsOpen){
+    searchInput.current.focus();
+    changeCSSName()
+    }
+ },[searchIsOpen])
+
+  const changeCSSName = () => {
+    if(searchIsOpen === true){
+      setSearchBarAltClassname("navBarContainerInFocus")
+    }
+    else{
+      setSearchIsOpen(false)
+      setSearchBarAltClassname("navBarSearchBar")
+    }
+  }
+
+  const useOutsideAlerter = (ref) => {
+    useEffect(() => {
+      /**
+       * Alert if clicked on outside of element
+       */
+      const handleClickOutside = (event) => {
+        if (ref.current && !ref.current.contains(event.target)) {
+          setSearchIsOpen(false)
+          setSearchBarAltClassname("navBarSearchBar")
+        }
+      }
+      // Bind the event listener
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+        // Unbind the event listener on clean up
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, []);
+  }
+  
+
+  useOutsideAlerter(searchInput)
+
 
   return (
     <React.Fragment>
@@ -46,17 +84,16 @@ const Navbar = () => {
                 <div className='navButton'>Today</div>
                 <div className='navButton'>Create</div>
               </div>
-              <div className='navBarSearchBar'>
+              <div className={searchBarAltClassname}>
                 <div className='searchSvg'>
                   <SearchSVG />
                 </div>
-                <form  className='searchBarContainer' onSubmit={handleOnClick}>
-                      {/* <img  className='searchIcon' alt onClick={() => console.log("Asd")}  src={searchIcon}></img> */}
+                <form ref={searchFormContainer} className='searchBarContainer'onClick={handleOnClick} onSubmit={handleOnClick}>
                       <input className='searchBar'
                         onChange={(e) => setSearchAndConsole(e)}
                         value={searchTerm}
                         placeholder={"Search"}
-                        // ref={searchInput}
+                        ref={searchInput}
                       />
                 </form>
               </div>
