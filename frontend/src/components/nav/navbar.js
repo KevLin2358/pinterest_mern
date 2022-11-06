@@ -80,7 +80,7 @@ const Navbar = () => {
             <div className='navBarInnerContainer'>
               <div className='navBarLeftSide'>
                 <PintrestIcon/>
-                <div className='navButton'>Home</div>
+                <div className={"navButton currentPage"}>Home</div>
                 <div className='navButton'>Today</div>
                 <div className='navButton'>Create</div>
               </div>
