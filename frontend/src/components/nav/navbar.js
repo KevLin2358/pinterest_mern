@@ -37,8 +37,6 @@ const Navbar = () => {
     if(searchIsOpen){
     searchInput.current.focus();
     changeCSSName()
-    console.log(searchBarAltClassname)
-    
     }
  },[searchIsOpen])
 
@@ -58,12 +56,11 @@ const Navbar = () => {
        * Alert if clicked on outside of element
        */
       const handleClickOutside = (event) => {
-        console.log(ref.current.focus())
-        if (ref.current.focus() | ref.current.focus() === undefined) {
+        if (ref.current && !ref.current.contains(event.target)) {
           setSearchIsOpen(false)
+          setSearchBarAltClassname("navBarSearchBar")
         }
       }
-      console.log("asd")
       // Bind the event listener
       document.addEventListener("mousedown", handleClickOutside);
       return () => {
@@ -72,9 +69,10 @@ const Navbar = () => {
       };
     }, []);
   }
-
+  
 
   useOutsideAlerter(searchInput)
+
 
   return (
     <React.Fragment>
@@ -82,7 +80,7 @@ const Navbar = () => {
             <div className='navBarInnerContainer'>
               <div className='navBarLeftSide'>
                 <PintrestIcon/>
-                <div className='navButton' onClick={() => setSearchBarAltClassname("navBarSearchBar")}>Home</div>
+                <div className='navButton'>Home</div>
                 <div className='navButton'>Today</div>
                 <div className='navButton'>Create</div>
               </div>
