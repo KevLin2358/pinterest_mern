@@ -34,6 +34,7 @@ const Navbar = () => {
 
 
   useEffect(()=>{
+    // console.log(window.location.pathname)
     if(searchIsOpen){
     searchInput.current.focus();
     changeCSSName()
@@ -74,15 +75,26 @@ const Navbar = () => {
   useOutsideAlerter(searchInput)
 
 
+  const changeLink = (slashRoute) => {
+    const checkif = (slashRoute) => {
+      return window.location.pathname === slashRoute
+    }
+
+    if (!checkif) {
+      window.location.href = slashRoute;
+    }
+
+  }
+
   return (
     <React.Fragment>
         <div className='navBarContainer'>
             <div className='navBarInnerContainer'>
               <div className='navBarLeftSide'>
                 <PintrestIcon/>
-                <div className={"navButton currentPage"}>Home</div>
-                <div className='navButton'>Today</div>
-                <div className='navButton'>Create</div>
+                <div className={"navButton currentPage"} onClick={() => changeLink(`/`)}>Home</div>
+                <div className='navButton' onClick={() => changeLink(`/today`)}>Today</div>
+                <div className='navButton' onClick={() => changeLink(`/profile`)}>Create</div>
               </div>
               <div className={searchBarAltClassname}>
                 <div className='searchSvg'>
