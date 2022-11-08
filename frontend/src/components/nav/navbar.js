@@ -76,48 +76,122 @@ const Navbar = () => {
 
 
   const changeLink = (slashRoute) => {
-    const checkif = (slashRoute) => {
-      return window.location.pathname === slashRoute
-    }
+    // const checkif = (slashRoute) => {
+    //   return window.location.pathname === slashRoute
+    // }
 
-    if (!checkif) {
+    // if (!checkif) {
       window.location.href = slashRoute;
-    }
+    // }
 
   }
 
-  return (
-    <React.Fragment>
-        <div className='navBarContainer'>
-            <div className='navBarInnerContainer'>
-              <div className='navBarLeftSide'>
-                <PintrestIcon/>
-                <div className={"navButton currentPage"} onClick={() => changeLink(`/`)}>Home</div>
-                <div className='navButton' onClick={() => changeLink(`/today`)}>Today</div>
-                <div className='navButton' onClick={() => changeLink(`/profile`)}>Create</div>
-              </div>
-              <div className={searchBarAltClassname}>
-                <div className='searchSvg'>
-                  <SearchSVG />
+  const onWhichPage = window.location.pathname
+  console.log(onWhichPage)
+
+  if (onWhichPage === "/"){
+    return (
+      <React.Fragment>
+          <div className='navBarContainer'>
+              <div className='navBarInnerContainer'>
+                <div className='navBarLeftSide'>
+                  <PintrestIcon/>
+                  <div className={"navButton currentPage"} onClick={() => changeLink(`/`)}>Home</div>
+                  <div className='navButton' onClick={() => changeLink(`/today`)}>Today</div>
+                  <div className='navButton' onClick={() => changeLink(`/profile`)}>Create</div>
                 </div>
-                <form ref={searchFormContainer} className='searchBarContainer'onClick={handleOnClick} onSubmit={handleOnClick}>
-                      <input className='searchBar'
-                        onChange={(e) => setSearchAndConsole(e)}
-                        value={searchTerm}
-                        placeholder={"Search"}
-                        ref={searchInput}
-                      />
-                </form>
+                <div className={searchBarAltClassname}>
+                  <div className='searchSvg'>
+                    <SearchSVG />
+                  </div>
+                  <form ref={searchFormContainer} className='searchBarContainer'onClick={handleOnClick} onSubmit={handleOnClick}>
+                        <input className='searchBar'
+                          onChange={(e) => setSearchAndConsole(e)}
+                          value={searchTerm}
+                          placeholder={"Search"}
+                          ref={searchInput}
+                        />
+                  </form>
+                </div>
+                <div className='navBarRightSide'>
+                  <Bell/>
+                  <Message/>
+                  <Message/>
+                </div>
               </div>
-              <div className='navBarRightSide'>
-                <Bell/>
-                <Message/>
-                <Message/>
+          </div>
+      </React.Fragment>
+    )
+  }
+  else if (onWhichPage === "/today"){
+    return (
+      <React.Fragment>
+          <div className='navBarContainer'>
+              <div className='navBarInnerContainer'>
+                <div className='navBarLeftSide'>
+                  <PintrestIcon/>
+                  <div className={"navButton"} onClick={() => changeLink(`/`)}>Home</div>
+                  <div className='navButton currentPage' onClick={() => changeLink(`/today`)}>Today</div>
+                  <div className='navButton' onClick={() => changeLink(`/profile`)}>Create</div>
+                </div>
+                <div className={searchBarAltClassname}>
+                  <div className='searchSvg'>
+                    <SearchSVG />
+                  </div>
+                  <form ref={searchFormContainer} className='searchBarContainer'onClick={handleOnClick} onSubmit={handleOnClick}>
+                        <input className='searchBar'
+                          onChange={(e) => setSearchAndConsole(e)}
+                          value={searchTerm}
+                          placeholder={"Search"}
+                          ref={searchInput}
+                        />
+                  </form>
+                </div>
+                <div className='navBarRightSide'>
+                  <Bell/>
+                  <Message/>
+                  <Message/>
+                </div>
               </div>
-            </div>
-        </div>
-    </React.Fragment>
-  )
+          </div>
+      </React.Fragment>
+    )
+  }
+  else{
+    return (
+      <React.Fragment>
+          <div className='navBarContainer'>
+              <div className='navBarInnerContainer'>
+                <div className='navBarLeftSide'>
+                  <PintrestIcon/>
+                  <div className={"navButton"} onClick={() => changeLink(`/`)}>Home</div>
+                  <div className='navButton' onClick={() => changeLink(`/today`)}>Today</div>
+                  <div className='navButton' onClick={() => changeLink(`/profile`)}>Create</div>
+                </div>
+                <div className={searchBarAltClassname}>
+                  <div className='searchSvg'>
+                    <SearchSVG />
+                  </div>
+                  <form ref={searchFormContainer} className='searchBarContainer'onClick={handleOnClick} onSubmit={handleOnClick}>
+                        <input className='searchBar'
+                          onChange={(e) => setSearchAndConsole(e)}
+                          value={searchTerm}
+                          placeholder={"Search"}
+                          ref={searchInput}
+                        />
+                  </form>
+                </div>
+                <div className='navBarRightSide'>
+                  <Bell/>
+                  <Message/>
+                  <Message/>
+                </div>
+              </div>
+          </div>
+      </React.Fragment>
+    )
+  }
+
 }
 
 export default Navbar
