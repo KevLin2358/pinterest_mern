@@ -86,10 +86,31 @@ const Navbar = () => {
 
   }
 
+  const infoBox = () => {
+    console.log("log")
+    return (
+      <div>
+      <div>Hello My firends</div>
+      <div>Hello My firends</div>
+      <div>Hello My firends</div>
+      <div>Hello My firends</div>
+      <div>Hello My firends</div>
+      <div>Hello My firends</div>
+      <div>Hello My firends</div>
+      <div>Hello My firends</div>
+      <div>Hello My firends</div>
+      <div>Hello My firends</div>
+      <div>Hello My firends</div>
+      <div>Hello My firends</div>
+    </div>
+    )
+  }
+
   const onWhichPage = window.location.pathname
   console.log(onWhichPage)
 
-  if (onWhichPage === "/"){
+  // if (onWhichPage === "/"){
+  if (true){
     return (
       <React.Fragment>
           <div className='navBarContainer'>
@@ -114,9 +135,9 @@ const Navbar = () => {
                   </form>
                 </div>
                 <div className='navBarRightSide'>
-                  <Bell/>
-                  <Message/>
-                  <Message/>
+                  <div onClick={infoBox}><Bell/></div>
+                  <div onClick={infoBox}><Message/></div>
+                  <div onClick={infoBox}><Message/></div>
                 </div>
               </div>
           </div>
@@ -182,7 +203,7 @@ const Navbar = () => {
                   </form>
                 </div>
                 <div className='navBarRightSide'>
-                  <Bell/>
+                  <Bell onClick={infoBox}/>
                   <Message/>
                   <Message/>
                 </div>
