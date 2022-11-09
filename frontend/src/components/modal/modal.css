@@ -78,8 +78,8 @@
   }
 
   .modalContainer .body > div:nth-child(1) {
-    margin-top: 45vh;
-    background-color: aqua !important;
+    /* margin-top: 45vh; */
+    /* background-color: aqua !important; */
   }
 
 
