@@ -12,6 +12,7 @@ import Bell from '../../imageComponent/BellSVG';
 import Message from '../../imageComponent/MessageSVG';
 import Profile from '../../imageComponent/ProfileSVG';
 import SearchSVG from '../../imageComponent/SearchSVG';
+import Modal from '../modal/modal';
 const Navbar = () => {
   const [searchTerm,setSearchTerm] = useState("")
   const dispatch = useDispatch()
@@ -19,6 +20,7 @@ const Navbar = () => {
   const searchInput = useRef(null);
   const [searchBarAltClassname,setSearchBarAltClassname] = useState("navBarSearchBar")
   const searchFormContainer = useRef(null);
+  const [modalOpen, setModalOpen] = useState(false);
 
 
   const setSearchAndConsole = (e) => {
@@ -87,23 +89,26 @@ const Navbar = () => {
   }
 
   const infoBox = () => {
-    console.log("log")
-    return (
-      <div>
-      <div>Hello My firends</div>
-      <div>Hello My firends</div>
-      <div>Hello My firends</div>
-      <div>Hello My firends</div>
-      <div>Hello My firends</div>
-      <div>Hello My firends</div>
-      <div>Hello My firends</div>
-      <div>Hello My firends</div>
-      <div>Hello My firends</div>
-      <div>Hello My firends</div>
-      <div>Hello My firends</div>
-      <div>Hello My firends</div>
-    </div>
-    )
+    setModalOpen(() => !modalOpen);
+    // return(
+      // <Modal setOpenModal={setModalOpen} />
+    // )
+    // return(
+    //   <div className="App">
+    //   <h1>Hey, click on the button to open the modal.</h1>
+    //   <button
+    //     className="openModalBtn"
+    //     onClick={() => {
+    //       setModalOpen(true);
+    //     }}
+    //   >
+    //     Open
+    //   </button>
+  
+    //   {modalOpen && <Modal setOpenModal={setModalOpen} />}
+    //   </div>
+    // )
+
   }
 
   const onWhichPage = window.location.pathname
@@ -138,6 +143,7 @@ const Navbar = () => {
                   <div onClick={infoBox}><Bell/></div>
                   <div onClick={infoBox}><Message/></div>
                   <div onClick={infoBox}><Message/></div>
+                  {modalOpen && <Modal setOpenModal={setModalOpen} />}
                 </div>
               </div>
           </div>

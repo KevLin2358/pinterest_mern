@@ -14,9 +14,11 @@ import Home from '../pages/homepage';
 import Today from '../pages/todaypage';
 import Profile from '../pages/profilepage';
 
-
-const App = () => (
-  <div>
+import Modal from './modal/modal';
+import { useState } from 'react';
+const App = () => {
+  return (
+    <div>
     <Router>
       <Switch>
         <Route exact path="/profile"><Profile/></Route>
@@ -29,7 +31,9 @@ const App = () => (
         <AuthRoute exact path="/login" component={LoginFormContainer} />
         <AuthRoute exact path="/signup" component={SignupFormContainer} />
     </Switch> */}
+
   </div>
-);
+  )
+};
 
 export default App;
