@@ -16,6 +16,7 @@ import Profile from '../pages/profilepage';
 
 import Modal from './modal/modal';
 import { useState } from 'react';
+import FusedImages from './fusedImages/fusedImages';
 const App = () => {
   return (
     <div>
@@ -31,7 +32,7 @@ const App = () => {
         <AuthRoute exact path="/login" component={LoginFormContainer} />
         <AuthRoute exact path="/signup" component={SignupFormContainer} />
     </Switch> */}
-
+  {/* <FusedImages/> */}
   </div>
   )
 };

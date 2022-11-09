@@ -3,6 +3,7 @@ import React from "react";
 import "./modal.css";
 import jp from "../../imageComponent/images/jpart.jpg"
 import { Link } from "react-router-dom";
+import FusedImages from "../fusedImages/fusedImages";
 function Modal({ setOpenModal }) {
   return (
     <div className="modalBackground">
@@ -17,14 +18,18 @@ function Modal({ setOpenModal }) {
           </button>
         </div> */}
         <div className="title">
-          {/* <h1>Are You Sure You Want to Continue?</h1> */}
+          <h1>Updates</h1>
         </div>
         <div className="body">
-            <div className="bellArt"><Link to="/today"><img src={jp} alt="Logo" /></Link></div>
-            <div className="bellArt"><Link to="/"><img src={jp} alt="Logo" /></Link></div>
+            <div><Link to="/today"><FusedImages/></Link></div>
+            <div><Link to="/today"><FusedImages/></Link></div>
+            <div><Link to="/today"><FusedImages/></Link></div>
+            <div><Link to="/today"><FusedImages/></Link></div>
+
+            {/* <div className="bellArt"><Link to="/"><img src={jp} alt="Logo" /></Link></div>
             <div className="bellArt"><Link to="/profile"><img src={jp} alt="Logo" /></Link></div>
             <div className="bellArt"><Link to="/today"><img src={jp} alt="Logo" /></Link></div>
-            <div className="bellArt"><Link to="/"><img src={jp} alt="Logo" /></Link></div>
+            <div className="bellArt"><Link to="/"><img src={jp} alt="Logo" /></Link></div> */}
             {/* <div className="bellArt"><Link to="/profile"><img src={jp} alt="Logo" /></Link></div> */}
             {/* <div className="bellArt"><Link to="/today"><img src={jp} alt="Logo" /></Link></div> */}
             {/* <div className="bellArt"><Link to="/"><img src={jp} alt="Logo" /></Link></div> */}
