@@ -51,6 +51,48 @@ const Home = () => {
                         <Pins/>
                         <Pins/>
                     </div>
+                    <div className='homePageBody'>
+                        <Pins/>
+                        <Pins/>
+                        <Pins/>
+                        <Pins/>
+                    </div>
+                    <div className='homePageBody'>
+                        <Pins/>
+                        <Pins/>
+                        <Pins/>
+                        <Pins/>
+                    </div>
+                    <div className='homePageBody'>
+                        <Pins/>
+                        <Pins/>
+                        <Pins/>
+                        <Pins/>
+                    </div>
+                    <div className='homePageBody'>
+                        <Pins/>
+                        <Pins/>
+                        <Pins/>
+                        <Pins/>
+                    </div>
+                    <div className='homePageBody'>
+                        <Pins/>
+                        <Pins/>
+                        <Pins/>
+                        <Pins/>
+                    </div>
+                    <div className='homePageBody'>
+                        <Pins/>
+                        <Pins/>
+                        <Pins/>
+                        <Pins/>
+                    </div>
+                    <div className='homePageBody'>
+                        <Pins/>
+                        <Pins/>
+                        <Pins/>
+                        <Pins/>
+                    </div>
                 </div>
 
             </div>
