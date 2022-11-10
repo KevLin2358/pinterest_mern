@@ -7,8 +7,9 @@ function Pins() {
     const arrayOfImages = [Q,W,E,R]
     const randomImage = arrayOfImages[Math.floor(Math.random()*arrayOfImages.length)];
   return (
-    <div >
+    <div className='homepagePinContainer'>
         <img className='homepagePins' src={randomImage} alt="testing"></img>
+        <div className='homepagePinsText'>Amazing Japan</div>
     </div>
   )
 }
