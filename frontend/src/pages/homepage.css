@@ -1,0 +1,24 @@
+.homePageContainer{
+
+}
+
+
+.homePageBody{
+    display: flex;
+    /* flex-wrap: wrap; */
+    flex-direction: column;
+}
+
+.homePageBody > *{
+    /* max-width: 20vw; */
+}
+
+.homepagePins{
+    max-width: 300px;
+}
+
+.homePageBodyFlex{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}

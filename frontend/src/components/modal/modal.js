@@ -30,27 +30,10 @@ function Modal({ setOpenModal }) {
           {height}
         </div>
         <div className="body">
-            <div className="testing" style={{marginTop: "30vh"}}><Link to="/today"><FusedImages/></Link></div>
+            {/* <div className="testing" style={{marginTop: "30vh"}}><Link to="/today"><FusedImages/></Link></div> */}
             <div><Link to="/today"><FusedImages/></Link></div>
             <div><Link to="/today"><FusedImages/></Link></div>
             <div><Link to="/today"><FusedImages/></Link></div>
-
-            {/* <div className="bellArt"><Link to="/"><img src={jp} alt="Logo" /></Link></div>
-            <div className="bellArt"><Link to="/profile"><img src={jp} alt="Logo" /></Link></div>
-            <div className="bellArt"><Link to="/today"><img src={jp} alt="Logo" /></Link></div>
-            <div className="bellArt"><Link to="/"><img src={jp} alt="Logo" /></Link></div> */}
-            {/* <div className="bellArt"><Link to="/profile"><img src={jp} alt="Logo" /></Link></div> */}
-            {/* <div className="bellArt"><Link to="/today"><img src={jp} alt="Logo" /></Link></div> */}
-            {/* <div className="bellArt"><Link to="/"><img src={jp} alt="Logo" /></Link></div> */}
-            {/* <div className="bellArt"><Link to="/profile"><img src={jp} alt="Logo" /></Link></div> */}
-            {/* <div className="bellArt"><Link to="/today"><img src={jp} alt="Logo" /></Link></div> */}
-            {/* <div className="bellArt"><img src={jp} alt="Logo" /></div>
-            <div className="bellArt"><img src={jp} alt="Logo" /></div>
-            <div className="bellArt"><img src={jp} alt="Logo" /></div>
-            <div className="bellArt"><img src={jp} alt="Logo" /></div>
-            <div className="bellArt"><img src={jp} alt="Logo" /></div>
-            <div className="bellArt"><img src={jp} alt="Logo" /></div> */}
-          {/* <p>The next page looks amazing. Hope you want to go there!</p> */}
         </div>
         {/* <div className="footer">
           <button
