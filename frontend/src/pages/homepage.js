@@ -3,24 +3,33 @@ import Navbar from '../components/nav/navbar';
 import Pins from '../components/pin/pins';
 import "./homepage.css"
 import { useState, useEffect, useRef } from 'react'
+import { counter } from '@fortawesome/fontawesome-svg-core';
 
 const Home = () => {
-// const number = 1000;
-const [height, setHeight] = useState(0)
+const [counter, setCounter] = useState(100)
+const [height, setHeight] = useState("100vh")
 const ref = useRef(null)
-const heightInString = height+"px"
+const heightInString = height+"vh"
+// const [arrayOfPins,setArrayOfPins] = useState(<div><Pins></Pins><Pins></Pins><Pins></Pins><Pins></Pins><Pins></Pins><Pins></Pins><Pins></Pins><Pins></Pins><Pins></Pins><Pins></Pins><Pins></Pins><Pins></Pins><Pins></Pins><Pins></Pins><Pins></Pins><Pins></Pins><Pins></Pins><Pins></Pins></div>)
+    // useEffect(() => {
+    //     setHeight("100vh")
+    //     console.log(height)
+    //     // if (7*200 > height)
+    // })
 
-    useEffect(() => {
-        setHeight(ref.current.clientHeight+ref.current.clientHeight*.5)
-        console.log(height)
-    })
+    const increaseVh = () => {
+        setHeight(() => counter+"vh")
+        setCounter(() => counter+50)
+        console.log(counter)
+    }
 
     return (
         <React.Fragment>
             <Navbar/>
             <div ref={ref} className='homePageContainer'>
                 <div className='homePageBodyFlex'>
-                    <div style={{maxHeight: heightInString}} className='homePageBody'>
+                    <div onClick={increaseVh} style={{maxHeight: height}} className='homePageBody'>
+                        {/* {arrayOfPins} */}
                         <Pins/>
                         <Pins/>
                         <Pins/>
@@ -40,43 +49,22 @@ const heightInString = height+"px"
                         <Pins/>
                         <Pins/>
                         <Pins/>
-                        <Pins/>                        <Pins/>
                         <Pins/>
                         <Pins/>
                         <Pins/>
-                        <Pins/>                        <Pins/>
                         <Pins/>
                         <Pins/>
                         <Pins/>
-                        <Pins/>                        <Pins/>
                         <Pins/>
                         <Pins/>
                         <Pins/>
-                        <Pins/>                        <Pins/>
                         <Pins/>
                         <Pins/>
                         <Pins/>
-                        <Pins/>                        <Pins/>
                         <Pins/>
                         <Pins/>
                         <Pins/>
-                        <Pins/>                        <Pins/>
                         <Pins/>
-                        <Pins/>
-                        <Pins/>
-                        <Pins/>                        <Pins/>
-                        <Pins/>
-                        <Pins/>
-                        <Pins/>
-                        <Pins/>                        <Pins/>
-                        <Pins/>
-                        <Pins/>
-                        <Pins/>
-                        <Pins/>                        <Pins/>
-                        <Pins/>
-                        <Pins/>
-                        <Pins/>
-                        <Pins/>                        <Pins/>
                         <Pins/>
                         <Pins/>
                         <Pins/>
