@@ -6,9 +6,14 @@
 
 
 .homePageBody{
+    /* overflow: auto; */
+    /* max-height: calc(100vh); */
+    /* max-width: 95vw; */
     display: flex;
-    /* flex-wrap: wrap; */
     flex-direction: column;
+    flex-wrap: wrap;
+    column-count: 5;
+    max-width: 100vw;
 }
 
 .homePageBody > *{
@@ -22,9 +27,10 @@
 
 .homePageBodyFlex{
     padding: 10px 24px 24px 24px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content:space-between
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* flex-wrap: wrap; */
+    /* justify-content:space-between */
 }
 
 .homepagePinContainer{
