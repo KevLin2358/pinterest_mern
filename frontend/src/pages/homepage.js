@@ -13,23 +13,66 @@ const heightInString = height+"vh"
 // const [arrayOfPins,setArrayOfPins] = useState(<div><Pins></Pins><Pins></Pins><Pins></Pins><Pins></Pins><Pins></Pins><Pins></Pins><Pins></Pins><Pins></Pins><Pins></Pins><Pins></Pins><Pins></Pins><Pins></Pins><Pins></Pins><Pins></Pins><Pins></Pins><Pins></Pins><Pins></Pins><Pins></Pins></div>)
     // useEffect(() => {
     //     setHeight("100vh")
-    //     console.log(height)
+    //     console.log(ref)
     //     // if (7*200 > height)
     // })
 
-    const increaseVh = () => {
-        setHeight(() => counter+"vh")
-        setCounter(() => counter+50)
-        console.log(counter)
-    }
+    // const increaseVh = () => {
+    //     setHeight(() => counter+"vh")
+    //     setCounter(() => counter+50)
+    //     console.log(counter)
+    // }
 
     return (
         <React.Fragment>
             <Navbar/>
             <div ref={ref} className='homePageContainer'>
                 <div className='homePageBodyFlex'>
-                    <div onClick={increaseVh} style={{maxHeight: height}} className='homePageBody'>
+                    {/* <div onClick={increaseVh} className='homePageBody'> */}
+                    <div className='homePageBody'>
+                        <Pins/>
+                        <Pins/>
+                        <Pins/>
+                        <Pins/>
+                        <Pins/>
+                        <Pins/>
+                        <Pins/>
+                        <Pins/>
+                        <Pins/>
+                        <Pins/>
+                        <Pins/>
+                        <Pins/>
+                        <Pins/>
+                        <Pins/>
+                        <Pins/>
+                        {/* <div className='card card_large'><Pins/></div>
+                        <div className='card card_large'><Pins/></div>
+                        <div className='card card_large'><Pins/></div>
+                        <div className='card card_large'><Pins/></div>
+                        <div className='card card_large'><Pins/></div>
+                        <div className='card card_large'><Pins/></div>
+                        <div className='card card_large'><Pins/></div>
+                        <div className='card card_large'><Pins/></div>
+                        <div className='card card_large'><Pins/></div>
+                        <div className='card card_large'><Pins/></div>
+                        <div className='card card_large'><Pins/></div>
+                        <div className='card card_large'><Pins/></div>
+                        <div className='card card_large'><Pins/></div>
+                        <div className='card card_large'><Pins/></div> */}
+                        {/* <div className='card card_small'>asd</div> */}
+                        {/* <div className='card card_small'>asd</div> */}
+                        {/* <div className='card card_large'>asd</div> */}
+                        {/* <div className='card card_small'>asd</div> */}
+                        {/* <div className='card card_small'>asd</div> */}
+                        {/* <div className='card card_small'>asd</div> */}
+                        {/* <div className='card card_small'>asd</div> */}
+                        {/* <div className='card card_small'>asd</div> */}
+                        {/* <div className='card card_small'>asd</div> */}
+                        {/* <div className='card card_small'>asd</div> */}
+                        {/* <div className='card card_small'>asd</div> */}
+                        {/* <div className='card card_small'>asd</div> */}
                         {/* {arrayOfPins} */}
+                        {/* <Pins/>
                         <Pins/>
                         <Pins/>
                         <Pins/>
@@ -67,8 +110,7 @@ const heightInString = height+"vh"
                         <Pins/>
                         <Pins/>
                         <Pins/>
-                        <Pins/>
-                        <Pins/>
+                        <Pins/> */}
                     </div>
                     {/* <div className='homePageBody'>
                         <Pins/>

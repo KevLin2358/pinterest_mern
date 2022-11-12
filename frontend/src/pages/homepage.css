@@ -1,32 +1,79 @@
 .homePageContainer{
-    padding-bottom: 16px;
+    /* padding-bottom: 16px;
     padding-left: 16px;
-    padding-right: 16px;
+    padding-right: 16px; */
 }
 
+:root{
+    --card_width: 250px;
+    --card_border_radius: 16px;
+    --row_increment: 10px;
+    --card_small: 26;
+    --card_medium: 33;
+    --card_large: 45;
+
+}
 
 .homePageBody{
-    /* overflow: auto; */
-    /* max-height: calc(100vh); */
-    /* max-width: 95vw; */
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    column-count: 5;
-    max-width: 100vw;
+    margin: 0;
+    padding: 0;
+    width: 80vw;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: grid;
+    grid-template-columns: repeat(auto-fill, var(--card_width));
+    grid-auto-rows: var(--row_increment);
+    justify-content: center;
+    
+    /* background-color: black; */
 }
+
+.card{
+    padding: 0px;
+    margin: 15px 10px;
+    /* background-color: red; */
+    border-radius: var(--card_border_radius);
+}
+
+.card_small{
+    grid-row-end: span var(--card_small);
+}
+
+.card_medium{
+    grid-row-end: span var(--card_medium);
+}
+.card_large{
+    grid-row-end: span var(--card_large);
+}
+
+.card_small > img{
+    border-radius:25px;
+}
+
+.card_medium > img{
+    border-radius:25px;
+
+}
+
+.card_large > img{
+    border-radius:25px;
+}
+
 
 .homePageBody > *{
     /* max-width: 20vw; */
 }
 
 .homepagePins{
-    max-width: 200px;
-    border-radius: 25px;
+    /* max-width: 200px;
+    border-radius: 25px; */
 }
 
 .homePageBodyFlex{
-    padding: 10px 24px 24px 24px;
+    padding: 0;
+    background-color: gray;
+    margin: 0;
     /* display: flex; */
     /* flex-direction: column; */
     /* flex-wrap: wrap; */
