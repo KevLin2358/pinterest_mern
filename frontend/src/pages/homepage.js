@@ -44,7 +44,21 @@ const heightInString = height+"vh"
                         <Pins/>
                         <Pins/>
                         <Pins/>
+                        <Pins/>                        <Pins/>
                         <Pins/>
+                        <Pins/>
+                        <Pins/>
+                        <Pins/>
+                        <Pins/>
+                        <Pins/>
+                        <Pins/>
+                        <Pins/>
+                        <Pins/>
+                        <Pins/>
+                        <Pins/>
+                        <Pins/>
+                        <Pins/>
+
                         {/* <div className='card card_large'><Pins/></div>
                         <div className='card card_large'><Pins/></div>
                         <div className='card card_large'><Pins/></div>
