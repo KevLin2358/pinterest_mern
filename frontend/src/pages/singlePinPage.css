@@ -37,3 +37,7 @@
     /* position: absolute; */
     background-color: aquamarine;
 }
+
+.singlePageCenterRight > img {
+    max-width: 100%;
+}
