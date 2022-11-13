@@ -10,7 +10,7 @@ function SinglePin({url}) {
             <div className='singlePageBody'>
                 <div className='singlePageCenter'>
                     <div className='singlePageCenterLeft'><img src={Q}></img></div>
-                    <div className='singlePageCenterRight'><img src={Q}></img></div>
+                    <div className='singlePageCenterRight'>asdasd</div>
                 </div>
             </div>
        </div>
