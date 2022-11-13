@@ -1,0 +1,43 @@
+.singlePageContainer{
+    
+}
+
+.singlePageBody{
+    background-color: gray;
+    width: 100vw;
+    height: 100vh;
+}
+
+
+.singlePageCenter{
+    background-color: blue;
+    width: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    /* height: 100vh; */
+}
+
+.singlePageCenterLeft{
+    max-width: 50%;
+    background-color: green;
+    /* display:inline-block; */
+    /* max-height: fit-content; */
+}
+
+.singlePageCenterLeft > img {
+    max-width: 100%;
+}
+
+.singlePageCenterRight{
+    max-width: 50%;
+    /* left: 50%; */
+    /* position: absolute; */
+    background-color: aquamarine;
+}
+
+.singlePageCenterRight > img {
+    max-width: 100%;
+}
