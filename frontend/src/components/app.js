@@ -13,7 +13,7 @@ import SignupFormContainer from './session/signup_form_container';
 import Home from '../pages/homepage';
 import Today from '../pages/todaypage';
 import Profile from '../pages/profilepage';
-
+import SinglePin from '../pages/singlePinPage';
 import Modal from './modal/modal';
 import { useState } from 'react';
 import FusedImages from './fusedImages/fusedImages';
@@ -24,6 +24,7 @@ const App = () => {
       <Switch>
         <Route exact path="/profile"><Profile/></Route>
         <Route exact path="/today"><Today/></Route>
+        <Route exact path="/single"><SinglePin/></Route>
         <Route exact path="/"><Home/></Route>
       </Switch>
     </Router>
