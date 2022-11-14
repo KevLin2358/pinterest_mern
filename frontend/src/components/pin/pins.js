@@ -84,7 +84,7 @@ function Pins() {
             </div>
            )
     }
-    else if (img.height/img.width >= 1.5) {
+    else {
         setCurrent(
             <div  className='card card_large' onClick={()=>window.location.href = img.src}>
                 <img style={{width:"100%",height:"100%"}} src={img.src} alt="testing"></img>
