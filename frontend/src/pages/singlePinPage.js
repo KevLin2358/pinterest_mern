@@ -1,7 +1,7 @@
 import React from 'react'
 import Navbar from '../components/nav/navbar'
 import "./singlePinPage.css"
-import Q from "../imageComponent/images/u.jpg"
+import Q from "../imageComponent/images/q.jpg"
 import Bell from '../imageComponent/BellSVG'
 function SinglePin({url}) {
   return (

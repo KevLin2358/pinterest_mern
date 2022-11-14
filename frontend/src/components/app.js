@@ -22,10 +22,10 @@ const App = () => {
     <div>
     <Router>
       <Switch>
-        <Route exact path="/profile"><Profile/></Route>
-        <Route exact path="/today"><Today/></Route>
-        <Route exact path="/single"><SinglePin/></Route>
-        <Route exact path="/"><Home/></Route>
+        <Route path="/profile"><Profile/></Route>
+        <Route path="/today"><Today/></Route>
+        <Route path="/single"><SinglePin/></Route>
+        <Route path="/"><Home/></Route>
       </Switch>
     </Router>
     {/* <Switch>
