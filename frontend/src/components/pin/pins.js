@@ -7,6 +7,8 @@ import R from "../../imageComponent/images/r.jpg"
 import U from "../../imageComponent/images/u.jpg"
 import T from "../../imageComponent/images/t.jpg"
 import Y from "../../imageComponent/images/y.jpg"
+import SinglePin from '../../pages/singlePinPage'
+import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 function Pins() {
     const [current,setCurrent] = useState(null)
@@ -67,10 +69,13 @@ function Pins() {
     // if (img.width < 150) setCurrent(null)
     if (img.height/img.width <= 1.2) {
         setCurrent (
-            <div key={Math.floor(Math.random() * 2500)} className='card card_small' onClick={()=>window.location.href = img.src}>
-                <img style={{width:"100%",height:"100%"}} src={img.src} alt="testing"></img>
-                <div className='homepagePinsText'>Amazing Japan</div>
-            </div>
+                <div key={Math.floor(Math.random() * 2500)} className='card card_small' onClick={()=>console.log("asd")}>
+                    <Link to="/single">
+                    <img style={{width:"100%",height:"100%"}} src={img.src} alt="testing"></img>
+                    <div className='homepagePinsText'>Amazing Japan</div>
+                    </Link>
+                </div>
+            
         )
     }
     // else if (img.height < img.width){
