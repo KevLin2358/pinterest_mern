@@ -7,7 +7,7 @@ import { useState } from 'react'
 function SinglePin({url}) {
     const [comment,setComment] = useState("")
     const [commentArray,setCommentArray] = useState(["testing","asdwd"])
-    
+
     const onSubmitButton = () => {
         setCommentArray([...commentArray,comment])
         setComment("")

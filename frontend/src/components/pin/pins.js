@@ -70,7 +70,7 @@ function Pins() {
     if (img.height/img.width <= 1.2) {
         setCurrent (
                 <div key={Math.floor(Math.random() * 2500)} className='card card_small' onClick={()=>console.log("asd")}>
-                    <Link to="/single">
+                    <Link to={{pathname:"/single", fromDashboard: "true" }}>
                     <img style={{width:"100%",height:"100%"}} src={img.src} alt="testing"></img>
                     <div className='homepagePinsText'>Amazing Japan</div>
                     </Link>
