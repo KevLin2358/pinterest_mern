@@ -38,27 +38,7 @@ const heightInString = height+"vh"
                         <Pins/>
                         <Pins/>
                         <Pins/>
-                        <Pins/>
-                        <Pins/>
-                        <Pins/>
-                        <Pins/>
-                        <Pins/>
-                        <Pins/>
-                        <Pins/>                        <Pins/>
-                        <Pins/>
-                        <Pins/>
-                        <Pins/>
-                        <Pins/>
-                        <Pins/>
-                        <Pins/>
-                        <Pins/>
-                        <Pins/>
-                        <Pins/>
-                        <Pins/>
-                        <Pins/>
-                        <Pins/>
-                        <Pins/>
-
+                        <div>This is homepage</div>
                         {/* <div className='card card_large'><Pins/></div>
                         <div className='card card_large'><Pins/></div>
                         <div className='card card_large'><Pins/></div>

@@ -23,11 +23,13 @@ const App = () => {
     <div>
     <Router>
       <Switch>
-        <Route exact path="/splash"><SplashPage/></Route>
-        <Route exact path="/profile"><Profile/></Route>
-        <Route exact path="/today"><Today/></Route>
-        <Route exact path="/single"><SinglePin/></Route>
-        <Route exact path="/"><Home/></Route>
+        {/* <AuthRoute exact path="/" component={MainPage} /> */}
+        <AuthRoute exact path="/login" component={LoginFormContainer} />
+        <AuthRoute exact path="/signup" component={SignupFormContainer} />
+        <Route path="/profile"><Profile/></Route>
+        <Route path="/today"><Today/></Route>
+        <Route path="/single"><SinglePin/></Route>
+        <Route path="/"><Home/></Route>
       </Switch>
     </Router>
     {/* <Switch>
