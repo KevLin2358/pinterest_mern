@@ -1,5 +1,7 @@
 import React from "react";
 import { useState } from "react";
+import { useDispatch } from 'react-redux'
+import { createPin } from "../../actions/pin_actions";
 function CreateForm() {
     const [userID,setUserID] = useState("")
     const [image,setImage] = useState("")
@@ -7,10 +9,11 @@ function CreateForm() {
     const [description,setdescription] = useState("")
     const [link,setLink] = useState("")
 
+    const dispatch = useDispatch()
   return (
     <div>
         CreateForm
-        <form>
+        <form onSubmit={() => dispatch({ type: 'increment-counter' })}>
             <input
             value={userID}
             placeholder="userid"
