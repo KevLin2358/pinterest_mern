@@ -3,6 +3,7 @@ import Navbar from '../components/nav/navbar';
 import Pins from '../components/pin/pins';
 import "./homepage.css"
 import { useState, useEffect, useRef } from 'react'
+import CreateForm from '../components/createForm/createForm';
 // import { counter } from '@fortawesome/fontawesome-svg-core';
 
 const Home = () => {
@@ -31,13 +32,14 @@ const heightInString = height+"vh"
                     {/* <div onClick={increaseVh} className='homePageBody'> */}
                     <div className='homePageBody'>
                         <Pins/>
+                        {/* <Pins/>
                         <Pins/>
                         <Pins/>
                         <Pins/>
                         <Pins/>
                         <Pins/>
-                        <Pins/>
-                        <Pins/>
+                        <Pins/> */}
+                        <CreateForm/>
                         <div>This is homepage</div>
                         {/* <div className='card card_large'><Pins/></div>
                         <div className='card card_large'><Pins/></div>
