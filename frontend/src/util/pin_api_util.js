@@ -8,8 +8,8 @@ export const fetchPin = id => {
   return axios.get(`/api/pins/${id}`)
 }
 
-export const fetchUserPin = id =>{
-  return axios.get(`/api/pins/user/${id}`)
+export const fetchUserPin = userId =>{
+  return axios.get(`/api/pins/user/${userId}`)
 };
 
 export const createPin = data => {

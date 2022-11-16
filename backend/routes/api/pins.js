@@ -51,5 +51,12 @@ router.post('/',
       newPin.save().then(pin => res.json(pin));
     }
   );
-
+  
+  router.delete('/:id', (req, res) => {
+    Pin.findByIdAndRemove(req.params.id)
+      .then(() => res.json())
+      .catch(err => 
+        res.status(404).json({nopinsfound: 'No pin found with that ID'})
+        );
+  })
 module.exports = router;

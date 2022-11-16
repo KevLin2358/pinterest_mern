@@ -3,7 +3,7 @@ import Navbar from '../components/nav/navbar';
 import Pins from '../components/pin/pins';
 import "./homepage.css"
 import { useState, useEffect, useRef } from 'react'
-import { counter } from '@fortawesome/fontawesome-svg-core';
+// import { counter } from '@fortawesome/fontawesome-svg-core';
 
 const Home = () => {
 const [counter, setCounter] = useState(100)

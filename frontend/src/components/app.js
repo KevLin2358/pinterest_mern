@@ -17,6 +17,7 @@ import SinglePin from '../pages/singlePinPage';
 import Modal from './modal/modal';
 import { useState } from 'react';
 import FusedImages from './fusedImages/fusedImages';
+import SplashPage from '../pages/splashpage';
 const App = () => {
   return (
     <div>
