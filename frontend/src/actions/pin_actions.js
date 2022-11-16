@@ -29,7 +29,7 @@ export const receivePin = pin =>{
 export const removePin = pinId =>{
   return({
     type: REMOVE_PIN,
-    pin,
+    pinId
   })
 }
 
