@@ -14,6 +14,7 @@ import Home from '../pages/homepage';
 import Today from '../pages/todaypage';
 import Profile from '../pages/profilepage';
 import SinglePin from '../pages/singlePinPage';
+import { Routes } from 'react-router-dom'
 import Modal from './modal/modal';
 import { useState } from 'react';
 import FusedImages from './fusedImages/fusedImages';

@@ -32,13 +32,30 @@ const heightInString = height+"vh"
                     {/* <div onClick={increaseVh} className='homePageBody'> */}
                     <div className='homePageBody'>
                         <Pins/>
-                        {/* <Pins/>
                         <Pins/>
                         <Pins/>
                         <Pins/>
                         <Pins/>
                         <Pins/>
-                        <Pins/> */}
+                        <Pins/>
+                        <Pins/>
+                        <Pins/>
+                        <Pins/>
+                        <Pins/>
+                        <Pins/>
+                        <Pins/>
+                        <Pins/>
+                        <Pins/>
+                        <Pins/>
+                        <Pins/>
+                        <Pins/>
+                        <Pins/>
+                        <Pins/>
+                        <Pins/>
+                        <Pins/>
+                        <Pins/>
+                        <Pins/>
+                        
                         <CreateForm/>
                         <div>This is homepage</div>
                         {/* <div className='card card_large'><Pins/></div>

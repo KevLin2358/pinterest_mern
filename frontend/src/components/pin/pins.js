@@ -63,51 +63,50 @@ function Pins() {
         
         const img = new Image();
         img.src = randomImage;
-
-        console.log(img.width)
-
-    // if (img.width < 150) setCurrent(null)
-    if (img.height/img.width <= 1.2) {
-        setCurrent (
-                <div key={Math.floor(Math.random() * 2500)} className='card card_small' onClick={()=>console.log("asd")}>
-                    <Link to={{pathname:"/single", fromDashboard: "true" }}>
-                    <img style={{width:"100%",height:"100%"}} src={img.src} alt="testing"></img>
+        img.onload = (e) => {
+            // console.log(e)
+            if (img.height/img.width <= 1.2) {
+                setCurrent (
+                        <div key={Math.floor(Math.random() * 2500)} className='card card_small' onClick={()=>console.log("asd")}>
+                            <Link to={{pathname:"/single", fromDashboard: "true" }}>
+                            <img style={{width:"100%",height:"100%"}} src={img.src} alt="testing"></img>
+                            <div className='homepagePinsText'>Amazing Japan</div>
+                            </Link>
+                        </div>
+                    
+                )
+            }
+            else if (img.height/img.width > 1.2 && img.height/img.width < 1.5){
+                setCurrent (
+                    <div key={Math.floor(Math.random() * 2500)} className='card card_medium' onClick={()=>window.location.href = img.src}>
+                        <img style={{width:"100%",height:"100%"}} src={img.src} alt="testing"></img>
+                        <div className='homepagePinsText'>Amazing Japan dsaaaaaaaaadsad</div>
+                    </div>
+                   )
+            }
+            else if (img.height/img.width > 1.5) {
+                console.log(img.height,img.width,img.height/img.width)
+                setCurrent(
+                    <div  className='card card_large' onClick={()=>window.location.href = img.src}>
+                        <img style={{width:"100%",height:"100%"}} src={img.src} alt="testing"></img>
                     <div className='homepagePinsText'>Amazing Japan</div>
-                    </Link>
                 </div>
-            
-        )
-    }
-    // else if (img.height < img.width){
+                )
+            }
+            else {
+                console.log(img.height,img.width,img.height/img.width)
+            }
+        }
 
-    // }
-    else if (img.height/img.width > 1.2 && img.height/img.width < 1.5){
-        setCurrent (
-            <div key={Math.floor(Math.random() * 2500)} className='card card_medium' onClick={()=>window.location.href = img.src}>
-                <img style={{width:"100%",height:"100%"}} src={img.src} alt="testing"></img>
-                <div className='homepagePinsText'>Amazing Japan dsaaaaaaaaadsad</div>
-            </div>
-           )
-    }
-    else {
-        setCurrent(
-            <div  className='card card_large' onClick={()=>window.location.href = img.src}>
-                <img style={{width:"100%",height:"100%"}} src={img.src} alt="testing"></img>
-            <div className='homepagePinsText'>Amazing Japan</div>
-        </div>
-        )
-    }
-    }
-
+            }
+        
     useEffect(() => {
         // Update the document title using the browser API
         renderPin()
-        console.log("Running")
-        console.log(current)
       },[]);
 
-    console.log(current)
-    if (!current) return null
+
+
     return(
         current
     )

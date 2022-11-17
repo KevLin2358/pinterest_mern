@@ -10,10 +10,22 @@ function CreateForm() {
     const [link,setLink] = useState("")
 
     const dispatch = useDispatch()
+
+    const onSubmit = () => {
+        const newPin = {
+            user:userID,
+            image: image,
+            title: text,
+            description: description,
+            link:link
+            }
+        createPin(newPin)
+        console.log(newPin)
+    }
   return (
     <div>
         CreateForm
-        <form onSubmit={() => dispatch({ type: 'increment-counter' })}>
+        <form>
             <input
             value={userID}
             placeholder="userid"
@@ -49,6 +61,7 @@ function CreateForm() {
             >           
             </input>
         </form>
+        <button style={{fontSize:"33px"}} onClick={onSubmit}></button>
     </div>
   )
 }
