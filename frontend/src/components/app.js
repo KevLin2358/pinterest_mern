@@ -19,6 +19,7 @@ import Modal from './modal/modal';
 import { useState } from 'react';
 import FusedImages from './fusedImages/fusedImages';
 import SplashPage from '../pages/splashpage';
+import CreatePage from '../pages/createPage';
 
 const App = () => {
   
@@ -30,6 +31,7 @@ const App = () => {
         <AuthRoute exact path="/login" component={LoginFormContainer} />
         <AuthRoute exact path="/signup" component={SignupFormContainer} />
         <Route path="/profile"><Profile/></Route>
+        <Route path="/create"><CreatePage/></Route>
         <Route path="/today"><Today/></Route>
         <Route path="/single"><SinglePin/></Route>
         <Route path="/"><Home/></Route>

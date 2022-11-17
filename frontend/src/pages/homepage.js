@@ -5,6 +5,7 @@ import "./homepage.css"
 import { useState, useEffect, useRef } from 'react'
 import { useSelector } from 'react-redux';
 import CreateForm from '../components/createForm/createForm';
+import { fetchUserPin } from '../actions/pin_actions';
 // import { counter } from '@fortawesome/fontawesome-svg-core';
 
 const Home = () => {
