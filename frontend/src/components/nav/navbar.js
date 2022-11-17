@@ -105,7 +105,7 @@ const Navbar = () => {
                   <PintrestIcon/>
                   <div className={"navButton currentPage"} onClick={() => changeLink(`/`)}>Home</div>
                   <div className='navButton' onClick={() => changeLink(`/today`)}>Today</div>
-                  <div className='navButton' onClick={() => changeLink(`/profile`)}>Create</div>
+                  <div className='navButton' onClick={() => changeLink(`/create`)}>Create</div>
                 </div>
                 <div className={searchBarAltClassname}>
                   <div className='searchSvg'>

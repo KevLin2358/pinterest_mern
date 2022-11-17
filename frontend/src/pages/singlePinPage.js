@@ -14,7 +14,8 @@ function SinglePin({url}) {
     const [commentArray,setCommentArray] = useState(["testing","asdwd"])
     const dispatch = useDispatch()
     const [pin,setPin] = useState("")
-    const onSubmitButton = () => {
+    const onSubmitButton = (e) => {
+        e.preventDefault()
         setCommentArray([...commentArray,comment])
         setComment("")
     }
@@ -36,10 +37,10 @@ function SinglePin({url}) {
                             <div ><Bell></Bell><Bell></Bell><Bell></Bell></div>
                             <div ><button className='singlePageCenterRight1Button'>Save</button></div>
                             </div>
-                        <div className='rightLink'>www.google.com</div>
-                        <div className='rightTitle'>Tokyo wallpaper by fatihyurtseven43 - f6 - Free on ZEDGE™</div>
-                        <div className='rightDes'>Download Tokyo wallpaper by fatihyurtseven43 - f6 - Free on ZEDGE™ now. Browse millions of popular new Wallpapers and Ringtones on Zedge and personalize your phone to suit you. Browse our conten</div>
-                        <div className='rightUploader'>Uploader</div>
+                        <div className='rightLink'>{pin.pins.data.link}</div>
+                        <div className='rightTitle'>{pin.pins.data.title}</div>
+                        <div className='rightDes'>{pin.pins.data.description}</div>
+                        <div className='rightUploader'>Handler</div>
                         <div className='rightComment'>{commentArray.length} Comments</div>
                         <div className='rightComments'>
                             {commentArray.map((comment) => {

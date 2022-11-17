@@ -1,0 +1,9 @@
+.createFormContainer{
+    transform: translate(50%,50%)
+
+}
+
+.createFormInner > input{
+    display: flex;
+    flex-direction: column;
+}

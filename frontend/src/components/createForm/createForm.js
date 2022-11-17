@@ -3,15 +3,18 @@ import { useState } from "react";
 import { useDispatch } from 'react-redux'
 import { createPin } from "../../actions/pin_actions";
 import { useSelector } from "react-redux";
+import { fetchUserPin } from "../../actions/pin_actions";
+import { useEffect } from "react";
+import "./createForm.css"
 function CreateForm() {
     const [userID,setUserID] = useState(useSelector(state => state.session.user.id))
-    const [image,setImage] = useState("asdasd")
-    const [text,setText] = useState("asdasd")
-    const [description,setdescription] = useState("asdasd")
-    const [link,setLink] = useState("asdasd")
+    const [image,setImage] = useState("")
+    const [text,setText] = useState("")
+    const [description,setdescription] = useState("")
+    const [link,setLink] = useState("pintrest.com")
 
     const dispatch = useDispatch()
-    console.log(userID)
+    // console.log(userID)
     // const c(state => console.log(state))
     // const userTrueID = useSelector(state => console.log(state.session.user.id))
 
@@ -24,22 +27,29 @@ function CreateForm() {
             link:link
             }
         dispatch(createPin(newPin))
-        console.log(newPin)
+        // console.log(newPin)
     }
+
+    useEffect(() => {
+      dispatch(fetchUserPin(userID))
+    
+
+    }, [])
+    
 
 
 
   return (
-    <div>
-        CreateForm
-        <form>
+    <div className="createFormContainer">
+        {/* CreateForm */}
+        <form className="createFormInner">
             <input
             value={userID}
             placeholder="userid"
             onChange={(e) => setUserID(e.target.value)}
             >           
             </input>
-
+            aaaaaaaaaaaa
             <input
             value={image}
             placeholder="image"
