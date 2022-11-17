@@ -3,6 +3,7 @@ import Navbar from '../components/nav/navbar';
 import Pins from '../components/pin/pins';
 import "./homepage.css"
 import { useState, useEffect, useRef } from 'react'
+import { useSelector } from 'react-redux';
 import CreateForm from '../components/createForm/createForm';
 // import { counter } from '@fortawesome/fontawesome-svg-core';
 
@@ -11,18 +12,6 @@ const [counter, setCounter] = useState(100)
 const [height, setHeight] = useState("100vh")
 const ref = useRef(null)
 const heightInString = height+"vh"
-// const [arrayOfPins,setArrayOfPins] = useState(<div><Pins></Pins><Pins></Pins><Pins></Pins><Pins></Pins><Pins></Pins><Pins></Pins><Pins></Pins><Pins></Pins><Pins></Pins><Pins></Pins><Pins></Pins><Pins></Pins><Pins></Pins><Pins></Pins><Pins></Pins><Pins></Pins><Pins></Pins><Pins></Pins></div>)
-    // useEffect(() => {
-    //     setHeight("100vh")
-    //     console.log(ref)
-    //     // if (7*200 > height)
-    // })
-
-    // const increaseVh = () => {
-    //     setHeight(() => counter+"vh")
-    //     setCounter(() => counter+50)
-    //     console.log(counter)
-    // }
 
     return (
         <React.Fragment>
@@ -34,6 +23,10 @@ const heightInString = height+"vh"
                         <Pins/>
                         <Pins/>
                         <Pins/>
+                        {/* <Pins/>
+                        <Pins/>
+                        <Pins/> */}
+                        {/* <Pins/>
                         <Pins/>
                         <Pins/>
                         <Pins/>
@@ -51,11 +44,7 @@ const heightInString = height+"vh"
                         <Pins/>
                         <Pins/>
                         <Pins/>
-                        <Pins/>
-                        <Pins/>
-                        <Pins/>
-                        <Pins/>
-                        
+                         */}
                         <CreateForm/>
                         <div>This is homepage</div>
                         {/* <div className='card card_large'><Pins/></div>

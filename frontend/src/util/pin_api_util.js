@@ -13,8 +13,7 @@ export const fetchUserPin = userId =>{
 };
 
 export const createPin = data => {
-  // console.log(data)
-  return axios.post(`/api/pins/user/${data.user}`, data)
+  return axios.post(`/api/pins/`,data)
 }
 
 export const updatePin = data => {

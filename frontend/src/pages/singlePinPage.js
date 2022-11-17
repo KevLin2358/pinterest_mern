@@ -1,25 +1,36 @@
 import React from 'react'
 import Navbar from '../components/nav/navbar'
 import "./singlePinPage.css"
-import Q from "../imageComponent/images/q.jpg"
+import Q from "../imageComponent/images/r.jpg"
 import Bell from '../imageComponent/BellSVG'
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
+import Pins from '../components/pin/pins'
+import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import { fetchSinglePin } from '../actions/pin_actions'
+// import {}
 function SinglePin({url}) {
     const [comment,setComment] = useState("")
     const [commentArray,setCommentArray] = useState(["testing","asdwd"])
-
+    const dispatch = useDispatch()
+    const [pin,setPin] = useState("")
     const onSubmitButton = () => {
         setCommentArray([...commentArray,comment])
         setComment("")
     }
 
-  return (
+    useEffect(() => {
+        dispatch(fetchSinglePin("6376507d99829291a0f37337")).then(req => setPin(req))
+    }, [])
+    // console.log(pin.pins.data.image)
+    if (pin=== "") return null
+    return (
     <React.Fragment>
        <Navbar/>
        <div className='singlePageContainer'>
             <div className='singlePageBody'>
                 <div className='singlePageCenter'>
-                    <div className='singlePageCenterLeft'><img src={Q}></img></div>
+                    <div className='singlePageCenterLeft'><img src={pin.pins.data.image}></img></div>
                     <div className='singlePageCenterRight'>
                         <div className='singlePageCenterRight1'>
                             <div ><Bell></Bell><Bell></Bell><Bell></Bell></div>

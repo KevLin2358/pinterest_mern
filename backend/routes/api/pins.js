@@ -35,6 +35,7 @@ router.get('/:id', (req, res) => { // pinid
 router.post('/',
     passport.authenticate('jwt', { session: false }),
     (req, res) => {
+      console.log(req)
       const { errors, isValid } = validatePinInput(req.body);
       console.log("New Pin is connected")
       if (!isValid) {

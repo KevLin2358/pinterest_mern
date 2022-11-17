@@ -19,12 +19,14 @@ import Modal from './modal/modal';
 import { useState } from 'react';
 import FusedImages from './fusedImages/fusedImages';
 import SplashPage from '../pages/splashpage';
+
 const App = () => {
+  
   return (
     <div>
     <Router>
       <Switch>
-        {/* <AuthRoute exact path="/" component={MainPage} /> */}
+        <AuthRoute exact path="/" component={Home} />
         <AuthRoute exact path="/login" component={LoginFormContainer} />
         <AuthRoute exact path="/signup" component={SignupFormContainer} />
         <Route path="/profile"><Profile/></Route>

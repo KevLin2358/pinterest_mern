@@ -38,6 +38,11 @@ export const fetchUserPin = userId => dispatch =>{
     .then(pins => dispatch(receivePins(pins)));
 }
 
+export const fetchSinglePin = pinId => dispatch =>{
+  return PinApiUtil.fetchPin(pinId)
+    .then(pin => dispatch(receivePins(pin)));
+}
+
 export const createPin = data => dispatch =>{
   return PinApiUtil.createPin(data)
     .then(pin => dispatch(receivePin(pin)));

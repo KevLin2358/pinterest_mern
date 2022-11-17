@@ -2,14 +2,18 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch } from 'react-redux'
 import { createPin } from "../../actions/pin_actions";
+import { useSelector } from "react-redux";
 function CreateForm() {
-    const [userID,setUserID] = useState("")
-    const [image,setImage] = useState("")
-    const [text,setText] = useState("")
-    const [description,setdescription] = useState("")
-    const [link,setLink] = useState("")
+    const [userID,setUserID] = useState(useSelector(state => state.session.user.id))
+    const [image,setImage] = useState("asdasd")
+    const [text,setText] = useState("asdasd")
+    const [description,setdescription] = useState("asdasd")
+    const [link,setLink] = useState("asdasd")
 
     const dispatch = useDispatch()
+    console.log(userID)
+    // const c(state => console.log(state))
+    // const userTrueID = useSelector(state => console.log(state.session.user.id))
 
     const onSubmit = () => {
         const newPin = {
@@ -19,9 +23,12 @@ function CreateForm() {
             description: description,
             link:link
             }
-        createPin(newPin)
+        dispatch(createPin(newPin))
         console.log(newPin)
     }
+
+
+
   return (
     <div>
         CreateForm

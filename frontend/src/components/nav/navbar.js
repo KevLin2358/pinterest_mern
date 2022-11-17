@@ -31,7 +31,7 @@ const Navbar = () => {
   }
 
   useEffect(() => {
-    console.log(searchTerm)
+    // console.log(searchTerm)
   }, [searchTerm]);
 
 
@@ -90,25 +90,6 @@ const Navbar = () => {
 
   const infoBox = () => {
     setModalOpen(() => !modalOpen);
-    // return(
-      // <Modal setOpenModal={setModalOpen} />
-    // )
-    // return(
-    //   <div className="App">
-    //   <h1>Hey, click on the button to open the modal.</h1>
-    //   <button
-    //     className="openModalBtn"
-    //     onClick={() => {
-    //       setModalOpen(true);
-    //     }}
-    //   >
-    //     Open
-    //   </button>
-  
-    //   {modalOpen && <Modal setOpenModal={setModalOpen} />}
-    //   </div>
-    // )
-
   }
 
   const onWhichPage = window.location.pathname
@@ -130,14 +111,14 @@ const Navbar = () => {
                   <div className='searchSvg'>
                     <SearchSVG />
                   </div>
-                  <form ref={searchFormContainer} className='searchBarContainer'onClick={handleOnClick} onSubmit={handleOnClick}>
+                  <div ref={searchFormContainer} className='searchBarContainer'onClick={handleOnClick} onSubmit={handleOnClick}>
                         <input className='searchBar'
                           onChange={(e) => setSearchAndConsole(e)}
                           value={searchTerm}
                           placeholder={"Search"}
                           ref={searchInput}
                         />
-                  </form>
+                  </div>
                 </div>
                 <div className='navBarRightSide'>
                   <div onClick={infoBox}><Bell/></div>
