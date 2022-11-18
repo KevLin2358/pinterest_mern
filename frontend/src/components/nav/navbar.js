@@ -123,7 +123,7 @@ const Navbar = () => {
                 <div className='navBarRightSide'>
                   <div onClick={infoBox}><Bell/></div>
                   <div onClick={infoBox}><Message/></div>
-                  <div onClick={infoBox}><Message/></div>
+                  <div onClick={() => changeLink(`/profile`)}><Message/></div>
                   {modalOpen && <Modal setOpenModal={setModalOpen} />}
                 </div>
               </div>

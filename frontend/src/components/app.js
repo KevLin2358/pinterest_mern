@@ -20,7 +20,7 @@ import { useState } from 'react';
 import FusedImages from './fusedImages/fusedImages';
 import SplashPage from '../pages/splashpage';
 import CreatePage from '../pages/createPage';
-
+import UserPage from '../pages/userPage';
 const App = () => {
   
   return (
@@ -30,7 +30,7 @@ const App = () => {
         <AuthRoute exact path="/" component={Home} />
         <AuthRoute exact path="/login" component={LoginFormContainer} />
         <AuthRoute exact path="/signup" component={SignupFormContainer} />
-        <Route path="/profile"><Profile/></Route>
+        <Route path="/profile"><UserPage/></Route>
         <Route path="/create"><CreatePage/></Route>
         <Route path="/today"><Today/></Route>
         <Route path="/single"><SinglePin/></Route>

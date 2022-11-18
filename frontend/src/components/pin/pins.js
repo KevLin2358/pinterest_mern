@@ -10,8 +10,9 @@ import Y from "../../imageComponent/images/y.jpg"
 import SinglePin from '../../pages/singlePinPage'
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-function Pins() {
+function Pins({url}) {
     const [current,setCurrent] = useState(null)
+    const [urlsArray,setUrlsArray] = useState(url)
     // img.onload = () => {
     //     console.log(img.height);
     //     console.log(img.width);
@@ -19,12 +20,14 @@ function Pins() {
     // need this to determine which ratio card is the best
     // console.log(img.src)
 
-    const renderPin = () => {
+    const renderPin = (url) => {
         const arrayOfImages = [Q,W,E,R,T,U,Y]
-        const urls = [
-            "https://i.pinimg.com/236x/08/14/cb/0814cb77785e2cfb74bef79268b2337b.jpg",
-            "https://i.pinimg.com/140x140_RS/a7/81/e2/a781e2a5ec3c0016b4b2e7cda5c9d46c.jpg",
-            "https://i.pinimg.com/236x/86/98/3e/86983e2b37eca076e9b8546a1c2a1dab.jpg",
+        // const url = singleUrl.map(url=>url.image)
+        // console.log(url)
+        // const urls = [
+            // "https://i.pinimg.com/236x/08/14/cb/0814cb77785e2cfb74bef79268b2337b.jpg",
+            // "https://i.pinimg.com/140x140_RS/a7/81/e2/a781e2a5ec3c0016b4b2e7cda5c9d46c.jpg",
+            // "https://i.pinimg.com/236x/86/98/3e/86983e2b37eca076e9b8546a1c2a1dab.jpg",
             // "https://i.pinimg.com/236x/5a/f0/b2/5af0b2dc02cd9e5add8f0a5a52240b91.jpg",
             // "https://i.pinimg.com/236x/6b/02/dd/6b02dd1bc8d3af10172d0d903a76cd7b.jpg",
             // "https://i.pinimg.com/236x/c4/30/d5/c430d5b7c4340efa2092ba412520a121.jpg",
@@ -57,20 +60,27 @@ function Pins() {
             // "https://i.pinimg.com/236x/ab/f9/32/abf9325a2280aca64ee6fb84e6c64085.jpg",
             // "https://i.pinimg.com/236x/0e/a2/f1/0ea2f1a90459f96c9e41ce4a150e6cbd.jpg",
             // "https://i.pinimg.com/236x/d5/56/39/d556396edd1e7eece0a973f860aa5460.jpg"
-            ]
-        const randomImage = urls[Math.floor(Math.random()*urls.length)];
-        const randomNumber = Math.floor(Math.random()*arrayOfImages.length)
+            // ]
+        // const randomImage = urls[Math.floor(Math.random()*urls.length)];
+        // const randomNumber = Math.floor(Math.random()*arrayOfImages.length)
         
+        // for (let index = 0; index < urls.length; index++) {
+        //     const url = urls[index];
+        //     console.log(url)
+
         const img = new Image();
-        img.src = randomImage;
+        console.log(url)
+        img.src = url.image;
+        // console.log(img)
         img.onload = (e) => {
+            console.log(e)
             if(img.width < 200) return null 
             else if (img.height/img.width <= 1.2) {
                 setCurrent (
                         <div key={Math.floor(Math.random() * 2500)} className='card card_small'>
                             <Link to={{pathname:"/single", fromDashboard: "true" }}>
                             <img style={{width:"100%",height:"100%"}} src={img.src} alt="testing"></img>
-                            <div className='homepagePinsText'>Amazing Japan</div>
+                            <div className='homepagePinsText'>{url.title}</div>
                             </Link>
                         </div>
                     
@@ -80,7 +90,7 @@ function Pins() {
                 setCurrent (
                     <div key={Math.floor(Math.random() * 2500)} className='card card_medium' onClick={()=>window.location.href = img.src}>
                         <img style={{width:"100%",height:"100%"}} src={img.src} alt="testing"></img>
-                        <div className='homepagePinsText'>Amazing Japan dsaaaaaaaaadsad</div>
+                        <div className='homepagePinsText'>{url.title}</div>
                     </div>
                    )
             }
@@ -88,24 +98,29 @@ function Pins() {
                 setCurrent(
                     <div  className='card card_large' onClick={()=>window.location.href = img.src}>
                         <img style={{width:"100%",height:"100%"}} src={img.src} alt="testing"></img>
-                    <div className='homepagePinsText'>Amazing Japan</div>
+                    <div className='homepagePinsText'>{url.title}</div>
                 </div>
                 )
             }
             else {
-                // console.log(img.height,img.width,img.height/img.width)
+                console.log(img.height,img.width,img.height/img.width)
             }
         }
 
-            }
+        }
+
+        
+            // }
         
     useEffect(() => {
         // Update the document title using the browser API
-        renderPin()
-      },[]);
+        // console.log(url)
+        renderPin(url)
+        console.log(url)
+      },[url]);
 
 
-
+    //   console.log(current)
     return(
         current
     )
