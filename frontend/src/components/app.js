@@ -30,6 +30,7 @@ const App = () => {
         <AuthRoute exact path="/" component={Home} />
         <AuthRoute exact path="/login" component={LoginFormContainer} />
         <AuthRoute exact path="/signup" component={SignupFormContainer} />
+        <Route path="/pins/:pinId" component={SinglePin} />
         <Route path="/profile"><UserPage/></Route>
         <Route path="/create"><CreatePage/></Route>
         <Route path="/today"><Today/></Route>

@@ -69,36 +69,38 @@ function Pins({url}) {
         //     console.log(url)
 
         const img = new Image();
-        console.log(url)
+        console.log(url._id)
         img.src = url.image;
-        // console.log(img)
         img.onload = (e) => {
-            console.log(e)
+            // console.log(e)
             if(img.width < 200) return null 
             else if (img.height/img.width <= 1.2) {
                 setCurrent (
                         <div key={Math.floor(Math.random() * 2500)} className='card card_small'>
-                            <Link to={{pathname:"/single", fromDashboard: "true" }}>
-                            <img style={{width:"100%",height:"100%"}} src={img.src} alt="testing"></img>
+                            <Link to={{pathname:`/pins/${url._id}`, fromDashboard: "true" }}>
+                            <img style={{width:"100%",height:"100%"}} src={img.src} alt="smallCard"></img>
                             <div className='homepagePinsText'>{url.title}</div>
                             </Link>
                         </div>
-                    
                 )
             }
             else if (img.height/img.width > 1.2 && img.height/img.width < 1.5){
                 setCurrent (
-                    <div key={Math.floor(Math.random() * 2500)} className='card card_medium' onClick={()=>window.location.href = img.src}>
-                        <img style={{width:"100%",height:"100%"}} src={img.src} alt="testing"></img>
+                    <div key={Math.floor(Math.random() * 2500)} className='card card_medium'>
+                        <Link to={{pathname:`/pins/${url._id}`, fromDashboard: "true" }}>
+                        <img style={{width:"100%",height:"100%"}} src={img.src} alt="medCard"></img>
                         <div className='homepagePinsText'>{url.title}</div>
+                        </Link>
                     </div>
                    )
             }
             else if (img.height/img.width > 1.5) {
                 setCurrent(
-                    <div  className='card card_large' onClick={()=>window.location.href = img.src}>
-                        <img style={{width:"100%",height:"100%"}} src={img.src} alt="testing"></img>
-                    <div className='homepagePinsText'>{url.title}</div>
+                    <div  className='card card_large'>
+                        <Link to={{pathname:`/pins/${url._id}`, fromDashboard: "true" }}>
+                        <img style={{width:"100%",height:"100%"}} src={img.src} alt="largeCard"></img>
+                        <div className='homepagePinsText'>{url.title}</div>
+                        </Link>
                 </div>
                 )
             }

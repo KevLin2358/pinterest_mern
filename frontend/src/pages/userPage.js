@@ -16,7 +16,7 @@ function UserPage() {
     }, [])
     
     // console.log(pins)
-    if(pins.length === 0) return null
+    // if(pins.length === 0) return null
     return (
     <div>
         <Navbar/>

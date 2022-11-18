@@ -19,9 +19,11 @@ function SinglePin({url}) {
         setCommentArray([...commentArray,comment])
         setComment("")
     }
+    console.log(window.location.href.split("/")[4])
+    const pinId = window.location.href.split("/")[4]
 
     useEffect(() => {
-        dispatch(fetchSinglePin("6376507d99829291a0f37337")).then(req => setPin(req))
+        dispatch(fetchSinglePin(pinId)).then(req => setPin(req))
     }, [])
     // console.log(pin.pins.data.image)
     if (pin=== "") return null
