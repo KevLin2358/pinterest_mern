@@ -2,3 +2,6 @@ img:hover{
     filter: brightness(50%);
 }
 
+img{
+    border-radius: 25px;
+}
