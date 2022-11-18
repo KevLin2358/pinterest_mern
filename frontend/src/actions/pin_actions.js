@@ -47,3 +47,4 @@ export const createPin = data => dispatch =>{
   return PinApiUtil.createPin(data)
     .then(pin => dispatch(receivePin(pin)));
 }
+
