@@ -7,7 +7,7 @@ import { useState,useEffect } from 'react'
 import Pins from '../components/pin/pins'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
-import { fetchSinglePin } from '../actions/pin_actions'
+import { deletePin, fetchSinglePin } from '../actions/pin_actions'
 // import {}
 function SinglePin({url}) {
     const [comment,setComment] = useState("")
@@ -26,6 +26,11 @@ function SinglePin({url}) {
         dispatch(fetchSinglePin(pinId)).then(req => setPin(req))
     }, [])
     // console.log(pin.pins.data.image)
+
+    const handleDelete = () =>{
+        dispatch(deletePin(pinId)).then(()=>window.location.href = '/')
+    }
+
     if (pin=== "") return null
     return (
     <React.Fragment>
@@ -61,6 +66,7 @@ function SinglePin({url}) {
                                 </input>
                             </form>
                         </div>
+                        <button onClick={handleDelete}>deletePin</button>
                     </div>
                 </div>
             </div>
