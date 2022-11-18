@@ -78,7 +78,7 @@ function Pins({url}) {
                 setCurrent (
                         <div key={Math.floor(Math.random() * 2500)} className='card card_small'>
                             <Link to={{pathname:`/pins/${url._id}`, fromDashboard: "true" }}>
-                            <img style={{width:"100%",height:"100%"}} src={img.src} alt="smallCard"></img>
+                            <img className='imgBorder' style={{width:"100%",height:"100%"}} src={img.src} alt="smallCard"></img>
                             <div className='homepagePinsText'>{url.title}</div>
                             </Link>
                         </div>
@@ -88,7 +88,7 @@ function Pins({url}) {
                 setCurrent (
                     <div key={Math.floor(Math.random() * 2500)} className='card card_medium'>
                         <Link to={{pathname:`/pins/${url._id}`, fromDashboard: "true" }}>
-                        <img style={{width:"100%",height:"100%"}} src={img.src} alt="medCard"></img>
+                        <img className='imgBorder' style={{width:"100%",height:"100%"}} src={img.src} alt="medCard"></img>
                         <div className='homepagePinsText'>{url.title}</div>
                         </Link>
                     </div>
@@ -98,7 +98,7 @@ function Pins({url}) {
                 setCurrent(
                     <div  className='card card_large'>
                         <Link to={{pathname:`/pins/${url._id}`, fromDashboard: "true" }}>
-                        <img style={{width:"100%",height:"100%"}} src={img.src} alt="largeCard"></img>
+                        <img className='imgBorder' style={{width:"100%",height:"100%"}} src={img.src} alt="largeCard"></img>
                         <div className='homepagePinsText'>{url.title}</div>
                         </Link>
                 </div>
