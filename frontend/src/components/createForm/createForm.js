@@ -14,9 +14,6 @@ function CreateForm() {
     const [link,setLink] = useState("pintrest.com")
 
     const dispatch = useDispatch()
-    // console.log(userID)
-    // const c(state => console.log(state))
-    // const userTrueID = useSelector(state => console.log(state.session.user.id))
 
     const onSubmit = () => {
         const newPin = {
@@ -27,7 +24,6 @@ function CreateForm() {
             link:link
             }
         dispatch(createPin(newPin))
-        // console.log(newPin)
     }
 
     useEffect(() => {

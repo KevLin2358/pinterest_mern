@@ -20,7 +20,7 @@ const pinReducer = (state = {}, action) =>{
         return {...action.pins};
     case RECEIVE_USER_PINS:
       pins.forEach((pin) => {
-        nextState[pin.id]=pin //question needed 
+        nextState[pin._id]=pin //question needed 
       })
       return nextState;
     case RECEIVE_PIN:

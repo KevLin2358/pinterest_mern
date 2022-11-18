@@ -27,7 +27,7 @@ const App = () => {
     <div>
     <Router>
       <Switch>
-        <AuthRoute exact path="/" component={Home} />
+        {/* <AuthRoute exact path="/" component={Home} /> */}
         <AuthRoute exact path="/login" component={LoginFormContainer} />
         <AuthRoute exact path="/signup" component={SignupFormContainer} />
         <Route path="/pins/:pinId" component={SinglePin} />

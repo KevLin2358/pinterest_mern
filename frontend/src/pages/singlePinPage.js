@@ -21,14 +21,16 @@ function SinglePin({url}) {
     }
     console.log(window.location.href.split("/")[4])
     const pinId = window.location.href.split("/")[4]
-
+    // This is the get the last part of the img name
     useEffect(() => {
         dispatch(fetchSinglePin(pinId)).then(req => setPin(req))
+        //this will fetch the pinID obj and set state
     }, [])
     // console.log(pin.pins.data.image)
 
     const handleDelete = () =>{
         dispatch(deletePin(pinId)).then(()=>window.location.href = '/')
+        //this will delete pin and after it will redirect to main
     }
 
     if (pin=== "") return null

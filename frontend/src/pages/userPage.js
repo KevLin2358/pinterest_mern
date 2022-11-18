@@ -15,7 +15,6 @@ function UserPage() {
         dispatch(fetchUserPin(id)).then(res =>setPins(()=>res.pins.data))
     }, [])
     
-    // console.log(pins)
     // if(pins.length === 0) return null
     return (
     <div>
@@ -28,11 +27,11 @@ function UserPage() {
                         {
                             pins.map((pin) => {
                                 return(
-                                    <Pins url={pin}/>
+                                    <Pins url={pin} key={pin._id}/>
                                 )
                             } )
                         }
-                        <div>This is homepage</div>
+                        <div>This is UserPage</div>
                     </div>
                 </div>
 
