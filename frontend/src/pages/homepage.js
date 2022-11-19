@@ -3,26 +3,25 @@ import Navbar from '../components/nav/navbar';
 import Pins from '../components/pin/pins';
 import "./homepage.css"
 import { useState, useEffect, useRef } from 'react'
+import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux';
 import CreateForm from '../components/createForm/createForm';
 import { fetchUserPin } from '../actions/pin_actions';
+import { fetchAllPins } from '../actions/pin_actions';
 // import { counter } from '@fortawesome/fontawesome-svg-core';
 
 const Home = () => {
 const ref = useRef(null)
+const dispatch = useDispatch()
+const [array,setArray] = useState("")
 
-const pinsObjArr = [
 
-    {
-        "title": "Kabukichō, Shinjuku City, Tokyo, Japan",
-        "image": "https://i.pinimg.com/564x/36/ed/18/36ed18c06046243361715643dc190f0c.jpg",
-        "description": "Image via Unsplash. Edited by H Designs, in Lightroom. Image Captured by Manuel Velasquez. Original Image Here. (Redbubble, INPRNT)",
-        "link": "https://www.pinterest.com/pin/808325833132761852/"
-    },
-   
-        
-]
+useEffect(()=> {
+    dispatch(fetchAllPins()).then(res => setArray(res.pins.data))
+    //getting all pins and then making a array of obj
+},[])
 
+if (array === "") return null
     return (
         <React.Fragment>
             <Navbar/>
@@ -31,9 +30,9 @@ const pinsObjArr = [
                     <div className='homePageBody'>
                     {   
                     //
-                        pinsObjArr.map((pinObj) => {
+                        array.map((pinObj) => {
                             return(
-                                <Pins url={pinObj}/>
+                                <Pins url={pinObj} key={pinObj._id}/>
                             )
                         } )
                     }
