@@ -1,9 +1,13 @@
 .singlePageContainer{
-    
+    display:flex;
+    justify-content: center;
+    width: 100%;
+    margin:0px;
+    flex-direction: row;
 }
 
 .singlePageBody{
-    background-color: gray;
+    /* background-color: gray; */
     /* width: 100vw; */
     /* height: 100vh; */
     display: flex;
@@ -12,16 +16,17 @@
 
 
 .singlePageCenter{
-    background-color: blue;
+    background-color: transparent;
+    box-sizing:border-box;
     max-width: 1016px;
-    /* max-height: 80%; */
+    margin-top: 16px;
     left: 50%;
     /* position: absolute; */
     /* transform: translateX(-50%); */
     display: flex;
     justify-content: center;
-    /* height: 100vh; */
-    /* min-height: 50vh; */
+    box-shadow: rgb(0 0 0 / 10%) 0px 1px 20px 0px;
+    border-radius: 32px;
 
 }
 
@@ -31,7 +36,7 @@
 
 .singlePageCenterLeft{
     max-width: 50%;
-    background-color: green;
+    /* background-color: green; */
     /* min-height: 50vh; */
     /* display:inline-block; */
     /* max-height: fit-content; */
@@ -54,7 +59,7 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    background-color: aquamarine;
+    /* background-color: aquamarine; */
     padding: 0px 32px;
     box-sizing: border-box;
 }
@@ -72,7 +77,7 @@
 }
 
 .singlePageCenterRight1Button{
-    background-color: #4CAF50; /* Green */
+    /* background-color: #4CAF50;  */
     border: none;
     color: white;
     padding: 15px 32px;

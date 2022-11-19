@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import "./createForm.css"
 function CreateForm() {
     const [userID,setUserID] = useState(useSelector(state => state.session.user.id))
+    const [id,setId] = useState("")
     const [image,setImage] = useState("")
     const [text,setText] = useState("")
     const [description,setdescription] = useState("")
@@ -16,26 +17,8 @@ function CreateForm() {
     const dispatch = useDispatch()
 
     const onSubmit = () => {
-      // console.log(image.split(":")[4])
-        // let des = image.split(":")[4].split(",")
-        // des.pop()
-        // des = des.join(",")
-
-        // // console.log(des)
-        // let title = image.split(":")[1].split(",")
-        // title.pop()
-        // title = title.join(",")
-
-        // let img = (image.split(":")[2]+":"+image.split(":")[3].split(",")[0])
-        // img = img.split(" \\")[0].trim()
-        // console.log(img)
-        // console.log(obj)
         let obj2 = obj.split("~#")
-        console.log(obj2[0])
-        console.log(obj2[1])
-        console.log(obj2[2])
-        console.log(obj2[3])
-
+        //taking in an obj to populate field, had to split withn ~=#
         const newPin = {
             user:userID,
             image: obj2[1],
@@ -44,16 +27,23 @@ function CreateForm() {
             link:obj2[3]
             }
         // console.log(newPin)
-        dispatch(createPin(newPin))
+        
+        dispatch(createPin(newPin)).then(pin => setId(pin.pin.data._id))
+        //after a new pin is create I have wait for reponse and set the pin id response
     }
 
     useEffect(() => {
       dispatch(fetchUserPin(userID))
-    
-
+      //need to get the user id cause it is for submittion
     }, [])
     
 
+    useEffect(()=>{
+      if(id === "") return null //need to return null cause it will redirect too quick
+      window.location = window.location.origin+"/pins/"+id
+      //change link once id is true
+      //have to use useeffect cause I need to from a string
+    },[id])
 
 
   return (
