@@ -33,6 +33,11 @@ export const removePin = pinId =>{
   })
 }
 
+export const fetchAllPins = data => dispatch =>{
+  return PinApiUtil.fetchPins(data)
+    .then(pins => dispatch(receivePins(pins)));
+}
+
 export const fetchUserPin = userId => dispatch =>{
   return PinApiUtil.fetchUserPin(userId)
     .then(pins => dispatch(receivePins(pins)));
