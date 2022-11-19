@@ -38,39 +38,3 @@
     width: 50vw;
 }
 
-/* let array = []
-let bigImage = ""
-let img = document.getElementsByTagName("img")
-array = []
-for (const property in img) {
-    array.push((img[property].src))
-    if(array.length === 4){
-        bigImage = img[property].src
-        break
-    }
-  }
-
-const collection = document.getElementsByClassName("CloseupTitleCard");
-let title = collection[0].innerText.split("\n")[0]
-
-let text = document.getElementsByClassName("richPinInformation")[0].innerText
-let link = window.location.href
-
-
-let objStr = 'title+"~"+bigImage+"~"+text+"~"+link'
-
-objStr */
-
-/* let obj = {
-    title:title,
-    image:bigImage,
-    description:text,
-    link:window.location.href,
-} */
-/* 
-{
-    "title": "Theme 7 ❀࿆⃧፝྅⃕ꦿͮؕؓ͜͝(2/2) — — — — @hkmojkyh on We Heart It\n; Opens a new tab",
-    "image": "https://i.pinimg.com/564x/2b/03/e6/2b03e687a4820984cd6aaaf1cc90902f.jpg",
-    "description": "Image discovered by ⠀⠀⠀⠀. Find images and videos about kpop, boy and black on We Heart It - the app to get lost in what you love.",
-    "link": "pintrest.com"
-} */
