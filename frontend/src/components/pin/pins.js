@@ -41,7 +41,7 @@ function Pins({url}) {
                     </div>
                    )
             }
-            else if (img.height/img.width > 1.5) {
+            else if (img.height/img.width >= 1.5) {
                 setCurrent(
                     <div  className='card card_large'>
                         <Link to={{pathname:`/pins/${url._id}`, fromDashboard: "true" }}>
