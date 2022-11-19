@@ -1,9 +1,76 @@
 .createFormContainer{
-    transform: translate(50%,50%)
+    /* transform: translate(50%,50%); */
+    background-color: blue;
+    width: 100vw;
+    display: flex;
+    /* justify-content: center; */
 
+}
+/* .createFormInner{
+    padding-top: 40px;
+    width: 880px;
+    height: 100vh;
+    background-color: green;
+    display: flex;
 }
 
 .createFormInner > input{
     display: flex;
     flex-direction: column;
+} */
+
+.objectForm{
+    padding-top: 40px;
+    width: 90vw;
+    height: 100vh;
+    word-wrap: break-word;
+    /* background-color: green; */
+    display: flex;
 }
+
+.inputSpace{
+    width: 50vw;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.submitButton{
+    width: 50vw;
+}
+
+/* let array = []
+let bigImage = ""
+let img = document.getElementsByTagName("img")
+array = []
+for (const property in img) {
+    array.push((img[property].src))
+    if(array.length === 4){
+        bigImage = img[property].src
+        break
+    }
+  }
+
+const collection = document.getElementsByClassName("CloseupTitleCard");
+let title = collection[0].innerText.split("\n")[0]
+
+let text = document.getElementsByClassName("richPinInformation")[0].innerText
+let link = window.location.href
+
+
+let objStr = 'title+"~"+bigImage+"~"+text+"~"+link'
+
+objArray */
+
+/* let obj = {
+    title:title,
+    image:bigImage,
+    description:text,
+    link:window.location.href,
+} */
+/* 
+{
+    "title": "Theme 7 ❀࿆⃧፝྅⃕ꦿͮؕؓ͜͝(2/2) — — — — @hkmojkyh on We Heart It\n; Opens a new tab",
+    "image": "https://i.pinimg.com/564x/2b/03/e6/2b03e687a4820984cd6aaaf1cc90902f.jpg",
+    "description": "Image discovered by ⠀⠀⠀⠀. Find images and videos about kpop, boy and black on We Heart It - the app to get lost in what you love.",
+    "link": "pintrest.com"
+} */
