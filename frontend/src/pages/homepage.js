@@ -4,9 +4,6 @@ import Pins from '../components/pin/pins';
 import "./homepage.css"
 import { useState, useEffect, useRef } from 'react'
 import { useDispatch } from 'react-redux'
-import { useSelector } from 'react-redux';
-import CreateForm from '../components/createForm/createForm';
-import { fetchUserPin } from '../actions/pin_actions';
 import { fetchAllPins } from '../actions/pin_actions';
 // import { counter } from '@fortawesome/fontawesome-svg-core';
 

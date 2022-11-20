@@ -1,13 +1,5 @@
 import React from 'react'
 import "./pins.css"
-import Q from "../../imageComponent/images/q.jpg"
-import W from "../../imageComponent/images/w.jpg"
-import E from "../../imageComponent/images/e.jpg"
-import R from "../../imageComponent/images/r.jpg"
-import U from "../../imageComponent/images/u.jpg"
-import T from "../../imageComponent/images/t.jpg"
-import Y from "../../imageComponent/images/y.jpg"
-import SinglePin from '../../pages/singlePinPage'
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 function Pins({url}) {
@@ -15,6 +7,26 @@ function Pins({url}) {
     //current will be the size of the image
 
     const renderPin = (url) => {
+
+        let numberOfChar = {
+            one:"100%",
+            two:"96%",
+            three:"92%"
+        }
+
+        let titleLen = (url.title.length)
+        let dynamicHeight = ""
+        if (Math.floor(titleLen/25) <= 1){
+            dynamicHeight = numberOfChar.one
+        }else if (Math.floor(titleLen/25) <= 2){
+            dynamicHeight = numberOfChar.two
+        }
+        else{
+            dynamicHeight = numberOfChar.three
+            console.log(titleLen)
+        }
+
+
 
         const img = new Image();
         img.src = url.image;
@@ -25,7 +37,7 @@ function Pins({url}) {
                 setCurrent (
                         <div key={Math.floor(Math.random() * 2500)} className='card card_small'>
                             <Link to={{pathname:`/pins/${url._id}`, fromDashboard: "true" }}>
-                            <img className='imgBorder' style={{width:"100%",height:"100%"}} src={img.src} alt="smallCard"></img>
+                            <img className='imgBorder' style={{height:dynamicHeight}} src={img.src} alt="smallCard"></img>
                             <div className='homepagePinsText'>{url.title}</div>
                             </Link>
                         </div>
@@ -35,7 +47,7 @@ function Pins({url}) {
                 setCurrent (
                     <div key={Math.floor(Math.random() * 2500)} className='card card_medium'>
                         <Link to={{pathname:`/pins/${url._id}`, fromDashboard: "true" }}>
-                        <img className='imgBorder' style={{width:"100%",height:"100%"}} src={img.src} alt="medCard"></img>
+                        <img className='imgBorder' style={{height:dynamicHeight}} src={img.src} alt="medCard"></img>
                         <div className='homepagePinsText'>{url.title}</div>
                         </Link>
                     </div>
@@ -45,7 +57,7 @@ function Pins({url}) {
                 setCurrent(
                     <div  className='card card_large'>
                         <Link to={{pathname:`/pins/${url._id}`, fromDashboard: "true" }}>
-                        <img className='imgBorder' style={{width:"100%",height:"100%"}} src={img.src} alt="largeCard"></img>
+                        <img className='imgBorder' style={{height:dynamicHeight}} src={img.src} alt="largeCard"></img>
                         <div className='homepagePinsText'>{url.title}</div>
                         </Link>
                 </div>

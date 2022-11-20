@@ -20,6 +20,11 @@ let text = document.getElementsByClassName("richPinInformation")[0].innerText
 let link = window.location.href
 
 
+let objPin = {bigImage,title,text,link}
+
+JSON.stringify(objPin)
+
+
 let objStr = `${title}~#${bigImage}~#${text}~#${link}`
 
 objStr

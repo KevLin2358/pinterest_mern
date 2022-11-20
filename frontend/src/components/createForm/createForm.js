@@ -17,16 +17,15 @@ function CreateForm() {
     const dispatch = useDispatch()
 
     const onSubmit = () => {
-        let obj2 = obj.split("~#")
-        //taking in an obj to populate field, had to split withn ~=#
+        let parsed = JSON.parse(obj)
+        //input was a json.strify so I have to parse it
         const newPin = {
             user:userID,
-            image: obj2[1],
-            title: obj2[0],
-            description: obj2[2],
-            link:obj2[3]
+            image: parsed.bigImage,
+            title: parsed.title,
+            description: parsed.text,
+            link:parsed.link
             }
-        // console.log(newPin)
         
         dispatch(createPin(newPin)).then(pin => setId(pin.pin.data._id))
         //after a new pin is create I have wait for reponse and set the pin id response

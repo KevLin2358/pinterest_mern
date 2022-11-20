@@ -1,7 +1,6 @@
 import React from 'react'
 import Navbar from '../components/nav/navbar'
 import "./singlePinPage.css"
-import Q from "../imageComponent/images/r.jpg"
 import Bell from '../imageComponent/BellSVG'
 import { useState,useEffect } from 'react'
 import Pins from '../components/pin/pins'
