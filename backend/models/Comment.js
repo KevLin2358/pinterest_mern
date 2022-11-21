@@ -10,18 +10,10 @@ const CommentSchema = new Schema({
     type: String,
     required: true
   },
-  Pin: {
+  pin: {
     type: Schema.Types.ObjectId,
     ref: "Pin",
   },
-  HeartCount: {
-    type: Number,
-    default: 0
-  },
-  HelpfulCount: {
-    type: Number,
-    default: 0
-  }
 }, {
   timestamps: true
 })

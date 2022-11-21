@@ -86,7 +86,7 @@ const Navbar = () => {
   }
 
   const onWhichPage = window.location.pathname
-  console.log(onWhichPage)
+  // console.log(onWhichPage)
   if (onWhichPage === "/"){
   // if (true){
     return (

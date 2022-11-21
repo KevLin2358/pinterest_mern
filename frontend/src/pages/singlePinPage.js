@@ -8,10 +8,11 @@ import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import { deletePin, fetchSinglePin } from '../actions/pin_actions'
 import {createComment} from '../actions/comment_actions'
+import { fetchPincomments } from '../actions/comment_actions'
 // import {}
 function SinglePin({url}) {
     const [comment,setComment] = useState("")
-    const [commentArray,setCommentArray] = useState(["testing","asdwd"])
+    const [commentArray,setCommentArray] = useState([])
     const dispatch = useDispatch()
     const [pin,setPin] = useState("")
     const onSubmitButton = (e) => {
@@ -19,7 +20,8 @@ function SinglePin({url}) {
         setCommentArray([...commentArray,comment])
         setComment("")
     }
-    const state = useSelector(state => state)
+    const stateObj = useSelector(state => state)
+
     // const uploader = useSelector(state => state)
     // console.log(window.location.href.split("/")[4])
     const pinId = window.location.href.split("/")[4]
@@ -27,27 +29,36 @@ function SinglePin({url}) {
     useEffect(() => {
         dispatch(fetchSinglePin(pinId)).then(req => setPin(req))
         //this will fetch the pinID obj and set state
+        console.log(stateObj)
+
     }, [])
-    // console.log(pin.pins.data.image)
+    // console.log(pin.pins.data)
+    useEffect(() => {
+        console.log(pin.pins)
+        if(Object.keys(pin).length !== 0) {
+            dispatch(fetchPincomments(stateObj.pin.data._id)).then((req) => setCommentArray(req.comments.data.map(e => e.text)))
+        }
+    },[pin])
+
 
     const handleDelete = () =>{
         dispatch(deletePin(pinId)).then(()=>window.location.href = '/')
         //this will delete pin and after it will redirect to main
     }
     // console.log(state.pin.data._id)
-    const testing = () => {
-        // console.log(pinId)
+    const testing = (e) => {
+        e.preventDefault()
         const newComment = ({
-            user: state.pin.data.user,
-            text: "213213",
-            pinId: state.pin.data._id,
-            heartCount: 0,
-            helpfulCount: 0
+            user: stateObj.pin.data.user,
+            text: comment,
+            pinId: stateObj.pin.data._id,
           });
 
-        dispatch(createComment(newComment))
+        // dispatch(createComment(newComment)).then((res) => setCommentArray(res.comments.data.map(e => e.text)))
+        dispatch(createComment(newComment)).then((res) => setCommentArray([...commentArray,res.comments.data.text]))
+        setComment("")
     }
-
+    // console.log(commentArray)
     if (pin=== "") return null
     return (
     <React.Fragment>
@@ -69,22 +80,22 @@ function SinglePin({url}) {
                         <div className='rightComments'>
                             {commentArray.map((comment) => {
                                 return(
-                                <li key={comment}>
+                                <li key={comment.id}>
                                     {comment}
                                 </li>
                                 )
                         })}</div>
                         <div className='rightCommentInput'>
-                            <form onSubmit={onSubmitButton}>
+                            <form onSubmit={testing}>
                                 <input 
                                     value={comment}
                                     onChange={(e) => setComment(e.target.value)} 
                                     placeholder='Please Type here'>
                                 </input>
+                            <button onClick={testing}>createComment</button>
                             </form>
                         </div>
                         <button onClick={handleDelete}>deletePin</button>
-                        <button onClick={testing}>createComment</button>
                     </div>
                 </div>
             </div>

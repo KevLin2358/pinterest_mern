@@ -22,12 +22,20 @@ router.post('/',
         user: req.user.id,
         text: req.body.text,
         pin: req.body.pinId,
-        heartCount: 0,
-        helpfulCount: 0
       });
   
       newComment.save().then(comment => res.json(comment));
     }
   );
+
+  router.get('/:id', (req, res) => { // pinid
+    console.log("comment actions")
+    console.log(req.params.id)
+    Comment.find({pin:req.params.id})
+        .then(comments => res.json(comments)).then((req) => console.log(req.body))
+        .catch(err =>
+            res.status(404).json({ noCommentFound: 'No comment found' })
+        );
+  });
 
 module.exports = router;

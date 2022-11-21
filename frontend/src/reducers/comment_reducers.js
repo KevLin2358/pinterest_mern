@@ -16,10 +16,10 @@ import {
     let nextState = {};
     switch(action.type){
       case RECEIVE_PIN_COMMENTS:
-        console.log("asd")
+        // console.log("asd")
           return {...action.comments};
       case RECEIVE_COMMENT:
-        console.log("asd")
+        // console.log("asd")
         return action.comment;
       case REMOVE_COMMENT:
         delete newState[action.id]

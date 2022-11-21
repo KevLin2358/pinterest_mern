@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const fetchPincomments = pinId =>{
+export const fetchPinComments = pinId =>{
   return axios.get(`/api/comments/${pinId}`)
 };
 
