@@ -9,17 +9,14 @@ import { useDispatch } from 'react-redux'
 import { deletePin, fetchSinglePin } from '../actions/pin_actions'
 import {createComment} from '../actions/comment_actions'
 import { fetchPincomments } from '../actions/comment_actions'
+import { deleteComment } from '../util/comment_api_util'
 // import {}
 function SinglePin({url}) {
     const [comment,setComment] = useState("")
-    const [commentArray,setCommentArray] = useState([])
+    const [commentArray,setCommentArrayObj] = useState([])
     const dispatch = useDispatch()
     const [pin,setPin] = useState("")
-    const onSubmitButton = (e) => {
-        e.preventDefault()
-        setCommentArray([...commentArray,comment])
-        setComment("")
-    }
+
     const stateObj = useSelector(state => state)
 
     // const uploader = useSelector(state => state)
@@ -29,24 +26,34 @@ function SinglePin({url}) {
     useEffect(() => {
         dispatch(fetchSinglePin(pinId)).then(req => setPin(req))
         //this will fetch the pinID obj and set state
-        console.log(stateObj)
+        // console.log(stateObj)
 
     }, [])
     // console.log(pin.pins.data)
     useEffect(() => {
-        console.log(pin.pins)
         if(Object.keys(pin).length !== 0) {
-            dispatch(fetchPincomments(stateObj.pin.data._id)).then((req) => setCommentArray(req.comments.data.map(e => e.text)))
+            dispatch(fetchPincomments(stateObj.pin.data._id)).then(
+            (req) => setCommentArrayObj(req.comments.data))
+            //if pin Object.keys(pin).length is 0 that means that the reducer return didnt come back yet
+            //wait for it and run it again so that data is not null
         }
     },[pin])
 
 
-    const handleDelete = () =>{
+    const handleDeletePin = () =>{
         dispatch(deletePin(pinId)).then(()=>window.location.href = '/')
         //this will delete pin and after it will redirect to main
     }
+
+    const handleDeleteComment = (id) =>{
+        deleteComment(id).then(
+        ()=>dispatch(fetchPincomments(stateObj.pin.data._id)).then(
+        (req) => setCommentArrayObj(req.comments.data)))
+        //pass in comment ID and after that re fetch comments
+        //set the req as an array of obj
+    }
     // console.log(state.pin.data._id)
-    const testing = (e) => {
+    const handleCreateComment = (e) => {
         e.preventDefault()
         const newComment = ({
             user: stateObj.pin.data.user,
@@ -54,12 +61,18 @@ function SinglePin({url}) {
             pinId: stateObj.pin.data._id,
           });
 
-        // dispatch(createComment(newComment)).then((res) => setCommentArray(res.comments.data.map(e => e.text)))
-        dispatch(createComment(newComment)).then((res) => setCommentArray([...commentArray,res.comments.data.text]))
+        // dispatch(createComment(newComment)).then((res) => setCommentArrayObj(res.comments.data.map(e => e.text)))
+        dispatch(createComment(newComment))
+        .then(() => 
+        dispatch(fetchPincomments(stateObj.pin.data._id))
+        .then((req) => setCommentArrayObj(req.comments.data)))
+        //Should remember this syntax
+        //create a new comment
+        //then refetch all the pins
+        //then setComment as an array of obj
         setComment("")
     }
-    // console.log(commentArray)
-    if (pin=== "") return null
+    if (!pin) return null
     return (
     <React.Fragment>
        <Navbar/>
@@ -78,25 +91,27 @@ function SinglePin({url}) {
                         <div className='rightUploader'>Handler</div>
                         <div className='rightComment'>{commentArray.length} Comments</div>
                         <div className='rightComments'>
-                            {commentArray.map((comment,i) => {
-                                console.log(comment,i)
+                            {commentArray.map((comment) => {
                                 return(
-                                <li key={comment.i}>
-                                    {comment}
+                                <li key={comment._id}>
+                                    {     
+                                    comment.text
+                                    }
+                                    <button onClick={() => handleDeleteComment(comment._id)}>deletePin</button>
                                 </li>
                                 )
                         })}</div>
                         <div className='rightCommentInput'>
-                            <form onSubmit={testing}>
+                            <form onSubmit={handleCreateComment}>
                                 <input 
                                     value={comment}
                                     onChange={(e) => setComment(e.target.value)} 
                                     placeholder='Please Type here'>
                                 </input>
-                            <button onClick={testing}>createComment</button>
+                            <button onClick={handleCreateComment}>createComment</button>
                             </form>
                         </div>
-                        <button onClick={handleDelete}>deletePin</button>
+                        <button onClick={handleDeletePin}>deletePin</button>
                     </div>
                 </div>
             </div>

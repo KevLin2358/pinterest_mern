@@ -38,4 +38,12 @@ router.post('/',
         );
   });
 
+  router.delete('/:id', (req, res) => {
+    Comment.findByIdAndRemove(req.params.id)
+      .then(() => res.json())
+      .catch(err => 
+        res.status(404).json({nopinsfound: 'No Comment found with that ID'})
+        );
+  })
+
 module.exports = router;
