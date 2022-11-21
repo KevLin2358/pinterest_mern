@@ -10,6 +10,7 @@ import { deletePin, fetchSinglePin } from '../actions/pin_actions'
 import {createComment} from '../actions/comment_actions'
 import { fetchPincomments } from '../actions/comment_actions'
 import { deleteComment } from '../util/comment_api_util'
+import RenderComments from '../components/comments/renderComments'
 // import {}
 function SinglePin({url}) {
     const [comment,setComment] = useState("")
@@ -91,16 +92,12 @@ function SinglePin({url}) {
                         <div className='rightUploader'>Handler</div>
                         <div className='rightComment'>{commentArray.length} Comments</div>
                         <div className='rightComments'>
-                            {commentArray.map((comment) => {
-                                return(
-                                <li key={comment._id}>
-                                    {     
-                                    comment.text
-                                    }
-                                    <button onClick={() => handleDeleteComment(comment._id)}>deletePin</button>
-                                </li>
-                                )
-                        })}</div>
+                        <RenderComments 
+                        comments = {commentArray}
+                        handleDeleteComment = {handleDeleteComment}
+                        />
+
+                        </div>
                         <div className='rightCommentInput'>
                             <form onSubmit={handleCreateComment}>
                                 <input 
