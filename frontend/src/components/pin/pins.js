@@ -7,24 +7,21 @@ function Pins({url}) {
     //current will be the size of the image
 
     const renderPin = (url) => {
-
-        let numberOfChar = {
-            one:"100%",
-            two:"96%",
-            three:"92%"
-        }
-
         let titleLen = (url.title.length)
         let dynamicHeight = ""
-        if (Math.floor(titleLen/25) <= 1){
-            dynamicHeight = numberOfChar.one
-        }else if (Math.floor(titleLen/25) <= 2){
-            dynamicHeight = numberOfChar.two
+        let dynamicHeightFunction = () => {
+            let numberOfLines = Math.floor(titleLen/25)
+            let dynamicHeightNum = 100-((numberOfLines)*3.1)
+            //every line 25(char) will -3 off height
+
+            // console.log(numberOfLines,dynamicHeightNum)
+
+            dynamicHeight = dynamicHeightNum.toString()+"%"
+            //change number to string plus %
+
         }
-        else{
-            dynamicHeight = numberOfChar.three
-            console.log(titleLen)
-        }
+
+        dynamicHeightFunction()
 
 
 

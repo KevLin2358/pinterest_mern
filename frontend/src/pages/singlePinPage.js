@@ -7,6 +7,7 @@ import Pins from '../components/pin/pins'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import { deletePin, fetchSinglePin } from '../actions/pin_actions'
+import {createComment} from '../actions/comment_actions'
 // import {}
 function SinglePin({url}) {
     const [comment,setComment] = useState("")
@@ -18,7 +19,9 @@ function SinglePin({url}) {
         setCommentArray([...commentArray,comment])
         setComment("")
     }
-    console.log(window.location.href.split("/")[4])
+    const state = useSelector(state => state)
+    // const uploader = useSelector(state => state)
+    // console.log(window.location.href.split("/")[4])
     const pinId = window.location.href.split("/")[4]
     // This is the get the last part of the img name
     useEffect(() => {
@@ -30,6 +33,19 @@ function SinglePin({url}) {
     const handleDelete = () =>{
         dispatch(deletePin(pinId)).then(()=>window.location.href = '/')
         //this will delete pin and after it will redirect to main
+    }
+    // console.log(state.pin.data._id)
+    const testing = () => {
+        // console.log(pinId)
+        const newComment = ({
+            user: state.pin.data.user,
+            text: "213213",
+            pinId: state.pin.data._id,
+            heartCount: 0,
+            helpfulCount: 0
+          });
+
+        dispatch(createComment(newComment))
     }
 
     if (pin=== "") return null
@@ -68,6 +84,7 @@ function SinglePin({url}) {
                             </form>
                         </div>
                         <button onClick={handleDelete}>deletePin</button>
+                        <button onClick={testing}>createComment</button>
                     </div>
                 </div>
             </div>
