@@ -78,9 +78,10 @@ function SinglePin({url}) {
                         <div className='rightUploader'>Handler</div>
                         <div className='rightComment'>{commentArray.length} Comments</div>
                         <div className='rightComments'>
-                            {commentArray.map((comment) => {
+                            {commentArray.map((comment,i) => {
+                                console.log(comment,i)
                                 return(
-                                <li key={comment.id}>
+                                <li key={comment.i}>
                                     {comment}
                                 </li>
                                 )
