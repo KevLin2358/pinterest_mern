@@ -10,7 +10,7 @@ import { deletePin, fetchSinglePin } from '../actions/pin_actions'
 import {createComment} from '../actions/comment_actions'
 import { fetchPincomments } from '../actions/comment_actions'
 import { deleteComment } from '../util/comment_api_util'
-import RenderComments from '../components/comments/renderComments'
+import RenderCommentsAndRightSide from '../components/comments/renderComments'
 // import {}
 function SinglePin({url}) {
     const [comment,setComment] = useState("")
@@ -82,7 +82,7 @@ function SinglePin({url}) {
                 <div className='singlePageCenter'>
                     <div className='singlePageCenterLeft'><img src={pin.pins.data.image}></img></div>
                     <div className='singlePageCenterRight'>
-                        <RenderComments 
+                        <RenderCommentsAndRightSide 
                         comments = {commentArray}
                         handleDeleteComment = {handleDeleteComment}
                         pin = {pin}
