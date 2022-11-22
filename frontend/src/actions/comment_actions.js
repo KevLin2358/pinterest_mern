@@ -34,7 +34,6 @@ export const removeComment = commentId =>{
 }
 
 export const fetchPincomments = pinId => dispatch =>{
-    console.log("actions")
   return CommentApiUtil.fetchPinComments(pinId)
     .then(comments => dispatch(receivePinComments(comments)));
 }
@@ -55,8 +54,8 @@ export const createComment = data => dispatch =>{
     .then(comment => dispatch(receivePinComments(comment)));
 }
 
-// export const deletePin = id => dispatch =>{
-//   return CommentApiUtil.deletePin(id)
-//     .then(() => dispatch(removePin(id)))
-// }
+export const deleteComment = id => dispatch =>{
+  return CommentApiUtil.deleteComment(id)
+    .then(() => dispatch(removeComment(id)))
+}
 
