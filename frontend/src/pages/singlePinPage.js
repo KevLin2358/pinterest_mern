@@ -82,33 +82,15 @@ function SinglePin({url}) {
                 <div className='singlePageCenter'>
                     <div className='singlePageCenterLeft'><img src={pin.pins.data.image}></img></div>
                     <div className='singlePageCenterRight'>
-                        <div className='singlePageCenterRight1'>
-                            <div ><Bell></Bell><Bell></Bell><Bell></Bell></div>
-                            <div ><button className='singlePageCenterRight1Button'>Save</button></div>
-                            </div>
-                        <div className='rightLink'>{pin.pins.data.link}</div>
-                        <div className='rightTitle'>{pin.pins.data.title}</div>
-                        <div className='rightDes'>{pin.pins.data.description}</div>
-                        <div className='rightUploader'>Handler</div>
-                        <div className='rightComment'>{commentArray.length} Comments</div>
-                        <div className='rightComments'>
                         <RenderComments 
                         comments = {commentArray}
                         handleDeleteComment = {handleDeleteComment}
+                        pin = {pin}
+                        handleCreateComment = {handleCreateComment}
+                        setComment = {setComment}
+                        handleDeletePin = {handleDeletePin}
+                        comment = {comment}
                         />
-
-                        </div>
-                        <div className='rightCommentInput'>
-                            <form onSubmit={handleCreateComment}>
-                                <input 
-                                    value={comment}
-                                    onChange={(e) => setComment(e.target.value)} 
-                                    placeholder='Please Type here'>
-                                </input>
-                            <button onClick={handleCreateComment}>createComment</button>
-                            </form>
-                        </div>
-                        <button onClick={handleDeletePin}>deletePin</button>
                     </div>
                 </div>
             </div>
