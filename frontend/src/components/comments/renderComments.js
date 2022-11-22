@@ -1,7 +1,7 @@
 import React from 'react'
 import Bell from '../../imageComponent/BellSVG'
 
-function RenderComments({comment,comments,handleDeleteComment,pin,handleCreateComment,setComment,handleDeletePin}) {
+function RenderCommentsAndRightSide({comment,comments,handleDeleteComment,pin,handleCreateComment,setComment,handleDeletePin}) {
   return (
     <div className='rightComments'>
       <div className='singlePageCenterRight1'>
@@ -12,7 +12,7 @@ function RenderComments({comment,comments,handleDeleteComment,pin,handleCreateCo
         <button className='singlePageCenterRight1Button'>Save</button></div>
       </div>
       <div 
-        className='rightLink'>{pin.pins.data.link}
+        className='rightLink'><a href={pin.pins.data.link}>{pin.pins.data.link}</a>
       </div>
       <div 
         className='rightTitle'>{pin.pins.data.title}
@@ -51,4 +51,4 @@ function RenderComments({comment,comments,handleDeleteComment,pin,handleCreateCo
   )
 }
 
-export default RenderComments
+export default RenderCommentsAndRightSide
