@@ -1,6 +1,6 @@
 import React from 'react'
 import Bell from '../../imageComponent/BellSVG'
-
+import InputForms from '../Tools/inputForm'
 function RenderCommentsAndRightSide({comment,comments,handleDeleteComment,pin,handleCreateComment,setComment,handleDeletePin}) {
   return (
     <div className='rightComments'>
@@ -46,7 +46,8 @@ function RenderCommentsAndRightSide({comment,comments,handleDeleteComment,pin,ha
           <button onClick={handleCreateComment}>createComment</button>
         </form>
       </div>
-      <button onClick={handleDeletePin}>deletePin</button>       
+      <button onClick={handleDeletePin}>deletePin</button>   
+      <InputForms/>    
     </div>
   )
 }
