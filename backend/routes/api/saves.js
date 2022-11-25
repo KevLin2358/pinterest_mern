@@ -20,8 +20,8 @@ router.post('/',
   
       const newSave = new Save({
         user: req.user.id,
-        pin: "63765e7a99829291a0f732c1",
-        board: "637d04b5d0f877f406a85209"
+        pin: req.body.pin,
+        board: req.body.board
       });
   
       newSave.save().then(save => res.json(save));

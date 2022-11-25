@@ -2,17 +2,26 @@ import React, { useEffect,useState } from 'react'
 import { createBoard } from '../../actions/board_actions'
 import { useDispatch,useSelector } from 'react-redux'
 import { createSave } from '../../actions/save_actions'
+import { fetchBoard,fetchBoards } from '../../actions/board_actions'
 function InputForms() {
     const dispatch = useDispatch()
     const stateObj = useSelector(state => state)
+    const [id,setID] = useState()
+    const [board,newBoard] = useState("")
+
+
+
     useEffect(() => {
         console.log(stateObj)
+        if(stateObj){
+            setID(stateObj.session.user.id)
+        }
     }, [stateObj])
     
 
     const button1 = () => {
         const newBoard = {
-            title:"Testing here3"
+            title:board
         }
         dispatch(createBoard(newBoard))
     }
@@ -22,11 +31,12 @@ function InputForms() {
     }
 
     const button3 = () => {
-        dispatch(createBoard())
+        console.log(id)
+        dispatch(fetchBoard(id))
     }
 
     const button4 = () => {
-        dispatch(createBoard())
+        dispatch(fetchBoards(id))
     }
 
     const button5 = () => {
@@ -34,21 +44,27 @@ function InputForms() {
     }
 
   return (
-    <div>
+    <div >
+        <input 
+            onSubmit={button1}
+            onChange={(e) => newBoard(e.target.value)}
+            placeholder="Board name"
+        > 
+        </input>
         <button onClick={button1}>
-            Button1
+            createBoard
         </button>
 
         <button onClick={button2}>
-            Button2
+            createSave
         </button>
 
         <button onClick={button3}>
-            Button3
+            fetchBoard
         </button>
 
         <button onClick={button4}>
-            Button4
+            fetchBoards
         </button>
 
         <button onClick={button5}>

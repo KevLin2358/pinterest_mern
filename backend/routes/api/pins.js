@@ -5,7 +5,7 @@ const passport = require('passport');
 const Pin = require('../../models/Pin');
 const validatePinInput = require('../../validation/pins');
 
-// router.get("/test", (req, res) => res.json({ msg: "This is the pins route" }));
+router.get("/test", (req, res) => res.json({ msg: "This is the pins route" }));
 
 
 router.get('/', (req, res) => {

@@ -3,9 +3,9 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const passport = require('passport');
 const Board = require('../../models/Board');
-
+const Save = require('../../models/Save')
 router.get("/test", (req, res) =>{
-    res.json({ msg: "This is the board route" })
+    res.json({ msg: "This is the board routeasdas" })
 } );
 
 // router.get('/', (req, res) => {
@@ -15,21 +15,49 @@ router.get("/test", (req, res) =>{
 //       .catch(err => res.status(404).json({ nopinsfound: 'No pins found' }));
 // });
 
-router.get('/user/:board_id', (req, res) => {
-  Pin.find({user: req.params.user_id})
-      .then(pins => res.json(pins))
-      .catch(err =>
-          res.status(404).json({ nopinsfound: 'No pins found from that user' }
-      )
+router.get('/user/:user_id', (req, res) => {
+  // console.log("this is board backend")
+  // console.log(req.params.user_id)
+  // console.log(req.body)
+  Board.find({user:req.params.user_id,default:true})
+  // .then
+  // (board => 
+  // Save.find({board:board[0].id}))
+  .then(defaultBoard => res.json(defaultBoard))
+  .catch(err =>
+      res.status(404).json({ nopinsfound: 'No pins found from that user' }
+  )
+  );
+});
+
+router.get('/user/all/:user_id', (req, res) => {
+  console.log("all boards backend")
+  console.log(req.params.user_id)
+  console.log(req.body)
+  Board.find({user:req.params.user_id})
+  .then(board => res.json(board))
+  .catch(err =>
+      res.status(404).json({ nopinsfound: 'No pins found from that user' }
+  )
   );
 });
  
 router.get('/:id', (req, res) => { // pinid
-  Pin.findById(req.params.id)
-      .then(pins => res.json(pins))
-      .catch(err =>
-          res.status(404).json({ nopinsfound: 'No pins found with that ID' })
-      );
+  console.log(req.params.id)
+  Board.find({user:req.params.id,default:true})
+  .then(board => 
+  Save.find({board:board[0].id}))
+  .then(pins => res.json(pins))
+  .catch(err =>
+      res.status(404).json({ nopinsfound: 'No pins found from that user' }
+  )
+);
+
+  // Pin.findById(req.params.id)
+  //     .then(pins => res.json(pins))
+  //     .catch(err =>
+  //         res.status(404).json({ nopinsfound: 'No pins found with that ID' })
+  //     );
 });
 
 router.post('/',
@@ -43,7 +71,7 @@ router.post('/',
   
       const newBoard = new Board({
         user: req.user.id,
-        title: 'dwdwd',
+        title: req.body.title,
         default: false
       });
   

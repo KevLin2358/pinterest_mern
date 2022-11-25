@@ -1,61 +1,67 @@
 import * as BoardApiUtil from "../util/board_api_util";
 
-export const RECEIVE_COMMENT = 'RECEIVE_COMMENT'; // all pins specific
-export const RECEIVE_PIN_COMMENTS = 'RECEIVE_PIN_COMMENTS'; // all pins homepage all
-// export const RECEIVE_PIN = 'RECEIVE_PIN'; // single pin
-export const REMOVE_COMMENT = 'REMOVE_COMMENT'; // delete pin
+export const RECEIVE_BOARD = 'RECEIVE_BOARD'; // all pins specific
+export const RECEIVE_BOARDS = 'RECEIVE_BOARDS'; // all pins homepage all
+// export const RECEIVE = 'RECEIVE'; // single pin
+export const REMOVE_BOARD = 'REMOVE_BOARD'; // delete pin
 
-export const receiveComment = pins => {
+export const receiveBoard = board => {
   return({
-    type: RECEIVE_COMMENT,
-    pins
+    type: RECEIVE_BOARD,
+    board
   })
 }
 
-export const receivePinComments = comments =>{
+export const receiveBoards = boards =>{
   return({
-    type: RECEIVE_PIN_COMMENTS,
-    comments
+    type: RECEIVE_BOARDS,
+    boards
   })
 }
 
-// export const receivePin = pin =>{
+// export const receive = pin =>{
 //   return({
-//     type: RECEIVE_PIN,
+//     type: RECEIVE,
 //     pin
 //   })
 // }
 
-export const removeComment = commentId =>{
+export const removeBoard = boardId =>{
   return({
-    type: REMOVE_COMMENT,
-    commentId
+    type: REMOVE_BOARD,
+    boardId
   })
 }
 
-// export const fetchPincomments = pinId => dispatch =>{
-//   return BoardApiUtil.fetchPinComments(pinId)
-//     .then(comments => dispatch(receivePinComments(comments)));
+export const fetchBoard = boardId => dispatch =>{
+    console.log(boardId)
+  return BoardApiUtil.fetchBoard(boardId)
+    .then(board => dispatch(receiveBoard(board)));
+}
+
+export const fetchBoards = userId => dispatch =>{
+  return BoardApiUtil.fetchBoards(userId)
+    .then(boards => dispatch(receiveBoards(boards)));
+}
+
+// export const fetchUser = userId => dispatch =>{
+//   return BoardApiUtil.fetchUser(userId)
+//     .then(pins => dispatch(receives(pins)));
 // }
 
-// export const fetchUserPin = userId => dispatch =>{
-//   return BoardApiUtil.fetchUserPin(userId)
-//     .then(pins => dispatch(receivePins(pins)));
-// }
-
-// export const fetchSinglePin = pinId => dispatch =>{
-//   return BoardApiUtil.fetchPin(pinId)
-//     .then(pin => dispatch(receivePins(pin)));
+// export const fetchSingle = pinId => dispatch =>{
+//   return BoardApiUtil.fetch(pinId)
+//     .then(pin => dispatch(receives(pin)));
 // }
 
 export const createBoard = data => dispatch =>{
     console.log("creating Board")
   return BoardApiUtil.createBoard(data)
-    // .then(comment => dispatch(receivePinComments(comment)));
+    .then(board => dispatch(receiveBoard(board)));
 }
 
-// export const deleteComment = id => dispatch =>{
-//   return BoardApiUtil.deleteComment(id)
-//     .then(() => dispatch(removeComment(id)))
+// export const deleteBoard = id => dispatch =>{
+//   return BoardApiUtil.deleteBoard(id)
+//     .then(() => dispatch(removeBoard(id)))
 // }
 

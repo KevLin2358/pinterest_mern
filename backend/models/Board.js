@@ -12,7 +12,6 @@ const BoardSchema = new Schema({
   },
   default: {
     type: Boolean,
-    required: true
   },
 }, {
   timestamps: true
