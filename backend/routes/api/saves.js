@@ -11,20 +11,33 @@ router.get("/test", (req, res) =>{
 router.post('/',
     passport.authenticate('jwt', { session: false }),
     (req, res) => {
-      console.log("A new save is created")
+      // console.log("A new save is created")
     //   console.log(req.body)
     //   if (!isValid) {
     //     return res.status(400).json(errors);
     //   }
-      console.log(req.user.id)
-  
-      const newSave = new Save({
-        user: req.user.id,
-        pin: req.body.pin,
-        board: req.body.board
-      });
-  
-      newSave.save().then(save => res.json(save));
+      // console.log(req.body.pin)
+      Save.find({pin: req.body.pin}).then(result => {
+        let obj = result
+        if (Object.keys(obj).length >= 1){
+            console.log("Already Saved")
+            res.json("Already Saved")
+            console.log(obj[0].id)
+            Save.findByIdAndRemove(obj[0].id)
+        }
+        else{
+          console.log("saved")
+          const newSave = new Save({
+            user: req.user.id,
+            pin: req.body.pin,
+            board: req.body.board
+          });
+      
+          newSave.save().then(save => res.json(save));
+        }
+
+      })
+
     }
   );
   module.exports = router;

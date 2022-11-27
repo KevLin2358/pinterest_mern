@@ -9,7 +9,7 @@ router.get("/test", (req, res) =>{
 } );
 
 // router.get('/', (req, res) => {
-//   Pin.find()
+//   Board.find()
 //       .sort({ date: -1 })
 //       .then(pins => res.json(pins))
 //       .catch(err => res.status(404).json({ nopinsfound: 'No pins found' }));
@@ -53,7 +53,7 @@ router.get('/:id', (req, res) => { // pinid
   )
 );
 
-  // Pin.findById(req.params.id)
+  // Board.findById(req.params.id)
   //     .then(pins => res.json(pins))
   //     .catch(err =>
   //         res.status(404).json({ nopinsfound: 'No pins found with that ID' })
@@ -80,7 +80,7 @@ router.post('/',
   );
   
   router.delete('/:id', (req, res) => {
-    Pin.findByIdAndRemove(req.params.id)
+    Board.findByIdAndRemove(req.params.id)
       .then(() => res.json())
       .catch(err => 
         res.status(404).json({nopinsfound: 'No pin found with that ID'})

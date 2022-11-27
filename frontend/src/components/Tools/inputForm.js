@@ -6,17 +6,31 @@ import { fetchBoard,fetchBoards } from '../../actions/board_actions'
 function InputForms() {
     const dispatch = useDispatch()
     const stateObj = useSelector(state => state)
-    const [id,setID] = useState()
+    const [id,setID] = useState(stateObj.session.user.id)
     const [board,newBoard] = useState("")
 
 
 
+    // useEffect(() => {
+    //     console.log(stateObj)
+    //     if(stateObj){
+    //         setID(()=>stateObj.session.user.id)
+    //     }
+    // }, [stateObj])
+
+
     useEffect(() => {
-        console.log(stateObj)
-        if(stateObj){
-            setID(stateObj.session.user.id)
+        if(board === "" && stateObj){
+            dispatch(fetchBoards(id)).then(res => newBoard(res.boards.data))
         }
-    }, [stateObj])
+    }, [])
+
+    // useEffect(()=> {
+    //     if (board !== "" && defaultoBoardId === ""){
+    //         let x = board.filter(e => e.default === true)
+    //         setdefaultBoardId(() =>(x[0]._id))
+    //     }
+    // })
     
 
     const button1 = () => {
@@ -40,7 +54,7 @@ function InputForms() {
     }
 
     const button5 = () => {
-        dispatch(createBoard())
+        console.log()
     }
 
   return (
