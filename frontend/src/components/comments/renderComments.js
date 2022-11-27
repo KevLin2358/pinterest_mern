@@ -1,7 +1,32 @@
 import React from 'react'
 import Bell from '../../imageComponent/BellSVG'
-
+import InputForms from '../Tools/inputForm'
+import { useDispatch, useSelector } from 'react-redux'
+import { useState,useEffect } from 'react'
+import { createSave } from '../../actions/save_actions'
 function RenderCommentsAndRightSide({comment,comments,handleDeleteComment,pin,handleCreateComment,setComment,handleDeletePin}) {
+  const boardArray = useSelector(state => state.board.data)
+  const pinId = useSelector(state => state.pin.data._id)
+  const [defaultoBoardId,setdefaultBoardId] = useState("")
+  const dispatch = useDispatch()
+
+
+  useEffect(() => {
+    if (boardArray && defaultoBoardId === ""){
+      let x = boardArray.filter(e => e.default === true)
+      setdefaultBoardId(() =>(x[0]._id))
+    } 
+  }, [boardArray])
+  
+  const saveThisPin = () => {
+    const newSave = {
+      pin:pinId,
+      board:defaultoBoardId
+    }
+    dispatch(createSave(newSave))
+  }
+  
+  console.log(defaultoBoardId,pinId)
   return (
     <div className='rightComments'>
       <div className='singlePageCenterRight1'>
@@ -9,7 +34,7 @@ function RenderCommentsAndRightSide({comment,comments,handleDeleteComment,pin,ha
         <Bell></Bell><Bell></Bell><Bell></Bell>
       </div>
       <div >
-        <button className='singlePageCenterRight1Button'>Save</button></div>
+        <button onClick={saveThisPin} className='singlePageCenterRight1Button'>Save</button></div>
       </div>
       <div 
         className='rightLink'><a href={pin.pins.data.link}>{pin.pins.data.link}</a>
@@ -46,7 +71,8 @@ function RenderCommentsAndRightSide({comment,comments,handleDeleteComment,pin,ha
           <button onClick={handleCreateComment}>createComment</button>
         </form>
       </div>
-      <button onClick={handleDeletePin}>deletePin</button>       
+      <button onClick={handleDeletePin}>deletePin</button>   
+      <InputForms/>    
     </div>
   )
 }

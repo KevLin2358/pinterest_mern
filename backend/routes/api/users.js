@@ -7,6 +7,7 @@ const keys = require('../../config/keys');
 const passport = require('passport');
 const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
+const Board = require('../../models/Board');
 
 // router.get("/test", (req, res) => res.json({ msg: "This is the users route" }));
 
@@ -34,6 +35,15 @@ router.post('/register', (req, res) => {
           email: req.body.email,
           password: req.body.password
         })
+
+      console.log(req.body)
+      const newBoard = new Board({
+        user: "6377e1fbd8438bee7f162530",
+        title: 'testnumber5',
+        default:true
+      });
+  
+      newBoard.save()
 
       bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(newUser.password, salt, (err, hash) => {

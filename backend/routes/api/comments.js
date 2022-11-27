@@ -6,7 +6,6 @@ const Comment = require('../../models/Comment');
 // const validatePinInput = require('../../validation/comments');
 
 router.get("/test", (req, res) =>{
-    console.log("this is console")
     res.json({ msg: "This is the comments route" })
 } );
 
@@ -14,7 +13,6 @@ router.post('/',
     passport.authenticate('jwt', { session: false }),
     (req, res) => {
     //   const { errors, isValid } = validatePinInput(req.body);
-      console.log("comment Backend")
     //   if (!isValid) {
     //     return res.status(400).json(errors);
     //   }
@@ -29,8 +27,6 @@ router.post('/',
   );
 
   router.get('/:id', (req, res) => { // pinid
-    console.log("comment actions")
-    console.log(req.params.id)
     Comment.find({pin:req.params.id})
         .then(comments => res.json(comments)).then((req) => console.log(req.body))
         .catch(err =>
