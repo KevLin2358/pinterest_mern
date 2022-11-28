@@ -21,6 +21,7 @@ import FusedImages from './fusedImages/fusedImages';
 import SplashPage from '../pages/splashpage';
 import CreatePage from '../pages/createPage';
 import UserPage from '../pages/userPage';
+import boardPage from '../pages/boardPage';
 const App = () => {
   
   return (
@@ -31,6 +32,7 @@ const App = () => {
         <AuthRoute exact path="/login" component={LoginFormContainer} />
         <AuthRoute exact path="/signup" component={SignupFormContainer} />
         <Route path="/pins/:pinId" component={SinglePin} />
+        <Route path="/boards/:boardId" component={boardPage} />
         <Route path="/profile"><UserPage/></Route>
         <Route path="/create"><CreatePage/></Route>
         <Route path="/today"><Today/></Route>
