@@ -8,6 +8,15 @@ router.get("/test", (req, res) =>{
     res.json({ msg: "This is the board route" })
 } );
 
+router.get('/boards/:boardId', (req, res) => { // pinid
+  console.log("Backened")
+  Save.find({board:req.params.boardId})
+      .then(pins => res.json(pins))
+      .catch(err =>
+          res.status(404).json({ nopinsfound: 'No pins found with that ID' })
+      );
+});
+
 router.delete('/:array', (req, res) => {
   console.log(req.body)
   console.log(req.params)

@@ -9,7 +9,8 @@ export const fetchSave = () =>{
 };
 
 export const fetchSaves = boardId => {
-  return axios.get(`/api/saves/${boardId}`)
+  console.log("boardId")
+  return axios.get(`/api/saves/boards/${boardId}`)
 }
 
 export const deleteSave = (array) => {
