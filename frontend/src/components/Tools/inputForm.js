@@ -1,12 +1,14 @@
 import React, { useEffect,useState } from 'react'
 import { createBoard } from '../../actions/board_actions'
 import { useDispatch,useSelector } from 'react-redux'
-import { createSave } from '../../actions/save_actions'
+import { createSave,fetchSaves,fetchSave,deleteSave } from '../../actions/save_actions'
 import { fetchBoard,fetchBoards } from '../../actions/board_actions'
 function InputForms() {
     const dispatch = useDispatch()
     const stateObj = useSelector(state => state)
     const [id,setID] = useState(stateObj.session.user.id)
+    const [pinId,setPinID] = useState(stateObj.pin.data._id)
+
     const [board,newBoard] = useState("")
 
 
@@ -23,6 +25,8 @@ function InputForms() {
         if(board === "" && stateObj){
             dispatch(fetchBoards(id)).then(res => newBoard(res.boards.data))
         }
+        // setPinID(pinId)
+        console.log(pinId)
     }, [])
 
     // useEffect(()=> {
@@ -54,7 +58,11 @@ function InputForms() {
     }
 
     const button5 = () => {
-        console.log()
+            const test = {
+                "Asd":"ASddd",
+                "asdw":"Wdwad"
+            }
+        dispatch(deleteSave([pinId,2]))
     }
 
   return (

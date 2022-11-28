@@ -26,7 +26,7 @@ function RenderCommentsAndRightSide({comment,comments,handleDeleteComment,pin,ha
     dispatch(createSave(newSave))
   }
   
-  console.log(defaultoBoardId,pinId)
+  // console.log(defaultoBoardId,pinId)
   return (
     <div className='rightComments'>
       <div className='singlePageCenterRight1'>
