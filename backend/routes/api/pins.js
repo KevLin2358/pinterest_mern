@@ -24,6 +24,15 @@ router.get('/user/:user_id', (req, res) => {
       )
   );
 });
+
+router.get('/:boardId', (req, res) => {
+  Pin.find({user: req.params.user_id})
+      .then(pins => res.json(pins))
+      .catch(err =>
+          res.status(404).json({ nopinsfound: 'No pins found from that user' }
+      )
+  );
+});
  
 router.get('/:id', (req, res) => { // pinid
   Pin.findById(req.params.id)
