@@ -8,6 +8,8 @@ const users = require("./routes/api/users");
 const pins = require("./routes/api/pins");
 const comments = require("./routes/api/comments");
 const follows = require("./routes/api/follows");
+const boards = require("./routes/api/boards");
+const saves = require("./routes/api/saves");
 
 const app = express();
 const db = require('./config/keys').mongoURI;
@@ -35,4 +37,6 @@ app.use("/api/users", users);
 app.use("/api/pins", pins);
 app.use("/api/comments", comments);
 app.use("/api/follows", follows);
+app.use("/api/boards", boards);
+app.use("/api/saves", saves);
 

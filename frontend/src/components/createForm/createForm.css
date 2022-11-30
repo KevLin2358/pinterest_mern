@@ -1,9 +1,40 @@
 .createFormContainer{
-    transform: translate(50%,50%)
+    /* transform: translate(50%,50%); */
+    background-color: blue;
+    width: 100vw;
+    display: flex;
+    /* justify-content: center; */
 
+}
+/* .createFormInner{
+    padding-top: 40px;
+    width: 880px;
+    height: 100vh;
+    background-color: green;
+    display: flex;
 }
 
 .createFormInner > input{
     display: flex;
     flex-direction: column;
+} */
+
+.objectForm{
+    padding-top: 40px;
+    width: 90vw;
+    height: 100vh;
+    word-wrap: break-word;
+    /* background-color: green; */
+    display: flex;
 }
+
+.inputSpace{
+    width: 50vw;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.submitButton{
+    width: 50vw;
+}
+

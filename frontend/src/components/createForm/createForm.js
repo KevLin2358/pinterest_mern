@@ -8,41 +8,47 @@ import { useEffect } from "react";
 import "./createForm.css"
 function CreateForm() {
     const [userID,setUserID] = useState(useSelector(state => state.session.user.id))
+    const [id,setId] = useState("")
     const [image,setImage] = useState("")
     const [text,setText] = useState("")
     const [description,setdescription] = useState("")
     const [link,setLink] = useState("pintrest.com")
-
+    const [obj,setObj] = useState("")
     const dispatch = useDispatch()
-    // console.log(userID)
-    // const c(state => console.log(state))
-    // const userTrueID = useSelector(state => console.log(state.session.user.id))
 
     const onSubmit = () => {
+        let parsed = JSON.parse(obj)
+        //input was a json.strify so I have to parse it
         const newPin = {
             user:userID,
-            image: image,
-            title: text,
-            description: description,
-            link:link
+            image: parsed.bigImage,
+            title: parsed.title,
+            description: parsed.text,
+            link:parsed.link
             }
-        dispatch(createPin(newPin))
-        // console.log(newPin)
+        
+        dispatch(createPin(newPin)).then(pin => setId(pin.pin.data._id))
+        //after a new pin is create I have wait for reponse and set the pin id response
     }
 
     useEffect(() => {
       dispatch(fetchUserPin(userID))
-    
-
+      //need to get the user id cause it is for submittion
     }, [])
     
 
+    useEffect(()=>{
+      if(id === "") return null //need to return null cause it will redirect too quick
+      window.location = window.location.origin+"/pins/"+id
+      //change link once id is true
+      //have to use useeffect cause I need to from a string
+    },[id])
 
 
   return (
     <div className="createFormContainer">
         {/* CreateForm */}
-        <form className="createFormInner">
+        {/* <form className="createFormInner">
             <input
             value={userID}
             placeholder="userid"
@@ -78,7 +84,17 @@ function CreateForm() {
             >           
             </input>
         </form>
-        <button style={{fontSize:"33px"}} onClick={onSubmit}></button>
+        <button style={{fontSize:"33px"}} onClick={onSubmit}></button> */}
+        <form className="objectForm">
+            <input className="inputSpace"
+            type="textbox"
+            value={obj}
+            placeholder="obj"
+            onChange={(e) => setObj(e.target.value)}
+            >           
+            </input>
+        </form>
+        <button className="submitButton" style={{fontSize:"33px"}} onClick={onSubmit}></button>
     </div>
   )
 }

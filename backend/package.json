@@ -4,7 +4,7 @@
   "description": "MVP - splash page - nav - user auth    - login/logout       - demo user - user page - feed - pin   - click again -> actual website   - images   - description   - follow   - comments     - total comments on pin     - reply     - like     - helpful   - save   - testing",
   "main": "index.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "nodemon app.js",
     "server": "nodemon app.js"
   },
   "repository": {

@@ -1,21 +1,20 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const CommentSchema = new Schema({
+const BoardSchema = new Schema({
   user: { 
     type: Schema.Types.ObjectId,
     ref: "User",
   }, 
-  text: {
+  title: {
     type: String,
     required: true
   },
-  pin: {
-    type: Schema.Types.ObjectId,
-    ref: "Pin",
+  default: {
+    type: Boolean,
   },
 }, {
   timestamps: true
 })
 
-module.exports = Comment = mongoose.model('Comment', CommentSchema);
+module.exports = Board = mongoose.model('Board', BoardSchema);

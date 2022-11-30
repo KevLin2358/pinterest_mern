@@ -2,3 +2,17 @@ img:hover{
     filter: brightness(50%);
 }
 
+.imgBorder{
+    border-radius: 25px;
+    width: 100%;
+    height: 100%;
+}
+
+.homepagePinsText{
+    /* height: auto */
+}
+
+.displayFlex > *{
+    /* display: flex;
+    flex-direction: column; */
+}
