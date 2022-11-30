@@ -18,7 +18,7 @@ function BoardPage(props) {
 
     useEffect(() => {
         // dispatch(fetchUserPin(id)).then(res =>setPins(()=>res.pins.data))
-        dispatch(fetchSaves("637d9c5dcc62c5de556cf4cd")).then(res => setSaves(res.saves.data))
+        dispatch(fetchSaves(props.match.params.boardId)).then(res => setSaves(res.saves.data))
     }, [])
 
     useEffect(()=>{
@@ -30,7 +30,7 @@ function BoardPage(props) {
         }
 
     },[saves])
-    console.log(pins)
+    console.log(props.match.params.boardId)
     
     // if(board === "") return null
     return (

@@ -41,7 +41,7 @@ function UserPage() {
                             boardId: e._id
                         }}
                         >
-                        <button>{e._id} {e.title}</button>
+                        <button >{e._id} {e.title}</button>
                     </Link>
                     )
                 })}
@@ -54,7 +54,7 @@ function UserPage() {
                         {
                             pins.map((pin) => {
                                 return(
-                                    <Pins url={pin} key={pin._id}/>
+                                    <Pins url={pin} key={pin.id}/>
                                 )
                             } )
                         }
