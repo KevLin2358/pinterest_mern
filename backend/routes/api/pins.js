@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const Pin = require('../../models/Pin');
 const validatePinInput = require('../../validation/pins');
-
+const Save = require('../../models/Save');
 router.get("/test", (req, res) => res.json({ msg: "This is the pins route" }));
 
 
@@ -25,17 +25,19 @@ router.get('/user/:user_id', (req, res) => {
   );
 });
 
-router.get('/:boardId', (req, res) => {
-  Pin.find({user: req.params.user_id})
-      .then(pins => res.json(pins))
-      .catch(err =>
-          res.status(404).json({ nopinsfound: 'No pins found from that user' }
-      )
-  );
-});
+// router.get('/board/:boardId', (req, res) => {
+//   console.log(req.params.boardId)
+//   let array = []
+//   Save.find({pins:req.params.boardId})
+//   .then(pin => (pin[6].id))
+//   .then(id =>
+//     console.log(id)
+//     // Pin.find({_id: id}).then(pins => res.json(pins))
+//   )
+// });
  
 router.get('/:id', (req, res) => { // pinid
-  Pin.findById(req.params.id)
+  Pin.findById(req.params.boardId)
       .then(pins => res.json(pins))
       .catch(err =>
           res.status(404).json({ nopinsfound: 'No pins found with that ID' })

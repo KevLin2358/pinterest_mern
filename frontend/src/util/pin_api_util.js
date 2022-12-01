@@ -12,6 +12,10 @@ export const fetchUserPin = userId =>{
   return axios.get(`/api/pins/user/${userId}`)
 };
 
+export const fetchBoardPin = boardId =>{
+  return axios.get(`/api/pins/board/${boardId}`)
+};
+
 export const createPin = data => {
   return axios.post(`/api/pins/`,data)
 }

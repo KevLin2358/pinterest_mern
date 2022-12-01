@@ -6,6 +6,7 @@ import { fetchUserPin } from '../actions/pin_actions'
 import { fetchBoards } from '../actions/board_actions'
 import { fetchSaves } from '../actions/save_actions'
 import { fetchSinglePin } from '../actions/pin_actions'
+import { fetchBoardPin } from '../actions/pin_actions'
 import Pins from '../components/pin/pins'
 import "./homepage.css"
 function BoardPage(props) {
@@ -17,7 +18,8 @@ function BoardPage(props) {
     const [board,setBoard] = useState("")
 
     useEffect(() => {
-        // dispatch(fetchUserPin(id)).then(res =>setPins(()=>res.pins.data))
+        //  dispatch(fetchBoardPin(props.match.params.boardId))
+        dispatch(fetchUserPin(id)).then(res =>setPins(()=>res.pins.data))
         dispatch(fetchSaves(props.match.params.boardId)).then(res => setSaves(res.saves.data))
     }, [])
 

@@ -43,6 +43,11 @@ export const fetchUserPin = userId => dispatch =>{
     .then(pins => dispatch(receivePins(pins)));
 }
 
+export const fetchBoardPin = boardId => dispatch =>{
+  return PinApiUtil.fetchBoardPin(boardId)
+    .then(pins => dispatch(receivePins(pins)));
+}
+
 export const fetchSinglePin = pinId => dispatch =>{
   return PinApiUtil.fetchPin(pinId)
     .then(pin => dispatch(receivePins(pin)));
