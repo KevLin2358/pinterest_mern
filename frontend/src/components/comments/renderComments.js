@@ -7,6 +7,7 @@ import { createSave,fetchSaves } from '../../actions/save_actions'
 import Dot from '../../imageComponent/dotSVG'
 import Share from '../../imageComponent/shareSVG'
 import CopyLink from '../../imageComponent/copyLinkSVG'
+import ToggleComment from '../../imageComponent/ToggleComment'
 function RenderCommentsAndRightSide({comment,comments,handleDeleteComment,pin,handleCreateComment,setComment,handleDeletePin}) {
   const boardArray = useSelector(state => state.board.data)
   const pinId = useSelector(state => state.pin.data._id)
@@ -45,7 +46,7 @@ function RenderCommentsAndRightSide({comment,comments,handleDeleteComment,pin,ha
   }
 
   
-  // console.log(defaultoBoardId,pinId)
+  console.log(comments)
   return (
     <div className='rightComments'>
       <div className='singlePageCenterRight1'>
@@ -73,19 +74,35 @@ function RenderCommentsAndRightSide({comment,comments,handleDeleteComment,pin,ha
       <div 
         className='rightUploader'>Handler
       </div>
-      <div 
-        className='rightComment'>{comments.length} Comments
+      <div className='rightCommentRow'>
+        <div className='rightComment'>{comments.length} Comments</div>
+        <div className='rightCommentToggle'><ToggleComment/></div>
       </div>  
+      <div className='commentArray'>
       {comments.map((comment) => {
           return(
-          <li key={comment._id}>
-              {     
-              comment.text
-              }
-              <button onClick={() => handleDeleteComment(comment._id)}>deletePin</button>
-          </li>
+            <div className='fullCommentDiv'>
+              {/* <ul key={comment._id}> */}
+                <div id="container" style={{backgroundColor:"orange"}}>
+                  <div id="name">
+                  {comment.user[0]}
+                  </div>
+                </div>
+                  <div className='commentTextBox'>
+                    <div className='userNameText'>
+                    {comment.user}
+                    </div>
+                    <div className='commentText'>
+                    {comment.text}
+                    </div>
+                  </div>
+                  {/* <button onClick={() => handleDeleteComment(comment._id)}>deletePin</button> */}
+              {/* </ul> */}
+            </div>
           )
       })}
+      </div>
+
       <div className='rightCommentInput'>
         <form onSubmit={handleCreateComment}>
             <input 
