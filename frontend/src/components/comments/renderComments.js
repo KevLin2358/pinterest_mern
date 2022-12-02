@@ -4,6 +4,9 @@ import InputForms from '../Tools/inputForm'
 import { useDispatch, useSelector } from 'react-redux'
 import { useState,useEffect } from 'react'
 import { createSave,fetchSaves } from '../../actions/save_actions'
+import Dot from '../../imageComponent/dotSVG'
+import Share from '../../imageComponent/shareSVG'
+import CopyLink from '../../imageComponent/copyLinkSVG'
 function RenderCommentsAndRightSide({comment,comments,handleDeleteComment,pin,handleCreateComment,setComment,handleDeletePin}) {
   const boardArray = useSelector(state => state.board.data)
   const pinId = useSelector(state => state.pin.data._id)
@@ -46,8 +49,8 @@ function RenderCommentsAndRightSide({comment,comments,handleDeleteComment,pin,ha
   return (
     <div className='rightComments'>
       <div className='singlePageCenterRight1'>
-      <div >
-        <Bell></Bell><Bell></Bell><Bell></Bell>
+      <div className='rightSideIcons'>
+        <Dot/><Share/><CopyLink/>
       </div>
         
       {isThisInBoardArray 

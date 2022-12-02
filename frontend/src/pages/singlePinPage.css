@@ -68,6 +68,7 @@
 }
 
 .singlePageCenterRight{
+
     max-width: 50%;
     height: 100%;
     display: flex;
@@ -85,6 +86,7 @@
 .singlePageCenterRight1{
     display: flex;
     justify-content:space-between;
+    align-items: center;
     padding: 32px 0px 0px ;
     width: 444px;
 }
@@ -99,7 +101,8 @@
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    height: fit-content;
+    border-radius: 25px;
+    font-size: 16px;
 }
 
 .rightLink{
@@ -111,7 +114,16 @@
     text-decoration: underline;
 }
 
+.rightLink > a{
+    font-size: 16px;
+}
+
+.rightLink > a:visited{
+    color:black
+}
+
 .rightTitle{
+    padding-top: 20px;
     width: 444px;
     text-align: left;
     word-wrap: break-word;
@@ -121,6 +133,7 @@
 }
 
 .rightDes{
+    padding-top: 20px;
     width: 444px;
     font-size: 14px;
     word-wrap: break-word;
@@ -154,4 +167,8 @@
 
 .rightCommentInput{
     width: 444px;
+}
+
+.rightSideIcons > *{
+    padding: 20px;
 }
