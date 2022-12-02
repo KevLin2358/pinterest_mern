@@ -78,6 +78,9 @@ function SinglePin({url}) {
     <React.Fragment>
        <Navbar/>
        <div className='singlePageContainer'>
+        <div className='leftbell'>
+            <Bell/>
+        </div>
             <div className='singlePageBody'>
                 <div className='singlePageCenter'>
                     <div className='singlePageCenterLeft'><img src={pin.pins.data.image}></img></div>
@@ -94,6 +97,9 @@ function SinglePin({url}) {
                     </div>
                 </div>
             </div>
+        <div>
+            <Bell/>
+        </div>
        </div>
     </React.Fragment>
   )

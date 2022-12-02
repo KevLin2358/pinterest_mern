@@ -1,10 +1,23 @@
 .singlePageContainer{
     display:flex;
-    justify-content: center;
+    justify-content: space-between;
     width: 100%;
     margin:0px;
+    padding: 0px;
     flex-direction: row;
 }
+
+.leftbell{
+    width: 20px;
+    padding:28px;
+    margin-top: 20px;
+}
+
+/* .leftbell{
+    width: 20px;
+    padding:28px;
+    margin-top: 30px;
+} */
 
 .singlePageBody{
     /* background-color: gray; */
