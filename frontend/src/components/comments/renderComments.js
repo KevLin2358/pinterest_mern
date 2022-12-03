@@ -16,19 +16,24 @@ function RenderCommentsAndRightSide({cancelComment,comment,comments,handleDelete
   const [isThisInBoardArray,setisThisInBoardArray] = useState("")
   const [save,setSave] = useState([])
   const reducerState = useSelector(state=>state)
-  useEffect(() => {
-    if (boardArray && defaultoBoardId === ""){
-      let x = boardArray.filter(e => e.default === true)
-      setdefaultBoardId(() =>(x[0]._id))
-    } 
-  }, [boardArray])
 
+  //setting default board when it loads
+  useEffect(() => {
+    if(Object.keys(reducerState.board).length !== 0){
+      setdefaultBoardId(e => reducerState.board.data[0])
+    }
+  }, [reducerState])
+  
+
+  //once defaultboard is set fetch it savse
   useEffect(()=>{
     if(defaultoBoardId !== ""){
-      dispatch(fetchSaves(defaultoBoardId)).then(res => setSave(res.saves.data))
+      dispatch(fetchSaves(defaultoBoardId._id)).then(res => setSave(res.saves.data))
     }
   },[defaultoBoardId])
 
+
+  //after default saves are imported , I need to set true or false
   useEffect(()=>{
     if(save.length !== 0){
       // console.log(save)
@@ -39,6 +44,7 @@ function RenderCommentsAndRightSide({cancelComment,comment,comments,handleDelete
   },[save])
 
   // console.log(reducerState.session.info.handle)
+
   
   
   const saveThisPin = () => {
@@ -52,10 +58,10 @@ function RenderCommentsAndRightSide({cancelComment,comment,comments,handleDelete
 
   
   // console.log(comments)
-  console.log(isThisInBoardArray,save)
+  // console.log(isThisInBoardArray,save)
 
   if(reducerState.session.info === undefined) return null
-  // if(isThisInBoardArray === "") return null
+  if(isThisInBoardArray === "") return null
   return (
     <div className='rightComments'>
       <div className='singlePageCenterRight1'>

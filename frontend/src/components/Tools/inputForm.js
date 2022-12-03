@@ -2,13 +2,15 @@ import React, { useEffect,useState } from 'react'
 import { createBoard } from '../../actions/board_actions'
 import { useDispatch,useSelector } from 'react-redux'
 import { createSave,fetchSaves,fetchSave,deleteSave } from '../../actions/save_actions'
-import { fetchBoard,fetchBoards } from '../../actions/board_actions'
+import { fetchDefaultBoard,fetchBoards } from '../../actions/board_actions'
 function InputForms() {
     const dispatch = useDispatch()
     const stateObj = useSelector(state => state)
     const [id,setID] = useState(stateObj.session.user.id)
-    const [pinId,setPinID] = useState(stateObj.pin.data._id)
+    const pinId = useSelector(state => state.pin.data._id)
 
+    // const [pinId,setPinID] = useState(stateObj.pin.data._id)
+    
     const [board,newBoard] = useState("")
 
 
@@ -21,13 +23,13 @@ function InputForms() {
     // }, [stateObj])
 
 
-    useEffect(() => {
-        if(board === "" && stateObj){
-            dispatch(fetchBoards(id)).then(res => newBoard(res.boards.data))
-        }
-        // setPinID(pinId)
-        console.log(pinId)
-    }, [])
+    // useEffect(() => {
+    //     if(board === "" && stateObj){
+    //         dispatch(fetchBoards(id)).then(res => newBoard(res.boards.data))
+    //     }
+    //     // setPinID(pinId)
+    //     console.log(pinId)
+    // }, [])
 
     // useEffect(()=> {
     //     if (board !== "" && defaultoBoardId === ""){
@@ -50,7 +52,7 @@ function InputForms() {
 
     const button3 = () => {
         console.log(id)
-        dispatch(fetchBoard(id))
+        dispatch(fetchDefaultBoard(id))
     }
 
     const button4 = () => {
@@ -82,7 +84,7 @@ function InputForms() {
         </button>
 
         <button onClick={button3}>
-            fetchBoard
+            fetchDefaultBoard
         </button>
 
         <button onClick={button4}>

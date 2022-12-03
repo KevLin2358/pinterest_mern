@@ -16,13 +16,7 @@ router.get("/test", (req, res) =>{
 // });
 
 router.get('/user/:user_id', (req, res) => {
-  // console.log("this is board backend")
-  // console.log(req.params.user_id)
-  // console.log(req.body)
   Board.find({user:req.params.user_id,default:true})
-  // .then
-  // (board => 
-  // Save.find({board:board[0].id}))
   .then(defaultBoard => res.json(defaultBoard))
   .catch(err =>
       res.status(404).json({ nopinsfound: 'No pins found from that user' }
