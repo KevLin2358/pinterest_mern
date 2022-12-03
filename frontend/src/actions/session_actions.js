@@ -5,6 +5,7 @@ export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
 export const RECEIVE_USER_LOGOUT = "RECEIVE_USER_LOGOUT";
 export const RECEIVE_USER_SIGN_IN = "RECEIVE_USER_SIGN_IN";
+export const RECEIVE_USER_HANDLE = "RECEIVE_USER_HANDLE";
 
 // We'll dispatch this when our user signs in
 export const receiveCurrentUser = currentUser => ({
@@ -37,6 +38,11 @@ export const signup = user => dispatch => (
     ))
 );
 
+export const receiveUserHandle = (data) => ({
+    type: RECEIVE_USER_HANDLE,
+    data
+});
+
 // Upon login, set the session token and dispatch the current user. Dispatch errors on failure.
 export const login = user => dispatch => (
     APIUtil.login(user).then(res => {
@@ -58,4 +64,9 @@ export const logout = () => dispatch => {
     localStorage.removeItem('jwtToken')
     APIUtil.setAuthToken(false)
     dispatch(logoutUser())
+};
+
+export const userID = (userID) => dispatch => {
+    APIUtil.userID(userID)
+    .then((e) => (dispatch(receiveUserHandle(e.data))))
 };

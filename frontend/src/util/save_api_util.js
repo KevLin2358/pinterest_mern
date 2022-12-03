@@ -9,7 +9,7 @@ export const fetchSave = () =>{
 };
 
 export const fetchSaves = boardId => {
-  console.log("boardId")
+  // console.log("boardId")
   return axios.get(`/api/saves/boards/${boardId}`)
 }
 

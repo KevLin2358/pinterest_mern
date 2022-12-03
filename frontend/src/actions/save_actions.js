@@ -27,25 +27,25 @@ export const removeSave = saveId =>{
 }
 
 export const fetchSave = saveId => dispatch =>{
-  console.log("fetching one")
+  // console.log("fetching one")
   return SaveApiUtil.fetchSave(saveId)
     .then(save => dispatch(receiveSave(save)));
 }
 
 export const fetchSaves = boardId => dispatch =>{
-  console.log("fetching many")
+  // console.log("fetching many")
   return SaveApiUtil.fetchSaves(boardId)
     .then(saves => dispatch(receiveSaves(saves)));
 }
 
 export const createSave = data => dispatch =>{
-    console.log("creating ")
+    // console.log("creating ")
   return SaveApiUtil.createSave(data)
     .then(save => dispatch(receiveSave(save)));
 }
 
 export const deleteSave = id => dispatch =>{
-  console.log("deleting ")
+  // console.log("deleting ")
   return SaveApiUtil.deleteSave(id)
     .then(() => dispatch(removeSave(id)))
 }

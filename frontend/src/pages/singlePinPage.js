@@ -73,6 +73,12 @@ function SinglePin({url}) {
         //then setComment as an array of obj
         setComment("")
     }
+
+    const cancelComment = (e) => {
+        e.preventDefault()
+        setComment("")
+    }
+
     if (!pin) return null
     return (
     <React.Fragment>
@@ -93,6 +99,7 @@ function SinglePin({url}) {
                         setComment = {setComment}
                         handleDeletePin = {handleDeletePin}
                         comment = {comment}
+                        cancelComment = {cancelComment}
                         />
                     </div>
                 </div>

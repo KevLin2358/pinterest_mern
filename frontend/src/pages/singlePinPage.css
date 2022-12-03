@@ -187,6 +187,7 @@ vertical-align: middle;
     /* word-wrap: break-word; */
     inline-size: 400px;
     overflow-wrap: break-word;
+    margin-left: 10px;
 }
 
 .userNameText{
@@ -204,9 +205,66 @@ vertical-align: middle;
 }
 
 .rightCommentInput{
-    width: 444px;
+    background: transparent;
+    border: 0px;
+    display: block;
+    font-size: 16px;
+    outline: 0px;
+    overflow-x: hidden;
+    resize: none;
+    white-space: pre-wrap;
+    min-width: 480px;
+    padding-left: 8px;
 }
 
 .rightSideIcons > *{
     padding: 20px;
+}
+
+.commentDivContainer{
+    display: flex;
+}
+
+.commentInput{
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, "ＭＳ Ｐゴシック", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 16px;
+    width: 80%;
+    border-radius: 25px;
+    border-color: gray !important;
+    border-width: 2px;
+    padding: 10px;
+}
+
+.commentInput:focus{
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, "ＭＳ Ｐゴシック", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 16px;
+    width: 80%;
+    border-radius: 25px;
+    height: 40px;
+    padding: 15px;
+
+}
+
+.commentButtonsContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-right: 70px;
+}
+
+.commentButtons{
+        border-width: 0px;
+        min-width: 60px;
+        min-height: 40px;
+        box-sizing: border-box;
+        display: inline-block;
+        background-color: #efefef;
+        border-radius: 24px;
+        -webkit-appearance: button;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 600;
+        padding: 8px 12px;
+        margin-top: 5px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, "ＭＳ Ｐゴシック", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
