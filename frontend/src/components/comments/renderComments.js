@@ -3,7 +3,7 @@ import Bell from '../../imageComponent/BellSVG'
 import InputForms from '../Tools/inputForm'
 import { useDispatch, useSelector } from 'react-redux'
 import { useState,useEffect } from 'react'
-import { createSave,fetchSaves } from '../../actions/save_actions'
+import { createSave,fetchSaves,deleteSave } from '../../actions/save_actions'
 import Dot from '../../imageComponent/dotSVG'
 import Share from '../../imageComponent/shareSVG'
 import CopyLink from '../../imageComponent/copyLinkSVG'
@@ -37,7 +37,7 @@ function RenderCommentsAndRightSide({cancelComment,comment,comments,handleDelete
   useEffect(()=>{
     if(save.length !== 0){
       // console.log(save)
-      const isTherePinInsideDefault = save.some(e => e.pin === pinId)
+      const isTherePinInsideDefault = save.filter(e => e.pin === pinId)
       console.log(isTherePinInsideDefault)
       setisThisInBoardArray(() =>isTherePinInsideDefault)
     }
@@ -53,8 +53,13 @@ function RenderCommentsAndRightSide({cancelComment,comment,comments,handleDelete
       pin:pinId,
       board:defaultoBoardId
     }
-    dispatch(createSave(newSave))
+    dispatch(createSave(newSave)).then(res => setisThisInBoardArray([res.save.data]))
   }
+
+  const deleteThisSave = () => {
+    dispatch(deleteSave(isThisInBoardArray[0]._id))
+    window.location.reload()
+  } 
 
   
   // console.log(comments)
@@ -69,11 +74,11 @@ function RenderCommentsAndRightSide({cancelComment,comment,comments,handleDelete
         <Dot/><Share/><CopyLink/>
       </div>
         
-      {(isThisInBoardArray && save !== "")
+      {(isThisInBoardArray.length !== 0)
         ? 
-        <div ><button onClick={saveThisPin} className='singlePageCenterRight1Button'>UnSave</button></div>
+        <div ><button onClick={deleteThisSave} className='singlePageCenterRight1Button'>Unsaved</button></div>
         :
-        <div ><button onClick={saveThisPin} className='singlePageCenterRight1Button'>Saved</button></div>
+        <div ><button onClick={saveThisPin} className='singlePageCenterRight1Button'>Save</button></div>
       }
       </div>
 

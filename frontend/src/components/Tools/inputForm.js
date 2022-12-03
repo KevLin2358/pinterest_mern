@@ -60,11 +60,8 @@ function InputForms() {
     }
 
     const button5 = () => {
-            const test = {
-                "Asd":"ASddd",
-                "asdw":"Wdwad"
-            }
-        dispatch(deleteSave([pinId,2]))
+        console.log(pinId)
+        dispatch(deleteSave(pinId))
     }
 
   return (

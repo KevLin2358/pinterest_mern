@@ -13,8 +13,8 @@ export const fetchSaves = boardId => {
   return axios.get(`/api/saves/boards/${boardId}`)
 }
 
-export const deleteSave = (array) => {
-  return axios.delete(`/api/saves/${array}`)
+export const deleteSave = (saveId) => {
+  return axios.delete(`/api/saves/${saveId}`)
 }
 
 
