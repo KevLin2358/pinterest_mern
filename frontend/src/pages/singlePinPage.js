@@ -11,6 +11,7 @@ import {createComment} from '../actions/comment_actions'
 import { fetchPincomments } from '../actions/comment_actions'
 import { deleteComment } from '../util/comment_api_util'
 import RenderCommentsAndRightSide from '../components/comments/renderComments'
+import { fetchBoards } from '../actions/board_actions'
 // import {}
 function SinglePin({url}) {
     const [comment,setComment] = useState("")
@@ -78,6 +79,12 @@ function SinglePin({url}) {
         e.preventDefault()
         setComment("")
     }
+
+    useEffect(() => {
+        if(stateObj.session.info)
+      dispatch(fetchBoards(stateObj.session.info._id))
+    }, [])
+    
 
     if (!pin) return null
     return (

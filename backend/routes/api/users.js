@@ -67,8 +67,10 @@ router.get('/:userID', (req, res) => {
 
   // const email = req.body.email;
   // const password = req.body.password;
+  console.log(req.params.userID)
 
-  User.findOne({id:req.body.userID})
+  User.find({_id:req.params.userID})
+  // console.log(req.body)
       .then(user => {
         console.log(user)
         res.json(user)

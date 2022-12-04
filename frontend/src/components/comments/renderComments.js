@@ -8,6 +8,7 @@ import Dot from '../../imageComponent/dotSVG'
 import Share from '../../imageComponent/shareSVG'
 import CopyLink from '../../imageComponent/copyLinkSVG'
 import ToggleComment from '../../imageComponent/ToggleComment'
+import DropdownMenu from '../dropdownMenu/dropdownMenu'
 function RenderCommentsAndRightSide({cancelComment,comment,comments,handleDeleteComment,pin,handleCreateComment,setComment,handleDeletePin}) {
   const boardArray = useSelector(state => state.board.data)
   const pinId = useSelector(state => state.pin.data._id)
@@ -27,7 +28,8 @@ function RenderCommentsAndRightSide({cancelComment,comment,comments,handleDelete
 
   //once defaultboard is set fetch it savse
   useEffect(()=>{
-    if(defaultoBoardId !== ""){
+    console.log(defaultoBoardId)
+    if(defaultoBoardId !== "" && defaultoBoardId !== undefined){
       dispatch(fetchSaves(defaultoBoardId._id)).then(res => setSave(res.saves.data))
     }
   },[defaultoBoardId])
@@ -63,16 +65,17 @@ function RenderCommentsAndRightSide({cancelComment,comment,comments,handleDelete
   
   // console.log(comments)
   // console.log(isThisInBoardArray,save)
-
-  if(reducerState.session.info === undefined) return null
+  if(!reducerState.session.info) return null
   if(isThisInBoardArray === "") return null
+  // console.log(reducerState.session.info[0].handle)
+
   return (
     <div className='rightComments'>
       <div className='singlePageCenterRight1'>
       <div className='rightSideIcons'>
         <Dot/><Share/><CopyLink/>
       </div>
-        
+      <div><DropdownMenu/></div>
       {(isThisInBoardArray.length !== 0)
         ? 
         <div ><button onClick={deleteThisSave} className='singlePageCenterRight1Button'>Unsaved</button></div>
@@ -104,7 +107,7 @@ function RenderCommentsAndRightSide({cancelComment,comment,comments,handleDelete
               {/* <ul key={comment._id}> */}
                 <div id="container" style={{backgroundColor:"orange"}}>
                   <div id="name">
-                  {reducerState.session.info.handle[0].toUpperCase()}
+                  {reducerState.session.info[0].handle.toUpperCase()}
                   </div>
                 </div>
                   <div className='commentTextBox'>
@@ -125,7 +128,7 @@ function RenderCommentsAndRightSide({cancelComment,comment,comments,handleDelete
       <div className='commentDivContainer'>
       <div id="container" style={{backgroundColor:"grey"}}>
                   <div id="name">
-                  {reducerState.session.info.handle[0].toUpperCase()}
+                  {reducerState.session.info[0].handle[0].toUpperCase()}
                   </div>
       </div>
         <div className='rightCommentInput'>
