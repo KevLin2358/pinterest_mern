@@ -107,7 +107,7 @@ function RenderCommentsAndRightSide({cancelComment,comment,comments,handleDelete
               {/* <ul key={comment._id}> */}
                 <div id="container" style={{backgroundColor:"orange"}}>
                   <div id="name">
-                  {reducerState.session.info[0].handle.toUpperCase()}
+                  {reducerState.session.info[0].handle[0].toUpperCase()}
                   </div>
                 </div>
                   <div className='commentTextBox'>

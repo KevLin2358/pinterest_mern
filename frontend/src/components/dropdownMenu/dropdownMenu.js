@@ -6,7 +6,7 @@ function DropdownMenu() {
     <nav role="navigation">
     <ul>
       <li><a href="#">Two</a>
-        <ul class="dropdown">
+        <ul className="dropdown">
           <li><a href="#">Sub-1</a></li>
           <li><a href="#">Sub-2</a></li>
           <li><a href="#">Sub-3</a></li>
