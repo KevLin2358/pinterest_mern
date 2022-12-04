@@ -57,8 +57,7 @@ function RenderCommentsAndRightSide({cancelComment,comment,comments,handleDelete
   }
 
   const deleteThisSave = () => {
-    dispatch(deleteSave(isThisInBoardArray[0]._id))
-    window.location.reload()
+    dispatch(deleteSave(isThisInBoardArray[0]._id)).then(() => dispatch(fetchSaves(defaultoBoardId._id)).then(res => setSave(res.saves.data)))
   } 
 
   
