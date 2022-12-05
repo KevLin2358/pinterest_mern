@@ -4,6 +4,7 @@ import InputForms from '../Tools/inputForm'
 import { useDispatch, useSelector } from 'react-redux'
 import { useState,useEffect } from 'react'
 import { createSave,fetchSaves,deleteSave } from '../../actions/save_actions'
+import { fetchBoards } from '../../actions/board_actions'
 import Dot from '../../imageComponent/dotSVG'
 import Share from '../../imageComponent/shareSVG'
 import CopyLink from '../../imageComponent/copyLinkSVG'
@@ -46,7 +47,10 @@ function RenderCommentsAndRightSide({cancelComment,comment,comments,handleDelete
   },[save])
 
   // console.log(reducerState.session.info.handle)
-
+  useEffect(() => {
+    dispatch(fetchBoards(reducerState.session.user.id))
+  }, [])
+  
   
   
   const saveThisPin = () => {
