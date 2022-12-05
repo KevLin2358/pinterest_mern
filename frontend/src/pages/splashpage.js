@@ -23,14 +23,13 @@ const SplashPage = () => {
       </div>
 
       <p>Get Your Next</p>
-      <p></p> {/* changing features  */}
-      <p></p> {/* Buttons  */}  
-      <p></p>
-      <p></p>
-      <p></p>
-      <p></p> {/* images */}
-      <p></p> {/* button to go down to next */}
-      <p>Here's how it works</p>
+      <div className='yellow_link'>
+        <div className='click_transform' role = 'button'>
+          <div className='center'>
+            <div className='text_work'>Here's how it works</div>
+          </div>
+        </div>
+      </div>
     </div>
   )  
 }

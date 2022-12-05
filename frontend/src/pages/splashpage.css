@@ -73,3 +73,41 @@
   height: 50px;
   border: none;
 }
+
+.yellow_link{
+  background: rgb(255, 253, 146);
+  width: 100%;
+  height: 60px;
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+}
+
+.click_transform{
+  width: calc(12 / 12 * 100%);
+  cursor: pointer;
+  border-radius: 0;
+  transition: transform 85ms ease-out;
+}
+
+.center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin-left: -2px;
+  margin-right: -2px;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.text_work{
+  text-align: left;
+  word-wrap: break-word;
+  font-weight: 600;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,"ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","メイリオ",Meiryo,"ＭＳ Ｐゴシック",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+}
