@@ -33,9 +33,9 @@ export const removeBoard = boardId =>{
   })
 }
 
-export const fetchBoard = boardId => dispatch =>{
+export const fetchDefaultBoard = boardId => dispatch =>{
     console.log(boardId)
-  return BoardApiUtil.fetchBoard(boardId)
+  return BoardApiUtil.fetchDefaultBoard(boardId)
     .then(board => dispatch(receiveBoard(board)));
 }
 

@@ -13,6 +13,8 @@ import Message from '../../imageComponent/MessageSVG';
 import Profile from '../../imageComponent/ProfileSVG';
 import SearchSVG from '../../imageComponent/SearchSVG';
 import Modal from '../modal/modal';
+import { userID } from '../../actions/session_actions';
+import { fetchDefaultBoard } from '../../actions/board_actions';
 const Navbar = () => {
   const [searchTerm,setSearchTerm] = useState("")
   const dispatch = useDispatch()
@@ -21,7 +23,8 @@ const Navbar = () => {
   const [searchBarAltClassname,setSearchBarAltClassname] = useState("navBarSearchBar")
   const searchFormContainer = useRef(null);
   const [modalOpen, setModalOpen] = useState(false);
-
+  const stateObj = useSelector(state => state)
+  // const userIDState = stateObj.session.user.id
 
   const setSearchAndConsole = (e) => {
     setSearchTerm(e.target.value)
@@ -33,6 +36,19 @@ const Navbar = () => {
   useEffect(() => {
     // console.log(searchTerm)
   }, [searchTerm]);
+
+  useEffect(() =>{
+    if (stateObj){
+      console.log(stateObj)
+      dispatch(userID(stateObj.session.user.id))
+    }
+  },[])
+
+  useEffect(() => {
+    if (stateObj){
+      dispatch(fetchDefaultBoard(stateObj.session.user.id))
+    }
+  }, [])
 
 
   useEffect(()=>{

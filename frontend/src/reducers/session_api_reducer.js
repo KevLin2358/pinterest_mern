@@ -1,11 +1,12 @@
 /* eslint-disable import/no-anonymous-default-export */
 import { RECEIVE_CURRENT_USER, 
   RECEIVE_USER_LOGOUT, 
-  RECEIVE_USER_SIGN_IN } from '../actions/session_actions';
+  RECEIVE_USER_SIGN_IN,RECEIVE_USER_HANDLE } from '../actions/session_actions';
 
   const initialState = {
     isAuthenticated: false,
-    user: {}
+    user: {},
+    userInfo: {}
   };
 
   export default function(state = initialState, action) {

@@ -11,6 +11,7 @@ import {createComment} from '../actions/comment_actions'
 import { fetchPincomments } from '../actions/comment_actions'
 import { deleteComment } from '../util/comment_api_util'
 import RenderCommentsAndRightSide from '../components/comments/renderComments'
+import { fetchBoards } from '../actions/board_actions'
 // import {}
 function SinglePin({url}) {
     const [comment,setComment] = useState("")
@@ -73,11 +74,26 @@ function SinglePin({url}) {
         //then setComment as an array of obj
         setComment("")
     }
+
+    const cancelComment = (e) => {
+        e.preventDefault()
+        setComment("")
+    }
+
+    useEffect(() => {
+        if(stateObj.session.info)
+      dispatch(fetchBoards(stateObj.session.info._id))
+    }, [])
+    
+
     if (!pin) return null
     return (
     <React.Fragment>
        <Navbar/>
        <div className='singlePageContainer'>
+        <div className='leftbell'>
+            <Bell/>
+        </div>
             <div className='singlePageBody'>
                 <div className='singlePageCenter'>
                     <div className='singlePageCenterLeft'><img src={pin.pins.data.image}></img></div>
@@ -90,10 +106,14 @@ function SinglePin({url}) {
                         setComment = {setComment}
                         handleDeletePin = {handleDeletePin}
                         comment = {comment}
+                        cancelComment = {cancelComment}
                         />
                     </div>
                 </div>
             </div>
+        <div>
+            <Bell/>
+        </div>
        </div>
     </React.Fragment>
   )

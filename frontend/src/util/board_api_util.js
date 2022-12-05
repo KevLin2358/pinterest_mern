@@ -5,7 +5,7 @@ export const createBoard = data => {
   return axios.post(`/api/boards/`,data)
 }
 
-export const fetchBoard = userId =>{
+export const fetchDefaultBoard = userId =>{
   return axios.get(`/api/boards/user/${userId}`)
 };
 

@@ -41,7 +41,7 @@ function UserPage() {
                             boardId: e._id
                         }}
                         >
-                        <button >{e._id} {e.title}</button>
+                        <button >{e.title}</button>
                     </Link>
                     )
                 })}

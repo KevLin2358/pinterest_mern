@@ -58,6 +58,26 @@ router.post('/register', (req, res) => {
   });
 });
 
+router.get('/:userID', (req, res) => {
+  // const { errors, isValid } = validateLoginInput(req.body);
+
+  // if (!isValid) {
+  //   return res.status(400).json(errors);
+  // }
+
+  // const email = req.body.email;
+  // const password = req.body.password;
+  console.log(req.params.userID)
+
+  User.find({_id:req.params.userID})
+  // console.log(req.body)
+      .then(user => {
+        console.log(user)
+        res.json(user)
+      })
+    });
+
+
 router.post('/login', (req, res) => {
   const { errors, isValid } = validateLoginInput(req.body);
 

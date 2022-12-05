@@ -17,16 +17,13 @@ router.get('/boards/:boardId', (req, res) => { // pinid
       );
 });
 
-router.delete('/:array', (req, res) => {
-  console.log(req.body)
-  console.log(req.params)
-  console.log("deleting save")
-  console.log(req.params.array)
-  // Save.deleteOne({pin:req.params.id})
-  //   .then(() => res.json())
-  //   .catch(err => 
-  //     res.status(404).json({noSave: 'No Save found with that ID'})
-  //     );
+router.delete('/:saveId', (req, res) => {
+  console.log(req.params.saveId)
+  Save.deleteOne({_id:req.params.saveId})
+    .then((e) => res.json(e))
+    .catch(err => 
+      res.status(404).json({noSave: 'No Save found with that ID'})
+      );
 })
 
 router.post('/',
@@ -38,12 +35,12 @@ router.post('/',
     //     return res.status(400).json(errors);
     //   }
       // console.log(req.body.pin)
-      Save.find({pin: req.body.pin}).then(result => {
+      Save.find({pin: req.body.pin,board: req.body.board}).then(result => {
         let obj = result
         if (Object.keys(obj).length >= 1){
             console.log("Already Saved")
             // res.json("Already Saved")
-            res.status(404).json('Already Saved')
+            res.json("Already Saved")
             // router.delete(result)
         }
         else{
