@@ -1,12 +1,19 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector,useDispatch } from 'react-redux'
+import { createSave } from '../../actions/save_actions'
 import "./dropdownMenu.css"
 function DropdownMenu() {
   const boardArray = useSelector(state => state.board.data)
   const pinId = useSelector(state => state.pin.data._id)
+  const dispatch = useDispatch()
 
   const handleOnClick = (e) => {
-    console.log(e,)
+    console.log(e._id,pinId)
+    const pinObj = {
+      pin:pinId,
+      board:e._id
+    }
+    dispatch(createSave(pinObj))
   }
 
 
@@ -22,7 +29,9 @@ function DropdownMenu() {
             <li><input></input></li>
             {boardArray.map(board =>{
               return(
-                <li onClick={() => handleOnClick(board)}>{board.title}</li>
+                <div className='boardName'>
+                  <li  onClick={() => handleOnClick(board)}>{board.title}</li>
+                </div>
               )
             })}
             </div>

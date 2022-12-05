@@ -64,11 +64,7 @@ a {
   ul li ul li {
     clear: both;
     width: 100%;
-    width: 360px;
-    border-color: black;
-    border-radius: 25px;
-    border-width: 2px;
-    background-color: green;
+
   }
 
   .dropdown{
@@ -81,6 +77,8 @@ a {
 
 
 .dropdownContainer{
-  height: 100px;
-  overflow-y: auto;
+  height: 500px;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
+

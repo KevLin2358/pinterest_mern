@@ -35,12 +35,12 @@ router.post('/',
     //     return res.status(400).json(errors);
     //   }
       // console.log(req.body.pin)
-      Save.find({pin: req.body.pin}).then(result => {
+      Save.find({pin: req.body.pin,board: req.body.board}).then(result => {
         let obj = result
         if (Object.keys(obj).length >= 1){
             console.log("Already Saved")
             // res.json("Already Saved")
-            res.status(404).json('Already Saved')
+            res.json("Already Saved")
             // router.delete(result)
         }
         else{
