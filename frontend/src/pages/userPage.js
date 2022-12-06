@@ -7,6 +7,7 @@ import { fetchBoards } from '../actions/board_actions'
 import { fetchSaves } from '../actions/save_actions'
 import Pins from '../components/pin/pins'
 import { Link } from 'react-router-dom'
+import BoardPreviewer from '../components/boardPreviewer/boardPreviewer'
 import "./homepage.css"
 function UserPage() {
     const dispatch = useDispatch()
@@ -32,6 +33,7 @@ function UserPage() {
     <div>
         <Navbar/>
         <React.Fragment>
+            <BoardPreviewer/>
             <div>
                 {board.map(e => {
                     return(

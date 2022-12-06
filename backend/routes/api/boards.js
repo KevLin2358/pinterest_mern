@@ -31,7 +31,7 @@ router.get('/user/all/:user_id', (req, res) => {
   Board.find({user:req.params.user_id})
   .then(board => res.json(board))
   .catch(err =>
-      res.status(404).json({ nopinsfound: 'No pins found from that user' }
+      res.status(404).json({ noBoards:"No Board from this User" }
   )
   );
 });

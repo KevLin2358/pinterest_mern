@@ -1,0 +1,97 @@
+.BoardPreviewerContainer{
+    max-height: 156px;
+}
+
+.collab{
+    display: flex;
+    /* max-height: 156px; */
+    border-radius: 25px;
+}
+
+.collab > img{
+    /* display: flex; */
+    /* max-height: 156px; */
+    /* border-top-right-radius: 25px; */
+    /* border-top-right-radius: 25px; */
+}
+
+.collab > img:nth-child(1){
+    max-height: 156px;
+    /* position: absolute; */
+    /* margin-left: 50px; */
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+.collab > img:nth-child(2){
+    max-height: 156px;
+    width: 37px;
+    object-fit: cover;
+    /* position: absolute; */
+    /* margin-left: 50px; */
+}
+
+.collab > img:nth-child(3){
+    max-height: 156px;
+    width: 37px;
+    object-fit: cover;
+    
+    /* position: absolute; */
+    /* margin-left: 50px; */
+}
+
+.collab > img:nth-child(4){
+    max-height: 156px;
+    width: 37px;
+    /* object-fit: cover; */
+    object-fit: cover;
+
+    /* position: absolute; */
+    /* margin-left: 50px; */
+}
+
+.collab > img:nth-child(5){
+    max-height: 156px;
+    width: 37px;
+    /* object-fit: cover; */
+    object-fit: cover;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+
+    /* position: absolute; */
+    /* margin-left: 50px; */
+}
+
+.collab2{
+    display: flex;
+}
+
+.collab2RightSide{
+    display: flex;
+    flex-direction: column;
+}
+
+.collab2 > img:nth-child(1){
+    max-height: 156px;
+    width: 156px;
+    object-fit: cover;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+.collab2RightSide > img:nth-child(1){
+    max-height:78px;
+    width:78px;
+    object-fit: cover;
+    border-top-right-radius: 15px;
+
+}
+
+.collab2RightSide > img:nth-child(2){
+    max-height:78px;
+    width:78px;
+    /* object-fit: cover; */
+    object-fit: cover;
+
+    border-bottom-right-radius: 15px;
+}

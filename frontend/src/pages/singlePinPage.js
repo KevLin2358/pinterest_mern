@@ -80,10 +80,10 @@ function SinglePin({url}) {
         setComment("")
     }
 
-    useEffect(() => {
-        if(stateObj.session.info)
-      dispatch(fetchBoards(stateObj.session.info._id))
-    }, [])
+    // useEffect(() => {
+    //     if(stateObj.session.info)
+    //   dispatch(fetchBoards(stateObj.session.info._id))
+    // }, [])
     
 
     if (!pin) return null
