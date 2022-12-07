@@ -1,11 +1,22 @@
+*{
+    box-sizing: border-box;
+  }
+
 .BoardPreviewerContainer{
     max-height: 156px;
+    display: flex;
+}
+
+.BoardPreviewerContainer > div{
+    /* padding: 8px; */
+    box-sizing: border-box;
 }
 
 .collab{
     display: flex;
     /* max-height: 156px; */
     border-radius: 25px;
+    padding: 0 8px;
 }
 
 .collab > img{
@@ -64,6 +75,8 @@
 
 .collab2{
     display: flex;
+    padding: 0 8px;
+
 }
 
 .collab2RightSide{
