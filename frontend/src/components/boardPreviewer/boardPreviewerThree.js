@@ -5,6 +5,9 @@ import r from "../../imageComponent/images/r.jpg"
 import w from "../../imageComponent/images/w.jpg"
 import t from "../../imageComponent/images/t.jpg"
 function BoardPreviewerThree() {
+    // Promise.all() 
+    
+
   return (
     <div>
         <div className='collab2'>

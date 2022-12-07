@@ -66,6 +66,29 @@ function RenderCommentsAndRightSide({cancelComment,comment,comments,handleDelete
     dispatch(deleteSave(isThisInBoardArray[0]._id)).then(() => dispatch(fetchSaves(defaultoBoardId._id)).then(res => setSave(res.saves.data)))
   } 
 
+  const commentList = comments.map((comment) => {
+    return(
+      <div key={comment._id} className='fullCommentDiv'>
+        {/* <ul key={comment._id}> */}
+          <div id="container" style={{backgroundColor:"orange"}}>
+            <div id="name">
+            {reducerState.session.info[0].handle[0].toUpperCase()}
+            </div>
+          </div>
+            <div className='commentTextBox'>
+              <div className='userNameText'>
+              {comment.user}
+              </div>
+              <div className='commentText'>
+              {comment.text}
+            <button onClick={() => handleDeleteComment(comment._id)}>Delete</button>
+              </div>
+            </div>
+        {/* </ul> */}
+      </div>
+    )
+})
+
   
   // console.log(comments)
   // console.log(isThisInBoardArray,save)
@@ -77,7 +100,15 @@ function RenderCommentsAndRightSide({cancelComment,comment,comments,handleDelete
     <div className='rightComments'>
       <div className='singlePageCenterRight1'>
       <div className='rightSideIcons'>
-        <Dot/><Share/><CopyLink/>
+        <div className='rightSideIcons1'>
+        <Dot/>
+        </div>
+        <div  className='rightSideIcons1'>
+        <Share/>
+        </div>
+        <div  className='rightSideIcons1'>
+        <CopyLink/>
+        </div>
       </div>
       <div><DropdownMenu/></div>
       {(isThisInBoardArray.length !== 0)
@@ -105,29 +136,7 @@ function RenderCommentsAndRightSide({cancelComment,comment,comments,handleDelete
         <div className='rightCommentToggle'><ToggleComment/></div>
       </div>  
       <div className='commentArray'>
-      {comments.map((comment) => {
-          return(
-            <div key={comment._id} className='fullCommentDiv'>
-              {/* <ul key={comment._id}> */}
-                <div id="container" style={{backgroundColor:"orange"}}>
-                  <div id="name">
-                  {reducerState.session.info[0].handle[0].toUpperCase()}
-                  </div>
-                </div>
-                  <div className='commentTextBox'>
-                    <div className='userNameText'>
-                    {comment.user}
-                    </div>
-                    <div className='commentText'>
-                    {comment.text}
-                  <button onClick={() => handleDeleteComment(comment._id)}>Delete</button>
-
-                    </div>
-                  </div>
-              {/* </ul> */}
-            </div>
-          )
-      })}
+      {commentList}
       </div>
       <div className='commentDivContainer'>
       <div id="container" style={{backgroundColor:"grey"}}>
