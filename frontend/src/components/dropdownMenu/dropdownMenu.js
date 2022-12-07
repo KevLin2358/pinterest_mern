@@ -8,7 +8,7 @@ function DropdownMenu() {
   const dispatch = useDispatch()
 
   const handleOnClick = (e) => {
-    console.log(e._id,pinId)
+    console.log(e)
     const pinObj = {
       pin:pinId,
       board:e._id
@@ -24,12 +24,11 @@ function DropdownMenu() {
       <li><a href="#">Boards</a>
           <ul className="dropdown">
             <div className='dropdownContainer'>
-
             <li>Save</li>
             <li><input></input></li>
             {boardArray.map(board =>{
               return(
-                <div className='boardName'>
+                <div key={board.createdAt} className='boardName'>
                   <li  onClick={() => handleOnClick(board)}>{board.title}</li>
                 </div>
               )

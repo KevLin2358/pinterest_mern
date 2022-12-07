@@ -217,8 +217,14 @@ vertical-align: middle;
     padding-left: 8px;
 }
 
-.rightSideIcons > *{
+.rightSideIcons1{
     padding: 20px;
+    color: aqua;
+    /* z-index: 2; */
+}
+
+.rightSideIcons{
+    display: flex;
 }
 
 .commentDivContainer{
