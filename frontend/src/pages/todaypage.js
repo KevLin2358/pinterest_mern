@@ -8,7 +8,7 @@ const Today = () => {
             <Navbar/>
             <BoardPreviewer/>
             <div>
-                This is TodayPage
+                {/* This is TodayPage */}
             </div>
         </React.Fragment>
     )
