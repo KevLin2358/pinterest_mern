@@ -9,6 +9,7 @@ import Pins from '../components/pin/pins'
 import { Link } from 'react-router-dom'
 import BoardPreviewer from '../components/boardPreviewer/boardPreviewer'
 import "./homepage.css"
+import NameCard from '../components/userpageComp/nameCard.js'
 function UserPage() {
     const dispatch = useDispatch()
     const id = useSelector(state => state.session.user.id)
@@ -46,6 +47,7 @@ function UserPage() {
     <div>
         <Navbar/>
         <React.Fragment>
+            <NameCard/>
             <div className='userPageContainer'>
                 <BoardPreviewer/>
                 {/* <div>
