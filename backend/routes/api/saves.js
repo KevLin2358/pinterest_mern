@@ -3,18 +3,51 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const passport = require('passport');
 const Save = require('../../models/Save');
+const Pin = require('../../models/Pin');
 
 router.get("/test", (req, res) =>{
     res.json({ msg: "This is the board route" })
 } );
 
-router.get('/boards/:boardId', (req, res) => { // pinid
+router.get('/boards/:boardId', async  (req, res) => { // pinid
   console.log("Backened")
-  Save.find({board:req.params.boardId})
-      .then(pins => res.json(pins))
-      .catch(err =>
-          res.status(404).json({ nopinsfound: 'No pins found with that ID' })
-      );
+  let array = []
+  let x = await  Save.find({board:req.params.boardId})
+  let pinId = (x.map(e => e.pin))
+  // console.log(pinId[7])
+  // Pin.find({_id:pinId[8]}).then(pins => console.log(pins))
+  for (var i = 0; i < pinId.length; i++) {
+    let ele = pinId[i]
+    let response = await Pin.find({_id:ele})
+    array.push(response[0])
+    // console.log(response)
+  }
+  res.json(array)
+  // let y = pinId.map(id => Pin.find({_id:id}))
+  // console.log(y)
+  // res.json(y)
+  //     .then(pins => console.log(pins))
+  //     .catch(err =>
+  //         res.status(404).json({ nopinsfound: 'No pins found with that ID' })
+  //     );
+});
+
+router.get('/fetchSavesWithLimitFive/:boardId', async  (req, res) => { // pinid
+  console.log("fetchSavesWithLimitFive")
+  console.log("Backened")
+  let array = []
+  let x = await  Save.find({board:req.params.boardId})
+  let pinId = (x.map(e => e.pin))
+  // console.log(pinId[7])
+  // Pin.find({_id:pinId[8]}).then(pins => console.log(pins))
+  for (var i = 0; i <= 4 ; i++) {
+    let ele = pinId[i]
+    let response = await Pin.find({_id:ele})
+    array.push(response[0])
+    // console.log(response)
+  }
+  res.json(array.filter(e => e))
+
 });
 
 router.delete('/:saveId', (req, res) => {

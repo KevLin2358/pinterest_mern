@@ -21,50 +21,46 @@ function UserPage() {
         dispatch(fetchBoards(id)).then(res =>setBoard(()=>res.boards.data))
     }, [])
 
-    // useEffect(() => {
-    //     console.log(board)
-    //     if (board !== ""){
-    //         board.map(e => dispatch(fetchSaves(e._id)))
-    //     }
-    // }, [board])
-    
     if(board === "") return null
+
+    const boardList = board.map(e => {
+        return(
+        <Link
+            to={{
+                pathname: `/boards/${e._id}`,
+                boardId: e._id
+            }}
+            >
+            <button >{e.title}</button>
+        </Link>
+        )
+    })
+
+    const pinList = pins.map((pin) => {
+        return(
+            <Pins url={pin} key={pin.id}/>
+        )
+    } )
+    
     return (
     <div>
         <Navbar/>
         <React.Fragment>
-            <BoardPreviewer/>
-            <div>
-                {board.map(e => {
-                    return(
-                    <Link
-                        to={{
-                            pathname: `/boards/${e._id}`,
-                            boardId: e._id
-                        }}
-                        >
-                        <button >{e.title}</button>
-                    </Link>
-                    )
-                })}
-            </div>
-
-            <div ref={ref} className='homePageContainer'>
-                <div className='homePageBodyFlex'>
-                    {/* <div onClick={increaseVh} className='homePageBody'> */}
-                    <div className='homePageBody'>
-                        {
-                            pins.map((pin) => {
-                                return(
-                                    <Pins url={pin} key={pin.id}/>
-                                )
-                            } )
-                        }
-                        <div>This is UserPage</div>
+            <div className='userPageContainer'>
+                <BoardPreviewer/>
+                {/* <div>
+                    {boardList}
+                </div> */}
+                <div ref={ref} className='homePageContainer'>
+                    <div className='homePageBodyFlex'>
+                        {/* <div onClick={increaseVh} className='homePageBody'> */}
+                        <div className='homePageBody'>
+                            {pinList}
+                        </div>
                     </div>
                 </div>
-
             </div>
+
         </React.Fragment>
 
     </div>

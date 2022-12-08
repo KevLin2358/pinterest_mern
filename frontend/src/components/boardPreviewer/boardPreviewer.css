@@ -3,7 +3,7 @@
   }
 
 .BoardPreviewerContainer{
-    max-height: 156px;
+    /* max-height: 156px; */
     display: flex;
     flex-wrap: wrap;
 }
