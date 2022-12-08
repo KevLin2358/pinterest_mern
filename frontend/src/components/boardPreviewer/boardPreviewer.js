@@ -46,7 +46,7 @@ function BoardPreviewer() {
               boardId: e._id
           }}
           >
-          <BoardPreviewerFive id={e._id}/>
+          <BoardPreviewerFive id={e._id} title={e.title}/>
       </Link>
       )
   })

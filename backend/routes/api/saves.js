@@ -10,42 +10,40 @@ router.get("/test", (req, res) =>{
 } );
 
 router.get('/boards/:boardId', async  (req, res) => { // pinid
-  console.log("Backened")
+  console.log("takes in board id and returns arrays of pins obj")
   let array = []
   let x = await  Save.find({board:req.params.boardId})
   let pinId = (x.map(e => e.pin))
-  // console.log(pinId[7])
-  // Pin.find({_id:pinId[8]}).then(pins => console.log(pins))
+
   for (var i = 0; i < pinId.length; i++) {
     let ele = pinId[i]
     let response = await Pin.find({_id:ele})
     array.push(response[0])
-    // console.log(response)
   }
   res.json(array)
-  // let y = pinId.map(id => Pin.find({_id:id}))
-  // console.log(y)
-  // res.json(y)
-  //     .then(pins => console.log(pins))
-  //     .catch(err =>
-  //         res.status(404).json({ nopinsfound: 'No pins found with that ID' })
-  //     );
+
 });
 
 router.get('/fetchSavesWithLimitFive/:boardId', async  (req, res) => { // pinid
-  console.log("fetchSavesWithLimitFive")
-  console.log("Backened")
+  console.log("takes in board id and returns arrays of pins obj limit of 5")
   let array = []
+  //waiting for save to finish all those promises
   let x = await  Save.find({board:req.params.boardId})
+
+  // we have savelist => into pinList
   let pinId = (x.map(e => e.pin))
-  // console.log(pinId[7])
-  // Pin.find({_id:pinId[8]}).then(pins => console.log(pins))
-  for (var i = 0; i <= 4 ; i++) {
+
+  //only limit this loop 5 times and push results into array
+
+
+  for (var i = 0; i < 6 ; i++) {
     let ele = pinId[i]
     let response = await Pin.find({_id:ele})
     array.push(response[0])
     // console.log(response)
   }
+
+  // filter out null and response with an array
   res.json(array.filter(e => e))
 
 });
