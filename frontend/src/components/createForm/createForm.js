@@ -17,7 +17,9 @@ function CreateForm() {
     const dispatch = useDispatch()
 
     const onSubmit = () => {
+        console.log(obj)
         let parsed = JSON.parse(obj)
+        // console.log(parsed)
         //input was a json.strify so I have to parse it
         const newPin = {
             user:userID,

@@ -3,18 +3,57 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const passport = require('passport');
 const Save = require('../../models/Save');
+const Pin = require('../../models/Pin');
 
 router.get("/test", (req, res) =>{
     res.json({ msg: "This is the board route" })
 } );
 
-router.get('/boards/:boardId', (req, res) => { // pinid
-  console.log("Backened")
+router.get('/boards/:boardId', async  (req, res) => { // pinid
+  console.log("takes in board id and returns arrays of pins obj")
+  let array = []
+  let x = await  Save.find({board:req.params.boardId})
+  let pinId = (x.map(e => e.pin))
+
+  for (var i = 0; i < pinId.length; i++) {
+    let ele = pinId[i]
+    let response = await Pin.find({_id:ele})
+    array.push(response[0])
+  }
+  res.json(array)
+
+});
+
+router.get('/fetchSavesIDwithBoardID/:boardId', async  (req, res) => { // pinid
   Save.find({board:req.params.boardId})
       .then(pins => res.json(pins))
       .catch(err =>
           res.status(404).json({ nopinsfound: 'No pins found with that ID' })
       );
+});
+
+router.get('/fetchSavesWithLimitFive/:boardId', async  (req, res) => { // pinid
+  console.log("takes in board id and returns arrays of pins obj limit of 5")
+  let array = []
+  //waiting for save to finish all those promises
+  let x = await  Save.find({board:req.params.boardId})
+
+  // we have savelist => into pinList
+  let pinId = (x.map(e => e.pin))
+
+  //only limit this loop 5 times and push results into array
+
+
+  for (var i = 0; i < 6 ; i++) {
+    let ele = pinId[i]
+    let response = await Pin.find({_id:ele})
+    array.push(response[0])
+    // console.log(response)
+  }
+
+  // filter out null and response with an array
+  res.json(array.filter(e => e))
+
 });
 
 router.delete('/:saveId', (req, res) => {

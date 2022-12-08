@@ -12,7 +12,7 @@ function BoardPage(props) {
     const dispatch = useDispatch()
     const id = useSelector(state => state.session.user.id)
     const [pins,setPins] = useState([])
-    const [saves,setSaves] = useState("")
+    const [saves,setSaves] = useState(null)
     const ref = useRef(null)
     const [board,setBoard] = useState("")
 
@@ -21,17 +21,17 @@ function BoardPage(props) {
         dispatch(fetchSaves(props.match.params.boardId)).then(res => setSaves(res.saves.data))
     }, [])
 
-    useEffect(()=>{
-        if (saves !== ""){
-            saves.map(e => dispatch(fetchSinglePin(e.pin)).then((res => {
-                // console.log(pins)
-                setPins(pins => [...pins, res.pins.data])
-            })))
-        }
+    // useEffect(()=>{
+    //     if (saves !== ""){
+    //         saves.map(e => dispatch(fetchSinglePin(e.pin)).then((res => {
+    //             // console.log(pins)
+    //             setPins(pins => [...pins, res.pins.data])
+    //         })))
+    //     }
 
-    },[saves])
-    console.log(props.match.params.boardId)
-    
+    // },[saves])
+    // console.log(props.match.params.boardId)
+    if (saves === null) return null
     // if(board === "") return null
     return (
     <div>
@@ -42,7 +42,7 @@ function BoardPage(props) {
                     {/* <div onClick={increaseVh} className='homePageBody'> */}
                     <div className='homePageBody'>
                         {
-                            pins.map((pin) => {
+                            saves.map((pin) => {
                                 return(
                                     <Pins url={pin} key={pin._id}/>
                                 )

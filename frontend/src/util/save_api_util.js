@@ -13,6 +13,17 @@ export const fetchSaves = boardId => {
   return axios.get(`/api/saves/boards/${boardId}`)
 }
 
+export const fetchSavesIDwithBoardID = boardId => {
+  // console.log("boardId")
+  return axios.get(`/api/saves/fetchSavesIDwithBoardID/${boardId}`)
+}
+
+
+export const fetchSavesWithLimitFive = boardId => {
+  // console.log("boardId")
+  return axios.get(`/api/saves/fetchSavesWithLimitFive/${boardId}`)
+}
+
 export const deleteSave = (saveId) => {
   return axios.delete(`/api/saves/${saveId}`)
 }
