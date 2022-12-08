@@ -10,6 +10,7 @@ import Share from '../../imageComponent/shareSVG'
 import CopyLink from '../../imageComponent/copyLinkSVG'
 import ToggleComment from '../../imageComponent/ToggleComment'
 import DropdownMenu from '../dropdownMenu/dropdownMenu'
+import { fetchSavesIDwithBoardID } from '../../actions/save_actions'
 function RenderCommentsAndRightSide({cancelComment,comment,comments,handleDeleteComment,pin,handleCreateComment,setComment,handleDeletePin}) {
   const boardArray = useSelector(state => state.board.data)
   const pinId = useSelector(state => state.pin.data._id)
@@ -29,9 +30,9 @@ function RenderCommentsAndRightSide({cancelComment,comment,comments,handleDelete
 
   //once defaultboard is set fetch it savse
   useEffect(()=>{
-    console.log(defaultoBoardId)
+    // console.log(defaultoBoardId)
     if(defaultoBoardId !== "" && defaultoBoardId !== undefined){
-      dispatch(fetchSaves(defaultoBoardId._id)).then(res => setSave(res.saves.data))
+      dispatch(fetchSavesIDwithBoardID(defaultoBoardId._id)).then(res => setSave(res.saves.data))
     }
   },[defaultoBoardId])
 
@@ -39,9 +40,8 @@ function RenderCommentsAndRightSide({cancelComment,comment,comments,handleDelete
   //after default saves are imported , I need to set true or false
   useEffect(()=>{
     if(save.length !== 0){
-      // console.log(save)
+      console.log(save)
       const isTherePinInsideDefault = save.filter(e => e.pin === pinId)
-      console.log(isTherePinInsideDefault)
       setisThisInBoardArray(() =>isTherePinInsideDefault)
     }
   },[save])
@@ -63,6 +63,7 @@ function RenderCommentsAndRightSide({cancelComment,comment,comments,handleDelete
   }
 
   const deleteThisSave = () => {
+    // console.log(isThisInBoardArray[0]._id)
     dispatch(deleteSave(isThisInBoardArray[0]._id)).then(() => dispatch(fetchSaves(defaultoBoardId._id)).then(res => setSave(res.saves.data)))
   } 
 
@@ -89,7 +90,7 @@ function RenderCommentsAndRightSide({cancelComment,comment,comments,handleDelete
     )
 })
 
-  
+  console.log(isThisInBoardArray)
   // console.log(comments)
   // console.log(isThisInBoardArray,save)
   if(!reducerState.session.info) return null

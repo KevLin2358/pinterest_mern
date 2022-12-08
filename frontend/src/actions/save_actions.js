@@ -32,6 +32,12 @@ export const fetchSave = saveId => dispatch =>{
     .then(save => dispatch(receiveSave(save)));
 }
 
+export const fetchSavesIDwithBoardID = boardId => dispatch =>{
+  // console.log("fetching many")
+  return SaveApiUtil.fetchSavesIDwithBoardID(boardId)
+    .then(saves => dispatch(receiveSaves(saves)));
+}
+
 export const fetchSaves = boardId => dispatch =>{
   // console.log("fetching many")
   return SaveApiUtil.fetchSaves(boardId)

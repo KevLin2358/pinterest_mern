@@ -24,6 +24,14 @@ router.get('/boards/:boardId', async  (req, res) => { // pinid
 
 });
 
+router.get('/fetchSavesIDwithBoardID/:boardId', async  (req, res) => { // pinid
+  Save.find({board:req.params.boardId})
+      .then(pins => res.json(pins))
+      .catch(err =>
+          res.status(404).json({ nopinsfound: 'No pins found with that ID' })
+      );
+});
+
 router.get('/fetchSavesWithLimitFive/:boardId', async  (req, res) => { // pinid
   console.log("takes in board id and returns arrays of pins obj limit of 5")
   let array = []
