@@ -15,6 +15,7 @@ import SearchSVG from '../../imageComponent/SearchSVG';
 import Modal from '../modal/modal';
 import { userID } from '../../actions/session_actions';
 import { fetchDefaultBoard } from '../../actions/board_actions';
+import { fetchBoards } from '../../actions/board_actions';
 const Navbar = () => {
   const [searchTerm,setSearchTerm] = useState("")
   const dispatch = useDispatch()
@@ -46,7 +47,7 @@ const Navbar = () => {
 
   useEffect(() => {
     if (stateObj){
-      dispatch(fetchDefaultBoard(stateObj.session.user.id))
+      dispatch(fetchBoards(stateObj.session.user.id))
     }
   }, [])
 

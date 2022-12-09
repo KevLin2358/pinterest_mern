@@ -2,9 +2,28 @@ import React from 'react'
 import "./pins.css"
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-function Pins({url}) {
+import { createSave } from '../../actions/save_actions'
+import { useDispatch, useSelector } from 'react-redux'
+function Pins({url,board}) {
     const [current,setCurrent] = useState(null)
     //current will be the size of the image
+    const [isShown, setIsShown] = useState(false);
+    let state = useSelector(state => state)
+    const dispatch = useDispatch()
+
+    const onSave = (e) => {
+        e.preventDefault()
+        console.log(state)
+    }
+    
+    let boardList = null
+    if(board){
+        boardList = board.map(e => {
+            return(
+                <div>{e.title}</div>
+            )
+        })
+    }
 
     const renderPin = (url) => {
         let titleLen = (url.title.length)
@@ -23,8 +42,6 @@ function Pins({url}) {
 
         dynamicHeightFunction()
 
-
-
         const img = new Image();
         img.src = url.image;
         img.onload = (e) => {
@@ -32,9 +49,17 @@ function Pins({url}) {
             if(img.width < 200) return null 
             else if (img.height/img.width <= 1.2) {
                 setCurrent (
-                        <div key={Math.floor(Math.random() * 2500)} className='card card_small'>
+                        <div key={Math.floor(Math.random() * 2500)} 
+                        className='card card_small'
+                        onMouseEnter={() => setIsShown(true)}
+                        onMouseLeave={() => setIsShown(false)}>
                             <Link to={{pathname:`/pins/${url._id}`, fromDashboard: "true" }}>
                             <img className='imgBorder' style={{height:dynamicHeight}} src={img.src} alt="smallCard"></img>
+                            {isShown &&
+                                <button className='onHover' onClick={(e)=> onSave(e)}>
+                                Save
+                                </button>
+                            }
                             <div className='homepagePinsText'>{url.title}</div>
                             </Link>
                         </div>
@@ -42,9 +67,22 @@ function Pins({url}) {
             }
             else if (img.height/img.width > 1.2 && img.height/img.width < 1.5){
                 setCurrent (
-                    <div key={Math.floor(Math.random() * 2500)} className='card card_medium'>
+                    <div key={Math.floor(Math.random() * 2500)} 
+                    className='card card_medium'
+                    onMouseEnter={() => setIsShown(true)}
+                    onMouseLeave={() => setIsShown(false)}>
                         <Link to={{pathname:`/pins/${url._id}`, fromDashboard: "true" }}>
-                        <img className='imgBorder' style={{height:dynamicHeight}} src={img.src} alt="medCard"></img>
+                        <img className='imgBorder' 
+                        style={{height:dynamicHeight}} 
+                        src={img.src} alt="medCard"
+
+                        ></img>
+                        {isShown &&
+                            <button className='onHover' onClick={(e)=> onSave(e)}>
+                                Save
+                            </button>
+                        }
+
                         <div className='homepagePinsText'>{url.title}</div>
                         </Link>
                     </div>
@@ -52,9 +90,21 @@ function Pins({url}) {
             }
             else if (img.height/img.width >= 1.5) {
                 setCurrent(
-                    <div  className='card card_large'>
+                    <div  className='card card_large'
+                    onMouseEnter={() => setIsShown(true)}
+                    onMouseLeave={() => setIsShown(false)}
+                    >
                         <Link to={{pathname:`/pins/${url._id}`, fromDashboard: "true" }}>
-                        <img className='imgBorder' style={{height:dynamicHeight}} src={img.src} alt="largeCard"></img>
+                        <img className='imgBorder' 
+                        style={{height:dynamicHeight}} 
+                        src={img.src} alt="largeCard"
+                        ></img>
+                        {isShown &&
+                                <button className='onHover' onClick={(e)=> onSave(e)}>
+                                Save
+                                </button>
+                        }
+                        {/* {boardList}                        */}
                         <div className='homepagePinsText'>{url.title}</div>
                         </Link>
                 </div>
@@ -70,7 +120,7 @@ function Pins({url}) {
     useEffect(() => {
         // Update the document title using the browser API
         renderPin(url)
-      },[url]);
+      },[url,isShown,board]);
 
 
     return(

@@ -3,20 +3,23 @@ import Navbar from '../components/nav/navbar';
 import Pins from '../components/pin/pins';
 import "./homepage.css"
 import { useState, useEffect, useRef } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { fetchAllPins } from '../actions/pin_actions';
+import { fetchBoards } from '../actions/board_actions';
 // import { counter } from '@fortawesome/fontawesome-svg-core';
 
 const Home = () => {
 const ref = useRef(null)
 const dispatch = useDispatch()
 const [array,setArray] = useState("")
-
+const board = useSelector(state => state.board.data)
 
 useEffect(()=> {
     dispatch(fetchAllPins()).then(res => setArray(res.pins.data))
     //getting all pins and then making a array of obj
 },[])
+
+console.log(board)
 
 if (array === "") return null
     return (
@@ -29,7 +32,7 @@ if (array === "") return null
                     //
                         array.map((pinObj) => {
                             return(
-                                <Pins url={pinObj} key={pinObj._id}/>
+                                <Pins url={pinObj} key={pinObj._id} board={board}/>
                             )
                         } )
                     }
