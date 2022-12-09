@@ -26,11 +26,11 @@ function Pins({url,board}) {
     if(board){
         boardList = board.map(e => {
             return(
-                <div>{e.title}</div>
+                <div key={e._id}>{e.title} </div>
             )
         })
     }
-    console.log(url === null)
+    // console.log(url === null)
 
     const renderPin = (url) => {
 
@@ -70,7 +70,8 @@ function Pins({url,board}) {
                                 Save
                             </button>                                
                             <div className='homepageDropdown' onClick={(e)=> onSaveBoard(e)}>
-                            <DropdownMenuHomePage board={board} /></div>
+                            {/* <DropdownMenuHomePage board={board} /> */}
+                            </div>
                             </div>
                         }
 
@@ -97,7 +98,8 @@ function Pins({url,board}) {
                                 Save
                             </button>                                
                             <div className='homepageDropdown' onClick={(e)=> onSaveBoard(e)}>
-                            <DropdownMenuHomePage board={board} /></div>
+                            {/* <DropdownMenuHomePage board={board} /> */}
+                            </div>
                             </div>
                         }
 
@@ -124,7 +126,7 @@ function Pins({url,board}) {
                                 Save
                             </button>                                
                             <div className='homepageDropdown' onClick={(e)=> onSaveBoard(e)}>
-                            <DropdownMenuHomePage board={board} />
+                            {/* <DropdownMenuHomePage board={board} /> */}
                             </div>
                             </div>
                         }

@@ -3,7 +3,8 @@ import { useSelector,useDispatch } from 'react-redux'
 import { createSave } from '../../actions/save_actions'
 import "./dropdownMenu.css"
 function DropdownMenuHomePage({board}) {
-  const pinId = useSelector(state => state.pin.data._id)
+  const stateObj = useSelector(state => state)
+  const pinId = useSelector(stateObj.pin.data._id)
   const dispatch = useDispatch()
 
   const handleOnClick = (e) => {
@@ -15,6 +16,7 @@ function DropdownMenuHomePage({board}) {
     dispatch(createSave(pinObj))
   }
 
+  if (!stateObj) return null
 
   return (
     <div>
