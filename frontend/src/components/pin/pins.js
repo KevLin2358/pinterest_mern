@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { createSave } from '../../actions/save_actions'
 import { useDispatch, useSelector } from 'react-redux'
+import DropdownMenuHomePage from '../dropdownMenu/dropdownMenuHomePage'
 function Pins({url,board}) {
     const [current,setCurrent] = useState(null)
     //current will be the size of the image
@@ -12,6 +13,11 @@ function Pins({url,board}) {
     const dispatch = useDispatch()
 
     const onSave = (e) => {
+        e.preventDefault()
+        console.log(state)
+    }
+
+    const onSaveBoard = (e) => {
         e.preventDefault()
         console.log(state)
     }
@@ -41,7 +47,7 @@ function Pins({url,board}) {
         }
 
         dynamicHeightFunction()
-
+        if (boardList === null) return null
         const img = new Image();
         img.src = url.image;
         img.onload = (e) => {
@@ -56,10 +62,15 @@ function Pins({url,board}) {
                             <Link to={{pathname:`/pins/${url._id}`, fromDashboard: "true" }}>
                             <img className='imgBorder' style={{height:dynamicHeight}} src={img.src} alt="smallCard"></img>
                             {isShown &&
-                                <button className='onHover' onClick={(e)=> onSave(e)}>
+                            <div>
+                            <button className='onHover' onClick={(e)=> onSave(e)}>
                                 Save
-                                </button>
-                            }
+                            </button>                                
+                            <div className='homepageDropdown'>
+                            <DropdownMenuHomePage board={board} onClick={(e)=> onSaveBoard(e)}/></div>
+                            </div>
+                        }
+
                             <div className='homepagePinsText'>{url.title}</div>
                             </Link>
                         </div>
@@ -78,9 +89,13 @@ function Pins({url,board}) {
 
                         ></img>
                         {isShown &&
+                            <div>
                             <button className='onHover' onClick={(e)=> onSave(e)}>
                                 Save
-                            </button>
+                            </button>                                
+                            <div className='homepageDropdown'>
+                            <DropdownMenuHomePage board={board} onClick={(e)=> onSaveBoard(e)}/></div>
+                            </div>
                         }
 
                         <div className='homepagePinsText'>{url.title}</div>
@@ -100,11 +115,15 @@ function Pins({url,board}) {
                         src={img.src} alt="largeCard"
                         ></img>
                         {isShown &&
-                                <button className='onHover' onClick={(e)=> onSave(e)}>
+                            <div>
+                            <button className='onHover' onClick={(e)=> onSave(e)}>
                                 Save
-                                </button>
+                            </button>                                
+                            <div className='homepageDropdown'>
+                            <DropdownMenuHomePage board={board} onClick={(e)=> onSaveBoard(e)}/></div>
+                            </div>
                         }
-                        {/* {boardList}                        */}
+
                         <div className='homepagePinsText'>{url.title}</div>
                         </Link>
                 </div>
