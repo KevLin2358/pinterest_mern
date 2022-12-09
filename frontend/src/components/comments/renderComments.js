@@ -59,20 +59,23 @@ function RenderCommentsAndRightSide({cancelComment,comment,comments,handleDelete
       pin:pinId,
       board:defaultoBoardId
     }
-    dispatch(createSave(newSave)).then(res => setisThisInBoardArray([res.save.data]))
+    dispatch(createSave(newSave))
+    .then(res => setisThisInBoardArray([res.save.data]))
   }
 
   const deleteThisSave = () => {
     // console.log(isThisInBoardArray[0]._id)
-    dispatch(deleteSave(isThisInBoardArray[0]._id)).then(() => dispatch(fetchSaves(defaultoBoardId._id)).then(res => setSave(res.saves.data)))
+    dispatch(deleteSave(isThisInBoardArray[0]._id))
+    .then(() => dispatch(fetchSaves(defaultoBoardId._id))
+    .then(res => setSave(res.saves.data)))
   } 
 
   const commentList = comments.map((comment) => {
     return(
       <div key={comment._id} className='fullCommentDiv'>
         {/* <ul key={comment._id}> */}
-          <div id="container" style={{backgroundColor:"orange"}}>
-            <div id="name">
+          <div id="container2" style={{backgroundColor:"orange"}}>
+            <div id="name2">
             {reducerState.session.info[0].handle[0].toUpperCase()}
             </div>
           </div>
@@ -82,7 +85,9 @@ function RenderCommentsAndRightSide({cancelComment,comment,comments,handleDelete
               </div>
               <div className='commentText'>
               {comment.text}
-            <button onClick={() => handleDeleteComment(comment._id)}>Delete</button>
+            <button 
+            onClick={() => handleDeleteComment(comment._id)}>Delete
+            </button>
               </div>
             </div>
         {/* </ul> */}
@@ -114,9 +119,17 @@ function RenderCommentsAndRightSide({cancelComment,comment,comments,handleDelete
       <div><DropdownMenu/></div>
       {(isThisInBoardArray.length !== 0)
         ? 
-        <div ><button onClick={deleteThisSave} className='singlePageCenterRight1Button'>Unsaved</button></div>
+        <div >
+          <button onClick={deleteThisSave} 
+            className='singlePageCenterRight1Button'>Unsaved
+          </button>
+        </div>
         :
-        <div ><button onClick={saveThisPin} className='singlePageCenterRight1Button'>Save</button></div>
+        <div >
+          <button onClick={saveThisPin} 
+            className='singlePageCenterRight1Button'>Save
+          </button>
+        </div>
       }
       </div>
 
@@ -140,8 +153,8 @@ function RenderCommentsAndRightSide({cancelComment,comment,comments,handleDelete
       {commentList}
       </div>
       <div className='commentDivContainer'>
-      <div id="container" style={{backgroundColor:"grey"}}>
-                  <div id="name">
+      <div id="container2" style={{backgroundColor:"grey"}}>
+                  <div id="name2">
                   {reducerState.session.info[0].handle[0].toUpperCase()}
                   </div>
       </div>
@@ -156,8 +169,14 @@ function RenderCommentsAndRightSide({cancelComment,comment,comments,handleDelete
 
           </form>
           <div className='commentButtonsContainer'>
-              <button className='commentButtons' onClick={cancelComment}>Cancel</button>
-              <button className='commentButtons' onClick={handleCreateComment}>Done</button>
+              <button className='commentButtons' 
+              onClick={cancelComment}>
+                Cancel
+              </button>
+              <button className='commentButtons' 
+              onClick={handleCreateComment}>
+                Done
+              </button>
             </div>
         </div>
       </div>
