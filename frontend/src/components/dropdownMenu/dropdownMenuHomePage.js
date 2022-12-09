@@ -1,22 +1,24 @@
 import React from 'react'
 import { useSelector,useDispatch } from 'react-redux'
 import { createSave } from '../../actions/save_actions'
+import { useEffect } from 'react'
 import "./dropdownMenu.css"
 function DropdownMenuHomePage({board}) {
-  const stateObj = useSelector(state => state)
-  const pinId = useSelector(stateObj.pin.data._id)
+  const stateObj = useSelector((state) => state)
+  const pinId = useSelector((e) => stateObj.session.user.id)
   const dispatch = useDispatch()
 
   const handleOnClick = (e) => {
     console.log(e)
     const pinObj = {
       pin:pinId,
-      board:e._id
+      board2:e._id
     }
     dispatch(createSave(pinObj))
   }
-
+  console.log(board)
   if (!stateObj) return null
+  if (!board) return null
 
   return (
     <div>
@@ -26,7 +28,7 @@ function DropdownMenuHomePage({board}) {
           <ul className="dropdown">
             <div className='dropdownContainer'>
             <li>Save</li>
-            <li><input></input></li>
+            {/* <li><input>asdasd</input></li> */}
             {board.map(boardEle =>{
               return(
                 <div key={boardEle.createdAt} className='boardName'>

@@ -9,6 +9,7 @@ function Pins({url,board}) {
     const [current,setCurrent] = useState(null)
     //current will be the size of the image
     const [isShown, setIsShown] = useState(false);
+    const [boardList, setboardList] = useState([]);
     let state = useSelector(state => state)
     const dispatch = useDispatch()
 
@@ -22,15 +23,19 @@ function Pins({url,board}) {
         console.log(state)
     }
     
-    let boardList = null
-    if(board){
-        boardList = board.map(e => {
-            return(
-                <div key={e._id}>{e.title} </div>
-            )
+    useEffect(() => {
+        if(board){
+            board.map(e => {
+
+                setboardList(() => <div key={e._id}>{e.title} </div>)
+
         })
-    }
-    // console.log(url === null)
+        }
+
+    }, [board])
+    
+
+    console.log(boardList)
 
     const renderPin = (url) => {
 
@@ -70,7 +75,7 @@ function Pins({url,board}) {
                                 Save
                             </button>                                
                             <div className='homepageDropdown' onClick={(e)=> onSaveBoard(e)}>
-                            {/* <DropdownMenuHomePage board={board} /> */}
+                            <DropdownMenuHomePage board={board} />
                             </div>
                             </div>
                         }
@@ -98,7 +103,7 @@ function Pins({url,board}) {
                                 Save
                             </button>                                
                             <div className='homepageDropdown' onClick={(e)=> onSaveBoard(e)}>
-                            {/* <DropdownMenuHomePage board={board} /> */}
+                            <DropdownMenuHomePage board={board} />
                             </div>
                             </div>
                         }
@@ -126,7 +131,7 @@ function Pins({url,board}) {
                                 Save
                             </button>                                
                             <div className='homepageDropdown' onClick={(e)=> onSaveBoard(e)}>
-                            {/* <DropdownMenuHomePage board={board} /> */}
+                            <DropdownMenuHomePage board={board} />
                             </div>
                             </div>
                         }
