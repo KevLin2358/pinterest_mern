@@ -43,7 +43,7 @@
 }
 .card_large{
     grid-row-end: span var(--card_large);
-    display: flex;
+    /* display: flex; */
 }
 
 .card_small > img{

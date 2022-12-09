@@ -35,7 +35,7 @@ function Pins({url,board}) {
     }, [board])
     
 
-    console.log(boardList)
+    // console.log(boardList)
 
     const renderPin = (url) => {
 
@@ -69,6 +69,7 @@ function Pins({url,board}) {
                             <Link to={{pathname:`/pins/${url._id}`, fromDashboard: "true" }}>
                             <img className='imgBorder' style={{height:dynamicHeight}} src={img.src} 
                             alt="smallCard"></img>
+                            </Link>
                             {isShown &&
                             <div className='onHoverCont'>
                             <button className='onHover' onClick={(e)=> onSave(e)}>
@@ -81,7 +82,6 @@ function Pins({url,board}) {
                         }
 
                             <div className='homepagePinsText'>{url.title}</div>
-                            </Link>
                         </div>
                 )
             }
@@ -96,6 +96,7 @@ function Pins({url,board}) {
                         style={{height:dynamicHeight}} 
                         src={img.src} alt="medCard"
                         ></img>
+                        </Link>
                             {isShown &&
                             <div className='onHoverCont'>
 
@@ -109,11 +110,10 @@ function Pins({url,board}) {
                         }
 
                         <div className='homepagePinsText'>{url.title}</div>
-                        </Link>
                     </div>
                    )
             }
-            else if (img.height/img.width >= 1.5) {
+            else  {
                 setCurrent(
                     <div key={Math.floor(Math.random() * 2500)} 
                     className='card card_large'
@@ -125,6 +125,7 @@ function Pins({url,board}) {
                         style={{height:dynamicHeight}} 
                         src={img.src} alt="largeCard"
                         ></img>
+                        /</Link>
                             {isShown &&
                             <div className='onHoverCont'>
                             <button className='onHover' onClick={(e)=> onSave(e)}>
@@ -137,13 +138,12 @@ function Pins({url,board}) {
                         }
 
                         <div className='homepagePinsText'>{url.title}</div>
-                        </Link>
                 </div>
                 )
             }
-            else {
-                console.log(img.height,img.width,img.height/img.width)
-            }
+            // else {
+            //     console.log(img.height,img.width,img.height/img.width)
+            // }
         }
 
         }

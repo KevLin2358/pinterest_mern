@@ -2,17 +2,18 @@ import React from 'react'
 import { useSelector,useDispatch } from 'react-redux'
 import { createSave } from '../../actions/save_actions'
 import { useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import "./dropdownMenu.css"
 function DropdownMenuHomePage({board}) {
   const stateObj = useSelector((state) => state)
   const pinId = useSelector((e) => stateObj.session.user.id)
   const dispatch = useDispatch()
 
-  const handleOnClick = (e) => {
+  const handleOnClick2 = (e) => {
     console.log(e)
     const pinObj = {
       pin:pinId,
-      board2:e._id
+      board:e._id
     }
     dispatch(createSave(pinObj))
   }
@@ -32,7 +33,7 @@ function DropdownMenuHomePage({board}) {
             {board.map(boardEle =>{
               return(
                 <div key={boardEle.createdAt} className='boardName'>
-                  <li  onClick={() => handleOnClick(boardEle)}>{boardEle.title}</li>
+                  <li  onClick={() => handleOnClick2(boardEle)}>{boardEle.title}</li>
                 </div>
               )
             })}

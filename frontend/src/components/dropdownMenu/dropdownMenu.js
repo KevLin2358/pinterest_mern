@@ -2,6 +2,7 @@ import React from 'react'
 import { useSelector,useDispatch } from 'react-redux'
 import { createSave } from '../../actions/save_actions'
 import "./dropdownMenu.css"
+import { Link } from 'react-router-dom'
 function DropdownMenu() {
   const boardArray = useSelector(state => state.board.data)
   const pinId = useSelector(state => state.pin.data._id)
@@ -21,7 +22,7 @@ function DropdownMenu() {
     <div>
     <nav role="navigation">
     <ul>
-      <li><a href="#">Boards</a>
+      <li><Link to="#"> Dashboard </Link>
           <ul className="dropdown">
             <div className='dropdownContainer'>
             <li>Save</li>
