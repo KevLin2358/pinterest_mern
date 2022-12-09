@@ -24,25 +24,14 @@ function UserPage() {
 
     if(board === "") return null
 
-    const boardList = board.map(e => {
-        return(
-        <Link
-            to={{
-                pathname: `/boards/${e._id}`,
-                boardId: e._id
-            }}
-            >
-            <button >{e.title}</button>
-        </Link>
-        )
-    })
+
 
     const pinList = pins.map((pin) => {
         return(
-            <Pins url={pin} key={pin.id}/>
+            <Pins url={pin} key={pin._id} board={board}/>
         )
     } )
-    
+    console.log(pinList)
     return (
     <div>
         <Navbar/>

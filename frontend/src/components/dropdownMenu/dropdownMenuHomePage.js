@@ -25,10 +25,10 @@ function DropdownMenuHomePage({board}) {
             <div className='dropdownContainer'>
             <li>Save</li>
             <li><input></input></li>
-            {board.map(board =>{
+            {board.map(boardEle =>{
               return(
-                <div key={board.createdAt} className='boardName'>
-                  <li  onClick={() => handleOnClick(board)}>{board.title}</li>
+                <div key={boardEle.createdAt} className='boardName'>
+                  <li  onClick={() => handleOnClick(boardEle)}>{boardEle.title}</li>
                 </div>
               )
             })}

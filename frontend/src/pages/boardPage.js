@@ -10,11 +10,12 @@ import Pins from '../components/pin/pins'
 import "./homepage.css"
 function BoardPage(props) {
     const dispatch = useDispatch()
+    const state = useSelector(state => state)
     const id = useSelector(state => state.session.user.id)
+    const [allboard,setAllBoard] = useState(null)
     const [pins,setPins] = useState([])
     const [saves,setSaves] = useState(null)
     const ref = useRef(null)
-    const [board,setBoard] = useState("")
 
     useEffect(() => {
         // dispatch(fetchUserPin(id)).then(res =>setPins(()=>res.pins.data))
@@ -29,9 +30,18 @@ function BoardPage(props) {
     //         })))
     //     }
 
+    useEffect(() => {
+        if(state && state.board){
+            setAllBoard(state.board.data)
+        }
+    }, [state])
+    
+
     // },[saves])
     // console.log(props.match.params.boardId)
+    // console.log(allboard)
     if (saves === null) return null
+    if (allboard === null) return null
     // if(board === "") return null
     return (
     <div>
@@ -43,8 +53,10 @@ function BoardPage(props) {
                     <div className='homePageBody'>
                         {
                             saves.map((pin) => {
+                                // console.log(pin._id)
                                 return(
-                                    <Pins url={pin} key={pin._id}/>
+                                    // <div>asd</div>
+                                    <Pins url={pin} board={allboard} />
                                 )
                             } )
                         }

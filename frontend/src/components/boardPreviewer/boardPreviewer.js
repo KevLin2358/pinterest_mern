@@ -40,7 +40,7 @@ function BoardPreviewer() {
 
   const boardList = board.map(e => {
       return(
-      <Link
+      <Link key={e._id}
           to={{
               pathname: `/boards/${e._id}`,
               boardId: e._id

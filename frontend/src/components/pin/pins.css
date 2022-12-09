@@ -21,11 +21,15 @@ img:hover{
     position: relative;
 }
 
+.onHoverStuff{
+    width: 100%;
+}
+
 
 .onHover{
     position: absolute;
     top: 10px;
-    right: 10px;
+    right: 30px;
     width: 65px;
     height: 48px;
     border-radius: 25px;

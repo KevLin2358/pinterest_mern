@@ -77,8 +77,9 @@ a {
 
 
 .dropdownContainer{
-  height: 500px;
+  max-height: 500px;
+  /* max-width: ; */
   overflow-y: scroll;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
 }
 

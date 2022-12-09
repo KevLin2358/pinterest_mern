@@ -30,8 +30,10 @@ function Pins({url,board}) {
             )
         })
     }
+    console.log(url === null)
 
     const renderPin = (url) => {
+
         let titleLen = (url.title.length)
         let dynamicHeight = ""
         let dynamicHeightFunction = () => {
@@ -47,7 +49,7 @@ function Pins({url,board}) {
         }
 
         dynamicHeightFunction()
-        if (boardList === null) return null
+        // if (boardList === null) return null
         const img = new Image();
         img.src = url.image;
         img.onload = (e) => {
@@ -60,14 +62,15 @@ function Pins({url,board}) {
                         onMouseEnter={() => setIsShown(true)}
                         onMouseLeave={() => setIsShown(false)}>
                             <Link to={{pathname:`/pins/${url._id}`, fromDashboard: "true" }}>
-                            <img className='imgBorder' style={{height:dynamicHeight}} src={img.src} alt="smallCard"></img>
+                            <img className='imgBorder' style={{height:dynamicHeight}} src={img.src} 
+                            alt="smallCard"></img>
                             {isShown &&
-                            <div>
+                            <div className='onHoverCont'>
                             <button className='onHover' onClick={(e)=> onSave(e)}>
                                 Save
                             </button>                                
-                            <div className='homepageDropdown'>
-                            <DropdownMenuHomePage board={board} onClick={(e)=> onSaveBoard(e)}/></div>
+                            <div className='homepageDropdown' onClick={(e)=> onSaveBoard(e)}>
+                            <DropdownMenuHomePage board={board} /></div>
                             </div>
                         }
 
@@ -86,15 +89,15 @@ function Pins({url,board}) {
                         <img className='imgBorder' 
                         style={{height:dynamicHeight}} 
                         src={img.src} alt="medCard"
-
                         ></img>
-                        {isShown &&
-                            <div>
+                            {isShown &&
+                            <div className='onHoverCont'>
+
                             <button className='onHover' onClick={(e)=> onSave(e)}>
                                 Save
                             </button>                                
-                            <div className='homepageDropdown'>
-                            <DropdownMenuHomePage board={board} onClick={(e)=> onSaveBoard(e)}/></div>
+                            <div className='homepageDropdown' onClick={(e)=> onSaveBoard(e)}>
+                            <DropdownMenuHomePage board={board} /></div>
                             </div>
                         }
 
@@ -105,7 +108,8 @@ function Pins({url,board}) {
             }
             else if (img.height/img.width >= 1.5) {
                 setCurrent(
-                    <div  className='card card_large'
+                    <div key={Math.floor(Math.random() * 2500)} 
+                    className='card card_large'
                     onMouseEnter={() => setIsShown(true)}
                     onMouseLeave={() => setIsShown(false)}
                     >
@@ -114,13 +118,14 @@ function Pins({url,board}) {
                         style={{height:dynamicHeight}} 
                         src={img.src} alt="largeCard"
                         ></img>
-                        {isShown &&
-                            <div>
+                            {isShown &&
+                            <div className='onHoverCont'>
                             <button className='onHover' onClick={(e)=> onSave(e)}>
                                 Save
                             </button>                                
-                            <div className='homepageDropdown'>
-                            <DropdownMenuHomePage board={board} onClick={(e)=> onSaveBoard(e)}/></div>
+                            <div className='homepageDropdown' onClick={(e)=> onSaveBoard(e)}>
+                            <DropdownMenuHomePage board={board} />
+                            </div>
                             </div>
                         }
 
