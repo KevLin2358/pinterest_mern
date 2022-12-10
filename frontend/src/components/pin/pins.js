@@ -5,14 +5,15 @@ import { useEffect, useState } from 'react'
 import { createSave } from '../../actions/save_actions'
 import { useDispatch, useSelector } from 'react-redux'
 import DropdownMenuHomePage from '../dropdownMenu/dropdownMenuHomePage'
-function Pins({url,board}) {
+import { deleteSave } from '../../actions/save_actions'
+function Pins({url,board,pinSaveId}) {
     const [current,setCurrent] = useState(null)
     //current will be the size of the image
     const [isShown, setIsShown] = useState(false);
     const [boardList, setboardList] = useState([]);
     let state = useSelector(state => state)
     const dispatch = useDispatch()
-
+    console.log(pinSaveId)
     const onSave = (e) => {
         e.preventDefault()
         // const pinObj = {
@@ -34,6 +35,11 @@ function Pins({url,board}) {
         // e.preventDefault()
         // console.log(state,url)
     }
+
+    const onUnSaveBoard = (e) => {
+        // e.preventDefault()
+        dispatch(deleteSave(pinSaveId))
+    }
     
     useEffect(() => {
         if(board){
@@ -47,7 +53,25 @@ function Pins({url,board}) {
     }, [board])
     
 
-    // console.log(url)
+    const hoverDiv = 
+    isShown &&
+        <div className='onHoverCont'>
+            {pinSaveId 
+            ?
+            <button className='onHover' onClick={(e)=> onUnSaveBoard(e)}>
+                UnSaved
+            </button>
+            :
+            <button className='onHover' onClick={(e)=> onSave(e)}>
+                Save
+            </button>
+        }
+            
+        <div className='homepageDropdown' onClick={(e)=> onSaveBoard(e)}>
+        <DropdownMenuHomePage board={board} homepagePinId={url._id}/>
+        </div>
+        </div>
+    
 
     const renderPin = (url) => {
 
@@ -84,14 +108,23 @@ function Pins({url,board}) {
                             </Link>
                             {isShown &&
                             <div className='onHoverCont'>
-                            <button className='onHover' onClick={(e)=> onSave(e)}>
-                                Save
-                            </button>                                
+                                {pinSaveId 
+                                ?
+                                <button className='onHover' onClick={(e)=> onUnSaveBoard(e)}>
+                                    UnSaved
+                                </button>
+                                :
+                                <button className='onHover' onClick={(e)=> onSave(e)}>
+                                    Save
+                                </button>
+                            }
+                                
                             <div className='homepageDropdown' onClick={(e)=> onSaveBoard(e)}>
-                            <DropdownMenuHomePage board={board} homepagePinId={url._id} />
+                            <DropdownMenuHomePage board={board} homepagePinId={url._id}/>
                             </div>
                             </div>
                         }
+
 
                             <div className='homepagePinsText'>{url.title}</div>
                         </div>
@@ -109,17 +142,25 @@ function Pins({url,board}) {
                         src={img.src} alt="medCard"
                         ></img>
                         </Link>
-                            {isShown &&
+                        {isShown &&
                             <div className='onHoverCont'>
-
-                            <button className='onHover' onClick={(e)=> onSave(e)}>
-                                Save
-                            </button>                                
+                                {pinSaveId 
+                                ?
+                                <button className='onHover' onClick={(e)=> onUnSaveBoard(e)}>
+                                    UnSaved
+                                </button>
+                                :
+                                <button className='onHover' onClick={(e)=> onSave(e)}>
+                                    Save
+                                </button>
+                            }
+                                
                             <div className='homepageDropdown' onClick={(e)=> onSaveBoard(e)}>
                             <DropdownMenuHomePage board={board} homepagePinId={url._id}/>
                             </div>
                             </div>
                         }
+
 
                         <div className='homepagePinsText'>{url.title}</div>
                     </div>
@@ -138,16 +179,7 @@ function Pins({url,board}) {
                         src={img.src} alt="largeCard"
                         ></img>
                         </Link>
-                            {isShown &&
-                            <div className='onHoverCont'>
-                            <button className='onHover' onClick={(e)=> onSave(e)}>
-                                Save
-                            </button>                                
-                            <div className='homepageDropdown' onClick={(e)=> onSaveBoard(e)}>
-                            <DropdownMenuHomePage board={board} homepagePinId={url._id}/>
-                            </div>
-                            </div>
-                        }
+                        {hoverDiv}
 
                         <div className='homepagePinsText'>{url.title}</div>
                 </div>

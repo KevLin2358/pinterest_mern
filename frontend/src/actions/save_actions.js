@@ -61,3 +61,9 @@ export const deleteSave = id => dispatch =>{
   return SaveApiUtil.deleteSave(id)
     .then(() => dispatch(removeSave(id)))
 }
+
+export const deleteSaveWithPinid = PinId => dispatch =>{
+  // console.log("deleting ")
+  return SaveApiUtil.deleteSave(PinId)
+    // .then(() => dispatch(removeSave(PinId)))
+}

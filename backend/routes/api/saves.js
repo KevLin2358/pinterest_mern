@@ -28,7 +28,7 @@ router.get('/boards/:boardId', async  (req, res) => { // pinid
 
 });
 
-router.get('/fetchSavesIDwithBoardID/:boardId', async  (req, res) => { // pinid
+router.get('/fetchSavesIDwithBoardID/:boardId', (req, res) => { // pinid
   Save.find({board:req.params.boardId})
       .then(pins => res.json(pins))
       .catch(err =>
@@ -67,6 +67,15 @@ router.delete('/:saveId', (req, res) => {
     .catch(err => 
       res.status(404).json({noSave: 'No Save found with that ID'})
       );
+})
+
+router.delete('/board/:pinId', (req, res) => {
+  console.log(req)
+  // Save.deleteOne({_id:req.params.saveId})
+  //   .then((e) => res.json(e))
+  //   .catch(err => 
+  //     res.status(404).json({noSave: 'No Save found with that ID'})
+  //     );
 })
 
 router.post('/',

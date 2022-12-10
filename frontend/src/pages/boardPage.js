@@ -6,6 +6,7 @@ import { fetchUserPin } from '../actions/pin_actions'
 import { fetchBoards } from '../actions/board_actions'
 import { fetchSaves } from '../actions/save_actions'
 import { fetchSinglePin } from '../actions/pin_actions'
+import { fetchSavesIDwithBoardID } from '../actions/save_actions'
 import Pins from '../components/pin/pins'
 import "./homepage.css"
 function BoardPage(props) {
@@ -15,12 +16,25 @@ function BoardPage(props) {
     const [allboard,setAllBoard] = useState(null)
     const [pins,setPins] = useState([])
     const [saves,setSaves] = useState(null)
+    const [savesId,setSavesId] = useState(null)
     const ref = useRef(null)
+    const [saveIDandPin,setsaveIDandPin] = useState(null)
 
     useEffect(() => {
         // dispatch(fetchUserPin(id)).then(res =>setPins(()=>res.pins.data))
         dispatch(fetchSaves(props.match.params.boardId)).then(res => setSaves(res.saves.data))
     }, [])
+
+    useEffect(() => {
+        // dispatch(fetchUserPin(id)).then(res =>setPins(()=>res.pins.data))
+        dispatch(fetchSavesIDwithBoardID(props.match.params.boardId)).then(res => setSavesId(res.saves.data))
+    }, [])
+
+    useEffect(() => {
+        if (saves && savesId){
+            
+        }
+    }) 
 
     // useEffect(()=>{
     //     if (saves !== ""){
@@ -39,8 +53,38 @@ function BoardPage(props) {
 
 
     if (saves === null) return null
+    if (savesId === null) return null
     if (allboard === null) return null
-    // if(board === "") return null
+    // console.log(saves,savesId)
+
+    const saveIDwithPinIDobj = () => {
+        let obj = {}
+        let finalArray = {}
+        for (let index = 0; index < saves.length; index++) {
+            const element = saves[index]._id;
+            obj[element] = true
+        }
+        // console.log(obj)
+        for (let index = 0; index < savesId.length; index++) {
+            const element = savesId[index].pin;
+            if(obj[element]){
+                finalArray[savesId[index].pin]=savesId[index]._id
+            }
+        }
+        setsaveIDandPin(() => finalArray)
+    }
+
+    if(saveIDandPin === null){
+        saveIDwithPinIDobj()
+    }
+
+    // console.log(saveIDandPin)
+    if (saveIDandPin === null) return null
+    let saveList = saves.map((pin) => {
+        return(
+            <Pins url={pin} board={allboard} key={pin._id} pinSaveId={saveIDandPin[pin._id]}/>
+        )
+    } )
     return (
     <div>
         <Navbar/>
@@ -49,13 +93,7 @@ function BoardPage(props) {
                 <div className='homePageBodyFlex'>
                     {/* <div onClick={increaseVh} className='homePageBody'> */}
                     <div className='homePageBody'>
-                        {
-                            saves.map((pin) => {
-                                return(
-                                    <Pins url={pin} board={allboard} key={pin._id} />
-                                )
-                            } )
-                        }
+{}                        {saveList}
                         <div>This is BoardPage</div>
                     </div>
                 </div>
