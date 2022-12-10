@@ -10,15 +10,12 @@ function DropdownMenuHomePage({board,homepagePinId}) {
   const dispatch = useDispatch()
 
   const handleOnClick2 = (e) => {
-    // console.log(e)
     const pinObj = {
       pin:homepagePinId,
       board:e._id
     }
-    // console.log(pinObj)
     dispatch(createSave(pinObj))
   }
-  // console.log(board)
   if (!stateObj) return null
   if (!board) return null
 
