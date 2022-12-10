@@ -22,7 +22,6 @@ function BoardPreviewerFive({id,title}) {
     image:gray
   }
 
-  console.log(array)
   // console.log(array[0].image)
   // if (array.length < 5) return null
   if (array[4]){

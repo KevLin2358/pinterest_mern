@@ -4,17 +4,18 @@ import { createSave } from '../../actions/save_actions'
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import "./dropdownMenu.css"
-function DropdownMenuHomePage({board}) {
+function DropdownMenuHomePage({board,homepagePinId}) {
   const stateObj = useSelector((state) => state)
   const pinId = useSelector((e) => stateObj.session.user.id)
   const dispatch = useDispatch()
 
   const handleOnClick2 = (e) => {
-    console.log(e)
+    // console.log(e)
     const pinObj = {
-      pin:pinId,
+      pin:homepagePinId,
       board:e._id
     }
+    console.log(pinObj)
     dispatch(createSave(pinObj))
   }
   // console.log(board)
@@ -25,7 +26,7 @@ function DropdownMenuHomePage({board}) {
     <div>
     <nav role="navigation">
     <ul>
-      <li><a href="#">Boards</a>
+      <li><Link to="#"> Dashboard </Link>
           <ul className="dropdown">
             <div className='dropdownContainer'>
             <li>Save</li>

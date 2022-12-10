@@ -15,7 +15,7 @@ router.get('/boards/:boardId', async  (req, res) => { // pinid
   let x = await  Save.find({board:req.params.boardId})
   let pinId = (x.map(e => e.pin))
 
-  for (var i = 0; i < pinId.length-1; i++) {
+  for (var i = 0; i < pinId.length; i++) {
     let ele = pinId[i]
     let response = await Pin.find({_id:ele})
     console.log(response)

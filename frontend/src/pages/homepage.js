@@ -19,7 +19,6 @@ useEffect(()=> {
     //getting all pins and then making a array of obj
 },[])
 
-console.log(board)
 
 if (array === "") return null
     return (

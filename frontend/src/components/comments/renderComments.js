@@ -40,7 +40,6 @@ function RenderCommentsAndRightSide({cancelComment,comment,comments,handleDelete
   //after default saves are imported , I need to set true or false
   useEffect(()=>{
     if(save.length !== 0){
-      console.log(save)
       const isTherePinInsideDefault = save.filter(e => e.pin === pinId)
       setisThisInBoardArray(() =>isTherePinInsideDefault)
     }
@@ -95,7 +94,7 @@ function RenderCommentsAndRightSide({cancelComment,comment,comments,handleDelete
     )
 })
 
-  console.log(isThisInBoardArray)
+  
   // console.log(comments)
   // console.log(isThisInBoardArray,save)
   if(!reducerState.session.info) return null

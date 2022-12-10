@@ -40,7 +40,6 @@ const Navbar = () => {
 
   useEffect(() =>{
     if (stateObj){
-      console.log(stateObj)
       dispatch(userID(stateObj.session.user.id))
     }
   },[])

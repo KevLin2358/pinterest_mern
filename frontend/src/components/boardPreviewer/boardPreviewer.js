@@ -36,7 +36,6 @@ function BoardPreviewer() {
 
   if(board === "") return null
 
-  console.log(array)
 
   const boardList = board.map(e => {
       return(

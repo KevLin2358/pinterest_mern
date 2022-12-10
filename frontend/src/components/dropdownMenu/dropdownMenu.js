@@ -9,11 +9,12 @@ function DropdownMenu() {
   const dispatch = useDispatch()
 
   const handleOnClick = (e) => {
-    console.log(e)
+    // console.log(e)
     const pinObj = {
       pin:pinId,
       board:e._id
     }
+    console.log(pinObj)
     dispatch(createSave(pinObj))
   }
 

@@ -31,8 +31,8 @@ function Pins({url,board}) {
     }
 
     const onSaveBoard = (e) => {
-        e.preventDefault()
-        console.log(state,url)
+        // e.preventDefault()
+        // console.log(state,url)
     }
     
     useEffect(() => {
@@ -88,7 +88,7 @@ function Pins({url,board}) {
                                 Save
                             </button>                                
                             <div className='homepageDropdown' onClick={(e)=> onSaveBoard(e)}>
-                            <DropdownMenuHomePage board={board} />
+                            <DropdownMenuHomePage board={board} homepagePinId={url._id} />
                             </div>
                             </div>
                         }
@@ -116,7 +116,7 @@ function Pins({url,board}) {
                                 Save
                             </button>                                
                             <div className='homepageDropdown' onClick={(e)=> onSaveBoard(e)}>
-                            <DropdownMenuHomePage board={board} />
+                            <DropdownMenuHomePage board={board} homepagePinId={url._id}/>
                             </div>
                             </div>
                         }
@@ -144,7 +144,7 @@ function Pins({url,board}) {
                                 Save
                             </button>                                
                             <div className='homepageDropdown' onClick={(e)=> onSaveBoard(e)}>
-                            <DropdownMenuHomePage board={board} />
+                            <DropdownMenuHomePage board={board} homepagePinId={url._id}/>
                             </div>
                             </div>
                         }

@@ -37,9 +37,7 @@ function BoardPage(props) {
     }, [state])
     
 
-    // },[saves])
-    // console.log(props.match.params.boardId)
-    // console.log(allboard)
+
     if (saves === null) return null
     if (allboard === null) return null
     // if(board === "") return null
@@ -53,9 +51,7 @@ function BoardPage(props) {
                     <div className='homePageBody'>
                         {
                             saves.map((pin) => {
-                                // console.log(pin._id)
                                 return(
-                                    // <div>asd</div>
                                     <Pins url={pin} board={allboard} key={pin._id} />
                                 )
                             } )
