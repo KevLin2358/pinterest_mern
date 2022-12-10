@@ -19,38 +19,33 @@ function BoardPage(props) {
     const [savesId,setSavesId] = useState(null)
     const ref = useRef(null)
     const [saveIDandPin,setsaveIDandPin] = useState(null)
+    const [currentBoardTitle,setcurrentBoardTitle] = useState(null)
 
     useEffect(() => {
-        // dispatch(fetchUserPin(id)).then(res =>setPins(()=>res.pins.data))
+        //fetching pins
         dispatch(fetchSaves(props.match.params.boardId)).then(res => setSaves(res.saves.data))
-    }, [])
-
-    useEffect(() => {
-        // dispatch(fetchUserPin(id)).then(res =>setPins(()=>res.pins.data))
+        //fetching saveIDWithBoardI cause I need to pass saveId down to pin for unsave to show
         dispatch(fetchSavesIDwithBoardID(props.match.params.boardId)).then(res => setSavesId(res.saves.data))
     }, [])
 
-    useEffect(() => {
-        if (saves && savesId){
-            
-        }
-    }) 
-
-    // useEffect(()=>{
-    //     if (saves !== ""){
-    //         saves.map(e => dispatch(fetchSinglePin(e.pin)).then((res => {
-    //             // console.log(pins)
-    //             setPins(pins => [...pins, res.pins.data])
-    //         })))
-    //     }
-
+    //fetching board so I can pass it down to the pins for drop down
     useEffect(() => {
         if(state && state.board){
             setAllBoard(state.board.data)
         }
     }, [state])
+
+    useEffect(() => {
+        if(!currentBoardTitle && allboard){
+            console.log(allboard)
+            const boardPath = (window.location.pathname.split("/")[2])
+            let result = allboard.filter(e => e._id === boardPath)
+            setcurrentBoardTitle((e) => result[0].title)
+        }
+    }, [allboard])
     
 
+    
 
     if (saves === null) return null
     if (savesId === null) return null
@@ -78,7 +73,6 @@ function BoardPage(props) {
         saveIDwithPinIDobj()
     }
 
-    // console.log(saveIDandPin)
     if (saveIDandPin === null) return null
     let saveList = saves.map((pin) => {
         return(
@@ -87,19 +81,17 @@ function BoardPage(props) {
     } )
     return (
     <div>
-        <Navbar/>
-        <React.Fragment>
-            <div ref={ref} className='homePageContainer'>
-                <div className='homePageBodyFlex'>
-                    {/* <div onClick={increaseVh} className='homePageBody'> */}
-                    <div className='homePageBody'>
-{}                        {saveList}
-                        <div>This is BoardPage</div>
-                    </div>
-                </div>
-
+    <Navbar/>
+    <React.Fragment>
+    <div className='boardTitle'>{currentBoardTitle}</div>
+        <div ref={ref} className='homePageContainer'>
+        <div className='homePageBodyFlex'>
+            <div className='homePageBody'>
+            {saveList}
             </div>
-        </React.Fragment>
+        </div>
+    </div>
+    </React.Fragment>
     </div>
   )
 }
