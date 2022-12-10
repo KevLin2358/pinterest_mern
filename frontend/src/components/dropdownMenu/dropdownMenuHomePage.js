@@ -15,7 +15,7 @@ function DropdownMenuHomePage({board,homepagePinId}) {
       pin:homepagePinId,
       board:e._id
     }
-    console.log(pinObj)
+    // console.log(pinObj)
     dispatch(createSave(pinObj))
   }
   // console.log(board)

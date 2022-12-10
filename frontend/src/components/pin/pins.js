@@ -13,7 +13,7 @@ function Pins({url,board,pinSaveId}) {
     const [boardList, setboardList] = useState([]);
     let state = useSelector(state => state)
     const dispatch = useDispatch()
-    console.log(pinSaveId)
+    // console.log(pinSaveId)
     const onSave = (e) => {
         e.preventDefault()
         // const pinObj = {
@@ -55,22 +55,21 @@ function Pins({url,board,pinSaveId}) {
 
     const hoverDiv = 
     isShown &&
-        <div className='onHoverCont'>
-            {pinSaveId 
-            ?
-            <button className='onHover' onClick={(e)=> onUnSaveBoard(e)}>
-                UnSaved
-            </button>
-            :
-            <button className='onHover' onClick={(e)=> onSave(e)}>
-                Save
-            </button>
+    <div className='onHoverCont'>
+        {pinSaveId 
+        ?
+        <button className='onHover' onClick={(e)=> onUnSaveBoard(e)}>
+            UnSaved
+        </button>
+        :
+        <button className='onHover' onClick={(e)=> onSave(e)}>
+            Save
+        </button>
         }
-            
-        <div className='homepageDropdown' onClick={(e)=> onSaveBoard(e)}>
-        <DropdownMenuHomePage board={board} homepagePinId={url._id}/>
-        </div>
-        </div>
+    <div className='homepageDropdown' onClick={(e)=> onSaveBoard(e)}>
+    <DropdownMenuHomePage board={board} homepagePinId={url._id}/>
+    </div>
+    </div>
     
 
     const renderPin = (url) => {
@@ -91,43 +90,32 @@ function Pins({url,board,pinSaveId}) {
 
         dynamicHeightFunction()
         // if (boardList === null) return null
+
+
+
         const img = new Image();
         img.src = url.image;
+
+
+        let LinkDiv = 
+        <Link to={{pathname:`/pins/${url._id}`, fromDashboard: "true" }}>
+        <img className='imgBorder' style={{height:dynamicHeight}} src={img.src} 
+        alt="smallCard"></img>
+        </Link>
+
         img.onload = (e) => {
             // need onload cause its async and for math to work
             if(img.width < 200) return null 
             else if (img.height/img.width <= 1.2) {
                 setCurrent (
-                        <div key={Math.floor(Math.random() * 2500)} 
-                        className='card card_small'
-                        onMouseEnter={() => setIsShown(true)}
-                        onMouseLeave={() => setIsShown(false)}>
-                            <Link to={{pathname:`/pins/${url._id}`, fromDashboard: "true" }}>
-                            <img className='imgBorder' style={{height:dynamicHeight}} src={img.src} 
-                            alt="smallCard"></img>
-                            </Link>
-                            {isShown &&
-                            <div className='onHoverCont'>
-                                {pinSaveId 
-                                ?
-                                <button className='onHover' onClick={(e)=> onUnSaveBoard(e)}>
-                                    UnSaved
-                                </button>
-                                :
-                                <button className='onHover' onClick={(e)=> onSave(e)}>
-                                    Save
-                                </button>
-                            }
-                                
-                            <div className='homepageDropdown' onClick={(e)=> onSaveBoard(e)}>
-                            <DropdownMenuHomePage board={board} homepagePinId={url._id}/>
-                            </div>
-                            </div>
-                        }
-
-
-                            <div className='homepagePinsText'>{url.title}</div>
-                        </div>
+                    <div key={Math.floor(Math.random() * 2500)} 
+                    className='card card_small'
+                    onMouseEnter={() => setIsShown(true)}
+                    onMouseLeave={() => setIsShown(false)}>
+                        {LinkDiv}
+                        {hoverDiv}
+                        <div className='homepagePinsText'>{url.title}</div>
+                    </div>
                 )
             }
             else if (img.height/img.width > 1.2 && img.height/img.width < 1.5){
@@ -136,32 +124,8 @@ function Pins({url,board,pinSaveId}) {
                     className='card card_medium'
                     onMouseEnter={() => setIsShown(true)}
                     onMouseLeave={() => setIsShown(false)}>
-                        <Link to={{pathname:`/pins/${url._id}`, fromDashboard: "true" }}>
-                        <img className='imgBorder' 
-                        style={{height:dynamicHeight}} 
-                        src={img.src} alt="medCard"
-                        ></img>
-                        </Link>
-                        {isShown &&
-                            <div className='onHoverCont'>
-                                {pinSaveId 
-                                ?
-                                <button className='onHover' onClick={(e)=> onUnSaveBoard(e)}>
-                                    UnSaved
-                                </button>
-                                :
-                                <button className='onHover' onClick={(e)=> onSave(e)}>
-                                    Save
-                                </button>
-                            }
-                                
-                            <div className='homepageDropdown' onClick={(e)=> onSaveBoard(e)}>
-                            <DropdownMenuHomePage board={board} homepagePinId={url._id}/>
-                            </div>
-                            </div>
-                        }
-
-
+                        {LinkDiv}
+                        {hoverDiv}
                         <div className='homepagePinsText'>{url.title}</div>
                     </div>
                    )
@@ -171,18 +135,11 @@ function Pins({url,board,pinSaveId}) {
                     <div key={Math.floor(Math.random() * 2500)} 
                     className='card card_large'
                     onMouseEnter={() => setIsShown(true)}
-                    onMouseLeave={() => setIsShown(false)}
-                    >
-                        <Link to={{pathname:`/pins/${url._id}`, fromDashboard: "true" }}>
-                        <img className='imgBorder' 
-                        style={{height:dynamicHeight}} 
-                        src={img.src} alt="largeCard"
-                        ></img>
-                        </Link>
+                    onMouseLeave={() => setIsShown(false)}>
+                        {LinkDiv}
                         {hoverDiv}
-
                         <div className='homepagePinsText'>{url.title}</div>
-                </div>
+                    </div>
                 )
             }
             // else {

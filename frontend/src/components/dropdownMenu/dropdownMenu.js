@@ -14,7 +14,7 @@ function DropdownMenu() {
       pin:pinId,
       board:e._id
     }
-    console.log(pinObj)
+    // console.log(pinObj)
     dispatch(createSave(pinObj))
   }
 
