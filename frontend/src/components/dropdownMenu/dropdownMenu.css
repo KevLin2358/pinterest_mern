@@ -82,6 +82,7 @@ a {
   overflow-y: scroll;
   position: absolute;
   z-index: 30;
+  border-radius: 20px;
 }
 
 .smallimgTest{

@@ -20,26 +20,27 @@ useEffect(()=> {
 },[])
 
 
+
+
 if (array === "") return null
+
+const pinList = 
+    array.map((pinObj) => {
+        return(
+            <Pins url={pinObj} key={pinObj._id} board={board}/>
+        )
+    } )
     return (
         <React.Fragment>
-            <Navbar/>
-            <div ref={ref} className='homePageContainer'>
-                <div className='homePageBodyFlex'>
-                    <div className='homePageBody'>
-                    {   
-                    //
-                        array.map((pinObj) => {
-                            return(
-                                <Pins url={pinObj} key={pinObj._id} board={board}/>
-                            )
-                        } )
-                    }
-                        <div>This is homepage</div>
-                    </div>
+        <Navbar/>
+        <div ref={ref} className='homePageContainer'>
+            <div className='homePageBodyFlex'>
+                <div className='homePageBody'>
+                {pinList}
+                    <div>This is homepage</div>
                 </div>
-
             </div>
+        </div>
         </React.Fragment>
     )
 }
