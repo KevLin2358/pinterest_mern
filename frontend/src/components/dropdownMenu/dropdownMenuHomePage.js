@@ -17,7 +17,7 @@ function DropdownMenuHomePage({board}) {
     }
     dispatch(createSave(pinObj))
   }
-  console.log(board)
+  // console.log(board)
   if (!stateObj) return null
   if (!board) return null
 

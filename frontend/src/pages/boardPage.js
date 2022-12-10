@@ -56,7 +56,7 @@ function BoardPage(props) {
                                 // console.log(pin._id)
                                 return(
                                     // <div>asd</div>
-                                    <Pins url={pin} board={allboard} />
+                                    <Pins url={pin} board={allboard} key={pin._id} />
                                 )
                             } )
                         }

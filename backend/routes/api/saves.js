@@ -18,7 +18,8 @@ router.get('/boards/:boardId', async  (req, res) => { // pinid
   for (var i = 0; i < pinId.length-1; i++) {
     let ele = pinId[i]
     let response = await Pin.find({_id:ele})
-    if (response !== null){
+    console.log(response)
+    if (response.length !== 0){
       array.push(response[0])
     } 
   }

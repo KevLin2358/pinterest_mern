@@ -15,12 +15,24 @@ function Pins({url,board}) {
 
     const onSave = (e) => {
         e.preventDefault()
-        console.log(state)
+        // const pinObj = {
+        //     pin:pinId,
+        //     board:e._id
+        //   }
+        const defaultBoard = board.filter(e => e.default === true)
+        console.log(defaultBoard[0]._id,url._id)
+
+        const pinObj = {
+            pin:url._id,
+            board:defaultBoard[0]._id
+          }
+
+        dispatch(createSave(pinObj))
     }
 
     const onSaveBoard = (e) => {
         e.preventDefault()
-        console.log(state)
+        console.log(state,url)
     }
     
     useEffect(() => {
@@ -35,7 +47,7 @@ function Pins({url,board}) {
     }, [board])
     
 
-    // console.log(boardList)
+    // console.log(url)
 
     const renderPin = (url) => {
 
@@ -125,7 +137,7 @@ function Pins({url,board}) {
                         style={{height:dynamicHeight}} 
                         src={img.src} alt="largeCard"
                         ></img>
-                        /</Link>
+                        </Link>
                             {isShown &&
                             <div className='onHoverCont'>
                             <button className='onHover' onClick={(e)=> onSave(e)}>
