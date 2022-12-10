@@ -78,8 +78,9 @@ a {
 
 .dropdownContainer{
   max-height: 500px;
-  /* max-width: ; */
+  width: 300px;
   overflow-y: scroll;
-  /* overflow-x: hidden; */
+  position: absolute;
+  z-index: 30;
 }
 

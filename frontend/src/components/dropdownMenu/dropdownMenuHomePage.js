@@ -26,15 +26,15 @@ function DropdownMenuHomePage({board,homepagePinId}) {
     <div>
     <nav role="navigation">
     <ul>
-      <li><Link to="#"> Dashboard </Link>
+      <li className='dropdownmenudiv'><Link to="#" className='dropdownmenudivText'> Dashboard </Link>
           <ul className="dropdown">
             <div className='dropdownContainer'>
             <li>Save</li>
             {/* <li><input>asdasd</input></li> */}
             {board.map(boardEle =>{
               return(
-                <div key={boardEle.createdAt} className='boardName'>
-                  <li  onClick={() => handleOnClick2(boardEle)}>{boardEle.title}</li>
+                <div key={boardEle.createdAt} >
+                  <li className='boardName'  onClick={() => handleOnClick2(boardEle)}>{boardEle.title}</li>
                 </div>
               )
             })}
