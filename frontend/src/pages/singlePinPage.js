@@ -20,7 +20,7 @@ function SinglePin({url}) {
     const [pin,setPin] = useState("")
 
     const stateObj = useSelector(state => state)
-
+    const [isShown, setIsShown] = useState(false);
     // const uploader = useSelector(state => state)
     // console.log(window.location.href.split("/")[4])
     const pinId = window.location.href.split("/")[4]
@@ -96,7 +96,9 @@ function SinglePin({url}) {
         </div>
             <div className='singlePageBody'>
                 <div className='singlePageCenter'>
-                    <div className='singlePageCenterLeft'><img src={pin.pins.data.image}></img></div>
+                    <div className='singlePageCenterLeft'>
+                        <img src={pin.pins.data.image}></img>}
+                    </div>
                     <div className='singlePageCenterRight'>
                         <RenderCommentsAndRightSide 
                         comments = {commentArray}

@@ -29,3 +29,8 @@ export const deleteSave = (saveId) => {
 }
 
 
+export const deleteSaveWithPinid = (pinID) => {
+  return axios.delete(`/api/saves/board/${pinID}`)
+}
+
+

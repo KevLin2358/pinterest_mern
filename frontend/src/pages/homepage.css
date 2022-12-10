@@ -43,7 +43,7 @@
 }
 .card_large{
     grid-row-end: span var(--card_large);
-    display: flex;
+    /* display: flex; */
 }
 
 .card_small > img{
@@ -89,5 +89,11 @@
 .userPageContainer{
     display: flex;
     flex-direction: column;
+}
+
+.boardTitle{
+    font-size: 36px;
+    font-weight: 600;
+    text-align: center;
 }
 /* calc(12/var(--g-ncols)*100%) */

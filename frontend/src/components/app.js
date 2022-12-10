@@ -22,7 +22,13 @@ import SplashPage from '../pages/splashpage';
 import CreatePage from '../pages/createPage';
 import UserPage from '../pages/userPage';
 import boardPage from '../pages/boardPage';
+import { userID } from '../actions/session_actions';
+import { useDispatch } from 'react-redux';
+
+
+
 const App = () => {
+// const dispatch = useDispatch()
   
   return (
     <div>

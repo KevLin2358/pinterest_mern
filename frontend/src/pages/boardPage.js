@@ -6,54 +6,92 @@ import { fetchUserPin } from '../actions/pin_actions'
 import { fetchBoards } from '../actions/board_actions'
 import { fetchSaves } from '../actions/save_actions'
 import { fetchSinglePin } from '../actions/pin_actions'
+import { fetchSavesIDwithBoardID } from '../actions/save_actions'
 import Pins from '../components/pin/pins'
 import "./homepage.css"
 function BoardPage(props) {
     const dispatch = useDispatch()
+    const state = useSelector(state => state)
     const id = useSelector(state => state.session.user.id)
+    const [allboard,setAllBoard] = useState(null)
     const [pins,setPins] = useState([])
     const [saves,setSaves] = useState(null)
+    const [savesId,setSavesId] = useState(null)
     const ref = useRef(null)
-    const [board,setBoard] = useState("")
+    const [saveIDandPin,setsaveIDandPin] = useState(null)
+    const [currentBoardTitle,setcurrentBoardTitle] = useState(null)
 
     useEffect(() => {
-        // dispatch(fetchUserPin(id)).then(res =>setPins(()=>res.pins.data))
+        //fetching pins
         dispatch(fetchSaves(props.match.params.boardId)).then(res => setSaves(res.saves.data))
+        //fetching saveIDWithBoardI cause I need to pass saveId down to pin for unsave to show
+        dispatch(fetchSavesIDwithBoardID(props.match.params.boardId)).then(res => setSavesId(res.saves.data))
     }, [])
 
-    // useEffect(()=>{
-    //     if (saves !== ""){
-    //         saves.map(e => dispatch(fetchSinglePin(e.pin)).then((res => {
-    //             // console.log(pins)
-    //             setPins(pins => [...pins, res.pins.data])
-    //         })))
-    //     }
+    //fetching board so I can pass it down to the pins for drop down
+    useEffect(() => {
+        if(state && state.board){
+            setAllBoard(state.board.data)
+        }
+    }, [state])
 
-    // },[saves])
-    // console.log(props.match.params.boardId)
+    useEffect(() => {
+        if(!currentBoardTitle && allboard){
+            console.log(allboard)
+            const boardPath = (window.location.pathname.split("/")[2])
+            let result = allboard.filter(e => e._id === boardPath)
+            setcurrentBoardTitle((e) => result[0].title)
+        }
+    }, [allboard])
+    
+
+    
+
     if (saves === null) return null
-    // if(board === "") return null
+    if (savesId === null) return null
+    if (allboard === null) return null
+    // console.log(saves,savesId)
+
+    const saveIDwithPinIDobj = () => {
+        let obj = {}
+        let finalArray = {}
+        for (let index = 0; index < saves.length; index++) {
+            const element = saves[index]._id;
+            obj[element] = true
+        }
+        // console.log(obj)
+        for (let index = 0; index < savesId.length; index++) {
+            const element = savesId[index].pin;
+            if(obj[element]){
+                finalArray[savesId[index].pin]=savesId[index]._id
+            }
+        }
+        setsaveIDandPin(() => finalArray)
+    }
+
+    if(saveIDandPin === null){
+        saveIDwithPinIDobj()
+    }
+
+    if (saveIDandPin === null) return null
+    let saveList = saves.map((pin) => {
+        return(
+            <Pins url={pin} board={allboard} key={pin._id} pinSaveId={saveIDandPin[pin._id]}/>
+        )
+    } )
     return (
     <div>
-        <Navbar/>
-        <React.Fragment>
-            <div ref={ref} className='homePageContainer'>
-                <div className='homePageBodyFlex'>
-                    {/* <div onClick={increaseVh} className='homePageBody'> */}
-                    <div className='homePageBody'>
-                        {
-                            saves.map((pin) => {
-                                return(
-                                    <Pins url={pin} key={pin._id}/>
-                                )
-                            } )
-                        }
-                        <div>This is BoardPage</div>
-                    </div>
-                </div>
-
+    <Navbar/>
+    <React.Fragment>
+    <div className='boardTitle'>{currentBoardTitle}</div>
+        <div ref={ref} className='homePageContainer'>
+        <div className='homePageBodyFlex'>
+            <div className='homePageBody'>
+            {saveList}
             </div>
-        </React.Fragment>
+        </div>
+    </div>
+    </React.Fragment>
     </div>
   )
 }

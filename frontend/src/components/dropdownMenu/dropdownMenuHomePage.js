@@ -1,23 +1,26 @@
 import React from 'react'
 import { useSelector,useDispatch } from 'react-redux'
 import { createSave } from '../../actions/save_actions'
-import "./dropdownMenu.css"
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-function DropdownMenu() {
-  const boardArray = useSelector(state => state.board.data)
-  const pinId = useSelector(state => state.pin.data._id)
+import "./dropdownMenu.css"
+function DropdownMenuHomePage({board,homepagePinId}) {
+  const stateObj = useSelector((state) => state)
+  const pinId = useSelector((e) => stateObj.session.user.id)
   const dispatch = useDispatch()
 
-  const handleOnClick = (e) => {
+  const handleOnClick2 = (e) => {
     // console.log(e)
     const pinObj = {
-      pin:pinId,
+      pin:homepagePinId,
       board:e._id
     }
     // console.log(pinObj)
     dispatch(createSave(pinObj))
   }
-
+  // console.log(board)
+  if (!stateObj) return null
+  if (!board) return null
 
   return (
     <div>
@@ -27,16 +30,15 @@ function DropdownMenu() {
           <ul className="dropdown">
             <div className='dropdownContainer'>
             <li>Save</li>
-            <li><input></input></li>
-            {boardArray.map(board =>{
+            {/* <li><input>asdasd</input></li> */}
+            {board.map(boardEle =>{
               return(
-                <div key={board.createdAt} className='boardName'>
-                  <li  onClick={() => handleOnClick(board)}>{board.title}</li>
+                <div key={boardEle.createdAt} className='boardName'>
+                  <li  onClick={() => handleOnClick2(boardEle)}>{boardEle.title}</li>
                 </div>
               )
             })}
             </div>
-
 
           </ul>
 
@@ -46,4 +48,4 @@ function DropdownMenu() {
   )
 }
 
-export default DropdownMenu
+export default DropdownMenuHomePage

@@ -9,7 +9,7 @@ router.get("/test", (req, res) => res.json({ msg: "This is the pins route" }));
 
 
 router.get('/', (req, res) => {
-  console.log("asd")
+  // console.log("asd")
   Pin.find()
       .sort({ date: -1 })
       .then(pins => res.json(pins))
@@ -46,7 +46,7 @@ router.post('/',
     passport.authenticate('jwt', { session: false }),
     (req, res) => {
       const { errors, isValid } = validatePinInput(req.body);
-      console.log("New Pin is connected")
+      // console.log("New Pin is connected")
       if (!isValid) {
         return res.status(400).json(errors);
       }

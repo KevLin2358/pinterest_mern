@@ -39,6 +39,7 @@
 
 .singlePageCenterLeft{
     max-width: 50%;
+    position: relative;
 
 }
 
@@ -46,6 +47,16 @@
     max-width: 100%;
     border-top-left-radius: 25px;
     border-bottom-left-radius: 25px;
+    position: relative;
+}
+
+.onHoverStuff{
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    /* transform: translate(-50%, -50%); */
+    /* margin-left: 0px; */
+    /* left: 0px; */
 }
 
 .singlePageCenterRight{
@@ -152,13 +163,13 @@
     text-size-adjust: 100%;
 }
 
-#container {
+#container2 {
     min-width: 32px;
     height: 32px;
     border-radius: 25px;
     
   }
-#name {
+#name2 {
 /* width:fit-content; */
 /* display: flex; */
 text-align: center;
