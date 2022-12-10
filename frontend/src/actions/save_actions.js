@@ -50,6 +50,12 @@ export const fetchSavesWithLimitFive = boardId => dispatch =>{
     .then(saves => dispatch(receiveSaves(saves)));
 }
 
+export const fetchSavesWithLimitOne = boardId => dispatch =>{
+  // console.log("fetching many")
+  return SaveApiUtil.fetchSavesWithLimitOne(boardId)
+    .then(saves => dispatch(receiveSaves(saves)));
+}
+
 export const createSave = data => dispatch =>{
     // console.log("creating ")
   return SaveApiUtil.createSave(data)

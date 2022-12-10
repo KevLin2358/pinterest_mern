@@ -24,6 +24,12 @@ export const fetchSavesWithLimitFive = boardId => {
   return axios.get(`/api/saves/fetchSavesWithLimitFive/${boardId}`)
 }
 
+export const fetchSavesWithLimitOne = boardId => {
+  // console.log("boardId")
+  return axios.get(`/api/saves/fetchSavesWithLimitOne/${boardId}`)
+}
+
+
 export const deleteSave = (saveId) => {
   return axios.delete(`/api/saves/${saveId}`)
 }

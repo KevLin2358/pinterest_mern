@@ -60,6 +60,31 @@ router.get('/fetchSavesWithLimitFive/:boardId', async  (req, res) => { // pinid
 
 });
 
+
+router.get('/fetchSavesWithLimitOne/:boardId', async  (req, res) => { // pinid
+  console.log("takes in board id and returns arrays of pins obj limit of 1")
+  let array = []
+  //waiting for save to finish all those promises
+  let x = await  Save.findOne({board:req.params.boardId})
+
+  // we have savelist => into pinList
+  let pinId = (x.map(e => e.pin))
+
+  //only limit this loop 5 times and push results into array
+
+
+  for (var i = 0; i < 1 ; i++) {
+    let ele = pinId[i]
+    let response = await Pin.find({_id:ele})
+    array.push(response[0])
+    // console.log(response)
+  }
+
+  // filter out null and response with an array
+  res.json(array.filter(e => e))
+
+});
+
 router.delete('/:saveId', (req, res) => {
   console.log(req.params.saveId)
   Save.deleteOne({_id:req.params.saveId})

@@ -84,3 +84,16 @@ a {
   z-index: 30;
 }
 
+.smallimgTest{
+  width: 75px;
+  height: 75px;
+  object-fit: cover;
+  border-radius: 20px;
+  padding: 10px;
+}
+
+.boardlistliCon{
+  display: flex;
+  align-items: center;
+  align-self: center;
+}
