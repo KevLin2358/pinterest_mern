@@ -97,7 +97,7 @@ function SinglePin({url}) {
         <div className='singlePageBody'>
             <div className='singlePageCenter'>
                 <div className='singlePageCenterLeft'>
-                    <img src={pin.pins.data.image}></img>}
+                    <img src={pin.pins.data.image}></img>
                 </div>
                 <div className='singlePageCenterRight'>
                     <RenderCommentsAndRightSide 

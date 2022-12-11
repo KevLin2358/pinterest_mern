@@ -1,3 +1,4 @@
+const { response } = require("express");
 const express = require("express");
 const router = express.Router();
 const mongoose = require('mongoose');
@@ -24,16 +25,82 @@ router.get('/user/:user_id', (req, res) => {
   );
 });
 
-router.get('/user/all/:user_id', (req, res) => {
+router.get('/user/all/:user_id', async (req, res) => {
   console.log("all boards backend")
-  console.log(req.params.user_id)
-  console.log(req.body)
-  Board.find({user:req.params.user_id})
-  .then(board => res.json(board))
-  .catch(err =>
-      res.status(404).json({ noBoards:"No Board from this User" }
-  )
-  );
+  // console.log(req.params.user_id)
+  // console.log(req.body)
+  // Board.find({user:req.params.user_id})
+  // .then(board => res.json(board))
+  // .catch(err =>
+  //     res.status(404).json({ noBoards:"No Board from this User" }
+  // )
+  // );
+  let objthatwillneedtoturnintoarray = {}
+
+  let findingPinID = []
+  let boardIdArr = []
+  let arr =  await Board.find({user:req.params.user_id})
+
+  for (let index = 0; index < arr.length; index++) {
+    const element = arr[index];
+    const id =  arr[index].id;
+    objthatwillneedtoturnintoarray[id] = [element]
+    boardIdArr.push(id)
+  }
+
+  for (var i = 0; i < boardIdArr.length; i++) {
+    let ele = boardIdArr[i]
+    let response = await Save.find({board:ele})
+    // console.log(response[0].board,response[0].pin)
+    let boardId = response[0].board
+    let boardKey =  objthatwillneedtoturnintoarray[boardId]
+    if (response[0] !== undefined){
+      findingPinID.push(response[0])
+      boardKey.pin = response[0].pin
+    }
+  }
+
+  // console.log(findingPinID)
+
+  // for (let index = 0; index < arr.length; index++) {
+  //   const element = arr[index];
+  //   const id =  arr[index].id;
+  //   objthatwillneedtoturnintoarray[id] = element
+  // }
+
+  // let boardID = arr.map(e => objthatwillneedtoturnintoarray[e._id]:e)
+  // console.log(boardID)
+  // console.log(boardIdArr)
+  console.log(objthatwillneedtoturnintoarray)
+  // for (var i = 0; i < boardID.length; i++) {
+  //   let ele = boardID[i]
+  //   let response = await Save.find({board:ele})
+  //   // console.log(response)
+  //   if (response.length !== 0){
+  //     array.push(response[0])
+  //   } 
+  // }
+
+  // let PinID = array.map(e => e.pin)
+
+  // let pinArray = []
+  // for (var i = 0; i < PinID.length; i++) {
+  //   let pinID = PinID[i]
+  //   // console.log(pinID)
+  //   let response = await Pin.find({_id:pinID})
+  //   console.log(response)
+  //   if (response.length !== 0){
+  //     pinArray.push(response[0])
+  //   } 
+  // }
+
+  // res.json(pinArray)
+
+  // res.json(array)
+  // let arr2 = [];
+  // arr.forEach(async(board) => {
+  //     await Pin.findOne({board:board.id}).then(res => console.log(res))
+  // })
 });
  
 router.get('/:id', (req, res) => { // pinid
