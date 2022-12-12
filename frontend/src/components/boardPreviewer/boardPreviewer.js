@@ -13,25 +13,26 @@ import { fetchSaves } from '../../actions/save_actions'
 import { Link } from 'react-router-dom'
 
 
-function BoardPreviewer() {
+function BoardPreviewer({board}) {
 
-  const [board,setBoard] = useState("")
+  // const [board,setBoard] = useState("")
   const dispatch = useDispatch()
   const id = useSelector(state => state.session.user.id)
   const [array,setArray] = useState([])
-  useEffect(() => {
-      dispatch(fetchBoards(id)).then(res =>setBoard(()=>res.boards.data))
-  }, [])
+  // useEffect(() => {
+  //     dispatch(fetchBoards(id)).then(res =>setBoard(()=>res.boards.data))
+  // }, [])
 
+  // console.log("BoardPrev",board)
   // useEffect(() => {
   //   let x 
   //   if(board)
   //     x =  board.forEach(e=> dispatch(fetchSaves(e._id)).then(e => setArray([...array,e.saves.data])))
   // },[board])
 
-  useEffect(() => {
-    dispatch(fetchSaves("637d9c5dcc62c5de556cf4cd"))
-  }, [])
+  // useEffect(() => {
+  //   dispatch(fetchSaves("637d9c5dcc62c5de556cf4cd"))
+  // }, [])
   
 
   if(board === "") return null
