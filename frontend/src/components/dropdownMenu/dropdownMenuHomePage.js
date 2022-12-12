@@ -2,6 +2,7 @@ import React from 'react'
 import { useSelector,useDispatch } from 'react-redux'
 import { createSave } from '../../actions/save_actions'
 import { useEffect } from 'react'
+import Q from "../../imageComponent/images/q.jpg"
 import { Link } from 'react-router-dom'
 import "./dropdownMenu.css"
 function DropdownMenuHomePage({board,homepagePinId}) {
@@ -10,15 +11,12 @@ function DropdownMenuHomePage({board,homepagePinId}) {
   const dispatch = useDispatch()
 
   const handleOnClick2 = (e) => {
-    // console.log(e)
     const pinObj = {
       pin:homepagePinId,
       board:e._id
     }
-    // console.log(pinObj)
     dispatch(createSave(pinObj))
   }
-  // console.log(board)
   if (!stateObj) return null
   if (!board) return null
 
@@ -26,15 +24,19 @@ function DropdownMenuHomePage({board,homepagePinId}) {
     <div>
     <nav role="navigation">
     <ul>
-      <li><Link to="#"> Dashboard </Link>
+      <li className='dropdownmenudiv'><Link to="#" className='dropdownmenudivText'> Dashboard </Link>
           <ul className="dropdown">
             <div className='dropdownContainer'>
             <li>Save</li>
             {/* <li><input>asdasd</input></li> */}
             {board.map(boardEle =>{
               return(
-                <div key={boardEle.createdAt} className='boardName'>
-                  <li  onClick={() => handleOnClick2(boardEle)}>{boardEle.title}</li>
+                <div key={boardEle.createdAt}  >
+                  <li className='boardName'  onClick={() => handleOnClick2(boardEle)}>
+                    <div className="boardlistliCon">
+                      <img className='smallimgTest' src={Q}></img>{boardEle.title}
+                    </div>
+                    </li>
                 </div>
               )
             })}

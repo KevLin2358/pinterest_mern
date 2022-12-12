@@ -94,25 +94,25 @@ function SinglePin({url}) {
         <div className='leftbell'>
             <Bell/>
         </div>
-            <div className='singlePageBody'>
-                <div className='singlePageCenter'>
-                    <div className='singlePageCenterLeft'>
-                        <img src={pin.pins.data.image}></img>}
-                    </div>
-                    <div className='singlePageCenterRight'>
-                        <RenderCommentsAndRightSide 
-                        comments = {commentArray}
-                        handleDeleteComment = {handleDeleteComment}
-                        pin = {pin}
-                        handleCreateComment = {handleCreateComment}
-                        setComment = {setComment}
-                        handleDeletePin = {handleDeletePin}
-                        comment = {comment}
-                        cancelComment = {cancelComment}
-                        />
-                    </div>
+        <div className='singlePageBody'>
+            <div className='singlePageCenter'>
+                <div className='singlePageCenterLeft'>
+                    <img src={pin.pins.data.image}></img>
+                </div>
+                <div className='singlePageCenterRight'>
+                    <RenderCommentsAndRightSide 
+                    comments = {commentArray}
+                    handleDeleteComment = {handleDeleteComment}
+                    pin = {pin}
+                    handleCreateComment = {handleCreateComment}
+                    setComment = {setComment}
+                    handleDeletePin = {handleDeletePin}
+                    comment = {comment}
+                    cancelComment = {cancelComment}
+                    />
                 </div>
             </div>
+        </div>
         <div>
             <Bell/>
         </div>

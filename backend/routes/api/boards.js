@@ -1,3 +1,4 @@
+const { response } = require("express");
 const express = require("express");
 const router = express.Router();
 const mongoose = require('mongoose');
@@ -24,16 +25,75 @@ router.get('/user/:user_id', (req, res) => {
   );
 });
 
-router.get('/user/all/:user_id', (req, res) => {
+router.get('/user/all/:user_id', async (req, res) => {
   console.log("all boards backend")
-  console.log(req.params.user_id)
-  console.log(req.body)
-  Board.find({user:req.params.user_id})
-  .then(board => res.json(board))
-  .catch(err =>
-      res.status(404).json({ noBoards:"No Board from this User" }
-  )
-  );
+
+  let outputArray = []
+  
+  let tempArray = []
+
+  let arr =  await Board.where("user").equals(req.params.user_id)
+  let boardIdArr = arr.map(e => e.id)
+
+
+  for (let index = 0; index < boardIdArr.length; index++) {
+    const element = boardIdArr[index];
+    let response = await Save.findOne({board:element}).populate("pin").populate("board")
+    // console.log(response)
+    if(response === null || !response.pin){
+      await Save.deleteOne({board:element})
+      // console.log(element)
+      let empty = await Board.where("_id").equals(element)
+      tempArray.push(empty[0])
+    }
+    else{
+      tempArray.push(response)
+    }
+    // console.log(response)
+  }
+
+  // console.log(tempArray)
+  
+
+  for (let index = 0; index < tempArray.length; index++) {
+    const element = tempArray[index];
+    // console.log(element)
+    if (element !== null){
+      let testingObj = {}
+      let boardObj = element.board
+      if (element.pin){
+        // console.log(element)
+        if(element.pin.image){
+          let pinEle = element.pin.image
+          // console.log(boardObj)
+          testingObj["_id"] = boardObj._id
+          testingObj["user"] = boardObj.user
+          testingObj["title"] = boardObj.title
+          testingObj["image"] = pinEle
+        }
+        else{
+          testingObj["_id"] = boardObj._id
+          testingObj["user"] = boardObj.user
+          testingObj["title"] = boardObj.title
+          testingObj["image"] = null
+        }
+  
+      }
+      else{
+        testingObj = element
+      }
+
+      outputArray.push(testingObj)
+    }
+
+  }
+
+  res.json(outputArray)
+
+
+
+
+
 });
  
 router.get('/:id', (req, res) => { // pinid
