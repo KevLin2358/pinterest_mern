@@ -10,7 +10,7 @@ router.get("/test", (req, res) =>{
 } );
 
 router.get('/boards/:boardId', async  (req, res) => { // pinid
-  console.log("takes in board id and returns arrays of pins obj")
+  // console.log("takes in board id and returns arrays of pins obj")
   let array = []
   let x = await  Save.find({board:req.params.boardId})
   let pinId = (x.map(e => e.pin))
@@ -37,7 +37,7 @@ router.get('/fetchSavesIDwithBoardID/:boardId', (req, res) => { // pinid
 });
 
 router.get('/fetchSavesWithLimitFive/:boardId', async  (req, res) => { // pinid
-  console.log("takes in board id and returns arrays of pins obj limit of 5")
+  // console.log("takes in board id and returns arrays of pins obj limit of 5")
   let array = []
   //waiting for save to finish all those promises
   let x = await  Save.find({board:req.params.boardId})

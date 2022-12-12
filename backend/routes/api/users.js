@@ -36,7 +36,6 @@ router.post('/register', (req, res) => {
           password: req.body.password
         })
 
-      console.log(req.body)
       const newBoard = new Board({
         user: "6377e1fbd8438bee7f162530",
         title: 'testnumber5',
@@ -67,12 +66,10 @@ router.get('/:userID', (req, res) => {
 
   // const email = req.body.email;
   // const password = req.body.password;
-  console.log(req.params.userID)
 
   User.find({_id:req.params.userID})
   // console.log(req.body)
       .then(user => {
-        console.log(user)
         res.json(user)
       })
     });
