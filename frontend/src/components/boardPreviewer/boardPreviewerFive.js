@@ -59,7 +59,9 @@ function BoardPreviewerFive({id,title}) {
     )
   }
   else{
-    <BoardPreviewerThree one={obj} two={obj} three={obj} title={title} size={0}/>
+    return(
+      <BoardPreviewerThree one={obj} two={obj} three={obj} title={title} size={0}/>
+    )
   }
 }
 

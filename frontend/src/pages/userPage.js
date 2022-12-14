@@ -31,14 +31,15 @@ function UserPage() {
             <Pins url={pin} key={pin._id} board={board}/>
         )
     } )
-    console.log(pinList)
+    // console.log(pinList)
+
     return (
     <div>
         <Navbar/>
         <React.Fragment>
             <NameCard/>
             <div className='userPageContainer'>
-                <BoardPreviewer/>
+                <BoardPreviewer board={board}/>
                 {/* <div>
                     {boardList}
                 </div> */}

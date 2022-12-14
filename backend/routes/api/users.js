@@ -36,23 +36,28 @@ router.post('/register', (req, res) => {
           password: req.body.password
         })
 
-      const newBoard = new Board({
-        user: "6377e1fbd8438bee7f162530",
-        title: 'testnumber5',
-        default:true
-      });
-  
-      newBoard.save()
+
 
       bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(newUser.password, salt, (err, hash) => {
           if (err) throw err;
           newUser.password = hash;
           newUser.save()
-            .then(user => res.json(user))
+            .then(user => {
+              const newBoard = new Board({
+                user: user.id,
+                title: 'Default Board',
+                default:true
+              });
+              console.log(newBoard)
+              newBoard.save()
+              res.json(user)
+            })
             .catch(err => console.log(err));
         })
       })
+
+
     }
   });
 });
