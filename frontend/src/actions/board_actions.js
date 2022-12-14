@@ -57,7 +57,7 @@ export const fetchBoards = userId => dispatch =>{
 export const createBoard = data => dispatch =>{
     console.log("creating Board")
   return BoardApiUtil.createBoard(data)
-    .then(board => dispatch(receiveBoard(board)));
+    // .then(board => dispatch(receiveBoard(board)));
 }
 
 // export const deleteBoard = id => dispatch =>{

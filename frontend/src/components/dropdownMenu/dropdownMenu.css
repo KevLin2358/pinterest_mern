@@ -98,3 +98,8 @@ a {
   align-items: center;
   align-self: center;
 }
+
+.dropdownmenudivText{
+  font-size: 20px;
+  color:black;
+}
