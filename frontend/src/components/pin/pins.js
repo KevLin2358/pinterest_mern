@@ -20,12 +20,13 @@ function Pins({url,board,pinSaveId}) {
         //     pin:pinId,
         //     board:e._id
         //   }
-        const defaultBoard = board.filter(e => e.default === true)
-        console.log(defaultBoard[0]._id,url._id)
+        console.log(board[0])
+        // const defaultBoard = board.filter(e => e.default === true)
+        // console.log(defaultBoard[0]._id,url._id)
 
         const pinObj = {
             pin:url._id,
-            board:defaultBoard[0]._id
+            board:board[0]._id
           }
 
         dispatch(createSave(pinObj))

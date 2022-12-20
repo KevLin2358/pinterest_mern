@@ -16,6 +16,7 @@ import Modal from '../modal/modal';
 import { userID } from '../../actions/session_actions';
 import { fetchDefaultBoard } from '../../actions/board_actions';
 import { fetchBoards } from '../../actions/board_actions';
+import { logout } from '../../actions/session_actions';
 const Navbar = () => {
   const [searchTerm,setSearchTerm] = useState("")
   const dispatch = useDispatch()
@@ -32,6 +33,11 @@ const Navbar = () => {
   }
   const handleOnClick = () => {
     setSearchIsOpen(searchIsOpen => !searchIsOpen)
+  }
+
+  const logoutFunction = () => {
+    dispatch(logout())
+    // console.log("logout")
   }
 
   useEffect(() => {
@@ -88,6 +94,8 @@ const Navbar = () => {
       };
     }, []);
   }
+
+
   
 
   useOutsideAlerter(searchInput)
@@ -130,7 +138,7 @@ const Navbar = () => {
                 </div>
                 <div className='navBarRightSide'>
                   <div onClick={infoBox}><Bell/></div>
-                  <div onClick={infoBox}><Message/></div>
+                  <div onClick={logoutFunction}><Message/></div>
                   <div onClick={() => changeLink(`/profile`)}><Message/></div>
                   {modalOpen && <Modal setOpenModal={setModalOpen} />}
                 </div>
@@ -165,7 +173,7 @@ const Navbar = () => {
               </div>
               <div className='navBarRightSide'>
                 <div onClick={infoBox}><Bell/></div>
-                <div onClick={infoBox}><Message/></div>
+                <div onClick={logoutFunction}><Message/></div>
                 <div onClick={() => changeLink(`/profile`)}><Message/></div>
                 {modalOpen && <Modal setOpenModal={setModalOpen} />}
               </div>
@@ -200,7 +208,7 @@ const Navbar = () => {
               </div>
               <div className='navBarRightSide'>
                 <div onClick={infoBox}><Bell/></div>
-                <div onClick={infoBox}><Message/></div>
+                <div onClick={logoutFunction}><Message/></div>
                 <div onClick={() => changeLink(`/profile`)}><Message/></div>
                 {modalOpen && <Modal setOpenModal={setModalOpen} />}
               </div>
@@ -236,7 +244,7 @@ const Navbar = () => {
               </div>
               <div className='navBarRightSide'>
                 <div onClick={infoBox}><Bell/></div>
-                <div onClick={infoBox}><Message/></div>
+                <div onClick={logoutFunction}><Message/></div>
                 <div onClick={() => changeLink(`/profile`)}><Message/></div>
                 {modalOpen && <Modal setOpenModal={setModalOpen} />}
               </div>
