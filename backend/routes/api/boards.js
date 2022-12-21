@@ -134,6 +134,7 @@ router.post('/',
   );
   
   router.delete('/:id', (req, res) => {
+    Save.deleteMany({board:req.params.id}).then(e => console.log(e))
     Board.findByIdAndRemove(req.params.id)
       .then(() => res.json())
       .catch(err => 

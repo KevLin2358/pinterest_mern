@@ -60,8 +60,8 @@ export const createBoard = data => dispatch =>{
     // .then(board => dispatch(receiveBoard(board)));
 }
 
-// export const deleteBoard = id => dispatch =>{
-//   return BoardApiUtil.deleteBoard(id)
-//     .then(() => dispatch(removeBoard(id)))
-// }
+export const deleteBoard = id => dispatch =>{
+  return BoardApiUtil.deleteBoard(id)
+    .then(() => dispatch(removeBoard(id)))
+}
 

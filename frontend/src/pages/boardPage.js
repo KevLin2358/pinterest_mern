@@ -7,6 +7,7 @@ import { fetchBoards } from '../actions/board_actions'
 import { fetchSaves } from '../actions/save_actions'
 import { fetchSinglePin } from '../actions/pin_actions'
 import { fetchSavesIDwithBoardID } from '../actions/save_actions'
+import { deleteBoard } from '../actions/board_actions'
 import Pins from '../components/pin/pins'
 import "./homepage.css"
 function BoardPage(props) {
@@ -69,6 +70,15 @@ function BoardPage(props) {
         setsaveIDandPin(() => finalArray)
     }
 
+    const handleDeleteBoard = () => {
+        const currentBoardID = (window.location.pathname.split("/")[2])
+        // console.log(currentBoardID)
+        dispatch(deleteBoard(currentBoardID))
+        let test = window.location.href = '/profile'
+        console.log(test)
+        // window.location.href = "http://www.w3schools.com";
+    }
+
     if(saveIDandPin === null){
         saveIDwithPinIDobj()
     }
@@ -85,6 +95,7 @@ function BoardPage(props) {
     <React.Fragment>
     <div className='boardTitle'>{currentBoardTitle}</div>
         <div ref={ref} className='homePageContainer'>
+            <button onClick={handleDeleteBoard}>Delete this board</button>
         <div className='homePageBodyFlex'>
             <div className='homePageBody'>
             {saveList}

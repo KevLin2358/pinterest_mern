@@ -13,3 +13,7 @@ export const fetchBoards = userId =>{
   return axios.get(`/api/boards/user/all/${userId}`)
 };
 
+export const deleteBoard = id => {
+  // debugger
+  return axios.delete(`/api/boards/${id}`)
+}

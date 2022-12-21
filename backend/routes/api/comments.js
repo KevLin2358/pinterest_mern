@@ -27,7 +27,7 @@ router.post('/',
   );
 
   router.get('/:id', (req, res) => { // pinid
-    Comment.find({pin:req.params.id})
+    Comment.find({pin:req.params.id}).populate("user")
         .then(comments => res.json(comments)).then((req) => console.log(req.body))
         .catch(err =>
             res.status(404).json({ noCommentFound: 'No comment found' })

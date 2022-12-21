@@ -71,17 +71,20 @@ function RenderCommentsAndRightSide({cancelComment,comment,comments,handleDelete
   } 
 
   const commentList = comments.map((comment) => {
+    console.log(comment)
     return(
+      // <div>
+      //   </div>
       <div key={comment._id} className='fullCommentDiv'>
         {/* <ul key={comment._id}> */}
           <div id="container2" style={{backgroundColor:"orange"}}>
             <div id="name2">
-            {reducerState.session.info[0].handle[0].toUpperCase()}
+            {comment.user.handle[0].toUpperCase()}
             </div>
           </div>
             <div className='commentTextBox'>
               <div className='userNameText'>
-              {comment.user}
+              {comment.user.handle}
               </div>
               <div className='commentText'>
               {comment.text}
