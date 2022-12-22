@@ -65,3 +65,8 @@ export const deleteBoard = id => dispatch =>{
     .then(() => dispatch(removeBoard(id)))
 }
 
+export const patchBoard = data => dispatch =>{
+  return BoardApiUtil.patchBoard(data)
+    // .then(board => dispatch(receiveBoard(board)));
+}
+

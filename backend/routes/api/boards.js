@@ -142,4 +142,14 @@ router.post('/',
         );
   })
 
+  router.patch('/:id', (req, res) => {
+    console.log(req.params.id,req.body);
+    mongoose.set('returnOriginal', false);
+    Board.findByIdAndUpdate(req.params.id, req.body)
+      .then( board => res.json(board))
+      .catch(err => 
+        res.status(404).json({ nodeckfound: 'No deck found with that ID' })
+      );
+  });
+
 module.exports = router;

@@ -13,6 +13,15 @@ export const fetchBoards = userId =>{
   return axios.get(`/api/boards/user/all/${userId}`)
 };
 
+export const patchBoard = data =>{
+  return axios.patch(`/api/boards/${data.id}`,data)
+};
+
+// export const updateComment = data => {
+//   return axios.patch(`/api/comments/${data.id}`, data)
+// }
+
+
 export const deleteBoard = id => {
   // debugger
   return axios.delete(`/api/boards/${id}`)
