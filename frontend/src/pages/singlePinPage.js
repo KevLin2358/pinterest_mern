@@ -41,6 +41,11 @@ function SinglePin({url}) {
         }
     },[pin])
 
+    const reloadComment = () => {
+        dispatch(fetchPincomments(stateObj.pin.data._id)).then(
+            (req) => setCommentArrayObj(req.comments.data))
+    }
+
 
     const handleDeletePin = () =>{
         dispatch(deletePin(pinId)).then(()=>window.location.href = '/')
@@ -109,6 +114,7 @@ function SinglePin({url}) {
                     handleDeletePin = {handleDeletePin}
                     comment = {comment}
                     cancelComment = {cancelComment}
+                    reloadComment = {reloadComment}
                     />
                 </div>
             </div>

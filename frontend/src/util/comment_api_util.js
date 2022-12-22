@@ -16,3 +16,8 @@ export const deleteComment = id => {
   // debugger
   return axios.delete(`/api/comments/${id}`)
 }
+
+
+export const patchComment = data =>{
+  return axios.patch(`/api/comments/${data.id}`,data)
+};

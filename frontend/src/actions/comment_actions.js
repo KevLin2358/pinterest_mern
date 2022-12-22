@@ -59,3 +59,10 @@ export const deleteComment = id => dispatch =>{
     .then(() => dispatch(removeComment(id)))
 }
 
+
+
+export const patchComment = data => dispatch =>{
+  return CommentApiUtil.patchComment(data)
+  .then(comments => dispatch(receivePinComments(comments)));
+}
+
