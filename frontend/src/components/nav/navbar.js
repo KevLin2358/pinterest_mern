@@ -37,6 +37,7 @@ const Navbar = () => {
 
   const logoutFunction = () => {
     dispatch(logout())
+    window.location.href = '/login';
     // console.log("logout")
   }
 
