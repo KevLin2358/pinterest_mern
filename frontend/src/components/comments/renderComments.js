@@ -86,7 +86,7 @@ function RenderCommentsAndRightSide({cancelComment,comment,reloadComment,comment
   }
 
   const commentList = comments.map((comment) => {
-    // console.log(comment)
+    // if (!reducerState.session.user.id) return null
     return(
       // <div>
       //   </div>
@@ -103,13 +103,18 @@ function RenderCommentsAndRightSide({cancelComment,comment,reloadComment,comment
               </div>
               <div className='commentText'>
               {comment.text}
-            <button 
-            onClick={() => handleDeleteComment(comment._id)}>Delete
-            </button>
-            <input onChange={(e) => seteditComment(e.target.value)}></input>
-            <button 
-            onClick={() => handleEditComment(comment._id)}>Edit
-            </button>
+              {
+                (reducerState.session.user.id === comment.user._id )&& 
+                <div>
+                <button 
+                onClick={() => handleDeleteComment(comment._id)}>Delete
+                </button>
+                <input onChange={(e) => seteditComment(e.target.value)}></input>
+                <button 
+                onClick={() => handleEditComment(comment._id)}>Edit
+                </button>
+                </div>
+              }
               </div>
             </div>
         {/* </ul> */}
