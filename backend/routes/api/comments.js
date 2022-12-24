@@ -27,7 +27,7 @@ router.post('/',
   );
 
   router.get('/:id', (req, res) => { // pinid
-    Comment.find({pin:req.params.id})
+    Comment.find({pin:req.params.id}).populate("user")
         .then(comments => res.json(comments)).then((req) => console.log(req.body))
         .catch(err =>
             res.status(404).json({ noCommentFound: 'No comment found' })
@@ -41,5 +41,15 @@ router.post('/',
         res.status(404).json({nopinsfound: 'No Comment found with that ID'})
         );
   })
+
+  router.patch('/:id', (req, res) => {
+    console.log(req.params.id,req.body);
+    mongoose.set('returnOriginal', false);
+    Comment.findByIdAndUpdate(req.params.id, req.body)
+      .then( board => res.json(board))
+      .catch(err => 
+        res.status(404).json({ nodeckfound: 'No deck found with that ID' })
+      );
+  });
 
 module.exports = router;

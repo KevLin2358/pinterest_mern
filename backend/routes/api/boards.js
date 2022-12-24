@@ -134,11 +134,22 @@ router.post('/',
   );
   
   router.delete('/:id', (req, res) => {
+    Save.deleteMany({board:req.params.id}).then(e => console.log(e))
     Board.findByIdAndRemove(req.params.id)
       .then(() => res.json())
       .catch(err => 
         res.status(404).json({nopinsfound: 'No pin found with that ID'})
         );
   })
+
+  router.patch('/:id', (req, res) => {
+    console.log(req.params.id,req.body);
+    mongoose.set('returnOriginal', false);
+    Board.findByIdAndUpdate(req.params.id, req.body)
+      .then( board => res.json(board))
+      .catch(err => 
+        res.status(404).json({ nodeckfound: 'No deck found with that ID' })
+      );
+  });
 
 module.exports = router;

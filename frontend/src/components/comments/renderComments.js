@@ -11,8 +11,9 @@ import CopyLink from '../../imageComponent/copyLinkSVG'
 import ToggleComment from '../../imageComponent/ToggleComment'
 import DropdownMenu from '../dropdownMenu/dropdownMenu'
 import { fetchSavesIDwithBoardID } from '../../actions/save_actions'
+import { patchComment } from '../../actions/comment_actions'
 import DropdownMenuHomePage from '../dropdownMenu/dropdownMenuHomePage'
-function RenderCommentsAndRightSide({cancelComment,comment,comments,handleDeleteComment,pin,handleCreateComment,setComment,handleDeletePin}) {
+function RenderCommentsAndRightSide({cancelComment,comment,reloadComment,comments,handleDeleteComment,pin,handleCreateComment,setComment,handleDeletePin}) {
   const boardArray = useSelector(state => state.board.data)
   const pinId = useSelector(state => state.pin.data._id)
   const [defaultoBoardId,setdefaultBoardId] = useState("")
@@ -20,6 +21,7 @@ function RenderCommentsAndRightSide({cancelComment,comment,comments,handleDelete
   const [isThisInBoardArray,setisThisInBoardArray] = useState("")
   const [save,setSave] = useState([])
   const reducerState = useSelector(state=>state)
+  const [editComment,seteditComment] = useState("")
 
   //setting default board when it loads
   useEffect(() => {
@@ -28,6 +30,9 @@ function RenderCommentsAndRightSide({cancelComment,comment,comments,handleDelete
     }
   }, [reducerState])
   
+  // useEffect(() => {
+  //   setpinComment(() => comments)
+  // })
 
   //once defaultboard is set fetch it savse
   useEffect(()=>{
@@ -70,23 +75,40 @@ function RenderCommentsAndRightSide({cancelComment,comment,comments,handleDelete
     .then(res => setSave(res.saves.data)))
   } 
 
+  const handleEditComment = (id) => {
+    const newComment = {
+      id:id,
+      text:editComment
+    }
+
+    dispatch(patchComment(newComment))
+    reloadComment()
+  }
+
   const commentList = comments.map((comment) => {
+    // console.log(comment)
     return(
+      // <div>
+      //   </div>
       <div key={comment._id} className='fullCommentDiv'>
         {/* <ul key={comment._id}> */}
           <div id="container2" style={{backgroundColor:"orange"}}>
             <div id="name2">
-            {reducerState.session.info[0].handle[0].toUpperCase()}
+            {comment.user.handle[0].toUpperCase()}
             </div>
           </div>
             <div className='commentTextBox'>
               <div className='userNameText'>
-              {comment.user}
+              {comment.user.handle}
               </div>
               <div className='commentText'>
               {comment.text}
             <button 
             onClick={() => handleDeleteComment(comment._id)}>Delete
+            </button>
+            <input onChange={(e) => seteditComment(e.target.value)}></input>
+            <button 
+            onClick={() => handleEditComment(comment._id)}>Edit
             </button>
               </div>
             </div>
@@ -96,7 +118,7 @@ function RenderCommentsAndRightSide({cancelComment,comment,comments,handleDelete
 })
 
   
-  // console.log(comments)
+  // console.log(pinComment)
   // console.log(isThisInBoardArray,save)
   if(!reducerState.session.info) return null
   if(isThisInBoardArray === "") return null

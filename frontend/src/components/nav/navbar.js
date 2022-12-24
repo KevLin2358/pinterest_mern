@@ -16,6 +16,7 @@ import Modal from '../modal/modal';
 import { userID } from '../../actions/session_actions';
 import { fetchDefaultBoard } from '../../actions/board_actions';
 import { fetchBoards } from '../../actions/board_actions';
+import { logout } from '../../actions/session_actions';
 const Navbar = () => {
   const [searchTerm,setSearchTerm] = useState("")
   const dispatch = useDispatch()
@@ -34,18 +35,24 @@ const Navbar = () => {
     setSearchIsOpen(searchIsOpen => !searchIsOpen)
   }
 
+  const logoutFunction = () => {
+    dispatch(logout())
+    window.location.href = '/login';
+    // console.log("logout")
+  }
+
   useEffect(() => {
     // console.log(searchTerm)
   }, [searchTerm]);
 
   useEffect(() =>{
-    if (stateObj){
+    if (stateObj.session.user.id){
       dispatch(userID(stateObj.session.user.id))
     }
   },[])
 
   useEffect(() => {
-    if (stateObj){
+    if (stateObj.session.user.id){
       dispatch(fetchBoards(stateObj.session.user.id))
     }
   }, [])
@@ -88,6 +95,8 @@ const Navbar = () => {
       };
     }, []);
   }
+
+
   
 
   useOutsideAlerter(searchInput)
@@ -130,7 +139,7 @@ const Navbar = () => {
                 </div>
                 <div className='navBarRightSide'>
                   <div onClick={infoBox}><Bell/></div>
-                  <div onClick={infoBox}><Message/></div>
+                  <div onClick={logoutFunction}><Message/></div>
                   <div onClick={() => changeLink(`/profile`)}><Message/></div>
                   {modalOpen && <Modal setOpenModal={setModalOpen} />}
                 </div>
@@ -165,7 +174,7 @@ const Navbar = () => {
               </div>
               <div className='navBarRightSide'>
                 <div onClick={infoBox}><Bell/></div>
-                <div onClick={infoBox}><Message/></div>
+                <div onClick={logoutFunction}><Message/></div>
                 <div onClick={() => changeLink(`/profile`)}><Message/></div>
                 {modalOpen && <Modal setOpenModal={setModalOpen} />}
               </div>
@@ -200,7 +209,7 @@ const Navbar = () => {
               </div>
               <div className='navBarRightSide'>
                 <div onClick={infoBox}><Bell/></div>
-                <div onClick={infoBox}><Message/></div>
+                <div onClick={logoutFunction}><Message/></div>
                 <div onClick={() => changeLink(`/profile`)}><Message/></div>
                 {modalOpen && <Modal setOpenModal={setModalOpen} />}
               </div>
@@ -236,7 +245,7 @@ const Navbar = () => {
               </div>
               <div className='navBarRightSide'>
                 <div onClick={infoBox}><Bell/></div>
-                <div onClick={infoBox}><Message/></div>
+                <div onClick={logoutFunction}><Message/></div>
                 <div onClick={() => changeLink(`/profile`)}><Message/></div>
                 {modalOpen && <Modal setOpenModal={setModalOpen} />}
               </div>

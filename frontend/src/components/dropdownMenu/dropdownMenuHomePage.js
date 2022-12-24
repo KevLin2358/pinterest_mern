@@ -26,13 +26,13 @@ function DropdownMenuHomePage({ board, homepagePinId }) {
           <li className='dropdownmenudiv'><Link to="#" className='dropdownmenudivText'> Dashboard </Link>
             <ul className="dropdown">
               <div className='dropdownContainer'>
-                <li>Save</li>
+                <li>Save2</li>
                 {/* <li><input>asdasd</input></li> */}
                 {board.map(boardEle => {
                   return (
-                    <div key={boardEle.createdAt}  >
-                      <li className='boardName' onClick={() => handleOnClick2(boardEle)}>
-                        <div className="boardlistliCon">
+                    <div key={boardEle._id} >
+                      <li  className='boardName' onClick={() => handleOnClick2(boardEle)}>
+                        <div  className="boardlistliCon">
                           <img className='smallimgTest' src={boardEle.image}></img>{boardEle.title}
                         </div>
                       </li>

@@ -7,6 +7,8 @@ import { fetchBoards } from '../actions/board_actions'
 import { fetchSaves } from '../actions/save_actions'
 import { fetchSinglePin } from '../actions/pin_actions'
 import { fetchSavesIDwithBoardID } from '../actions/save_actions'
+import { deleteBoard } from '../actions/board_actions'
+import { patchBoard } from '../actions/board_actions'
 import Pins from '../components/pin/pins'
 import "./homepage.css"
 function BoardPage(props) {
@@ -20,6 +22,15 @@ function BoardPage(props) {
     const ref = useRef(null)
     const [saveIDandPin,setsaveIDandPin] = useState(null)
     const [currentBoardTitle,setcurrentBoardTitle] = useState(null)
+    const [boardName,setboardName] = useState(null)
+
+    useEffect(() => {
+        if(allboard){
+            const currentBoardID = (window.location.pathname.split("/")[2])
+            let newList = allboard.filter(e => e._id === currentBoardID)
+            setboardName(newList[0].title)
+        }
+    },[allboard])
 
     useEffect(() => {
         //fetching pins
@@ -35,14 +46,14 @@ function BoardPage(props) {
         }
     }, [state])
 
-    useEffect(() => {
-        if(!currentBoardTitle && allboard){
-            console.log(allboard)
-            const boardPath = (window.location.pathname.split("/")[2])
-            let result = allboard.filter(e => e._id === boardPath)
-            setcurrentBoardTitle((e) => result[0].title)
-        }
-    }, [allboard])
+    // useEffect(() => {
+    //     if(!currentBoardTitle && allboard){
+    //         console.log(allboard)
+    //         const boardPath = (window.location.pathname.split("/")[2])
+    //         let result = allboard.filter(e => e._id === boardPath)
+    //         setcurrentBoardTitle((e) => result[0].title)
+    //     }
+    // }, [allboard])
     
 
     
@@ -69,6 +80,26 @@ function BoardPage(props) {
         setsaveIDandPin(() => finalArray)
     }
 
+    const handleDeleteBoard = () => {
+        const currentBoardID = (window.location.pathname.split("/")[2])
+        // console.log(currentBoardID)
+        dispatch(deleteBoard(currentBoardID))
+        let test = window.location.href = '/profile'
+        console.log(test)
+        // window.location.href = "http://www.w3schools.com";
+    }
+
+    const handleEditName = () => {
+        const currentBoardID = (window.location.pathname.split("/")[2])
+        const newObj = {
+            id:currentBoardID,
+            title:currentBoardTitle
+        }
+        setboardName(currentBoardTitle)
+        dispatch(patchBoard(newObj))
+        // window.location.reload(false)
+    }
+
     if(saveIDandPin === null){
         saveIDwithPinIDobj()
     }
@@ -83,8 +114,11 @@ function BoardPage(props) {
     <div>
     <Navbar/>
     <React.Fragment>
-    <div className='boardTitle'>{currentBoardTitle}</div>
+    <div className='boardTitle'>{boardName}</div>
         <div ref={ref} className='homePageContainer'>
+            <button onClick={handleDeleteBoard}>Delete this board</button>
+            <input onChange={(e) => setcurrentBoardTitle(e.target.value)}></input>
+            <button onClick={handleEditName}>Edit this board</button>
         <div className='homePageBodyFlex'>
             <div className='homePageBody'>
             {saveList}
