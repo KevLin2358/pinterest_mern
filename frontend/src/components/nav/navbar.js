@@ -46,13 +46,13 @@ const Navbar = () => {
   }, [searchTerm]);
 
   useEffect(() =>{
-    if (stateObj){
+    if (stateObj.session.user.id){
       dispatch(userID(stateObj.session.user.id))
     }
   },[])
 
   useEffect(() => {
-    if (stateObj){
+    if (stateObj.session.user.id){
       dispatch(fetchBoards(stateObj.session.user.id))
     }
   }, [])

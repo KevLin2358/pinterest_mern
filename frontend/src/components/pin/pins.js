@@ -68,7 +68,9 @@ function Pins({url,board,pinSaveId}) {
         </button>
         }
     <div className='homepageDropdown' onClick={(e)=> onSaveBoard(e)}>
-    <DropdownMenuHomePage board={board} homepagePinId={url._id}/>
+ 
+        <DropdownMenuHomePage board={board} homepagePinId={url._id}/>
+
     </div>
     </div>
     

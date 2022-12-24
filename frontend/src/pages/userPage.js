@@ -18,9 +18,16 @@ function UserPage() {
     const [board,setBoard] = useState("")
 
     useEffect(() => {
-        dispatch(fetchUserPin(id)).then(res =>setPins(()=>res.pins.data))
-        dispatch(fetchBoards(id)).then(res =>setBoard(()=>res.boards.data))
+        if(!id){
+            window.location.href = '/login'
+        }
+        if(id){
+            dispatch(fetchUserPin(id)).then(res =>setPins(()=>res.pins.data))
+            dispatch(fetchBoards(id)).then(res =>setBoard(()=>res.boards.data))
+        }
     }, [])
+
+
 
     if(board === "") return null
 

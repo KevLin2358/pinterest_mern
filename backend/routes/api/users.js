@@ -44,12 +44,13 @@ router.post('/register', (req, res) => {
           newUser.password = hash;
           newUser.save()
             .then(user => {
+              console.log(user.id)
               const newBoard = new Board({
                 user: user.id,
                 title: 'Default Board',
                 default:true
               });
-              console.log(newBoard)
+              console.log(user)
               newBoard.save()
               res.json(user)
             })
@@ -57,6 +58,7 @@ router.post('/register', (req, res) => {
         })
       })
 
+      
 
     }
   });
