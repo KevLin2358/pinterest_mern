@@ -201,7 +201,11 @@ function RenderCommentsAndRightSide({cancelComment,comment,reloadComment,comment
             </div>
         </div>
       </div>
-      <button onClick={handleDeletePin}>deletePin</button>   
+      {
+        reducerState.session.user.id === reducerState.pin.data.user &&
+        <button onClick={handleDeletePin}>deletePin</button>   
+      }
+      
       <InputForms/>    
     </div>
   )
