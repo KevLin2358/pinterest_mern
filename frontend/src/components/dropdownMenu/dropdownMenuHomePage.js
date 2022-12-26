@@ -4,6 +4,7 @@ import { createSave } from '../../actions/save_actions'
 import { useEffect } from 'react'
 import Q from "../../imageComponent/images/q.jpg"
 import { Link } from 'react-router-dom'
+import CreateBoardComp from '../Tools/createBoardComp'
 import "./dropdownMenu.css"
 function DropdownMenuHomePage({ board, homepagePinId }) {
   const stateObj = useSelector((state) => state)
@@ -39,6 +40,7 @@ function DropdownMenuHomePage({ board, homepagePinId }) {
                     </div>
                   )
                 })}
+                <CreateBoardComp/>
               </div>
 
             </ul>
