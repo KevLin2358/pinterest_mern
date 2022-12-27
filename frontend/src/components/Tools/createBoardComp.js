@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from 'react'
+import React, {useState } from 'react'
 import { createBoard } from '../../actions/board_actions'
 import { useDispatch,useSelector } from 'react-redux'
 import { fetchBoards } from '../../actions/board_actions';
