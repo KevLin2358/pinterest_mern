@@ -8,6 +8,12 @@ function CreateBoardComp() {
     const [board,newBoard] = useState("")
     const stateObj = useSelector(state => state)
 
+
+
+    //This button creates a new board and then fetchboards again
+    //fetchboards cause board is from redux state , need it to cause a rerender
+    //need to add modal for style
+    
     const button1 = () => {
         const newBoard = {
             title:board
