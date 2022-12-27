@@ -14,7 +14,6 @@ import Profile from '../../imageComponent/ProfileSVG';
 import SearchSVG from '../../imageComponent/SearchSVG';
 import Modal from '../modal/modal';
 import { userID } from '../../actions/session_actions';
-import { fetchDefaultBoard } from '../../actions/board_actions';
 import { fetchBoards } from '../../actions/board_actions';
 import { logout } from '../../actions/session_actions';
 const Navbar = () => {
@@ -26,7 +25,6 @@ const Navbar = () => {
   const searchFormContainer = useRef(null);
   const [modalOpen, setModalOpen] = useState(false);
   const stateObj = useSelector(state => state)
-  // const userIDState = stateObj.session.user.id
 
   const setSearchAndConsole = (e) => {
     setSearchTerm(e.target.value)

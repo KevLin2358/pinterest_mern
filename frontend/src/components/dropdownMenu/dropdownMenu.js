@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { createSave } from '../../actions/save_actions'
 import "./dropdownMenu.css"
 import { Link } from 'react-router-dom'
+import ResusableSearch from '../Tools/resusableSearch'
 function DropdownMenu() {
   const boardArray = useSelector(state => state.board.data)
   const pinId = useSelector(state => state.pin.data._id)
@@ -28,6 +29,7 @@ function DropdownMenu() {
             <ul className="dropdown">
               <div className='dropdownContainer'>
                 <li>Save</li>
+                <li><ResusableSearch/></li>
                 <li><input></input></li>
                 {boardArray.map(board => {
                   return (

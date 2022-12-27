@@ -6,6 +6,8 @@ import Q from "../../imageComponent/images/q.jpg"
 import { Link } from 'react-router-dom'
 import CreateBoardComp from '../Tools/createBoardComp'
 import "./dropdownMenu.css"
+import ResusableSearch from '../Tools/resusableSearch'
+
 function DropdownMenuHomePage({ board, homepagePinId }) {
   const stateObj = useSelector((state) => state)
   const dispatch = useDispatch()
@@ -28,6 +30,7 @@ function DropdownMenuHomePage({ board, homepagePinId }) {
             <ul className="dropdown">
               <div className='dropdownContainer'>
                 <li>Save2</li>
+                <li><ResusableSearch/></li>
                 {/* <li><input>asdasd</input></li> */}
                 {board.map(boardEle => {
                   return (
