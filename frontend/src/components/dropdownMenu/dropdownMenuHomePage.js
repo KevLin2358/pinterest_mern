@@ -24,6 +24,20 @@ function DropdownMenuHomePage({ board, homepagePinId }) {
   if (!stateObj) return null
   if (!board) return null
 
+
+    const miniBoardList = board.map(boardEle => {
+      if (boardEle.title.toLowerCase().indexOf(input.toLowerCase()) !== -1)
+      return (
+        <div key={boardEle._id} >
+          <li  className='boardName' onClick={() => handleOnClick2(boardEle)}>
+            <div  className="boardlistliCon">
+              <img className='smallimgTest' src={boardEle.image}></img>{boardEle.title}
+            </div>
+          </li>
+        </div>
+      )
+    })
+
   return (
     <div>
       <nav role="navigation">
@@ -33,19 +47,7 @@ function DropdownMenuHomePage({ board, homepagePinId }) {
               <div className='dropdownContainer'>
                 <li>Save2</li>
                 <li><ResusableSearch input={input} setinput={setinput}/></li>
-                {/* <li><input>asdasd</input></li> */}
-                {board.map(boardEle => {
-                  if (boardEle.title.toLowerCase().indexOf(input.toLowerCase()) !== -1)
-                  return (
-                    <div key={boardEle._id} >
-                      <li  className='boardName' onClick={() => handleOnClick2(boardEle)}>
-                        <div  className="boardlistliCon">
-                          <img className='smallimgTest' src={boardEle.image}></img>{boardEle.title}
-                        </div>
-                      </li>
-                    </div>
-                  )
-                })}
+                {miniBoardList}
                 <CreateBoardComp/>
               </div>
 
