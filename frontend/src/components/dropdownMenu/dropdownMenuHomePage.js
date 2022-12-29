@@ -31,7 +31,7 @@ function DropdownMenuHomePage({ board, homepagePinId }) {
         <div key={boardEle._id} >
           <li  className='boardName' onClick={() => handleOnClick2(boardEle)}>
             <div  className="boardlistliCon">
-              <img className='smallimgTest' src={boardEle.image}></img>{boardEle.title}
+              <img className='smallimgTest' src={boardEle.image} alt="firstpicture"></img>{boardEle.title}
             </div>
           </li>
         </div>
