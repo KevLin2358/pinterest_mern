@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { createSave } from '../../actions/save_actions'
 import { useEffect } from 'react'
@@ -11,6 +11,8 @@ import ResusableSearch from '../Tools/resusableSearch'
 function DropdownMenuHomePage({ board, homepagePinId }) {
   const stateObj = useSelector((state) => state)
   const dispatch = useDispatch()
+  const [input,setinput] = useState("")
+  console.log(input)
 
   const handleOnClick2 = (e) => {
     const pinObj = {
@@ -30,9 +32,10 @@ function DropdownMenuHomePage({ board, homepagePinId }) {
             <ul className="dropdown">
               <div className='dropdownContainer'>
                 <li>Save2</li>
-                <li><ResusableSearch/></li>
+                <li><ResusableSearch input={input} setinput={setinput}/></li>
                 {/* <li><input>asdasd</input></li> */}
                 {board.map(boardEle => {
+                  if (boardEle.title.toLowerCase().indexOf(input.toLowerCase()) !== -1)
                   return (
                     <div key={boardEle._id} >
                       <li  className='boardName' onClick={() => handleOnClick2(boardEle)}>

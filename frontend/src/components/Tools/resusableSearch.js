@@ -1,9 +1,9 @@
 import React,{useState} from 'react'
 
-function ResusableSearch() {
-    const [input,setinput] = useState("")
+function ResusableSearch({input,setinput}) {
+    // const [input,setinput] = useState("")
 
-    console.log(input)
+    // console.log(input)
   return (
     <React.Fragment>
         <input value={input} onChange={(e) => setinput(e.target.value)}>
