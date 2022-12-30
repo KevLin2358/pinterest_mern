@@ -6,7 +6,7 @@ const Today = () => {
     return (
         <React.Fragment>
             <Navbar/>
-            <BoardPreviewer/>
+            {/* <BoardPreviewer/> */}
             <div>
                 {/* This is TodayPage */}
             </div>
