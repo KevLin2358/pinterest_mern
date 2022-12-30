@@ -22,9 +22,17 @@ const SplashPage = () => {
         </div>
       </div>
       <div className='changing_container'>
-        <div className='center'>
-          <div className='text_next'>Get Your Next</div>  
-        </div>
+        <div className='text_next center'>Get Your Next</div>
+        <div className='grid_text1 center'> home decor idea</div>
+        <div className='grid'>
+            <div className='item dis1'></div>
+            <div className='item dis2'></div>
+            <div className='item dis3'></div>
+            <div className='item dis4'></div>
+            <div className='item dis5'></div>
+            <div className='item dis6'></div>
+            <div className='item dis7'></div>
+          </div>
       </div>
       <div className='yellow_link'>
         <div className='click_transform' role = 'button'>

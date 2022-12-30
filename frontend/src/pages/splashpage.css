@@ -106,7 +106,7 @@
   text-align: center;
   font-weight: bold;
   font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,"ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","メイリオ",Meiryo,"ＭＳ Ｐゴシック",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 40px;
+  font-size: 50px;
   margin: 2px;
 }
 
@@ -118,4 +118,56 @@
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   text-decoration: none;
+}
+
+.grid{
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto auto;
+}
+
+.grid_text1{
+  color:aqua;
+  font-size: 50px;
+
+}
+
+.item{
+  display:flex;
+  width:150px;
+  height:350px;
+}
+
+.dis1{
+  background-color: red;
+
+}
+
+.dis2{
+  background-color: blue;
+
+}
+
+.dis3{
+  background-color: green;
+
+}
+
+.dis4{
+  background-color: yellow;
+
+}
+
+.dis5{
+  background-color: green;
+
+}
+
+.dis6{
+  background-color: blue;
+
+}
+
+.dis7{
+  background-color: red;
+
 }
