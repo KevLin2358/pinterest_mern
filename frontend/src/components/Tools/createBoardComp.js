@@ -13,7 +13,7 @@ function CreateBoardComp() {
     //This button creates a new board and then fetchboards again
     //fetchboards cause board is from redux state , need it to cause a rerender
     //need to add modal for style
-    
+
     const button1 = () => {
         const newBoard = {
             title:board
@@ -22,15 +22,15 @@ function CreateBoardComp() {
     }
 
   return (
-    <div>
-        <input 
+    <div className='createBoardContainer '>
+        <input className='bottomleft'
             onSubmit={button1}
             onChange={(e) => newBoard(e.target.value)}
-            placeholder="Board name"
+            placeholder="Create New Board"
         > 
         </input>
-        <button onClick={button1}>
-            createBoard
+        <button className='bottomRight' onClick={button1}>
+        Create
         </button>
     </div>
   )

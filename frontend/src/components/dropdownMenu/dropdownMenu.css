@@ -105,6 +105,17 @@ a {
   border-top-right-radius: 25px;
 }
 
+.bottomleft{
+  border-bottom-left-radius: 25px;
+  border: none;
+}
+
+.bottomRight{
+  border-bottom-right-radius: 25px;
+  border: none;
+
+}
+
 .smallimgTest{
   width: 75px;
   height: 75px;
@@ -124,3 +135,21 @@ a {
   color:black;
 }
 
+.createBoardContainer{
+  padding: 0;
+  margin-top: -5px;
+}
+
+.createBoardContainer > input{
+  height: 50px;
+  width: 75%;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.createBoardContainer > button{
+  height: 50px;
+  width: 25%;
+  font-weight: 600;
+  font-size: 16px;
+}
