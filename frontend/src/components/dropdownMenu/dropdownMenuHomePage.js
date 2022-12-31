@@ -45,9 +45,11 @@ function DropdownMenuHomePage({ board, homepagePinId }) {
           <li className='dropdownmenudiv'><Link to="#" className='dropdownmenudivText'> Dashboard </Link>
             <ul className="dropdown">
               <div className='dropdownContainer'>
-                <li>Save2</li>
-                <li><ResusableSearch input={input} setinput={setinput}/></li>
+                <li className='dropdownContainerCenter topleftTopright'>Save2</li>
+                <li className='dropdownContainerCenter'><ResusableSearch input={input} setinput={setinput}/></li>
+                <div className='miniBoardList'>
                 {miniBoardList}
+                </div>
                 <CreateBoardComp/>
               </div>
 

@@ -78,11 +78,31 @@ a {
 
 .dropdownContainer{
   max-height: 500px;
-  width: 300px;
-  overflow-y: scroll;
+  width: 350px;
+  /* overflow-y: scroll; */
   position: absolute;
   z-index: 30;
   border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.miniBoardList{
+  overflow-y: scroll;
+}
+
+.dropdownContainerCenter{
+  /* justify-content: center; */
+  text-align: center;
+  padding: 20px;
+  font-family: apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Helvetica,ãƒ’ãƒ©ã‚®ãƒŽè§’ã‚´ Pro W3,Hiragino Kaku Gothic Pro,ãƒ¡ã‚¤ãƒªã‚ª,Meiryo,ï¼­ï¼³ ï¼°ã‚´ã‚·ãƒƒã‚¯,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.topleftTopright{
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
 }
 
 .smallimgTest{
@@ -103,3 +123,4 @@ a {
   font-size: 20px;
   color:black;
 }
+
