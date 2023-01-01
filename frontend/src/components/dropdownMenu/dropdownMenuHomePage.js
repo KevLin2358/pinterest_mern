@@ -12,6 +12,7 @@ function DropdownMenuHomePage({ board, homepagePinId }) {
   const stateObj = useSelector((state) => state)
   const dispatch = useDispatch()
   const [input,setinput] = useState("")
+  const [isOpen,setIsOpen] = useState(false)
   console.log(input)
 
   const handleOnClick2 = (e) => {
@@ -37,27 +38,30 @@ function DropdownMenuHomePage({ board, homepagePinId }) {
         </div>
       )
     })
-
+  console.log(isOpen)
   return (
-    <div>
+    <div onClick={() => setIsOpen(() => !isOpen)}>Dashboard2
+      {isOpen &&
+      <div>
       <nav role="navigation">
         <ul>
-          <li className='dropdownmenudiv'><Link to="#" className='dropdownmenudivText'> Dashboard </Link>
-            <ul className="dropdown">
-              <div className='dropdownContainer'>
-                <li className='dropdownContainerCenter topleftTopright'>Save2</li>
-                <li className='dropdownContainerCenter'><ResusableSearch input={input} setinput={setinput}/></li>
-                <div className='miniBoardList'>
-                {miniBoardList}
-                </div>
-                <CreateBoardComp/>
+          <li className='dropdownmenudiv'><Link to="#" className='dropdownmenudivText' > Dashboard2 </Link>
+           <ul className="dropdown">
+            <div className='dropdownContainer'>
+              <li className='dropdownContainerCenter topleftTopright'>Save2</li>
+              <li className='dropdownContainerCenter'><ResusableSearch input={input} setinput={setinput}/></li>
+              <div className='miniBoardList'>
+              {miniBoardList}
               </div>
-
-            </ul>
-
+              <CreateBoardComp/>
+            </div>
+          </ul>
           </li>
         </ul>
-      </nav></div>
+      </nav>
+      </div>
+      }
+</div>
   )
 }
 

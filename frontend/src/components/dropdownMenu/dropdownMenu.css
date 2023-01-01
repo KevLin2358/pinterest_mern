@@ -133,6 +133,7 @@ a {
 .dropdownmenudivText{
   font-size: 20px;
   color:black;
+  /* padding: 20px; */
 }
 
 .createBoardContainer{
