@@ -7,12 +7,13 @@ import { Link } from 'react-router-dom'
 import CreateBoardComp from '../Tools/createBoardComp'
 import "./dropdownMenu.css"
 import ResusableSearch from '../Tools/resusableSearch'
+import Popup from './popup'
 
 function DropdownMenuHomePage({ board, homepagePinId }) {
   const stateObj = useSelector((state) => state)
   const dispatch = useDispatch()
   const [input,setinput] = useState("")
-  const [isOpen,setIsOpen] = useState(false)
+  const [isOpen,setIsOpen] = useState(true)
   console.log(input)
 
   const handleOnClick2 = (e) => {
@@ -32,36 +33,35 @@ function DropdownMenuHomePage({ board, homepagePinId }) {
         <div key={boardEle._id} >
           <li  className='boardName' onClick={() => handleOnClick2(boardEle)}>
             <div  className="boardlistliCon">
-              <img className='smallimgTest' src={boardEle.image} alt="firstpicture"></img>{boardEle.title}
+              <img className='smallimgTest' src={boardEle.image} alt=""></img>{boardEle.title}
             </div>
           </li>
         </div>
       )
     })
-  console.log(isOpen)
+  
+  console.log()
+
   return (
-    <div onClick={() => setIsOpen(() => !isOpen)}>Dashboard2
-      {isOpen &&
-      <div>
+    <div>
       <nav role="navigation">
         <ul>
-          <li className='dropdownmenudiv'><Link to="#" className='dropdownmenudivText' > Dashboard2 </Link>
-           <ul className="dropdown">
-            <div className='dropdownContainer'>
-              <li className='dropdownContainerCenter topleftTopright'>Save2</li>
-              <li className='dropdownContainerCenter'><ResusableSearch input={input} setinput={setinput}/></li>
-              <div className='miniBoardList'>
-              {miniBoardList}
+          <li className='dropdownmenudiv'><Link to="#" className='dropdownmenudivText' > Dashboard </Link>
+            <ul className="dropdown">
+              <div className='dropdownContainer'>
+                <li className='dropdownContainerCenter topleftTopright'>Save2</li>
+                <Popup/>
+                <li className='dropdownContainerCenter'><ResusableSearch input={input} setinput={setinput}/></li>
+                <div className='miniBoardList'>
+                {miniBoardList}
+                </div>
+                <CreateBoardComp/>
               </div>
-              <CreateBoardComp/>
-            </div>
-          </ul>
+            </ul>
           </li>
         </ul>
       </nav>
       </div>
-      }
-</div>
   )
 }
 

@@ -12,6 +12,7 @@ import { fetchPincomments } from '../actions/comment_actions'
 import { deleteComment } from '../util/comment_api_util'
 import RenderCommentsAndRightSide from '../components/comments/renderComments'
 import { fetchBoards } from '../actions/board_actions'
+import Popup from '../components/dropdownMenu/popup'
 // import {}
 function SinglePin({url}) {
     const [comment,setComment] = useState("")
@@ -116,6 +117,7 @@ function SinglePin({url}) {
                     cancelComment = {cancelComment}
                     reloadComment = {reloadComment}
                     />
+                    <Popup/>
                 </div>
             </div>
         </div>
