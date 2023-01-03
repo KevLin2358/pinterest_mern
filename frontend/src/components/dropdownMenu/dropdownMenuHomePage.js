@@ -34,6 +34,7 @@ function DropdownMenuHomePage({ board, homepagePinId }) {
           <li  className='boardName' onClick={() => handleOnClick2(boardEle)}>
             <div  className="boardlistliCon">
               <img className='smallimgTest' src={boardEle.image} alt=""></img>{boardEle.title}
+              <Popup/>
             </div>
           </li>
         </div>
