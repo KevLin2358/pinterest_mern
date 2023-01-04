@@ -23,8 +23,8 @@ class Popup extends React.Component {
         {this.state.show && (
           <div className='popup'>
             <div className='popup-inner'>
-              <h1>Popup Title</h1>
-              <p>Popup message goes here</p>
+              <h1>Saved</h1>
+              <p>This pin is saved to</p>
               <button onClick={this.hidePopup}>Close</button>
             </div>
           </div>
