@@ -22,16 +22,32 @@ const SplashPage = () => {
         </div>
       </div>
       <div className='changing_container'>
-        <div className='text_next center'>Get Your Next</div>
-        <div className='grid_text1 center'> home decor idea</div>
+        <div className='main_text'>
+          <div className='text_next center'>Get Your Next</div>
+          <div className='grid_text1 center'> home decor idea</div>
+        </div>
         <div className='grid'>
-            <div className='item dis1'></div>
-            <div className='item dis2'></div>
-            <div className='item dis3'></div>
-            <div className='item dis4'></div>
-            <div className='item dis5'></div>
-            <div className='item dis6'></div>
-            <div className='item dis7'></div>
+            <div className='item dis1 firstitem'>
+              <img src="https://images.unsplash.com/photo-1618220179428-22790b461013?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fGhvbWUlMjBkZWNvcnxlbnwwfHwwfHw%3D&w=1000&q=80"/>
+            </div>
+            <div className='item dis2 seconditem'>
+              <img src="https://images.unsplash.com/photo-1618220179428-22790b461013?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fGhvbWUlMjBkZWNvcnxlbnwwfHwwfHw%3D&w=1000&q=80"/>
+            </div>
+            <div className='item dis3 thirditem'>
+              <img src="https://images.unsplash.com/photo-1618220179428-22790b461013?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fGhvbWUlMjBkZWNvcnxlbnwwfHwwfHw%3D&w=1000&q=80"/>
+            </div>
+            <div className='item dis4 middleitem'>
+              <img src="https://images.unsplash.com/photo-1618220179428-22790b461013?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fGhvbWUlMjBkZWNvcnxlbnwwfHwwfHw%3D&w=1000&q=80"/>
+            </div>
+            <div className='item dis5 thirditem'>
+              <img src="https://images.unsplash.com/photo-1618220179428-22790b461013?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fGhvbWUlMjBkZWNvcnxlbnwwfHwwfHw%3D&w=1000&q=80"/>
+            </div>
+            <div className='item dis6 seconditem'>
+              <img src="https://images.unsplash.com/photo-1618220179428-22790b461013?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fGhvbWUlMjBkZWNvcnxlbnwwfHwwfHw%3D&w=1000&q=80"/>
+            </div>
+            <div className='item dis7 firstitem'>
+              <img src="https://images.unsplash.com/photo-1618220179428-22790b461013?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fGhvbWUlMjBkZWNvcnxlbnwwfHwwfHw%3D&w=1000&q=80"/>
+            </div>
           </div>
       </div>
       <div className='yellow_link'>
