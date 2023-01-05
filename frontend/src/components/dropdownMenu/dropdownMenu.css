@@ -124,6 +124,14 @@ a {
   padding: 10px;
 }
 
+.smallimgTest2{
+  width: 75px;
+  height: 75px;
+  object-fit: cover;
+  border-radius: 20px;
+  /* padding: 10px; */
+}
+
 .boardlistliCon{
   display: flex;
   align-items: center;

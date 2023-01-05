@@ -8,12 +8,13 @@ import CreateBoardComp from '../Tools/createBoardComp'
 import "./dropdownMenu.css"
 import ResusableSearch from '../Tools/resusableSearch'
 import Popup from './popup'
-
-function DropdownMenuHomePage({ board, homepagePinId }) {
+import './popup.css';
+function DropdownMenuHomePage({ board, homepagePinId,showPopup }) {
   const stateObj = useSelector((state) => state)
   const dispatch = useDispatch()
   const [input,setinput] = useState("")
   const [isOpen,setIsOpen] = useState(true)
+  // const [show,setshow] = useState(false)
   console.log(input)
 
   const handleOnClick2 = (e) => {
@@ -22,10 +23,18 @@ function DropdownMenuHomePage({ board, homepagePinId }) {
       board: e._id
     }
     dispatch(createSave(pinObj))
+    showPopup(e.title,homepagePinId)
   }
   if (!stateObj) return null
   if (!board) return null
 
+  // const showPopup = () => {
+  //   setshow(true)
+
+  //   setTimeout(() => {
+  //     setshow(false)
+  //   }, 2000);
+  // }
 
     const miniBoardList = board.map(boardEle => {
       if (boardEle.title.toLowerCase().indexOf(input.toLowerCase()) !== -1)
@@ -34,14 +43,14 @@ function DropdownMenuHomePage({ board, homepagePinId }) {
           <li  className='boardName' onClick={() => handleOnClick2(boardEle)}>
             <div  className="boardlistliCon">
               <img className='smallimgTest' src={boardEle.image} alt=""></img>{boardEle.title}
-              <Popup/>
+              {/* <Popup/> */}
             </div>
           </li>
         </div>
       )
     })
   
-  console.log()
+  // console.log(show)
 
   return (
     <div>
@@ -51,7 +60,7 @@ function DropdownMenuHomePage({ board, homepagePinId }) {
             <ul className="dropdown">
               <div className='dropdownContainer'>
                 <li className='dropdownContainerCenter topleftTopright'>Save2</li>
-                <Popup/>
+                {/* <Popup/> */}
                 <li className='dropdownContainerCenter'><ResusableSearch input={input} setinput={setinput}/></li>
                 <div className='miniBoardList'>
                 {miniBoardList}
@@ -62,6 +71,7 @@ function DropdownMenuHomePage({ board, homepagePinId }) {
           </li>
         </ul>
       </nav>
+
       </div>
   )
 }
