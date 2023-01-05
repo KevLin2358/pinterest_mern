@@ -19,7 +19,7 @@ const board = useSelector(state => state.board.data)
 const [boardPic,setboardPic] = useState(null)
 const [show,setshow] = useState(false)
 const [title,settitle] = useState("")
-const [image,setImage] = useState("")
+const [image,setImage] = useState(null)
 
 useEffect(()=> {
     dispatch(fetchAllPins()).then(res => setArray(res.pins.data))
@@ -37,7 +37,7 @@ const showPopup = (title,homepagePinId) => {
     }, 2000);
 
     setTimeout(() => {
-        setImage("")
+        setImage(null)
       }, 2000);
   }
 
@@ -74,12 +74,14 @@ const pinList =
         {show && 
           <div className='popup'>
             {/* <img className='smallimgTest' src={image}/> */}
-
+            {image &&
             <div className='popup-inner'>
-            <img className='smallimgTest2' src={image}/>
-
-              <p>This pin is saved to {title}</p>
+                <img className='smallimgTest2' src={image}/>
+                <p>This pin is saved to {title}</p> 
             </div>
+
+            }
+
           </div>
         }
         </div>
