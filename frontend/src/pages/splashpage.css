@@ -150,10 +150,10 @@
 .item{
   display:block;
   align-self: center;
-
 }
 
 img{
+
   max-width: 250px;
   max-height: 350px;
   border-radius: 25px;
@@ -163,11 +163,11 @@ img{
   margin-bottom: 300px;
 }
 .seconditem{
-  margin-bottom: 200px;
+  margin-bottom: 150px;
 }
 
 .thirditem{
-  margin-bottom: 100px;
+  margin-bottom: 50px;
 }
 
 .middleitem{
