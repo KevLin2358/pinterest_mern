@@ -129,7 +129,8 @@ a {
   height: 75px;
   object-fit: cover;
   border-radius: 20px;
-  /* padding: 10px; */
+  margin-right: 20px;
+  /* padding-right: 20px; */
 }
 
 .boardlistliCon{
