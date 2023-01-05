@@ -13,9 +13,9 @@ function DropdownMenuHomePage({ board, homepagePinId,showPopup }) {
   const stateObj = useSelector((state) => state)
   const dispatch = useDispatch()
   const [input,setinput] = useState("")
-  const [isOpen,setIsOpen] = useState(true)
-  // const [show,setshow] = useState(false)
-  console.log(input)
+  // const [isOpen,setIsOpen] = useState(true)
+  // // const [show,setshow] = useState(false)
+  // console.log(input)
 
   const handleOnClick2 = (e) => {
     const pinObj = {

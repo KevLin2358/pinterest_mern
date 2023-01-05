@@ -26,20 +26,20 @@ useEffect(()=> {
     //getting all pins and then making a array of obj
 },[])
 
-const showPopup = (title,homepagePinId) => {
-    settitle(title)
-    console.log(homepagePinId)
-    dispatch(fetchSinglePin(homepagePinId)).then(e => setImage(e.pins.data.image))
-    setshow(true)
+    const showPopup = (title,homepagePinId) => {
+        settitle(title)
+        console.log(homepagePinId)
+        dispatch(fetchSinglePin(homepagePinId)).then(e => setImage(e.pins.data.image))
+        setshow(true)
 
-    setTimeout(() => {
-      setshow(false)
-    }, 2000);
+        setTimeout(() => {
+        setshow(false)
+        }, 2000);
 
-    setTimeout(() => {
-        setImage(null)
-      }, 2000);
-  }
+        setTimeout(() => {
+            setImage(null)
+        }, 2000);
+    }
 
 // useEffect(()=> {
 //     if(boardPic === null && board){

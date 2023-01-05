@@ -19,6 +19,25 @@ function SinglePin({url}) {
     const [commentArray,setCommentArrayObj] = useState([])
     const dispatch = useDispatch()
     const [pin,setPin] = useState("")
+    const [show,setshow] = useState(false)
+    const [title,settitle] = useState("")
+    const [image,setImage] = useState(null)
+
+
+    const showPopup = (title,homepagePinId) => {
+        settitle(title)
+        console.log(homepagePinId)
+        dispatch(fetchSinglePin(homepagePinId)).then(e => setImage(e.pins.data.image))
+        setshow(true)
+    
+        setTimeout(() => {
+          setshow(false)
+        }, 2000);
+    
+        setTimeout(() => {
+            setImage(null)
+          }, 2000);
+      }
 
     const stateObj = useSelector(state => state)
     const [isShown, setIsShown] = useState(false);
@@ -116,14 +135,28 @@ function SinglePin({url}) {
                     comment = {comment}
                     cancelComment = {cancelComment}
                     reloadComment = {reloadComment}
+                    showPopup = {showPopup}
                     />
-                    <Popup/>
+                    {/* <Popup/> */}
                 </div>
             </div>
         </div>
         <div>
             <Bell/>
         </div>
+        {show && 
+          <div className='popup'>
+            {/* <img className='smallimgTest' src={image}/> */}
+            {image &&
+            <div className='popup-inner'>
+                <img className='smallimgTest2' src={image}/>
+                <p>This pin is saved to {title}</p> 
+            </div>
+
+            }
+
+          </div>
+        }
        </div>
     </React.Fragment>
   )

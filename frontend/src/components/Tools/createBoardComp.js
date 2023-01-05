@@ -23,12 +23,16 @@ function CreateBoardComp() {
 
   return (
     <div className='createBoardContainer '>
-        <input className='bottomleft'
-            onSubmit={button1}
-            onChange={(e) => newBoard(e.target.value)}
-            placeholder="Create New Board"
-        > 
-        </input>
+        <form onSubmit={button1}>
+            <input className='bottomleft'
+                
+                onChange={(e) => newBoard(e.target.value)}
+                placeholder="Create New Board"
+            > 
+            </input>
+        </form>
+
+
         <button className='bottomRight' onClick={button1}>
         Create
         </button>

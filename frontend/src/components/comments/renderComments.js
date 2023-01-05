@@ -13,7 +13,7 @@ import DropdownMenu from '../dropdownMenu/dropdownMenu'
 import { fetchSavesIDwithBoardID } from '../../actions/save_actions'
 import { patchComment } from '../../actions/comment_actions'
 import DropdownMenuHomePage from '../dropdownMenu/dropdownMenuHomePage'
-function RenderCommentsAndRightSide({cancelComment,comment,reloadComment,comments,handleDeleteComment,pin,handleCreateComment,setComment,handleDeletePin}) {
+function RenderCommentsAndRightSide({showPopup,cancelComment,comment,reloadComment,comments,handleDeleteComment,pin,handleCreateComment,setComment,handleDeletePin}) {
   const boardArray = useSelector(state => state.board.data)
   const pinId = useSelector(state => state.pin.data._id)
   const [defaultoBoardId,setdefaultBoardId] = useState("")
@@ -137,7 +137,7 @@ function RenderCommentsAndRightSide({cancelComment,comment,reloadComment,comment
         <CopyLink/>
         </div>
       </div>
-      <div><DropdownMenu/></div>
+      <div><DropdownMenu showPopup={showPopup}/></div>
       {(isThisInBoardArray.length !== 0)
         ? 
         <div >

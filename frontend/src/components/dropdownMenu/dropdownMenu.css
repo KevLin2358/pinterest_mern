@@ -108,12 +108,16 @@ a {
 .bottomleft{
   border-bottom-left-radius: 25px;
   border: none;
+  width: 100%;
+  font-weight: 600;
+  font-size: 16px;
+  height: 100%;
 }
 
 .bottomRight{
   border-bottom-right-radius: 25px;
   border: none;
-
+  z-index: 1000;
 }
 
 .smallimgTest{
@@ -148,11 +152,18 @@ a {
 .createBoardContainer{
   padding: 0;
   margin-top: -5px;
+  display: flex;
 }
 
-.createBoardContainer > input{
-  height: 50px;
+.createBoardContainer > form{
+  /* height: 500px; */
   width: 75%;
+  /* font-weight: 600; */
+  /* font-size: 16px; */
+} 
+
+
+.createBoardContainer > input{
   font-weight: 600;
   font-size: 16px;
 }
