@@ -14,7 +14,8 @@ function CreateBoardComp() {
     //fetchboards cause board is from redux state , need it to cause a rerender
     //need to add modal for style
 
-    const button1 = () => {
+    const button1 = (e) => {
+        e.preventDefault()
         const newBoard = {
             title:board
         }
@@ -31,9 +32,9 @@ function CreateBoardComp() {
             > 
             </input>
         </form>
+        {/* <button >asdsadsa</button> */}
 
-
-        <button className='bottomRight' onClick={button1}>
+        <button onClick={button1}>
         Create
         </button>
     </div>
