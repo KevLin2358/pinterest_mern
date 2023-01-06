@@ -11,9 +11,11 @@ function RealCreateForm() {
     const [des,setDes] = useState("")
     const [url,setUrl] = useState("")
     const [idToPin,setIdtoPin] = useState("")
+    const [file, setFile] = useState(null);
 
     const dispatch = useDispatch()
 
+    
     const createPinButton = () => {
         const newPin = {
             user:userID,
@@ -24,6 +26,16 @@ function RealCreateForm() {
         }
     dispatch(createPin(newPin)).then(pin => setIdtoPin(pin.pin.data._id))
     }
+
+    const handleFileChange = event => {
+        setFile(event.target.files[0]);
+      }
+
+    const handleSubmit = event => {
+        event.preventDefault();
+        // Do something with the file (e.g. send it to a server)
+        console.log(file);
+      }
 
     useEffect(()=>{
         if(idToPin === "") return null //need to return null cause it will redirect too quick
@@ -37,6 +49,7 @@ function RealCreateForm() {
     <div className='realCreateFormContainer'>
         <div className='realCreateFormContainerInner'>
             <form className='realCreateFormForm'>
+                <input type="file" onChange={handleFileChange} />
                 <input className='realCreateFormFormInput' 
                 placeholder='Title'
                 value={title}
