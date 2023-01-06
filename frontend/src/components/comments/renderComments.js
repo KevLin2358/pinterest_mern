@@ -13,7 +13,7 @@ import DropdownMenu from '../dropdownMenu/dropdownMenu'
 import { fetchSavesIDwithBoardID } from '../../actions/save_actions'
 import { patchComment } from '../../actions/comment_actions'
 import DropdownMenuHomePage from '../dropdownMenu/dropdownMenuHomePage'
-function RenderCommentsAndRightSide({cancelComment,comment,reloadComment,comments,handleDeleteComment,pin,handleCreateComment,setComment,handleDeletePin}) {
+function RenderCommentsAndRightSide({showPopup,cancelComment,comment,reloadComment,comments,handleDeleteComment,pin,handleCreateComment,setComment,handleDeletePin}) {
   const boardArray = useSelector(state => state.board.data)
   const pinId = useSelector(state => state.pin.data._id)
   const [defaultoBoardId,setdefaultBoardId] = useState("")
@@ -86,12 +86,8 @@ function RenderCommentsAndRightSide({cancelComment,comment,reloadComment,comment
   }
 
   const commentList = comments.map((comment) => {
-    // console.log(comment)
     return(
-      // <div>
-      //   </div>
       <div key={comment._id} className='fullCommentDiv'>
-        {/* <ul key={comment._id}> */}
           <div id="container2" style={{backgroundColor:"orange"}}>
             <div id="name2">
             {comment.user.handle[0].toUpperCase()}
@@ -103,16 +99,19 @@ function RenderCommentsAndRightSide({cancelComment,comment,reloadComment,comment
               </div>
               <div className='commentText'>
               {comment.text}
-            <button 
-            onClick={() => handleDeleteComment(comment._id)}>Delete
-            </button>
-            <input onChange={(e) => seteditComment(e.target.value)}></input>
-            <button 
-            onClick={() => handleEditComment(comment._id)}>Edit
-            </button>
+              {(reducerState.session.user.id === comment.user._id )&& 
+                <div>
+                  <button 
+                  onClick={() => handleDeleteComment(comment._id)}>Delete
+                  </button>
+                  <input onChange={(e) => seteditComment(e.target.value)}></input>
+                  <button 
+                  onClick={() => handleEditComment(comment._id)}>Edit
+                  </button>
+                </div>                
+              }
               </div>
             </div>
-        {/* </ul> */}
       </div>
     )
 })
@@ -138,7 +137,7 @@ function RenderCommentsAndRightSide({cancelComment,comment,reloadComment,comment
         <CopyLink/>
         </div>
       </div>
-      <div><DropdownMenu/></div>
+      <div><DropdownMenu showPopup={showPopup}/></div>
       {(isThisInBoardArray.length !== 0)
         ? 
         <div >
@@ -202,7 +201,11 @@ function RenderCommentsAndRightSide({cancelComment,comment,reloadComment,comment
             </div>
         </div>
       </div>
-      <button onClick={handleDeletePin}>deletePin</button>   
+      {
+        reducerState.session.user.id === reducerState.pin.data.user &&
+        <button onClick={handleDeletePin}>deletePin</button>   
+      }
+      
       <InputForms/>    
     </div>
   )

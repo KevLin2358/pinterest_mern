@@ -6,7 +6,7 @@ import { createSave } from '../../actions/save_actions'
 import { useDispatch, useSelector } from 'react-redux'
 import DropdownMenuHomePage from '../dropdownMenu/dropdownMenuHomePage'
 import { deleteSave } from '../../actions/save_actions'
-function Pins({url,board,pinSaveId}) {
+function Pins({url,board,pinSaveId,showPopup}) {
     const [current,setCurrent] = useState(null)
     //current will be the size of the image
     const [isShown, setIsShown] = useState(false);
@@ -69,7 +69,7 @@ function Pins({url,board,pinSaveId}) {
         }
     <div className='homepageDropdown' onClick={(e)=> onSaveBoard(e)}>
  
-        <DropdownMenuHomePage board={board} homepagePinId={url._id}/>
+        <DropdownMenuHomePage board={board} homepagePinId={url._id} showPopup={showPopup}/>
 
     </div>
     </div>
