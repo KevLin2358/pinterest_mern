@@ -1,0 +1,26 @@
+.realCreateFormContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* flex-direction: column; */
+    height: 100vh;
+}
+
+.realCreateFormContainerInner{
+    width: 25%;
+    border: solid gray;
+    border-width: 1 1px;
+    border-radius: 25px;
+    padding: 60px 20px;
+}
+
+.realCreateFormForm{
+    display: flex;
+    flex-direction: column;
+}
+
+.realCreateFormFormInput{
+    padding: 10px;
+    margin: 10px;
+    border-radius: 25px;
+}
