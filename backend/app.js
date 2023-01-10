@@ -25,6 +25,10 @@ const io = new Server(server, {
   }
 })
 
+io.on("connection", (socket) => {
+  console.log(`asd ${socket.id}`)
+})
+
 app.use(passport.initialize());
 require('./config/passport')(passport);
 app.use(bodyParser.urlencoded({ extended: false }));
