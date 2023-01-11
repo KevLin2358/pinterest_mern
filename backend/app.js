@@ -13,6 +13,21 @@ const saves = require("./routes/api/saves");
 
 const app = express();
 const db = require('./config/keys').mongoURI;
+const http = require("http")
+const {Server} = require('socket.io')
+const cors = require("cors")
+app.use(cors())
+const server = http.createServer(app)
+const io = new Server(server, {
+  cors: {
+    origin:"http://localhost:3000",
+    methods: ["GET","POST"]
+  }
+})
+
+io.on("connection", (socket) => {
+  console.log(`asd ${socket.id}`)
+})
 
 app.use(passport.initialize());
 require('./config/passport')(passport);
