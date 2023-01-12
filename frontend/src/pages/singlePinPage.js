@@ -13,6 +13,9 @@ import { deleteComment } from '../util/comment_api_util'
 import RenderCommentsAndRightSide from '../components/comments/renderComments'
 import { fetchBoards } from '../actions/board_actions'
 import Popup from '../components/dropdownMenu/popup'
+import io from "socket.io-client"
+const socket = io.connect("http://localhost:5001")
+
 // import {}
 function SinglePin({url}) {
     const [comment,setComment] = useState("")
@@ -23,6 +26,11 @@ function SinglePin({url}) {
     const [title,settitle] = useState("")
     const [image,setImage] = useState(null)
 
+    const sendMessage = () => {
+      socket.emit("send_message",{message: "Hello"})
+    }  
+    
+    
 
     const showPopup = (title,homepagePinId) => {
         settitle(title)
@@ -139,6 +147,8 @@ function SinglePin({url}) {
                     />
                     {/* <Popup/> */}
                 </div>
+            <button onClick={sendMessage}>emit</button>
+
             </div>
         </div>
         <div>
@@ -151,6 +161,7 @@ function SinglePin({url}) {
             <div className='popup-inner'>
                 <img className='smallimgTest2' src={image}/>
                 <p>This pin is saved to {title}</p> 
+
             </div>
 
             }

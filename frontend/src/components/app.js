@@ -24,17 +24,11 @@ import UserPage from '../pages/userPage';
 import boardPage from '../pages/boardPage';
 import { userID } from '../actions/session_actions';
 import { useDispatch } from 'react-redux';
-import io from "socket.io-client"
-const socket = io.connect("http://localhost:5001")
 
 
 const App = () => {
 // const dispatch = useDispatch()
-  const sendMessage = () => {
-    socket.emit()
-  }  
 
-  sendMessage()
   return (
     <div>
     <Router>

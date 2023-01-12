@@ -26,8 +26,12 @@ const io = new Server(server, {
 })
 
 io.on("connection", (socket) => {
-  console.log(`asd ${socket.id}`)
+  console.log(socket)
+  socket.on("send_message", (data) => {
+    console.log(data)
+  })
 })
+// console.log(io)
 
 app.use(passport.initialize());
 require('./config/passport')(passport);
