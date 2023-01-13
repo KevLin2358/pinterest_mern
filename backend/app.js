@@ -30,8 +30,9 @@ io.on("connection", (socket) => {
   socket.on("send_message", (data) => {
     console.log(data)
   })
+  console.log(io)
+
 })
-// console.log(io)
 
 app.use(passport.initialize());
 require('./config/passport')(passport);
