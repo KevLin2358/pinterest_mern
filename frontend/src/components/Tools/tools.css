@@ -13,6 +13,7 @@
   z-index: 23 !important;
   outline-color: black !important;
   outline-width: 2px !important;
+  text-indent: 15px !important;
 }
 
 .searchBarDropdown:hover {
