@@ -9,7 +9,6 @@ function ResusableSearch({input,setinput}) {
         <input className='searchBarDropdown' placeholder='Search' value={input} onChange={(e) => setinput(e.target.value)}>
 
         </input>
-        
     </React.Fragment>
 
   )

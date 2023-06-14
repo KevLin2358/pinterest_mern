@@ -43,7 +43,7 @@ function DropdownMenuHomePage({ board, homepagePinId,showPopup }) {
           <li  className='boardName' onClick={() => handleOnClick2(boardEle)}>
             <div  className="boardlistliCon">
               <img className='smallimgTest' src={boardEle.image} alt=""></img>{boardEle.title}
-              {/* <Popup/> */}
+              <button class="saveButton">Save</button>
             </div>
           </li>
         </div>
@@ -56,10 +56,10 @@ function DropdownMenuHomePage({ board, homepagePinId,showPopup }) {
     <div>
       <nav role="navigation">
         <ul>
-          <li className='dropdownmenudiv'><Link to="#" className='dropdownmenudivText' > Dashboard </Link>
+          <li className='dropdownmenudiv'><Link to="#" className='dropdownmenudivText' > Boards </Link>
             <ul className="dropdown">
               <div className='dropdownContainer'>
-                <li className='dropdownContainerCenter topleftTopright'>Save2</li>
+                <li className='dropdownContainerCenter topleftTopright'>Save</li>
                 {/* <Popup/> */}
                 <li className='dropdownContainerCenter'><ResusableSearch input={input} setinput={setinput}/></li>
                 <div className='miniBoardList'>

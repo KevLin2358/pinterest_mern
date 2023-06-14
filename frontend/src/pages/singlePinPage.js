@@ -164,7 +164,7 @@ function SinglePin({url}) {
                     />
                     {/* <Popup/> */}
                 </div>
-                <input
+                {/* <input
                 placeholder="Room Number..."
                 onChange={(event) => {
                     setRoom(event.target.value);
@@ -179,7 +179,7 @@ function SinglePin({url}) {
                 />
                 <button onClick={sendMessage}> Send Message</button>
                 <h1> Message:</h1>
-                {messageReceived}            <button onClick={sendMessage}>emit</button>
+                {messageReceived}            <button onClick={sendMessage}>emit</button> */}
 
                 </div>
         </div>
