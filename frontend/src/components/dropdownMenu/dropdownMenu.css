@@ -193,6 +193,21 @@ a {
   /* padding: 20px; */
 }
 
+.dropdownmenudivText2{
+  color: black !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.text {
+  margin-right: 3px; /* Adjust as needed */
+}
+
+.symbol{
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
 .createBoardContainer{
   padding: 0;
   /* margin-top: 20px; */

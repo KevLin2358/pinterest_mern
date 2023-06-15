@@ -44,7 +44,8 @@ function DropdownMenu({showPopup}) {
 <div>
       <nav role="navigation">
         <ul>
-          <li className='dropdownmenudiv'><Link to="#" className='dropdownmenudivText' > Dashboard </Link>
+          <li className='dropdownmenudiv'><Link to="#" className='dropdownmenudivText2' > <span class="text">Boards</span>
+  <span class="symbol">⌄</span> </Link>
             <ul className="dropdown">
               <div className='dropdownContainer'>
                 <li className='dropdownContainerCenter topleftTopright'>Save2</li>
