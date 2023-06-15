@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useState,useEffect } from 'react'
 import { createSave,fetchSaves,deleteSave } from '../../actions/save_actions'
 import { fetchBoards } from '../../actions/board_actions'
-import Dot from '../../imageComponent/dotSVG'
+import DownloadButton from '../../imageComponent/dotSVG'
 import Share from '../../imageComponent/shareSVG'
 import CopyLink from '../../imageComponent/copyLinkSVG'
 import ToggleComment from '../../imageComponent/ToggleComment'
@@ -122,13 +122,12 @@ function RenderCommentsAndRightSide({showPopup,cancelComment,comment,reloadComme
   if(!reducerState.session.info) return null
   if(isThisInBoardArray === "") return null
   // console.log(reducerState.session.info[0].handle)
-
   return (
     <div className='rightComments'>
       <div className='singlePageCenterRight1'>
       <div className='rightSideIcons'>
         <div className='rightSideIcons1'>
-        <Dot/>
+        <DownloadButton img={pin.pins.data.image}/>
         </div>
         <div  className='rightSideIcons1'>
         <Share/>
