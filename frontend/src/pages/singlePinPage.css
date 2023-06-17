@@ -212,8 +212,25 @@ vertical-align: middle;
     font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Helvetica,ãƒ’ãƒ©ã‚®ãƒŽè§’ã‚´ Pro W3,Hiragino Kaku Gothic Pro,ãƒ¡ã‚¤ãƒªã‚ª,Meiryo,ï¼­ï¼³ ï¼°ã‚´ã‚·ãƒƒã‚¯,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
     font-size: 16px;
     font-weight: 400;
-    text-align: left;
+    display: flex;
+    align-items: center;
+
 }
+
+.commentText > *:first-child {
+    margin-right: 10px; /* Adjust the margin as needed */
+  }
+
+.commentText > *:last-child {
+margin-left: auto;
+}
+
+.pencilIcon {
+    width: 50px; /* Adjust the width as needed */
+    height: 50px; /* Adjust the height as needed */
+  }
+
+
 
 .rightCommentInput{
     background: transparent;
