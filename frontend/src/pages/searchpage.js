@@ -18,6 +18,8 @@ const SearchPage = () => {
     const [title,settitle] = useState("")
     const [image,setImage] = useState(null)
     const [msg,setmsg] = useState([])
+    const [isLoading, setIsLoading] = useState(true);
+    // const [msg,setmsg] = useState([])
 
     useEffect(() => {
         const finalsearch = window.location.href.split("#")[0].split("/").pop();
@@ -40,16 +42,42 @@ const SearchPage = () => {
             setImage(null)
         }, 2000);
     }
+
+    const searched = window.location.href.split("#")[0].split("/").pop()
     
-    console.log(msg)
-    if (array === "") return null
+    useEffect(() => {
+        // Simulate loading time or fetch data from a server
+        // Once the data is fetched or loading is complete, set isLoading to false
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 2000); // Delay for 2000 milliseconds (adjust as needed)
+      }, []);
+      
+      if (isLoading) {
+        return (
+          <React.Fragment>
+            <Navbar />
+            <div>Loading...</div>
+          </React.Fragment>
+        );
+      }
+      
+      if (array === "") {
+        return (
+          <React.Fragment>
+            <Navbar />
+            <div>There are no results for {searched}</div>
+          </React.Fragment>
+        );
+      }
 
     const pinList = 
-        array.map((pinObj) => {
-            return(
-                <Pins url={pinObj} key={pinObj._id} board={board} showPopup={showPopup}/>
-            )
-        } )
+    array.map((pinObj) => {
+        return(
+            <Pins url={pinObj} key={pinObj._id} board={board} showPopup={showPopup}/>
+        )
+    } )
+
     return (
         <React.Fragment>
         <Navbar/>

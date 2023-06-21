@@ -31,6 +31,14 @@ const Navbar = () => {
     // console.log(searchTerm)
   }
 
+  const onSearch = (e) =>{
+    // window.location.href = `/search/${searchTerm}`
+    e.preventDefault();
+    console.log("asdwasdwasdwasdwasdw")
+    console.log(searchTerm)
+    window.location.href = `http://localhost:3000/search/${searchTerm}`;
+  }
+
   // useEffect(() => {
   //   console.log(searchTerm);
   // }, [searchTerm]);
@@ -117,7 +125,7 @@ const Navbar = () => {
 
   const onWhichPage = window.location.pathname
   // console.log(onWhichPage)
-  if (onWhichPage === "/"){
+  // if (onWhichPage === "/"){
   // if (true){
     return (
       <React.Fragment>
@@ -133,14 +141,18 @@ const Navbar = () => {
                   <div className='searchSvg'>
                     <SearchSVG />
                   </div>
-                  <div ref={searchFormContainer} className='searchBarContainer'onClick={handleOnClick} onSubmit={handleOnClick}>
+                  <form onSubmit={(e) => onSearch(e)}>
+                  <div ref={searchFormContainer} className='searchBarContainer'onClick={handleOnClick}>
                         <input className='searchBar'
                           onChange={(e) => setSearchAndConsole(e)}
+                          
                           value={searchTerm}
                           placeholder={"Search"}
                           ref={searchInput}
                         />
                   </div>
+                  </form>
+
                 </div>
                 <div className='navBarRightSide'>
                   <div onClick={infoBox}><Bell/></div>
@@ -153,112 +165,112 @@ const Navbar = () => {
       </React.Fragment>
     )
   }
-  else if (onWhichPage === "/today"){
-    return (
-      <React.Fragment>
-        <div className='navBarContainer'>
-            <div className='navBarInnerContainer'>
-              <div className='navBarLeftSide'>
-                <PintrestIcon/>
-                <div className={"navButton"} onClick={() => changeLink(`/`)}>Home</div>
-                <div className='navButton currentPage' onClick={() => changeLink(`/today`)}>Today</div>
-                <div className='navButton' onClick={() => changeLink(`/create`)}>Create</div>
-              </div>
-              <div className={searchBarAltClassname}>
-                <div className='searchSvg'>
-                  <SearchSVG />
-                </div>
-                <div ref={searchFormContainer} className='searchBarContainer'onClick={handleOnClick} onSubmit={handleOnClick}>
-                      <input className='searchBar'
-                        onChange={(e) => setSearchAndConsole(e)}
-                        value={searchTerm}
-                        placeholder={"Search"}
-                        ref={searchInput}
-                      />
-                </div>
-              </div>
-              <div className='navBarRightSide'>
-                <div onClick={infoBox}><Bell/></div>
-                <div onClick={logoutFunction}><Message/></div>
-                <div onClick={() => changeLink(`/profile`)}><Message/></div>
-                {modalOpen && <Modal setOpenModal={setModalOpen} />}
-              </div>
-            </div>
-        </div>
-    </React.Fragment>
-    )
-  }
-  else if (onWhichPage === "/create"){
-    return (
-      <React.Fragment>
-        <div className='navBarContainer'>
-            <div className='navBarInnerContainer'>
-              <div className='navBarLeftSide'>
-                <PintrestIcon/>
-                <div className={"navButton"} onClick={() => changeLink(`/`)}>Home</div>
-                <div className='navButton ' onClick={() => changeLink(`/today`)}>Today</div>
-                <div className='navButton currentPage' onClick={() => changeLink(`/create`)}>Create</div>
-              </div>
-              <div className={searchBarAltClassname}>
-                <div className='searchSvg'>
-                  <SearchSVG />
-                </div>
-                <div ref={searchFormContainer} className='searchBarContainer'onClick={handleOnClick} onSubmit={handleOnClick}>
-                      <input className='searchBar'
-                        onChange={(e) => setSearchAndConsole(e)}
-                        value={searchTerm}
-                        placeholder={"Search"}
-                        ref={searchInput}
-                      />
-                </div>
-              </div>
-              <div className='navBarRightSide'>
-                <div onClick={infoBox}><Bell/></div>
-                <div onClick={logoutFunction}><Message/></div>
-                <div onClick={() => changeLink(`/profile`)}><Message/></div>
-                {modalOpen && <Modal setOpenModal={setModalOpen} />}
-              </div>
-            </div>
-        </div>
-    </React.Fragment>
-    )
+  // else if (onWhichPage === "/today"){
+  //   return (
+  //     <React.Fragment>
+  //       <div className='navBarContainer'>
+  //           <div className='navBarInnerContainer'>
+  //             <div className='navBarLeftSide'>
+  //               <PintrestIcon/>
+  //               <div className={"navButton"} onClick={() => changeLink(`/`)}>Home</div>
+  //               <div className='navButton currentPage' onClick={() => changeLink(`/today`)}>Today</div>
+  //               <div className='navButton' onClick={() => changeLink(`/create`)}>Create</div>
+  //             </div>
+  //             <div className={searchBarAltClassname}>
+  //               <div className='searchSvg'>
+  //                 <SearchSVG />
+  //               </div>
+  //               <div ref={searchFormContainer} className='searchBarContainer'onClick={handleOnClick} >
+  //                     <input className='searchBar'
+  //                       onChange={(e) => setSearchAndConsole(e)}
+  //                       value={searchTerm}
+  //                       placeholder={"Search"}
+  //                       ref={searchInput}
+  //                     />
+  //               </div>
+  //             </div>
+  //             <div className='navBarRightSide'>
+  //               <div onClick={infoBox}><Bell/></div>
+  //               <div onClick={logoutFunction}><Message/></div>
+  //               <div onClick={() => changeLink(`/profile`)}><Message/></div>
+  //               {modalOpen && <Modal setOpenModal={setModalOpen} />}
+  //             </div>
+  //           </div>
+  //       </div>
+  //   </React.Fragment>
+  //   )
+  // }
+  // else if (onWhichPage === "/create"){
+  //   return (
+  //     <React.Fragment>
+  //       <div className='navBarContainer'>
+  //           <div className='navBarInnerContainer'>
+  //             <div className='navBarLeftSide'>
+  //               <PintrestIcon/>
+  //               <div className={"navButton"} onClick={() => changeLink(`/`)}>Home</div>
+  //               <div className='navButton ' onClick={() => changeLink(`/today`)}>Today</div>
+  //               <div className='navButton currentPage' onClick={() => changeLink(`/create`)}>Create</div>
+  //             </div>
+  //             <div className={searchBarAltClassname}>
+  //               <div className='searchSvg'>
+  //                 <SearchSVG />
+  //               </div>
+  //               <div ref={searchFormContainer} className='searchBarContainer'onClick={handleOnClick} onSubmit={handleOnClick}>
+  //                     <input className='searchBar'
+  //                       onChange={(e) => setSearchAndConsole(e)}
+  //                       value={searchTerm}
+  //                       placeholder={"Search"}
+  //                       ref={searchInput}
+  //                     />
+  //               </div>
+  //             </div>
+  //             <div className='navBarRightSide'>
+  //               <div onClick={infoBox}><Bell/></div>
+  //               <div onClick={logoutFunction}><Message/></div>
+  //               <div onClick={() => changeLink(`/profile`)}><Message/></div>
+  //               {modalOpen && <Modal setOpenModal={setModalOpen} />}
+  //             </div>
+  //           </div>
+  //       </div>
+  //   </React.Fragment>
+  //   )
     
-  }
-  else{
-    return (
-      <React.Fragment>
-        <div className='navBarContainer'>
-            <div className='navBarInnerContainer'>
-              <div className='navBarLeftSide'>
-                <PintrestIcon/>
-                <div className={"navButton"} onClick={() => changeLink(`/`)}>Home</div>
-                <div className='navButton ' onClick={() => changeLink(`/today`)}>Today</div>
-                <div className='navButton ' onClick={() => changeLink(`/create`)}>Create</div>
-              </div>
-              <div className={searchBarAltClassname}>
-                <div className='searchSvg'>
-                  <SearchSVG />
-                </div>
-                <div ref={searchFormContainer} className='searchBarContainer'onClick={handleOnClick} onSubmit={handleOnClick}>
-                      <input className='searchBar'
-                        onChange={(e) => setSearchAndConsole(e)}
-                        value={searchTerm}
-                        placeholder={"Search"}
-                        ref={searchInput}
-                      />
-                </div>
-              </div>
-              <div className='navBarRightSide'>
-                <div onClick={infoBox}><Bell/></div>
-                <div onClick={logoutFunction}><Message/></div>
-                <div onClick={() => changeLink(`/profile`)}><Message/></div>
-                {modalOpen && <Modal setOpenModal={setModalOpen} />}
-              </div>
-            </div>
-        </div>
-    </React.Fragment>
-    )
-  }
-}
+  // }
+  // else{
+  //   return (
+  //     <React.Fragment>
+  //       <div className='navBarContainer'>
+  //           <div className='navBarInnerContainer'>
+  //             <div className='navBarLeftSide'>
+  //               <PintrestIcon/>
+  //               <div className={"navButton"} onClick={() => changeLink(`/`)}>Home</div>
+  //               <div className='navButton ' onClick={() => changeLink(`/today`)}>Today</div>
+  //               <div className='navButton ' onClick={() => changeLink(`/create`)}>Create</div>
+  //             </div>
+  //             <div className={searchBarAltClassname}>
+  //               <div className='searchSvg'>
+  //                 <SearchSVG />
+  //               </div>
+  //               <div ref={searchFormContainer} className='searchBarContainer'onClick={handleOnClick} onSubmit={handleOnClick}>
+  //                     <input className='searchBar'
+  //                       onChange={(e) => setSearchAndConsole(e)}
+  //                       value={searchTerm}
+  //                       placeholder={"Search"}
+  //                       ref={searchInput}
+  //                     />
+  //               </div>
+  //             </div>
+  //             <div className='navBarRightSide'>
+  //               <div onClick={infoBox}><Bell/></div>
+  //               <div onClick={logoutFunction}><Message/></div>
+  //               <div onClick={() => changeLink(`/profile`)}><Message/></div>
+  //               {modalOpen && <Modal setOpenModal={setModalOpen} />}
+  //             </div>
+  //           </div>
+  //       </div>
+  //   </React.Fragment>
+    // )
+  // }
+// }
 
 export default Navbar
