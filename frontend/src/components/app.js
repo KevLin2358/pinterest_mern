@@ -44,7 +44,7 @@ const App = () => {
         <Route path="/create"><CreatePage/></Route>
         <Route path="/today"><Today/></Route>
         <Route path="/single"><SinglePin/></Route>
-        <Route path="/search/test"><SearchPage/></Route>
+        <Route path="/search/:searchTerm" component={SearchPage} />
         <Route path="/"><Home/></Route>
       </Switch>
     </Router>
