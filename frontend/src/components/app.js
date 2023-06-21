@@ -24,7 +24,7 @@ import UserPage from '../pages/userPage';
 import boardPage from '../pages/boardPage';
 import { userID } from '../actions/session_actions';
 import { useDispatch } from 'react-redux';
-
+import SearchPage from '../pages/searchpage';
 
 const App = () => {
 // const dispatch = useDispatch()
@@ -38,12 +38,13 @@ const App = () => {
         <AuthRoute exact path="/signup" component={SignupFormContainer} />
 
         <Route path="/splash"><SplashPage/></Route>
-        <Route path="/pins/:pinId" component={SinglePin} />
+        {/* <Route path="/pins/:pinId" component={SinglePin} /> */}
         <Route path="/boards/:boardId" component={boardPage} />
         <Route path="/profile"><UserPage/></Route>
         <Route path="/create"><CreatePage/></Route>
         <Route path="/today"><Today/></Route>
         <Route path="/single"><SinglePin/></Route>
+        <Route path="/search/test"><SearchPage/></Route>
         <Route path="/"><Home/></Route>
       </Switch>
     </Router>

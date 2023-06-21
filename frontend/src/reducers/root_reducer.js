@@ -5,6 +5,7 @@ import pin from './pin_reducer';
 import comment from './comment_reducers';
 import board from './board_reducers'
 import save from "./save_reducer"
+import search from "./search_reducers"
 const RootReducer = combineReducers({
   session,
   errors,
@@ -12,6 +13,7 @@ const RootReducer = combineReducers({
   comment,
   board,
   save,
+  search,
 });
 
 export default RootReducer;

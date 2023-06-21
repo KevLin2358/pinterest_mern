@@ -131,9 +131,7 @@ function RenderCommentsAndRightSide({showPopup,cancelComment,comment,reloadComme
     )
 })
 
-  
-  console.log()
-  console.log(window.location.href)
+
 
   // console.log(isThisInBoardArray,save)
   if(!reducerState.session.info) return null

@@ -75,33 +75,40 @@ function RealCreateForm() {
 
 
   return (
-    <div className='realCreateFormContainer'>
-        <div className='realCreateFormContainerInner'>
-            <form className='realCreateFormForm'>
-                <input className='realCreateFormFormInput' 
-                placeholder='Title'
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                ></input>
-                <input className='realCreateFormFormInput' 
-                placeholder='Description'
-                value={des}
-                onChange={(e) => setDes(e.target.value)}
-                ></input>
-                <input className='realCreateFormFormInput' 
-                placeholder='URL'
-                value={url}
-                onChange={(e) => setUrl(e.target.value)}
-                >
-                </input>
-            </form>
-            <button onClick={createPinButton}>Create</button>
-        </div>
-        <form>
-            <input type="file" onChange={handleFileChange} />
-            <button onClick={handleSubmit}>Create to AWS</button>
+    <div className="realCreateFormContainer">
+      <div className="realCreateFormContainerInner">
+        <form className="realCreateFormForm">
+          <input
+            className="realCreateFormFormInput"
+            placeholder="Title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+          <input
+            className="realCreateFormFormInput"
+            placeholder="Description"
+            value={des}
+            onChange={(e) => setDes(e.target.value)}
+          />
+          <input
+            className="realCreateFormFormInput"
+            placeholder="URL"
+            value={url}
+            onChange={(e) => setUrl(e.target.value)}
+          />
         </form>
+        <button className="createPinButton" onClick={createPinButton}>
+          Create
+        </button>
+      </div>
+      <form>
+        <input type="file" onChange={handleFileChange} />
+        <button className="awsCreateButton" onClick={handleSubmit}>
+          Create to AWS
+        </button>
+      </form>
     </div>
+
 
   )
 }

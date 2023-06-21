@@ -28,7 +28,14 @@ const Navbar = () => {
 
   const setSearchAndConsole = (e) => {
     setSearchTerm(e.target.value)
+    // console.log(searchTerm)
   }
+
+  // useEffect(() => {
+  //   console.log(searchTerm);
+  // }, [searchTerm]);
+  
+
   const handleOnClick = () => {
     setSearchIsOpen(searchIsOpen => !searchIsOpen)
   }
