@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useState,useEffect } from 'react'
 import { createSave,fetchSaves,deleteSave } from '../../actions/save_actions'
 import { fetchBoards } from '../../actions/board_actions'
-import Dot from '../../imageComponent/dotSVG'
+import DownloadButton from '../../imageComponent/dotSVG'
 import Share from '../../imageComponent/shareSVG'
 import CopyLink from '../../imageComponent/copyLinkSVG'
 import ToggleComment from '../../imageComponent/ToggleComment'
@@ -13,6 +13,7 @@ import DropdownMenu from '../dropdownMenu/dropdownMenu'
 import { fetchSavesIDwithBoardID } from '../../actions/save_actions'
 import { patchComment } from '../../actions/comment_actions'
 import DropdownMenuHomePage from '../dropdownMenu/dropdownMenuHomePage'
+import PencilSVG from '../../imageComponent/PencilSVG'
 function RenderCommentsAndRightSide({showPopup,cancelComment,comment,reloadComment,comments,handleDeleteComment,pin,handleCreateComment,setComment,handleDeletePin}) {
   const boardArray = useSelector(state => state.board.data)
   const pinId = useSelector(state => state.pin.data._id)
@@ -22,6 +23,7 @@ function RenderCommentsAndRightSide({showPopup,cancelComment,comment,reloadComme
   const [save,setSave] = useState([])
   const reducerState = useSelector(state=>state)
   const [editComment,seteditComment] = useState("")
+  const [toggleEdit,setToggleEdit] = useState("")
 
   //setting default board when it loads
   useEffect(() => {
@@ -85,6 +87,11 @@ function RenderCommentsAndRightSide({showPopup,cancelComment,comment,reloadComme
     reloadComment()
   }
 
+  const handleToggleEdit = () => {
+    setToggleEdit(e => !toggleEdit)
+    console.log(toggleEdit)
+  }
+
   const commentList = comments.map((comment) => {
     return(
       <div key={comment._id} className='fullCommentDiv'>
@@ -99,17 +106,27 @@ function RenderCommentsAndRightSide({showPopup,cancelComment,comment,reloadComme
               </div>
               <div className='commentText'>
               {comment.text}
-              {(reducerState.session.user.id === comment.user._id )&& 
+              {
+                (toggleEdit && reducerState.session.user.id === comment.user._id) &&
                 <div>
-                  <button 
-                  onClick={() => handleDeleteComment(comment._id)}>Delete
-                  </button>
                   <input onChange={(e) => seteditComment(e.target.value)}></input>
                   <button 
                   onClick={() => handleEditComment(comment._id)}>Edit
                   </button>
-                </div>                
+
+                  <button 
+                  onClick={() => handleDeleteComment(comment._id)}>Delete
+                  </button>
+                </div>
+                
               }
+
+              {/* {(reducerState.session.user.id === comment.user._id )&& 
+              
+              <div onClick={handleToggleEdit}>
+                <PencilSVG className="pencilIcon"  />&nbsp; 
+              </div>
+            } */}
               </div>
             </div>
       </div>
@@ -122,13 +139,12 @@ function RenderCommentsAndRightSide({showPopup,cancelComment,comment,reloadComme
   if(!reducerState.session.info) return null
   if(isThisInBoardArray === "") return null
   // console.log(reducerState.session.info[0].handle)
-
   return (
     <div className='rightComments'>
       <div className='singlePageCenterRight1'>
       <div className='rightSideIcons'>
         <div className='rightSideIcons1'>
-        <Dot/>
+        <DownloadButton img={pin.pins.data.image}/>
         </div>
         <div  className='rightSideIcons1'>
         <Share/>
@@ -190,6 +206,10 @@ function RenderCommentsAndRightSide({showPopup,cancelComment,comment,reloadComme
 
           </form>
           <div className='commentButtonsContainer'>
+              <button className='commentButtons' 
+              onClick={handleToggleEdit}>
+                Edit
+              </button>
               <button className='commentButtons' 
               onClick={cancelComment}>
                 Cancel

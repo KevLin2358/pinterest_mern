@@ -1,4 +1,4 @@
-import React, {useState } from 'react'
+import React, {useState,useRef } from 'react'
 import { createBoard } from '../../actions/board_actions'
 import { useDispatch,useSelector } from 'react-redux'
 import { fetchBoards } from '../../actions/board_actions';
@@ -15,30 +15,38 @@ function CreateBoardComp() {
     //need to add modal for style
 
     const button1 = (e) => {
-        e.preventDefault()
-        const newBoard = {
-            title:board
+        e.preventDefault();
+        if (board.length !== 0) {
+          const newBoard = {
+            title: board
+          };
+          dispatch(createBoard(newBoard)).then(() =>
+            dispatch(fetchBoards(stateObj.session.user.id))
+          );
+        }else{
+            console.log("enter title")
+            inputRef.current.focus();
         }
-        dispatch(createBoard(newBoard)).then(()=> dispatch(fetchBoards(stateObj.session.user.id)))
-    }
+      };
+      
+    const inputRef = useRef(null);
+
 
   return (
-    <div className='createBoardContainer '>
-        <form onSubmit={button1}>
-            <input className='bottomleft'
-                
-                onChange={(e) => newBoard(e.target.value)}
-                placeholder="Create New Board"
-            > 
-            </input>
-        </form>
-        {/* <button >asdsadsa</button> */}
-
-        <button onClick={button1}>
+<div className='createBoardContainer'>
+    <form onSubmit={button1}>
+        <input
+        className='bottomleft'
+        onChange={(e) => newBoard(e.target.value)}
+        placeholder="Create New Board"
+        ref={inputRef}
+        />
+    </form>
+    <button className={`createButton ${board ? 'red' : 'gray'}`} onClick={button1}>
         Create
-        </button>
+    </button>
     </div>
-  )
+    )
 }
 
 export default CreateBoardComp

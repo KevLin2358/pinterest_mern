@@ -29,11 +29,28 @@ a {
     color: black;
   }
   
-  li:hover,
-  li:focus-within {
-    background: red;
+  .boardName:hover,
+  .boardName:focus-within {
+    background: gray;
     cursor: pointer;
   }
+
+  .saveButton {
+    visibility: hidden;
+    color: white;
+    background-color: red;
+    border-radius: 25px;
+    border: none;
+    padding: 10px 20px;
+    margin-left: auto;
+    font-size: 18px;
+  }
+  
+  .boardName:hover .saveButton {
+    visibility: visible;
+  }
+  
+  
   
   li:focus-within a {
     outline: none;
@@ -94,24 +111,50 @@ a {
 .dropdownContainerCenter{
   /* justify-content: center; */
   text-align: center;
-  padding: 20px;
+  padding: 10px;
   font-family: apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Helvetica,ãƒ’ãƒ©ã‚®ãƒŽè§’ã‚´ Pro W3,Hiragino Kaku Gothic Pro,ãƒ¡ã‚¤ãƒªã‚ª,Meiryo,ï¼­ï¼³ ï¼°ã‚´ã‚·ãƒƒã‚¯,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 16px; 
 }
 
 .topleftTopright{
   border-top-left-radius: 25px;
   border-top-right-radius: 25px;
+  padding-top: 20px;
 }
 
-.bottomleft{
+.bottomleft {
   border-bottom-left-radius: 25px;
-  border: none;
   width: 100%;
   font-weight: 600;
   font-size: 16px;
   height: 100%;
+  border-color: transparent;
+  outline-color: skyblue;
+  outline-width: 2px;
+  text-indent: 10px;
+}
+
+.bottomleft:focus {
+  outline-style: solid;
+  
+}
+
+.createButton {
+  height: 50px;
+  width: 25%;
+  font-weight: 600;
+  font-size: 16px;
+  border-bottom-right-radius: 25px;
+  cursor: pointer;
+}
+
+.createButton.gray {
+  background-color: gray;
+}
+
+.createButton.red {
+  background-color: red;
 }
 
 .bottomRight{
@@ -145,14 +188,32 @@ a {
 
 .dropdownmenudivText{
   font-size: 20px;
-  color:black;
+  color:white;
+  /* font-weight: ; */
   /* padding: 20px; */
+}
+
+.dropdownmenudivText2{
+  color: black !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.text {
+  margin-right: 3px; /* Adjust as needed */
+}
+
+.symbol{
+  margin-bottom: 10px;
+  font-weight: 600;
 }
 
 .createBoardContainer{
   padding: 0;
   /* margin-top: 20px; */
   display: flex;
+  border: none !important;
+  z-index: 300;
 }
 
 .createBoardContainer > form{
@@ -169,10 +230,5 @@ a {
 }
 
 .createBoardContainer > button{
-  height: 50px;
-  width: 25%;
-  font-weight: 600;
-  font-size: 16px;
-  border-bottom-right-radius: 25px;
-  cursor: pointer;
+
 }
