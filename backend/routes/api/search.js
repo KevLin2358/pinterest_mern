@@ -20,14 +20,19 @@ router.get('/:search', (req, res) => {
     const searchKeyword = req.params.search;
     console.log(searchKeyword)
   
-    Pin.find({ title: { $regex: searchKeyword, $options: 'i' } })
-    .then(pins => {
-      if (pins.length === 0) {
-        return res.status(404).json({ nopinsfound: 'No pins found with that title' });
-      }
-      res.json(pins);
-    })
-    .catch(err => res.status(500).json({ error: 'An error occurred while searching for pins' }));
+    Pin.find({
+        $or: [
+          { title: { $regex: searchKeyword, $options: 'i' } },
+          { description: { $regex: searchKeyword, $options: 'i' } }
+        ]
+      })
+        .then(pins => {
+          if (pins.length === 0) {
+            return res.status(404).json({ nopinsfound: 'No pins found with that keyword' });
+          }
+          res.json(pins);
+        })
+        .catch(err => res.status(500).json({ error: 'An error occurred while searching for pins' }));
 });
 
 module.exports = router;

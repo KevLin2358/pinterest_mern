@@ -9,7 +9,7 @@ const SearchPage = () => {
 
     const dispatch = useDispatch()
     useEffect(() => {
-          dispatch(receivePinsFromSearch("asdasd")).then(e => setmsg(e.search.data))
+          dispatch(receivePinsFromSearch("Wiki ")).then(e => setmsg(e.search.data))
       return () => {
       }
     }, [])
