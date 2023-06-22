@@ -123,6 +123,11 @@ const Navbar = () => {
     setModalOpen(() => !modalOpen);
   }
 
+  const handleSearchBarClick = () => {
+    searchInput.current.focus();
+    handleOnClick()
+  };
+
   const onWhichPage = window.location.pathname
   // console.log(onWhichPage)
   // if (onWhichPage === "/"){
@@ -137,7 +142,7 @@ const Navbar = () => {
                   <div className='navButton' onClick={() => changeLink(`/today`)}>Today</div>
                   <div className='navButton' onClick={() => changeLink(`/create`)}>Create</div>
                 </div>
-                <div className={searchBarAltClassname}>
+                <div className={searchBarAltClassname} onClick={handleSearchBarClick}>
                   <div className='searchSvg'>
                     <SearchSVG />
                   </div>
