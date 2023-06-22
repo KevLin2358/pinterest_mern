@@ -61,6 +61,7 @@ function RealCreateForm() {
             description: des,
             link:url
         }
+        console.log(newPin)
     dispatch(createPin(newPin)).then(pin => setIdtoPin(pin.pin.data._id))
     }
 
