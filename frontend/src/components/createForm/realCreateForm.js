@@ -28,10 +28,10 @@ function RealCreateForm() {
       secretAccessKey: process.env.REACT_APP_AWS_SECRET_ACCESS_KEY,
       // Add additional configuration as needed
     });
-    // console.log(process.env.REACT_APP_API_KEY);
-    // console.log(process.env.REACT_APP_API_URL);
-    // console.log(process.env.REACT_APP_AWS_ACCESS_KEY_ID);
-    // console.log(process.env.REACT_APP_AWS_SECRET_ACCESS_KEY);
+    console.log(process.env.REACT_APP_API_KEY);
+    console.log(process.env.REACT_APP_API_URL);
+    console.log(process.env.REACT_APP_AWS_ACCESS_KEY_ID);
+    console.log(process.env.REACT_APP_AWS_SECRET_ACCESS_KEY);
   
     const s3 = new AWS.S3();
 
