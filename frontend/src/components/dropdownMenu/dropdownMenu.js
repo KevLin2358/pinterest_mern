@@ -6,6 +6,7 @@ import "./dropdownMenu.css"
 import { Link } from 'react-router-dom'
 import ResusableSearch from '../Tools/resusableSearch'
 import CreateBoardComp from '../Tools/createBoardComp'
+import ToggleComment from '../../imageComponent/ToggleComment'
 function DropdownMenu({showPopup}) {
   const boardArray = useSelector(state => state.board.data)
   const pinId = useSelector(state => state.pin.data._id)
@@ -45,10 +46,10 @@ function DropdownMenu({showPopup}) {
       <nav role="navigation">
         <ul>
           <li className='dropdownmenudiv'><Link to="#" className='dropdownmenudivText2' > <span class="text">Boards</span>
-  <span class="symbol">⌄</span> </Link>
+  <span class="symbol"><ToggleComment/></span> </Link>
             <ul className="dropdown">
               <div className='dropdownContainer'>
-                <li className='dropdownContainerCenter topleftTopright'>Save2</li>
+                <li className='dropdownContainerCenter topleftTopright'>Save</li>
                 {/* <Popup/> */}
                 <li className='dropdownContainerCenter'><ResusableSearch input={input} setinput={setinput}/></li>
                 <div className='miniBoardList'>

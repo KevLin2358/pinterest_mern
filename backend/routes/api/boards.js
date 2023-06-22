@@ -26,7 +26,7 @@ router.get('/user/:user_id', (req, res) => {
 });
 
 router.get('/user/all/:user_id', async (req, res) => {
-  console.log("all boards backend with the first image it finds")
+  // console.log("all boards backend with the first image it finds")
 
   let outputArray = []
   

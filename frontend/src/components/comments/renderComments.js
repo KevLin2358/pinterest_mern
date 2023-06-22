@@ -6,7 +6,7 @@ import { useState,useEffect } from 'react'
 import { createSave,fetchSaves,deleteSave } from '../../actions/save_actions'
 import { fetchBoards } from '../../actions/board_actions'
 import DownloadButton from '../../imageComponent/dotSVG'
-import Share from '../../imageComponent/shareSVG'
+import TwitterShareButton from '../Tools/Twitter'
 import CopyLink from '../../imageComponent/copyLinkSVG'
 import ToggleComment from '../../imageComponent/ToggleComment'
 import DropdownMenu from '../dropdownMenu/dropdownMenu'
@@ -108,17 +108,15 @@ function RenderCommentsAndRightSide({showPopup,cancelComment,comment,reloadComme
               {comment.text}
               {
                 (toggleEdit && reducerState.session.user.id === comment.user._id) &&
-                <div>
-                  <input onChange={(e) => seteditComment(e.target.value)}></input>
-                  <button 
-                  onClick={() => handleEditComment(comment._id)}>Edit
-                  </button>
-
-                  <button 
-                  onClick={() => handleDeleteComment(comment._id)}>Delete
-                  </button>
-                </div>
-                
+                <div className="editSection">
+                <input className="editInput" onChange={(e) => seteditComment(e.target.value)} />
+                <button className="editButton" onClick={() => handleEditComment(comment._id)}>
+                  Edit
+                </button>
+                <button className="deleteButton" onClick={() => handleDeleteComment(comment._id)}>
+                  Delete
+                </button>
+              </div>
               }
 
               {/* {(reducerState.session.user.id === comment.user._id )&& 
@@ -133,8 +131,8 @@ function RenderCommentsAndRightSide({showPopup,cancelComment,comment,reloadComme
     )
 })
 
-  
-  // console.log(pinComment)
+
+
   // console.log(isThisInBoardArray,save)
   if(!reducerState.session.info) return null
   if(isThisInBoardArray === "") return null
@@ -147,7 +145,7 @@ function RenderCommentsAndRightSide({showPopup,cancelComment,comment,reloadComme
         <DownloadButton img={pin.pins.data.image}/>
         </div>
         <div  className='rightSideIcons1'>
-        <Share/>
+        <TwitterShareButton text={pin.pins.data.title} url={window.location.href}/>
         </div>
         <div  className='rightSideIcons1'>
         <CopyLink/>
@@ -206,9 +204,9 @@ function RenderCommentsAndRightSide({showPopup,cancelComment,comment,reloadComme
 
           </form>
           <div className='commentButtonsContainer'>
-              <button className='commentButtons' 
+              <button className='EditButtons' 
               onClick={handleToggleEdit}>
-                Edit
+                Edit Comments
               </button>
               <button className='commentButtons' 
               onClick={cancelComment}>

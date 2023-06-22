@@ -10,6 +10,7 @@ const comments = require("./routes/api/comments");
 const follows = require("./routes/api/follows");
 const boards = require("./routes/api/boards");
 const saves = require("./routes/api/saves");
+const search = require("./routes/api/search");
 
 const app = express();
 const db = require('./config/keys').mongoURI;
@@ -63,4 +64,5 @@ app.use("/api/comments", comments);
 app.use("/api/follows", follows);
 app.use("/api/boards", boards);
 app.use("/api/saves", saves);
+app.use("/api/search", search);
 

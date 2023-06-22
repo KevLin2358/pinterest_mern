@@ -20,7 +20,7 @@ function Pins({url,board,pinSaveId,showPopup}) {
         //     pin:pinId,
         //     board:e._id
         //   }
-        console.log(board[0])
+        console.log(board[0]._id)
         // const defaultBoard = board.filter(e => e.default === true)
         // console.log(defaultBoard[0]._id,url._id)
 
@@ -30,6 +30,7 @@ function Pins({url,board,pinSaveId,showPopup}) {
           }
 
         dispatch(createSave(pinObj))
+        showPopup(e.title,url._id)
     }
 
     const onSaveBoard = (e) => {

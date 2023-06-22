@@ -24,7 +24,7 @@ import UserPage from '../pages/userPage';
 import boardPage from '../pages/boardPage';
 import { userID } from '../actions/session_actions';
 import { useDispatch } from 'react-redux';
-
+import SearchPage from '../pages/searchpage';
 
 const App = () => {
 // const dispatch = useDispatch()
@@ -44,6 +44,7 @@ const App = () => {
         <Route path="/create"><CreatePage/></Route>
         <Route path="/today"><Today/></Route>
         <Route path="/single"><SinglePin/></Route>
+        <Route path="/search/:searchTerm" component={SearchPage} />
         <Route path="/"><Home/></Route>
       </Switch>
     </Router>

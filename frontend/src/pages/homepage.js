@@ -77,7 +77,7 @@ const pinList =
             {image &&
             <div className='popup-inner'>
                 <img className='smallimgTest2' src={image}/>
-                <p>This pin is saved to {title}</p> 
+                <p>This pin is saved to board {title}</p> 
             </div>
 
             }

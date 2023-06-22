@@ -14,7 +14,7 @@ import RenderCommentsAndRightSide from '../components/comments/renderComments'
 import { fetchBoards } from '../actions/board_actions'
 import Popup from '../components/dropdownMenu/popup'
 import io from "socket.io-client";
-const socket = io.connect("http://localhost:5001");
+// const socket = io.connect("http://localhost:5001");
 
 // import {}
 function SinglePin({url}) {
@@ -32,21 +32,21 @@ function SinglePin({url}) {
     const [message, setMessage] = useState("");
     const [messageReceived, setMessageReceived] = useState("");
   
-    const joinRoom = () => {
-      if (room !== "") {
-        socket.emit("join_room", room);
-      }
-    };
+    // const joinRoom = () => {
+    //   if (room !== "") {
+    //     socket.emit("join_room", room);
+    //   }
+    // };
   
-    const sendMessage = () => {
-      socket.emit("send_message", { message, room });
-    };
+    // const sendMessage = () => {
+    //   socket.emit("send_message", { message, room });
+    // };
   
-    useEffect(() => {
-      socket.on("receive_message", (data) => {
-        setMessageReceived(data.message);
-      });
-    }, [socket]);
+    // useEffect(() => {
+    //   socket.on("receive_message", (data) => {
+    //     setMessageReceived(data.message);
+    //   });
+    // }, [socket]);
     
 
     const showPopup = (title,homepagePinId) => {
