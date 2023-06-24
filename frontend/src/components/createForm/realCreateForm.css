@@ -68,3 +68,43 @@
     box-shadow: 0 0 0 2px #ff0039;
   }
   
+
+  .file-input-label {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    width: 400px; /* Set the desired width for the file input */
+    height: 800px; /* Set the desired height for the file input */
+    background-color: #f2f2f2;
+    border: 5px dashed #ccc;
+    border-radius: 10px;
+    position: relative;
+    text-align: center;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .upload-text {
+  font-size: 20px;
+}
+  
+  .upload-icon {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .file-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
