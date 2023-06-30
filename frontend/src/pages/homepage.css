@@ -37,6 +37,7 @@
 
 .card_small{
     grid-row-end: span var(--card_small);
+    
 }
 
 .card_medium{
