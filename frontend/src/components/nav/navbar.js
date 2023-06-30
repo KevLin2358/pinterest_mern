@@ -16,6 +16,7 @@ import Modal from '../modal/modal';
 import { userID } from '../../actions/session_actions';
 import { fetchBoards } from '../../actions/board_actions';
 import { logout } from '../../actions/session_actions';
+import LogoutIcon from '../../imageComponent/LogoutIcon';
 const Navbar = () => {
   const [searchTerm,setSearchTerm] = useState("")
   const dispatch = useDispatch()
@@ -161,7 +162,7 @@ const Navbar = () => {
                 </div>
                 <div className='navBarRightSide'>
                   <div onClick={infoBox}><Bell/></div>
-                  <div onClick={logoutFunction}><Message/></div>
+                  <div onClick={logoutFunction}><LogoutIcon/></div>
                   <div onClick={() => changeLink(`/profile`)}><Message/></div>
                   {modalOpen && <Modal setOpenModal={setModalOpen} />}
                 </div>
